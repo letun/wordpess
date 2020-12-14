@@ -1,0 +1,10 @@
+*.php
+*.htm
+*.html
+*.txt
+.htaccess
+.idea
+nbproject
+wp-admin
+wp-content
+wp-includes
