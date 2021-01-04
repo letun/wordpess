@@ -23,3 +23,5 @@ define( 'LETTERA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LETTERA_PLUGIN_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'LETTERA_PLUGIN_FILE', basename( __FILE__ ) );
 define( 'LETTERA_PLUGIN_FULL_PATH', __FILE__ );
+
+require_once( LETTERA_PLUGIN_DIR .'inc/loader.php' );
