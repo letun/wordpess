@@ -39,3 +39,7 @@ add_action('init', function () {
 		remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
 	}
 });
+
+add_action('admin_bar_menu', function($wp_admin_bar) {
+	$wp_admin_bar->remove_node('comments');
+}, 999);
