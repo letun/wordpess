@@ -8,5 +8,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /~letun/wordpress/index.php [L]
 </IfModule>
-
 # END WordPress
+
+<Files xmlrpc.php>
+Order Allow,Deny
+Deny from all
+</Files>
