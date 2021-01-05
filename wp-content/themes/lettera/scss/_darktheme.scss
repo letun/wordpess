@@ -1,0 +1,23 @@
+:root {
+  color-scheme: light dark;
+  supported-color-schemes: light dark;
+}
+
+//Dark theme
+@media (prefers-color-scheme: dark ) {
+  @include dark-typography;
+  @include dark-grid;
+  @include dark-button;
+  @include dark-background;
+  @include dark-header;
+
+}
+
+//Dark theme Outlook
+[data-ogsc] {
+  @include dark-typography;
+  @include dark-grid;
+  @include dark-button;
+  @include dark-background;
+  @include dark-header;
+}
