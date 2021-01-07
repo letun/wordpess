@@ -1,0 +1,52 @@
+.ruler {
+	display: flex;
+	padding-top: 51px;
+	border-top: 1px solid $menu-border;
+	border-bottom: 1px solid $menu-border;
+	background-color: $menu-background;
+	transition: margin-left .2s linear;
+	position: fixed;
+	width: calc(100% - 270px);
+	top: 0;
+	z-index: 100;
+	@media (min-width: $menu-breakpoint) {
+		padding-top: 0;
+		margin-left: $menu-width;
+		transition: none;
+	}
+}
+
+.ruler__button {
+	font-size: 11px;
+	line-height: 18px;
+	padding: 4px;
+	color: $menu-item-color;
+	border-right: 1px solid $menu-border;
+	width: auto;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	margin-top: -1px;
+	margin-bottom: -1px;
+	transition: color .1s linear,
+				background-color .1s linear,
+				border-color .1s linear;
+
+	&:first-child {
+		width: 160px;
+	}
+
+	&:hover {
+		color: $menu-item-color-hover;
+		background-color: $menu-item-background-hover;
+	}
+
+	&--active,
+	&--active:hover {
+		color: $menu-item-color-active;
+		background-color: $menu-item-background-active;
+		border-color: $menu-item-background-active;
+	}
+}
