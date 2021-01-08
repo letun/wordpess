@@ -25,7 +25,7 @@ add_action('init', function() {
 		'capability_type' => 'post',
 		'hierarchical' => false,
 		'menu_position' => null,
-		'supports' => array('title', 'editor', 'author', 'custom-fields'),
+		'supports' => array('title', 'excerpt', 'editor', 'author', 'custom-fields'),
 		'rewrite' => array('slug' => 'lettera', 'with_front' => true),
 		'taxonomies' => array('category', 'post_tag'),
 		'show_in_rest' => true,
