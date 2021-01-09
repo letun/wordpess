@@ -355,9 +355,9 @@ img.float-right {
 
 img.float-center,
 img.text-center {
-  margin: 0 auto;
-  Margin: 0 auto;
+  --Margin: 0 auto;
   float: none;
+  margin: 0 auto;
   text-align: center; }
 
 td.float-center,
