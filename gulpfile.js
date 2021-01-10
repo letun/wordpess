@@ -10,33 +10,40 @@ var postcss = require('gulp-postcss');
 sass.compiler = require('node-sass');
 
 gulp.task('sass', function () {
-	return gulp.src('./wp-content/themes/lettera/**/*.scss')
+	return gulp.src('./wp-content/themes/lettera/**/*.scss', '!./wp-content/themes/lettera/**/lettera.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('./wp-content/themes/lettera/'));
 });
 
 var addMargin = function (css, opts) {
 	css.walkDecls(function(decl) {
-		if (decl.prop === 'margin') {
+		if (decl.prop.startsWith('margin')) {
 			decl.parent.insertAfter(decl, {
-				prop: 'Margin',
+				prop: decl.prop.charAt(0).toUpperCase() + decl.prop.slice(1),
 				value: decl.value
+			});
+		}
+		if (decl.prop === 'font-size' && decl.value === 0) {
+			decl.parent.insertAfter(decl, {
+				prop: decl.prop,
+				value: decl.value + "px"
 			});
 		}
 	});
 };
 
-gulp.task('addMargin', function () {
+gulp.task('sass--lettera', function () {
 	var plugins = [
 		addMargin
 	];
-	return gulp.src('./wp-content/themes/lettera/lettera.css')
+	return gulp.src('./wp-content/themes/lettera/lettera.scss')
+		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss(plugins))
-		.pipe(gulp.dest('./wp-content/themes/lettera/lettera.css'));
+		.pipe(gulp.dest('./wp-content/themes/lettera/'));
 });
 
 gulp.task('watch', function () {
-	gulp.watch('./wp-content/themes/lettera/**/*.scss', gulp.series('sass'));
+	gulp.watch('./wp-content/themes/lettera/**/*.scss', gulp.series('sass', 'sass--lettera'));
 });
 
 gulp.task('phplint', function () {
@@ -60,7 +67,7 @@ gulp.task('jslint', function () {
 
 gulp.task('scsslint', function lintCssTask() {
 	return gulp
-		.src('./wp-content/themes/lettera/scss/lettera/_alignment.scss')
+		.src('./wp-content/themes/lettera/scss/lettera/**/*.scss')
 		.pipe(scsslint({
 			reporters: [
 				{formatter: 'string', console: true}
@@ -68,4 +75,4 @@ gulp.task('scsslint', function lintCssTask() {
 		}));
 });
 
-gulp.task("test", gulp.series("phplint", "jslint") );
+gulp.task("test", gulp.series("phplint", "jslint", "scsslint") );

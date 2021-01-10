@@ -1,107 +1,117 @@
 //For viewing email in browser
 @media only screen {
-  html {
-    min-height: 100%;
-    background: $body-background;
-  }
+	html {
+		min-height: 100%;
+		background: $body-background;
+	}
 }
 
 table {
-  &.body {
-    background: $body-background;
-    height: 100%;
-    width: 100%;
-    td.body-inner {
-      padding-right: 8px !important;
-      padding-left: 8px !important;
-    }
-  }
+	&.body {
+		width: 100%;
+		height: 100%;
+		background: $body-background;
 
-  &.container {
-    background: $container-background;
-    width: 100%;
-    max-width: $global-width;
-    margin: 0 auto 24px;
-    Margin: 0 auto 24px;
-    text-align: inherit;
-    border-radius: $global-padding;
-    @media only screen and (min-width: #{$global-breakpoint}) {
-      margin-bottom: 32px;
-      Margin-bottom: 32px;
-    }
-    td.container-inner {
-      padding-top: 24px !important;
-      padding-left: 8px !important;
-      padding-right: 8px !important;
-      @media only screen and (min-width: #{$global-breakpoint}) {
-        padding-top: 32px !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-      }
-    }
-    @media only screen and (max-width: #{$global-width}) {
-      width: 95% !important;
-    }
-  }
+		td.body-inner {
+			padding-right: 8px !important;
+			padding-left: 8px !important;
+		}
+	}
 
-  &.row {
-    padding: 0 !important;
-    width: 100%;
-    position: relative;
-    //Fix in Outlook.com
-    td.row-inner {
-      padding: 0 !important;
-    }
-  }
+	&.container {
+		width: 100%;
+		max-width: $global-width;
+		margin: 0 auto 24px;
+		border-radius: $global-padding;
+		background: $container-background;
+		text-align: inherit;
 
-  &.column {
-    padding: 0 !important;
-    width: 100%;
-    position: relative;
-    td.column-inner {
-      margin: 0 auto;
-      Margin: 0 auto;
-      padding-right: $global-padding !important;
-      padding-left: $global-padding !important;
-      padding-bottom: $global-padding !important;
-    }
-  }
+		@media only screen and (min-width: #{$global-breakpoint}) {
+			margin-bottom: 32px;
+		}
 
-  &.spacer {
-    width: 100%;
-    td {
-      mso-line-height-rule: exactly;
-    }
-  }
+		@media only screen and (max-width: #{$global-width}) {
+			width: 95% !important;
+		}
+
+		td.container-inner {
+			padding-top: 24px !important;
+			padding-right: 8px !important;
+			padding-left: 8px !important;
+
+			@media only screen and (min-width: #{$global-breakpoint}) {
+				padding-top: 32px !important;
+				padding-right: 16px !important;
+				padding-left: 16px !important;
+			}
+		}
+	}
+
+	&.row {
+		position: relative;
+		width: 100%;
+		padding: 0 !important;
+
+		td.row-inner {
+			//Fix in Outlook.com
+			padding: 0 !important;
+		}
+	}
+
+	&.column {
+		position: relative;
+		width: 100%;
+		padding: 0 !important;
+
+		td.column-inner {
+			margin: 0 auto;
+			padding-right: $global-padding !important;
+			padding-bottom: $global-padding !important;
+			padding-left: $global-padding !important;
+		}
+	}
+
+	&.spacer {
+		width: 100%;
+
+		td {
+			mso-line-height-rule: exactly;
+		}
+	}
 }
 
 div.columns {
-  font-size: 0px;
-  width: 100%;
+	width: 100%;
+	font-size: 0;
 }
+
 div.column {
-  width: 100%;
-  max-width: ($global-width - 48) / 2;
-  display: inline-block;
-  vertical-align: top;
-  @media screen and (max-width: $global-breakpoint) {
-    max-width: 100% !important;
-  }
-  @media screen and (min-width: $global-breakpoint + 1) {
-    max-width: 50% !important;
-  }
+	display: inline-block;
+	width: 100%;
+	max-width: ($global-width - 48) / 2;
+	vertical-align: top;
+
+	@media screen and (max-width: $global-breakpoint) {
+		max-width: 100% !important;
+	}
+
+	@media screen and (min-width: $global-breakpoint + 1) {
+		max-width: 50% !important;
+	}
 }
 
 @mixin dark-grid {
-  html {
-    background: $dark-body-background !important;
-  }
-  table {
-    &.body {
-      background: $dark-body-background !important;
-    }
-    &.container {
-      background: $dark-container-background !important;
-    }
-  }
+	html {
+		background: $dark-body-background !important;
+	}
+
+	table {
+		&.body {
+			background: $dark-body-background !important;
+		}
+
+		&.container {
+			background: $dark-container-background !important;
+		}
+	}
 }

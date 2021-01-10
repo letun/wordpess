@@ -9,17 +9,16 @@ h6,
 p,
 td,
 th {
-  color: $text-color;
-  font-family: $font-family;
-  font-weight: $font-weight;
-  padding-top: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  margin: 0;
-  Margin: 0;
-  text-align: left;
-  line-height: $line-height;
+	margin: 0;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	color: $text-color;
+	font-family: $font-family;
+	font-weight: $font-weight;
+	line-height: $line-height;
+	text-align: left;
 }
 
 h1,
@@ -28,39 +27,40 @@ h3,
 h4,
 h5,
 h6 {
-  color: $header-color;
-  word-wrap: normal;
-  font-family: $font-family;
-  font-weight: $header-font-weight;
-  margin-bottom: $header-margin-bottom;
-  Margin-bottom: $header-margin-bottom;
+	margin-bottom: $header-margin-bottom;
+	color: $header-color;
+	font-family: $font-family;
+	font-weight: $header-font-weight;
+	word-wrap: normal;
 }
 
 h1 {
-  font-size: $h1-font-size;
-  line-height: $h1-line-height;
+	font-size: $h1-font-size;
+	line-height: $h1-line-height;
 }
 
 .h1--superhead {
-  font-size: 64px;
-  line-height: 64px;
-  text-transform: uppercase;
+	font-size: 64px;
+	line-height: 64px;
+	text-transform: uppercase;
 }
 
 h2 {
-  font-size: $h2-font-size;
-  line-height: $h2-line-height;
+	font-size: $h2-font-size;
+	line-height: $h2-line-height;
 }
 
 h3 {
-  font-size: $h3-font-size;
-  line-height: $h3-line-height;
-  font-weight: normal;
+	font-size: $h3-font-size;
+	font-weight: normal;
+	line-height: $h3-line-height;
 }
 
-h4, h5, h6 {
-  font-size: $font-size;
-  line-height: $line-height;
+h4,
+h5,
+h6 {
+	font-size: $font-size;
+	line-height: $line-height;
 }
 
 body,
@@ -68,87 +68,89 @@ table.body,
 p,
 td,
 th {
-  font-size: $font-size;
-  line-height: $line-height;
+	font-size: $font-size;
+	line-height: $line-height;
 }
 
 p {
-  margin-bottom: $paragraph-margin-bottom;
-  Margin-bottom: $paragraph-margin-bottom;
+	margin-bottom: $paragraph-margin-bottom;
 }
 
-ul, ol {
-  padding-left: $list-left-padding;
-  margin-bottom: $paragraph-margin-bottom;
-  Margin-bottom: $paragraph-margin-bottom;
-  li {
-    margin-bottom: $paragraph-margin-bottom / 2;
-    Margin-bottom: $paragraph-margin-bottom / 2;
-  }
+ul,
+ol {
+	margin-bottom: $paragraph-margin-bottom;
+	padding-left: $list-left-padding;
+
+	li {
+		margin-bottom: $paragraph-margin-bottom / 2;
+	}
 }
 
 small,
 .small {
-  font-size: $small-font-size;
-  line-height: $small-line-height;
+	font-size: $small-font-size;
+	line-height: $small-line-height;
 }
 
 a,
 .link {
-  color: $anchor-color;
-  text-decoration: $anchor-text-decoration;
-  font-family: $font-family;
-  font-weight: $font-weight;
-  padding: 0;
-  text-align: left;
-  line-height: $line-height;
+	padding: 0;
+	color: $anchor-color;
+	font-family: $font-family;
+	font-weight: $font-weight;
+	line-height: $line-height;
+	text-align: left;
+	text-decoration: $anchor-text-decoration;
 
-  &:hover, &:hover .link {
-    color: $anchor-color-hover;
-  }
+	&:hover,
+	&:hover .link {
+		color: $anchor-color-hover;
+	}
 
-  &:active, &:active .link {
-    color: $anchor-color-active;
-  }
+	&:active,
+	&:active .link {
+		color: $anchor-color-active;
+	}
 
-  &:visited, &:visited .link {
-    color: $anchor-color-visited;
-  }
+	&:visited,
+	&:visited .link {
+		color: $anchor-color-visited;
+	}
 }
 
 .text-gray {
-  color: $gray-text-color;
+	color: $gray-text-color;
 }
 
 span.preheader {
-  display: none !important;
-  visibility: hidden;
-  mso-hide: all !important;
-  font-size: 1px;
-  color: $body-background; // needs to match background color of it's container
-  line-height: 1px;
-  max-height: 0px;
-  max-width: 0px;
-  opacity: 0;
-  overflow: hidden;
+	display: none !important;
+	visibility: hidden;
+	overflow: hidden;
+	opacity: 0;
+	max-width: 0;
+	max-height: 0;
+	color: $body-background; // needs to match background color of it's container
+	font-size: 1px;
+	line-height: 1px;
+	mso-hide: all !important;
 }
 
 @mixin dark-typography {
-  body,
-  table.body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  td,
-  th {
-    color: #ffffff !important;
-  }
+	body,
+	table.body,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	td,
+	th {
+		color: #FFFFFF !important;
+	}
 
-  .text-gray {
-    color: #8E9CA9 !important;
-  }
+	.text-gray {
+		color: #8E9CA9 !important;
+	}
 }

@@ -355,24 +355,24 @@ img.float-right {
 
 img.float-center,
 img.text-center {
-  --Margin: 0 auto;
   float: none;
   margin: 0 auto;
+  Margin: 0 auto;
   text-align: center; }
 
 td.float-center,
 th.float-center {
+  float: none;
   margin: 0 auto;
   Margin: 0 auto;
-  float: none;
   text-align: center; }
 
 table.float-center {
-  margin-left: auto;
-  margin-right: auto;
-  Margin-left: auto;
-  Margin-right: auto;
   float: none;
+  margin-right: auto;
+  Margin-right: auto;
+  margin-left: auto;
+  Margin-left: auto;
   text-align: center; }
 
 table.button {

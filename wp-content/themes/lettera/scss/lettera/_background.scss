@@ -1,32 +1,52 @@
-$white: #ffffff;
+$white: #FFFFFF;
 
 table.background-black {
-  background: #000000;
-  table.body, h1, h2, h3, h4, h5, h6, p, td, th {
-    color: $white;
-  }
+	background: #000000;
+
+	table.body,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	td,
+	th {
+		color: $white;
+	}
 }
 
 table.background-yellow {
-  background: #FAE053;
+	background: #FAE053;
 }
 
 table.background-blue {
-  background: #D3EEFF;
+	background: #D3EEFF;
 }
 
 table.background-gray {
-  background: #F8F8F8;
+	background: #F8F8F8;
 }
 
 @mixin dark-background {
-  table.background-black,
-  table.background-yellow,
-  table.background-blue,
-  table.background-gray {
-    background: #191F24;
-    table.body, h1, h2, h3, h4, h5, h6, p, td, th {
-      color: $white;
-    }
-  }
+	table.background-black,
+	table.background-yellow,
+	table.background-blue,
+	table.background-gray {
+		background: #191F24;
+
+		table.body,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		td,
+		th {
+			color: $white;
+		}
+	}
 }

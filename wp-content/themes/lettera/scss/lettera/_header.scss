@@ -1,37 +1,36 @@
 .header .wrapper-inner {
-  padding-top: 48px;
-  padding-bottom: 24px;
+	padding-top: 48px;
+	padding-bottom: 24px;
 }
 
 .header a {
-  display: inline-block;
+	display: inline-block;
 }
 
 .header .logo {
-  width: 112px;
-  height: 24px;
+	width: 112px;
+	height: 24px;
 }
 
 .header .logo-text {
-  margin-bottom: 0;
-  Margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .dark-img {
-  display:none;
-  overflow:hidden;
-  visibility:hidden;
+	display: none;
+	visibility: hidden;
+	overflow: hidden;
 }
 
 @mixin dark-header {
-  .dark-img {
-    display: block !important;
-    overflow: visible !important;
-    visibility: inherit !important;
-  }
+	.dark-img {
+		display: block !important;
+		visibility: inherit !important;
+		overflow: visible !important;
+	}
 
-  .light-img {
-    display: none;
-    display: none !important;
-  }
+	.light-img {
+		display: none;
+		display: none !important;
+	}
 }

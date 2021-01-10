@@ -1,193 +1,210 @@
 @mixin button {
-  width: 100%;
-  margin: $button-margin;
-  Margin: $button-margin;
-  @media only screen and (min-width: #{$global-breakpoint}) {
-    width: auto !important;
-    min-width: 220px;
-  }
+	width: 100%;
+	margin: $button-margin;
 
-  table {
-    width: 100%;
+	@media only screen and (min-width: #{$global-breakpoint}) {
+		width: auto !important;
+		min-width: 220px;
+	}
 
-    td {
-      text-align: center;
-      color: $button-color;
-      a {
-        font-family: $font-family;
-        font-size: $button-font-size;
-        font-weight: $button-font-weight;
-        font-weight: 500;
-        color: $button-color;
-        text-decoration: none;
-        text-align: center;
-        display: inline-block;
-      }
-    }
-  }
+	table {
+		width: 100%;
+
+		td {
+			color: $button-color;
+			text-align: center;
+
+			a {
+				display: inline-block;
+				color: $button-color;
+				font-family: $font-family;
+				font-size: $button-font-size;
+				font-weight: $button-font-weight;
+				font-weight: 500;
+				text-align: center;
+				text-decoration: none;
+			}
+		}
+	}
 }
 
 @mixin button-primary {
-  @include button;
-  max-width: 360px !important;
-  table {
-    border-radius: $button-border-radius;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .08);
-    td {
-      background: $button-background;
-      border-radius: $button-border-radius;
-      border: none;
-      //Fix in Outlook.com
-      padding-right: 0 !important;
-      padding-left: 0 !important;
-      a {
-        color: $button-color-primary;
-        padding: $button-padding;
-        border: 0 solid $button-background;
-        border-radius: $button-border-radius;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      a:visited {
-        color: $button-color-primary;
-      }
-    }
-  }
+	@include button;
+
+	max-width: 360px !important;
+
+	table {
+		border-radius: $button-border-radius;
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .08);
+
+		td {
+			//Fix in Outlook.com
+			padding-right: 0 !important;
+			padding-left: 0 !important;
+			border: none;
+			border-radius: $button-border-radius;
+			background: $button-background;
+
+			a {
+				box-sizing: border-box;
+				width: 100%;
+				padding: $button-padding;
+				border: 0 solid $button-background;
+				border-radius: $button-border-radius;
+				color: $button-color-primary;
+			}
+
+			a:visited {
+				color: $button-color-primary;
+			}
+		}
+	}
 }
 
 table.button {
-  @include button;
+	@include button;
 }
 
 table.button:hover table tr td a,
 table.button:active table tr td a,
 table.button table tr td a:visited {
-  color: $button-color;
+	color: $button-color;
 }
 
-
-
 table.button--primary {
-  @include button-primary;
+	@include button-primary;
 }
 
 table.button--primary:hover,
 table.button--primary:visited,
 table.button--primary:active {
-  table {
-    td {
-      background: lighten($button-background, 15%);
-    }
-    a {
-      background: lighten($button-background, 15%);
-      border: 0 solid lighten($button-background, 10%);
-      color: $button-color-primary;
-    }
-  }
+	table {
+		td {
+			background: lighten($button-background, 15%);
+		}
+
+		a {
+			border: 0 solid lighten($button-background, 10%);
+			background: lighten($button-background, 15%);
+			color: $button-color-primary;
+		}
+	}
 }
 
 table.button--yellow {
-  @include button-primary;
-  table {
-    td {
-      background: $secondary-button-background;
-      color: $secondary-button-color;
-      a {
-        color: $secondary-button-color;
-      }
-      a:visited {
-        color: $secondary-button-color;
-      }
-    }
-  }
+	@include button-primary;
+
+	table {
+		td {
+			background: $secondary-button-background;
+			color: $secondary-button-color;
+
+			a {
+				color: $secondary-button-color;
+			}
+
+			a:visited {
+				color: $secondary-button-color;
+			}
+		}
+	}
 }
 
 table.button--yellow:hover,
 table.button--yellow:visited,
 table.button--yellow:active {
-  table {
-    td {
-      background: lighten($secondary-button-background, 10%);
-      color: $secondary-button-color;
-      a {
-        color: $secondary-button-color;
-        background: lighten($secondary-button-background, 10%);
-      }
-    }
-  }
+	table {
+		td {
+			background: lighten($secondary-button-background, 10%);
+			color: $secondary-button-color;
+
+			a {
+				background: lighten($secondary-button-background, 10%);
+				color: $secondary-button-color;
+			}
+		}
+	}
 }
 
 table.button--yellow:active {
-  table {
-    td a {
-      color: $secondary-button-color;
-    }
-  }
+	table {
+		td a {
+			color: $secondary-button-color;
+		}
+	}
 }
 
 table.button--white {
-  @include button;
-  table {
-    td a {
-      color: #ffffff !important;
-    }
-  }
+	@include button;
+
+	table {
+		td a {
+			color: #FFFFFF !important;
+		}
+	}
 }
 
 @mixin dark-button {
-  table.button table td {
-    color: $dark-button-color !important;
-    a {
-      color: $dark-button-color !important;
-    }
-    a:visited {
-      color: $dark-button-color !important;
-    }
-  }
+	table.button table td {
+		color: $dark-button-color !important;
 
-  //Black and Yellow buttons are the same
-  table.button--primary,
-  table.button--yellow {
-    table {
-      td {
-        background: $secondary-button-background !important;
-        color: $secondary-button-color !important;
-        a {
-          color: $secondary-button-color !important;
-          background: $secondary-button-background !important;
-        }
-        a:visited {
-          color: $secondary-button-color !important;
-        }
-      }
-    }
-  }
-  table.button--primary:hover,
-  table.button--primary:visited,
-  table.button--primary:active,
-  table.button--yellow:hover,
-  table.button--yellow:visited,
-  table.button--yellow:active {
-    table {
-      td {
-        background: lighten($secondary-button-background, 10%) !important;
-        color: $secondary-button-color !important;
-        a {
-          color: $secondary-button-color !important;
-          background: lighten($secondary-button-background, 10%) !important;
-        }
-      }
-    }
-  }
+		a {
+			color: $dark-button-color !important;
+		}
 
-  table.button--white {
-    table {
-      td {
-        color: #ffffff !important;
-        a {
-          color: #ffffff !important;
-        }
-      }
-    }
-  }
+		a:visited {
+			color: $dark-button-color !important;
+		}
+	}
+
+	//Black and Yellow buttons are the same
+	table.button--primary,
+	table.button--yellow {
+		table {
+			td {
+				background: $secondary-button-background !important;
+				color: $secondary-button-color !important;
+
+				a {
+					background: $secondary-button-background !important;
+					color: $secondary-button-color !important;
+				}
+
+				a:visited {
+					color: $secondary-button-color !important;
+				}
+			}
+		}
+	}
+
+	table.button--primary:hover,
+	table.button--primary:visited,
+	table.button--primary:active,
+	table.button--yellow:hover,
+	table.button--yellow:visited,
+	table.button--yellow:active {
+		table {
+			td {
+				background: lighten($secondary-button-background, 10%) !important;
+				color: $secondary-button-color !important;
+
+				a {
+					background: lighten($secondary-button-background, 10%) !important;
+					color: $secondary-button-color !important;
+				}
+			}
+		}
+	}
+
+	table.button--white {
+		table {
+			td {
+				color: #FFFFFF !important;
+
+				a {
+					color: #FFFFFF !important;
+				}
+			}
+		}
+	}
 }

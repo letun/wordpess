@@ -364,14 +364,35 @@
       { "unspecified": "bottomAlphabetical" }
     ],
     "at-rule-no-unknown": null,
+    "color-hex-length": "long",
+    "color-hex-case": "upper",
     "declaration-block-no-duplicate-properties": [true, {
-      "ignoreProperties": ["Margin", "/Margin-/"]
+      "ignoreProperties": [
+        "Margin",
+        "/Margin-/",
+        "font-weight",
+        "display"
+      ]
     }],
     "property-no-unknown": [true, {
-      "ignoreProperties": ["Margin", "/Margin-/"]
+      "ignoreProperties": [
+        "Margin",
+        "/Margin-/",
+        "color-scheme",
+        "supported-color-schemes",
+        "prefers-color-scheme",
+        "mso-line-height-rule",
+        "mso-hide"
+      ]
     }],
     "property-case": ["lower", {
-      "ignoreProperties": ["Margin", "/Margin-/"]
+      "ignoreProperties": [
+        "Margin",
+        "/Margin-/"
+      ]
+    }],
+    "media-feature-name-no-unknown": [true, {
+      "ignoreMediaFeatureNames": ["prefers-color-scheme"]
     }],
     "selector-pseudo-class-no-unknown": [true, {
       "ignorePseudoClasses": ["focus-visible"]
