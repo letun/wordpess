@@ -9,17 +9,17 @@ h6,
 p,
 td,
 th {
-  color: #0a0a0a;
-  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  margin: 0;
+  Margin: 0;
   padding-top: 0;
   padding-right: 0;
   padding-bottom: 0;
   padding-left: 0;
-  margin: 0;
-  Margin: 0;
-  text-align: left;
-  line-height: 24px; }
+  color: #0A0A0A;
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 24px;
+  text-align: left; }
 
 h1,
 h2,
@@ -27,12 +27,12 @@ h3,
 h4,
 h5,
 h6 {
-  color: #0a0a0a;
-  word-wrap: normal;
+  margin-bottom: 16px;
+  Margin-bottom: 16px;
+  color: #0A0A0A;
   font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
   font-weight: bold;
-  margin-bottom: 16px;
-  Margin-bottom: 16px; }
+  word-wrap: normal; }
 
 h1 {
   font-size: 32px;
@@ -49,10 +49,12 @@ h2 {
 
 h3 {
   font-size: 16px;
-  line-height: 24px;
-  font-weight: normal; }
+  font-weight: normal;
+  line-height: 24px; }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-size: 16px;
   line-height: 24px; }
 
@@ -68,11 +70,13 @@ p {
   margin-bottom: 16px;
   Margin-bottom: 16px; }
 
-ul, ol {
-  padding-left: 20px;
+ul,
+ol {
   margin-bottom: 16px;
-  Margin-bottom: 16px; }
-  ul li, ol li {
+  Margin-bottom: 16px;
+  padding-left: 20px; }
+  ul li,
+  ol li {
     margin-bottom: 8px;
     Margin-bottom: 8px; }
 
@@ -83,25 +87,28 @@ small,
 
 a,
 .link {
-  color: #2199e8;
-  text-decoration: none;
+  padding: 0;
+  color: #2199E8;
   font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  padding: 0;
+  line-height: 24px;
   text-align: left;
-  line-height: 24px; }
-  a:hover, a:hover .link,
+  text-decoration: none; }
+  a:hover,
+  a:hover .link,
   .link:hover,
   .link:hover .link {
-    color: #147dc2; }
-  a:active, a:active .link,
+    color: #147DC2; }
+  a:active,
+  a:active .link,
   .link:active,
   .link:active .link {
-    color: #147dc2; }
-  a:visited, a:visited .link,
+    color: #147DC2; }
+  a:visited,
+  a:visited .link,
   .link:visited,
   .link:visited .link {
-    color: #2199e8; }
+    color: #2199E8; }
 
 .text-gray {
   color: #979797; }
@@ -109,14 +116,14 @@ a,
 span.preheader {
   display: none !important;
   visibility: hidden;
-  mso-hide: all !important;
-  font-size: 1px;
-  color: #F2F4F8;
-  line-height: 1px;
-  max-height: 0px;
-  max-width: 0px;
+  overflow: hidden;
   opacity: 0;
-  overflow: hidden; }
+  max-width: 0;
+  max-height: 0;
+  color: #F2F4F8;
+  font-size: 1px;
+  line-height: 1px;
+  mso-hide: all !important; }
 
 /* Windows Phone Viewport Fix */
 @-ms-viewport {
@@ -126,16 +133,16 @@ span.preheader {
   padding: 0; }
 
 body {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   width: 100% !important;
   min-width: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
   margin: 0;
   Margin: 0;
   padding: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
 
 .ExternalClass {
   width: 100%; }
@@ -152,30 +159,34 @@ table {
   border-spacing: 0;
   border-collapse: collapse; }
 
-td, th {
+td,
+th {
+  border-collapse: collapse !important;
   word-wrap: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
-  hyphens: auto;
-  border-collapse: collapse !important; }
+  hyphens: auto; }
 
-table, tr, td, th {
+table,
+tr,
+td,
+th {
   padding-top: 0;
   padding-right: 0;
   padding-bottom: 0;
   padding-left: 0;
-  vertical-align: top;
-  text-align: left; }
+  text-align: left;
+  vertical-align: top; }
 
 img {
-  outline: none;
-  text-decoration: none;
-  -ms-interpolation-mode: bicubic;
+  display: block;
+  clear: both;
   width: auto;
   max-width: 100%;
-  clear: both;
-  display: block;
-  border: 0; }
+  border: 0;
+  outline: none;
+  text-decoration: none;
+  -ms-interpolation-mode: bicubic; }
 
 a img {
   border: none; }
@@ -230,55 +241,55 @@ span.text-center {
     background: #F2F4F8; } }
 
 table.body {
-  background: #F2F4F8;
+  width: 100%;
   height: 100%;
-  width: 100%; }
+  background: #F2F4F8; }
   table.body td.body-inner {
     padding-right: 8px !important;
     padding-left: 8px !important; }
 
 table.container {
-  background: #FFFFFF;
   width: 100%;
   max-width: 648px;
   margin: 0 auto 24px;
   Margin: 0 auto 24px;
-  text-align: inherit;
-  border-radius: 16px; }
+  border-radius: 16px;
+  background: #FFFFFF;
+  text-align: inherit; }
   @media only screen and (min-width: 541px) {
     table.container {
       margin-bottom: 32px;
       Margin-bottom: 32px; } }
-  table.container td.container-inner {
-    padding-top: 24px !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important; }
-    @media only screen and (min-width: 541px) {
-      table.container td.container-inner {
-        padding-top: 32px !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important; } }
   @media only screen and (max-width: 648px) {
     table.container {
       width: 95% !important; } }
+  table.container td.container-inner {
+    padding-top: 24px !important;
+    padding-right: 8px !important;
+    padding-left: 8px !important; }
+    @media only screen and (min-width: 541px) {
+      table.container td.container-inner {
+        padding-top: 32px !important;
+        padding-right: 16px !important;
+        padding-left: 16px !important; } }
 
 table.row {
-  padding: 0 !important;
+  position: relative;
   width: 100%;
-  position: relative; }
+  padding: 0 !important; }
   table.row td.row-inner {
     padding: 0 !important; }
 
 table.column {
-  padding: 0 !important;
+  position: relative;
   width: 100%;
-  position: relative; }
+  padding: 0 !important; }
   table.column td.column-inner {
     margin: 0 auto;
     Margin: 0 auto;
     padding-right: 16px !important;
-    padding-left: 16px !important;
-    padding-bottom: 16px !important; }
+    padding-bottom: 16px !important;
+    padding-left: 16px !important; }
 
 table.spacer {
   width: 100%; }
@@ -286,13 +297,13 @@ table.spacer {
     mso-line-height-rule: exactly; }
 
 div.columns {
-  font-size: 0px;
-  width: 100%; }
+  width: 100%;
+  font-size: 0; }
 
 div.column {
+  display: inline-block;
   width: 100%;
   max-width: 300px;
-  display: inline-block;
   vertical-align: top; }
   @media screen and (max-width: 541px) {
     div.column {
@@ -386,17 +397,17 @@ table.button {
   table.button table {
     width: 100%; }
     table.button table td {
-      text-align: center;
-      color: #000000; }
+      color: #000000;
+      text-align: center; }
       table.button table td a {
+        display: inline-block;
+        color: #000000;
         font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
         font-weight: 500;
-        color: #000000;
-        text-decoration: none;
         text-align: center;
-        display: inline-block; }
+        text-decoration: none; }
 
 table.button:hover table tr td a,
 table.button:active table tr td a,
@@ -415,33 +426,33 @@ table.button--primary {
   table.button--primary table {
     width: 100%; }
     table.button--primary table td {
-      text-align: center;
-      color: #000000; }
+      color: #000000;
+      text-align: center; }
       table.button--primary table td a {
+        display: inline-block;
+        color: #000000;
         font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
         font-weight: 500;
-        color: #000000;
-        text-decoration: none;
         text-align: center;
-        display: inline-block; }
+        text-decoration: none; }
   table.button--primary table {
     border-radius: 4px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08); }
     table.button--primary table td {
-      background: #0a0a0a;
-      border-radius: 4px;
-      border: none;
       padding-right: 0 !important;
-      padding-left: 0 !important; }
+      padding-left: 0 !important;
+      border: none;
+      border-radius: 4px;
+      background: #0A0A0A; }
       table.button--primary table td a {
-        color: #FFFFFF;
-        padding: 16px 32px 16px 32px;
-        border: 0 solid #0a0a0a;
-        border-radius: 4px;
+        box-sizing: border-box;
         width: 100%;
-        box-sizing: border-box; }
+        padding: 16px 32px 16px 32px;
+        border: 0 solid #0A0A0A;
+        border-radius: 4px;
+        color: #FFFFFF; }
       table.button--primary table td a:visited {
         color: #FFFFFF; }
 
@@ -453,8 +464,8 @@ table.button--primary:active table td {
 table.button--primary:hover table a,
 table.button--primary:visited table a,
 table.button--primary:active table a {
-  background: #303030;
   border: 0 solid #242424;
+  background: #303030;
   color: #FFFFFF; }
 
 table.button--yellow {
@@ -469,33 +480,33 @@ table.button--yellow {
   table.button--yellow table {
     width: 100%; }
     table.button--yellow table td {
-      text-align: center;
-      color: #000000; }
+      color: #000000;
+      text-align: center; }
       table.button--yellow table td a {
+        display: inline-block;
+        color: #000000;
         font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
         font-weight: 500;
-        color: #000000;
-        text-decoration: none;
         text-align: center;
-        display: inline-block; }
+        text-decoration: none; }
   table.button--yellow table {
     border-radius: 4px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08); }
     table.button--yellow table td {
-      background: #0a0a0a;
-      border-radius: 4px;
-      border: none;
       padding-right: 0 !important;
-      padding-left: 0 !important; }
+      padding-left: 0 !important;
+      border: none;
+      border-radius: 4px;
+      background: #0A0A0A; }
       table.button--yellow table td a {
-        color: #FFFFFF;
-        padding: 16px 32px 16px 32px;
-        border: 0 solid #0a0a0a;
-        border-radius: 4px;
+        box-sizing: border-box;
         width: 100%;
-        box-sizing: border-box; }
+        padding: 16px 32px 16px 32px;
+        border: 0 solid #0A0A0A;
+        border-radius: 4px;
+        color: #FFFFFF; }
       table.button--yellow table td a:visited {
         color: #FFFFFF; }
   table.button--yellow table td {
@@ -514,8 +525,8 @@ table.button--yellow:active table td {
   table.button--yellow:hover table td a,
   table.button--yellow:visited table td a,
   table.button--yellow:active table td a {
-    color: #000000;
-    background: #fbe985; }
+    background: #fbe985;
+    color: #000000; }
 
 table.button--yellow:active table td a {
   color: #000000; }
@@ -531,24 +542,33 @@ table.button--white {
   table.button--white table {
     width: 100%; }
     table.button--white table td {
-      text-align: center;
-      color: #000000; }
+      color: #000000;
+      text-align: center; }
       table.button--white table td a {
+        display: inline-block;
+        color: #000000;
         font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
         font-weight: 500;
-        color: #000000;
-        text-decoration: none;
         text-align: center;
-        display: inline-block; }
+        text-decoration: none; }
   table.button--white table td a {
-    color: #ffffff !important; }
+    color: #FFFFFF !important; }
 
 table.background-black {
   background: #000000; }
-  table.background-black table.body, table.background-black h1, table.background-black h2, table.background-black h3, table.background-black h4, table.background-black h5, table.background-black h6, table.background-black p, table.background-black td, table.background-black th {
-    color: #ffffff; }
+  table.background-black table.body,
+  table.background-black h1,
+  table.background-black h2,
+  table.background-black h3,
+  table.background-black h4,
+  table.background-black h5,
+  table.background-black h6,
+  table.background-black p,
+  table.background-black td,
+  table.background-black th {
+    color: #FFFFFF; }
 
 table.background-yellow {
   background: #FAE053; }
@@ -576,8 +596,8 @@ table.background-gray {
 
 .dark-img {
   display: none;
-  overflow: hidden;
-  visibility: hidden; }
+  visibility: hidden;
+  overflow: hidden; }
 
 table.footer-social-links td {
   padding-right: 0 !important;
@@ -585,17 +605,19 @@ table.footer-social-links td {
 
 table.footer-social-links img {
   width: 32px;
-  height: 32px;
-  max-width: 32px; }
+  max-width: 32px;
+  height: 32px; }
 
 a.card {
   padding-bottom: 8px; }
   a.card .card__image {
     width: 100%;
-    height: auto;
     max-width: 272px;
+    height: auto;
     padding-bottom: 8px; }
-  a.card p, a.card td, a.card th {
+  a.card p,
+  a.card td,
+  a.card th {
     margin-bottom: 8px;
     Margin-bottom: 8px; }
 
@@ -605,10 +627,10 @@ table.promo img.promo__image {
   height: auto; }
 
 table.superhead .superhead__image {
-  padding-bottom: 32px;
   width: 100%;
   max-width: 584px;
-  height: auto; }
+  height: auto;
+  padding-bottom: 32px; }
 
 :root {
   color-scheme: light dark;
@@ -626,7 +648,7 @@ table.superhead .superhead__image {
   p,
   td,
   th {
-    color: #ffffff !important; }
+    color: #FFFFFF !important; }
   .text-gray {
     color: #8E9CA9 !important; }
   html {
@@ -636,19 +658,19 @@ table.superhead .superhead__image {
   table.container {
     background: #191F24 !important; }
   table.button table td {
-    color: #ffffff !important; }
+    color: #FFFFFF !important; }
     table.button table td a {
-      color: #ffffff !important; }
+      color: #FFFFFF !important; }
     table.button table td a:visited {
-      color: #ffffff !important; }
+      color: #FFFFFF !important; }
   table.button--primary table td,
   table.button--yellow table td {
     background: #FAE053 !important;
     color: #000000 !important; }
     table.button--primary table td a,
     table.button--yellow table td a {
-      color: #000000 !important;
-      background: #FAE053 !important; }
+      background: #FAE053 !important;
+      color: #000000 !important; }
     table.button--primary table td a:visited,
     table.button--yellow table td a:visited {
       color: #000000 !important; }
@@ -666,18 +688,27 @@ table.superhead .superhead__image {
     table.button--yellow:hover table td a,
     table.button--yellow:visited table td a,
     table.button--yellow:active table td a {
-      color: #000000 !important;
-      background: #fbe985 !important; }
+      background: #fbe985 !important;
+      color: #000000 !important; }
   table.button--white table td {
-    color: #ffffff !important; }
+    color: #FFFFFF !important; }
     table.button--white table td a {
-      color: #ffffff !important; }
+      color: #FFFFFF !important; }
   table.background-black,
   table.background-yellow,
   table.background-blue,
   table.background-gray {
     background: #191F24; }
-    table.background-black table.body, table.background-black h1, table.background-black h2, table.background-black h3, table.background-black h4, table.background-black h5, table.background-black h6, table.background-black p, table.background-black td, table.background-black th,
+    table.background-black table.body,
+    table.background-black h1,
+    table.background-black h2,
+    table.background-black h3,
+    table.background-black h4,
+    table.background-black h5,
+    table.background-black h6,
+    table.background-black p,
+    table.background-black td,
+    table.background-black th,
     table.background-yellow table.body,
     table.background-yellow h1,
     table.background-yellow h2,
@@ -708,11 +739,11 @@ table.superhead .superhead__image {
     table.background-gray p,
     table.background-gray td,
     table.background-gray th {
-      color: #ffffff; }
+      color: #FFFFFF; }
   .dark-img {
     display: block !important;
-    overflow: visible !important;
-    visibility: inherit !important; }
+    visibility: inherit !important;
+    overflow: visible !important; }
   .light-img {
     display: none;
     display: none !important; } }
@@ -728,7 +759,7 @@ table.superhead .superhead__image {
 [data-ogsc] p,
 [data-ogsc] td,
 [data-ogsc] th {
-  color: #ffffff !important; }
+  color: #FFFFFF !important; }
 
 [data-ogsc] .text-gray {
   color: #8E9CA9 !important; }
@@ -743,11 +774,11 @@ table.superhead .superhead__image {
   background: #191F24 !important; }
 
 [data-ogsc] table.button table td {
-  color: #ffffff !important; }
+  color: #FFFFFF !important; }
   [data-ogsc] table.button table td a {
-    color: #ffffff !important; }
+    color: #FFFFFF !important; }
   [data-ogsc] table.button table td a:visited {
-    color: #ffffff !important; }
+    color: #FFFFFF !important; }
 
 [data-ogsc] table.button--primary table td,
 [data-ogsc] table.button--yellow table td {
@@ -755,8 +786,8 @@ table.superhead .superhead__image {
   color: #000000 !important; }
   [data-ogsc] table.button--primary table td a,
   [data-ogsc] table.button--yellow table td a {
-    color: #000000 !important;
-    background: #FAE053 !important; }
+    background: #FAE053 !important;
+    color: #000000 !important; }
   [data-ogsc] table.button--primary table td a:visited,
   [data-ogsc] table.button--yellow table td a:visited {
     color: #000000 !important; }
@@ -775,20 +806,29 @@ table.superhead .superhead__image {
   [data-ogsc] table.button--yellow:hover table td a,
   [data-ogsc] table.button--yellow:visited table td a,
   [data-ogsc] table.button--yellow:active table td a {
-    color: #000000 !important;
-    background: #fbe985 !important; }
+    background: #fbe985 !important;
+    color: #000000 !important; }
 
 [data-ogsc] table.button--white table td {
-  color: #ffffff !important; }
+  color: #FFFFFF !important; }
   [data-ogsc] table.button--white table td a {
-    color: #ffffff !important; }
+    color: #FFFFFF !important; }
 
 [data-ogsc] table.background-black,
 [data-ogsc] table.background-yellow,
 [data-ogsc] table.background-blue,
 [data-ogsc] table.background-gray {
   background: #191F24; }
-  [data-ogsc] table.background-black table.body, [data-ogsc] table.background-black h1, [data-ogsc] table.background-black h2, [data-ogsc] table.background-black h3, [data-ogsc] table.background-black h4, [data-ogsc] table.background-black h5, [data-ogsc] table.background-black h6, [data-ogsc] table.background-black p, [data-ogsc] table.background-black td, [data-ogsc] table.background-black th,
+  [data-ogsc] table.background-black table.body,
+  [data-ogsc] table.background-black h1,
+  [data-ogsc] table.background-black h2,
+  [data-ogsc] table.background-black h3,
+  [data-ogsc] table.background-black h4,
+  [data-ogsc] table.background-black h5,
+  [data-ogsc] table.background-black h6,
+  [data-ogsc] table.background-black p,
+  [data-ogsc] table.background-black td,
+  [data-ogsc] table.background-black th,
   [data-ogsc] table.background-yellow table.body,
   [data-ogsc] table.background-yellow h1,
   [data-ogsc] table.background-yellow h2,
@@ -819,12 +859,12 @@ table.superhead .superhead__image {
   [data-ogsc] table.background-gray p,
   [data-ogsc] table.background-gray td,
   [data-ogsc] table.background-gray th {
-    color: #ffffff; }
+    color: #FFFFFF; }
 
 [data-ogsc] .dark-img {
   display: block !important;
-  overflow: visible !important;
-  visibility: inherit !important; }
+  visibility: inherit !important;
+  overflow: visible !important; }
 
 [data-ogsc] .light-img {
   display: none;
