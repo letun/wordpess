@@ -68,6 +68,8 @@ export const settings = {
 		const {
 			attributes,
 			onReplace,
+			onRemove,
+			mergeBlocks,
 			setAttributes,
 			parentClientId,
 			parentBlockAttributes,
@@ -108,7 +110,9 @@ export const settings = {
 							content: value,
 						} );
 					} }
-					onReplace={onReplace}
+					onReplace={ onReplace }
+					onRemove={ onRemove }
+					onMerge={ mergeBlocks }
 				/>
 			</>
 		);

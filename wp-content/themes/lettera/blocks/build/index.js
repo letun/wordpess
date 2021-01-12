@@ -6008,6 +6008,8 @@ var settings = {
   })(function (props) {
     var attributes = props.attributes,
         onReplace = props.onReplace,
+        onRemove = props.onRemove,
+        mergeBlocks = props.mergeBlocks,
         setAttributes = props.setAttributes,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
@@ -6045,7 +6047,9 @@ var settings = {
           content: value
         }));
       },
-      onReplace: onReplace
+      onReplace: onReplace,
+      onRemove: onRemove,
+      onMerge: mergeBlocks
     }));
   }),
   save: function save(props) {
