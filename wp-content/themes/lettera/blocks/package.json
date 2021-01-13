@@ -21,6 +21,7 @@
     "lodash": "lodash"
   },
   "dependencies": {
-    "@wordpress/media-utils": "^1.15.0"
+    "@wordpress/media-utils": "^1.15.0",
+    "react-html-comment": "^2.0.4"
   }
 }

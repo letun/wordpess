@@ -20,12 +20,12 @@ function lettera_blocks() {
 		'editor_script' => 'lettera-blocks',
 	) );
 	*/
-	register_block_type( 'lettera/text', array(
+	register_block_type( 'lettera/cover', array(
 		'editor_script' => 'lettera-blocks',
 		'render_callback' => 'render_lettera_blocks'
 	) );
 
 	//Add elements
-	//register_block_type( 'lettera/text');
+	register_block_type( 'lettera/text');
 }
 add_action('init', 'lettera_blocks');

@@ -3,8 +3,12 @@ import {registerBlockType} from '@wordpress/blocks';
 //Elements
 import * as elText from './elements/text';
 
+//Components
+import * as cmCover from './components/cover';
+
 const blocks = [
-	elText
+	elText,
+	cmCover
 ];
 
 function registerBlock(block) {
