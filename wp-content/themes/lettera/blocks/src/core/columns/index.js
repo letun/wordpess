@@ -1,6 +1,11 @@
 import { Children, renderToString } from "react";
 import { HTMLComment } from 'react-html-comment';
-import { Fragment } from '@wordpress/element';
+
+function _markupFromString (msg) {
+	return (
+		{ msg }
+	);
+}
 
 function Columns({count, children}) {
 	const cnt = Children.count(children);
@@ -10,22 +15,28 @@ function Columns({count, children}) {
 	if (cnt_cols > 1) {
 		const width = Math.floor(100 / cnt_cols);
 
-		const col_header = '<!--[if (gte mso 9)|(IE)]><table width="100%"><tr><td width="50%" valign="top" ><![endif]-->';
-		const col_middle = {
-			__dangerousHTML: '<!--[if (gte mso 9)|(IE)]></td><td width="50%" valign="top" ><![endif]-->'
-		};
-		const col_footer = '<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->';
-
 		const _cols = Children.map(children, (child, i) => {
+			const space = (i > 0) ? (<col-space width={width} />) : '';
+			console.log(i, space);
 			return (
 				<>
+					{space}
 					<div className="column">
-						{child.HTML}
+						{child}
 					</div>
 				</>
 			);
 		});
 
+		cols = (
+			<>
+				<col-start width={width} />
+				{_cols}
+				<col-end width={width} />
+			</>
+		);
+
+		{/*
 		cols = (
 			<>
 				<div className="columns" dangerouslySetInnerHTML={ {
@@ -37,6 +48,7 @@ function Columns({count, children}) {
 				</div>
 			</>
 		);
+		*/}
 	} else {
 		cols = children;
 	}

@@ -7445,6 +7445,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _markupFromString(msg) {
+  return {
+    msg: msg
+  };
+}
 
 function Columns(_ref) {
   var count = _ref.count,
@@ -7455,30 +7460,37 @@ function Columns(_ref) {
 
   if (cnt_cols > 1) {
     var width = Math.floor(100 / cnt_cols);
-    var col_header = '<!--[if (gte mso 9)|(IE)]><table width="100%"><tr><td width="50%" valign="top" ><![endif]-->';
-    var col_middle = {
-      __dangerousHTML: '<!--[if (gte mso 9)|(IE)]></td><td width="50%" valign="top" ><![endif]-->'
-    };
-    var col_footer = '<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->';
 
     var _cols = react__WEBPACK_IMPORTED_MODULE_1__["Children"].map(children, function (child, i) {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      var space = i > 0 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("col-space", {
+        width: width
+      }) : '';
+      console.log(i, space);
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, space, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
         className: "column"
-      }, child.HTML));
+      }, child));
     });
 
-    cols = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "columns",
-      dangerouslySetInnerHTML: {
-        __html: "".concat(col_header, " ").concat(children, " ").concat(col_footer)
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "columns"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
-      dangerouslySetInnerHTML: {
-        __html: "".concat(col_header)
-      }
-    }), _cols));
+    cols = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("col-start", {
+      width: width
+    }), _cols, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("col-end", {
+      width: width
+    }));
+    {
+      /*
+      cols = (
+      <>
+      	<div className="columns" dangerouslySetInnerHTML={ {
+      		__html: `${col_header} ${children} ${col_footer}`
+      	} }></div>
+      	<div className="columns">
+      		<Fragment dangerouslySetInnerHTML={ { __html: `${col_header}` }}></Fragment>
+      		{_cols}
+      	</div>
+      </>
+      );
+      */
+    }
   } else {
     cols = children;
   }
