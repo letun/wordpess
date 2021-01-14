@@ -1,11 +1,4 @@
-import { Children, renderToString } from "react";
-import { HTMLComment } from 'react-html-comment';
-
-function _markupFromString (msg) {
-	return (
-		{ msg }
-	);
-}
+import { Children } from "react";
 
 function Columns({count, children}) {
 	const cnt = Children.count(children);
@@ -16,7 +9,7 @@ function Columns({count, children}) {
 		const width = Math.floor(100 / cnt_cols);
 
 		const _cols = Children.map(children, (child, i) => {
-			const space = (i > 0) ? (<col-space width={width} />) : '';
+			const space = (i > 0) ? (<div html-comment='<!--[if (gte mso 9)|(IE)]></td><td width="50%" valign="top" ><![endif]-->'></div>) : '';
 			console.log(i, space);
 			return (
 				<>
@@ -30,25 +23,11 @@ function Columns({count, children}) {
 
 		cols = (
 			<>
-				<col-start width={width} />
+				<div html-comment='<!--[if (gte mso 9)|(IE)]><table width="100%"><tr><td width="50%" valign="top" ><![endif]-->'></div>
 				{_cols}
-				<col-end width={width} />
+				<div html-comment='<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->'></div>
 			</>
 		);
-
-		{/*
-		cols = (
-			<>
-				<div className="columns" dangerouslySetInnerHTML={ {
-					__html: `${col_header} ${children} ${col_footer}`
-				} }></div>
-				<div className="columns">
-					<Fragment dangerouslySetInnerHTML={ { __html: `${col_header}` }}></Fragment>
-					{_cols}
-				</div>
-			</>
-		);
-		*/}
 	} else {
 		cols = children;
 	}

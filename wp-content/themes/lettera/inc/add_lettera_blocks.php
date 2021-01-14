@@ -5,6 +5,7 @@ function render_lettera_blocks($attr, $content) {
 }
 
 function lettera_blocks() {
+
 	// automatically load dependencies and version
 	$asset_file = include( get_template_directory() . '/blocks/build/index.asset.php');
 
@@ -27,5 +28,15 @@ function lettera_blocks() {
 
 	//Add elements
 	register_block_type( 'lettera/text');
+
+
+	//Add HTML comment to columns
+	//add_filter('the_content', 'addHTMLComment', 10001);
 }
 add_action('init', 'lettera_blocks');
+
+function addHTMLComment($content) {
+	if ( is_single() && in_the_loop() && is_main_query() ) {
+		return preg_replace("/<div html-comment='(.*?)'><\/div>/i", "\1", $content);
+	}
+}
