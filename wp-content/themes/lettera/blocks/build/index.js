@@ -6290,8 +6290,10 @@ function Columns(_ref) {
     var width = Math.floor(100 / cnt_cols);
 
     var _cols = react__WEBPACK_IMPORTED_MODULE_1__["Children"].map(children, function (child, i) {
-      var space = i > 0 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-        "html-comment": "<!--[if (gte mso 9)|(IE)]></td><td width=\"50%\" valign=\"top\" ><![endif]-->"
+      var space = i > 0 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", {
+        dangerouslySetInnerHTML: {
+          __html: "<!--[if (gte mso 9)|(IE)]></td><td width=\"50%\" valign=\"top\" ><![endif]-->"
+        }
       }) : '';
       console.log(i, space);
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, space, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -6299,10 +6301,14 @@ function Columns(_ref) {
       }, child));
     });
 
-    cols = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      "html-comment": "<!--[if (gte mso 9)|(IE)]><table width=\"100%\"><tr><td width=\"50%\" valign=\"top\" ><![endif]-->"
-    }), _cols, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      "html-comment": "<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->"
+    cols = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", {
+      dangerouslySetInnerHTML: {
+        __html: "<!--[if (gte mso 9)|(IE)]><table width=\"100%\"><tr><td width=\"50%\" valign=\"top\" ><![endif]-->"
+      }
+    }), _cols, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", {
+      dangerouslySetInnerHTML: {
+        __html: "<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->"
+      }
     }));
   } else {
     cols = children;

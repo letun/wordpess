@@ -31,12 +31,13 @@ function lettera_blocks() {
 
 
 	//Add HTML comment to columns
-	//add_filter('the_content', 'addHTMLComment', 10001);
+	add_filter('the_content', 'addHTMLComment', 10001);
 }
 add_action('init', 'lettera_blocks');
 
 function addHTMLComment($content) {
-	if ( is_single() && in_the_loop() && is_main_query() ) {
-		return preg_replace("/<div html-comment='(.*?)'><\/div>/i", "\1", $content);
+	if ( is_single() && is_main_query() ) {
+		return preg_replace("/<[\/]?pre>/i", "", $content);
 	}
+	return $content;
 }

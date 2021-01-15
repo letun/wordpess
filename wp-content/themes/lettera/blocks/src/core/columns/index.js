@@ -9,7 +9,7 @@ function Columns({count, children}) {
 		const width = Math.floor(100 / cnt_cols);
 
 		const _cols = Children.map(children, (child, i) => {
-			const space = (i > 0) ? (<div html-comment='<!--[if (gte mso 9)|(IE)]></td><td width="50%" valign="top" ><![endif]-->'></div>) : '';
+			const space = (i > 0) ? (<pre dangerouslySetInnerHTML={{__html: "<!--[if (gte mso 9)|(IE)]></td><td width=\"50%\" valign=\"top\" ><![endif]-->"}}></pre>) : '';
 			console.log(i, space);
 			return (
 				<>
@@ -23,9 +23,9 @@ function Columns({count, children}) {
 
 		cols = (
 			<>
-				<div html-comment='<!--[if (gte mso 9)|(IE)]><table width="100%"><tr><td width="50%" valign="top" ><![endif]-->'></div>
+				<pre dangerouslySetInnerHTML={{__html: "<!--[if (gte mso 9)|(IE)]><table width=\"100%\"><tr><td width=\"50%\" valign=\"top\" ><![endif]-->"}}></pre>
 				{_cols}
-				<div html-comment='<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->'></div>
+				<pre dangerouslySetInnerHTML={{__html: "<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->"}}></pre>
 			</>
 		);
 	} else {
