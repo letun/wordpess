@@ -1,18 +1,20 @@
-import { createBlock } from '@wordpress/blocks';
+import { getBlockTransforms } from '@wordpress/blocks';
 import { withSelect } from '@wordpress/data';
 import { RichText, BlockControls } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton, Button } from '@wordpress/components';
-import Icon from '../../global/icons';
 import { paragraph } from '@wordpress/icons';
-//import Parents from '../../global/parents';
-import getInspectorControls from "../../global/getInspectorControls";
+
+import Icon from '../../global/icons';
+import getInspectorControls from "../../core/getInspectorControls";
+import LetteraConfig from "../../global/config";
 
 export const name = 'lettera/text';
 
 export const settings = {
 	title: 'Text',
 	icon: paragraph,
-	category: 'common',
+	category: LetteraConfig.category,
+	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
 		content: {
 			type: 'string',
@@ -35,7 +37,6 @@ export const settings = {
 				type: 'block',
 				blocks: [ 'calypso/list' ],
 				transform: ( { values } ) => {
-					console.log(values);
 					return createBlock( 'calypso/text', {
 						values,
 					} );
@@ -47,7 +48,6 @@ export const settings = {
 				type: 'block',
 				blocks: [ 'calypso/list' ],
 				transform: ( content ) => {
-					console.log(content.content);
 					return createBlock(
 						'calypso/list',
 						content.content

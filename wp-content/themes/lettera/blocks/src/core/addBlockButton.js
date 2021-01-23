@@ -1,9 +1,10 @@
+import { getBlockType } from "@wordpress/blocks";
 import { withState } from '@wordpress/compose';
 import {
 	Toolbar, Button, Icon
 } from '@wordpress/components';
-import MyIcon from "./icons";
-import { getBlockType } from "@wordpress/blocks";
+
+import Icons from "../global/icons";
 
 const { Component } = wp.element;
 
@@ -14,7 +15,7 @@ class addBlockButton extends Component {
 		return (
 			<Toolbar className={ "nomi-block__add-block-toolbar" }>
 				<Button
-					icon={MyIcon._plus}
+					icon={Icons._plus}
 					className={"nomi-block__add-block-button"}
 					isPressed={ isActive }
 					onClick={ () => setState( state => ( { isActive: !isActive } ) ) }
@@ -24,7 +25,6 @@ class addBlockButton extends Component {
 
 						{ allowedBlocks.map( (blockSlug) => {
 							const insertBlock = getBlockType(blockSlug);
-							console.log(wp.element.render(insertBlock.icon));
 							return <Button
 								icon={ 'plus' }
 								className={ ["nomi-block__add-block-button", "nomi-block__add-block-button--inserted"] }

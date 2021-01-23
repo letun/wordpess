@@ -1,4 +1,5 @@
 import { Children } from "react";
+import { RawHTML } from '@wordpress/element';
 
 function Columns({count, children}) {
 	const cnt = Children.count(children);
@@ -6,11 +7,10 @@ function Columns({count, children}) {
 
 	let cols;
 	if (cnt_cols > 1) {
-		const width = Math.floor(100 / cnt_cols);
+		const width = Math.floor(100 / cnt_cols).toString();
 
 		const _cols = Children.map(children, (child, i) => {
 			const space = (i > 0) ? (<pre dangerouslySetInnerHTML={{__html: "<!--[if (gte mso 9)|(IE)]></td><td width=\"50%\" valign=\"top\" ><![endif]-->"}}></pre>) : '';
-			console.log(i, space);
 			return (
 				<>
 					{space}

@@ -14,7 +14,7 @@ import {
 	ToggleControl, PanelBody, PanelRow, CheckboxControl, SelectControl, ColorPicker
 } from '@wordpress/components';
 import Icon from '../../global/icons';
-import getInspectorControls from "../../global/getInspectorControls";
+import getInspectorControls from "../../core/getInspectorControls";
 import classnames from "classnames";
 
 import Container from "../../core/container";
@@ -27,7 +27,7 @@ export const name = 'lettera/cover';
 export const settings = {
 	title: 'Cover',
 	icon: Icon.promo,
-	category: 'nomi-blocks',
+	category: 'common',
 	attributes: {
 		mediaID: {
 			type: "number"
@@ -135,30 +135,23 @@ export const settings = {
 			classSection.push("calypso-background", "calypso-background--" + bgColor);
 		}
 
-		/*
 		const MY_TEMPLATE = [
-			[ 'calypso/preheader', { placeholder: 'Preheader', addClass: 'text-gray' } ],
-			[ 'calypso/header', { placeholder: 'Header', level: 1 } ],
-			[ 'calypso/block-text' ],
-			[ 'calypso/block-btn' ],
+			[ 'lettera/preheader', { placeholder: 'Preheader', addClass: 'text-gray' } ],
+			[ 'lettera/header', { placeholder: 'Header', level: 1 } ],
+			[ 'lettera/block-text' ],
+			[ 'lettera/block-btn', { button_text: true, button_type: 'btn-link' } ],
 		];
-		*/
-
-		const MY_TEMPLATE = [
-			[ 'lettera/text', { placeholder: 'Text block', addClass: 'text-gray' } ],
-		];
-
 
 		const ALLOWED_BLOCKS = [
-			'calypso/preheader',
-			'calypso/header',
-			'calypso/heading',
-			'calypso/text',
-			'calypso/list',
-			'calypso/btn',
-			'calypso/text-small',
-			'calypso/block-text',
-			'calypso/block-btn',
+			'lettera/preheader',
+			'lettera/header',
+			'lettera/heading',
+			'lettera/text',
+			'lettera/list',
+			'lettera/btn',
+			'lettera/text-small',
+			'lettera/block-text',
+			'lettera/block-btn',
 		];
 
 		const inspectorControls = getInspectorControls(clientId, props.attributes);
@@ -168,31 +161,15 @@ export const settings = {
 				{ inspectorControls }
 				<Container>
 					<Row>
-						<Columns>
-							<Column>
-								<InnerBlocks
-									allowedBlocks={ ALLOWED_BLOCKS }
-									template={ MY_TEMPLATE }
-									templateLock="all"
-									value={ content }
-									onChange={ ( value ) => setAttributes( { content: value } ) }
-								/>
-							</Column>
-							<Column>
-								<MediaUpload
-									onSelect={ onSelectImage }
-									allowedTypes={["image"]}
-									value={ mediaID }
-									render={ ( { open } ) => (
-										<img
-											src={ ! mediaID ? ("/wp-content/themes/common/images/calypso-block/hero.png") : (mediaURL)}
-											className={ "calypso-promo__image" }
-											onClick={ open }
-										/>
-									) }
-								/>
-							</Column>
-						</Columns>
+						<Column>
+							<InnerBlocks
+								allowedBlocks={ ALLOWED_BLOCKS }
+								template={ MY_TEMPLATE }
+								templateLock="all"
+								value={ content }
+								onChange={ ( value ) => setAttributes( { content: value } ) }
+							/>
+						</Column>
 					</Row>
 				</Container>
 			</>
