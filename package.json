@@ -1,0 +1,36 @@
+{
+  "name": "lettera",
+  "version": "1.0.0",
+  "description": "Email builder",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-jslint": "^1.0.10",
+    "gulp-phplint": "^0.9.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-scss-lint": "^1.0.0",
+    "gulp-scsslint": "^0.0.5",
+    "gulp-stylelint": "^13.0.0",
+    "node-sass": "^5.0.0",
+    "phplint": "^2.0.3",
+    "postcss": "^8.2.4",
+    "stylelint": "^13.8.0",
+    "stylelint-scss": "^3.18.0",
+    "stylelint-value-no-unknown-custom-properties": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letun/lettera.git"
+  },
+  "author": "Serge Andreev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/letun/lettera/issues"
+  },
+  "homepage": "https://github.com/letun/lettera#readme"
+}
