@@ -3,7 +3,7 @@ import { RichText } from '@wordpress/block-editor';
 import classnames from "classnames";
 
 import Icon from '../../global/icons';
-import getInspectorControls from "../../core/getInspectorControls";
+import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
 
 export const name = 'lettera/text-small';

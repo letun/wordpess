@@ -12,19 +12,15 @@ import {
 	getColorObjectByAttributeValues,
 } from '@wordpress/block-editor';
 import {
-	Toolbar, ToolbarButton, ToolbarGroup,
-	ToggleControl, PanelBody, PanelRow, CheckboxControl, SelectControl, ColorPicker,
-	IconButton, Popover,
-	Tooltip, TextControl,
-	Dropdown, Button, ColorIndicator, Icon
+	ToolbarButton, ToolbarGroup
 } from '@wordpress/components';
 import classnames from "classnames";
 
 import Icons from '../../global/icons';
 import LetteraConfig from '../../global/config';
-import getInspectorControls from "../../core/getInspectorControls";
-import ToolbarButtonLinkHref from '../../core/toolbarButtonLinkHref';
-import ToolbarButtonColor from '../../core/toolbarButtonColor';
+import getInspectorControls from "../../controls/getInspectorControls";
+import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
+import ToolbarButtonColor from '../../controls/toolbarButtonColor';
 
 export const name = 'lettera/button-link';
 

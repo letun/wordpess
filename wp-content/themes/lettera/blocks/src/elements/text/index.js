@@ -1,11 +1,11 @@
 import { getBlockTransforms } from '@wordpress/blocks';
 import { withSelect } from '@wordpress/data';
 import { RichText, BlockControls } from '@wordpress/block-editor';
-import { Toolbar, ToolbarButton, Button } from '@wordpress/components';
+import { Toolbar, ToolbarButton } from '@wordpress/components';
 import { paragraph } from '@wordpress/icons';
 
 import Icon from '../../global/icons';
-import getInspectorControls from "../../core/getInspectorControls";
+import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
 
 export const name = 'lettera/text';

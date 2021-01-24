@@ -2,16 +2,16 @@ import { withSelect } from '@wordpress/data';
 import {
 	InnerBlocks,
 } from '@wordpress/block-editor';
-import Parents from '../../global/parents';
-import getInspectorControls from "../../core/getInspectorControls";
+import LetteraCongif from '../../global/config';
+import getInspectorControls from "../../controls/getInspectorControls";
 
 export const name = 'lettera/block-heading';
 
 export const settings = {
 	title: 'Block: Heading',
 	icon: 'heading',
-	category: 'nomi-blocks',
-	parent: Parents.mainBlocks,
+	category: LetteraConfig.category,
+	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
 		content: {
 			type: 'string'

@@ -5,9 +5,12 @@ import {
 	BlockControls,
 	RichTextToolbarButton,
 } from '@wordpress/block-editor';
-import { Toolbar, ToolbarGroup, ToolbarButton } from '@wordpress/components';
+import {
+	Toolbar,
+	ToolbarButton
+} from '@wordpress/components';
 import Icon from '../../global/icons';
-import getInspectorControls from "../../core/getInspectorControls";
+import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
 
 const HEADING_LEVELS = [ 1, 2, 3 ];

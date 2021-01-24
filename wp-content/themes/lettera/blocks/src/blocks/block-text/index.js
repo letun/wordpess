@@ -8,8 +8,8 @@ import {
 } from '@wordpress/components';
 import Icon from '../../global/icons';
 import Config from '../../global/config';
-import getInspectorControls from "../../core/getInspectorControls";
-import AddBlockButton from "../../core/addBlockButton";
+import getInspectorControls from "../../controls/getInspectorControls";
+import AddBlockButton from "../../controls/addBlockButton";
 
 export const name = 'lettera/block-text';
 

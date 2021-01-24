@@ -8,19 +8,14 @@ import {
 	getColorObjectByColorValue,
 	getColorObjectByAttributeValues,
 } from '@wordpress/block-editor';
-import {
-	Button,
-	Toolbar, ToolbarButton,
-	ToggleControl, PanelBody, PanelRow, CheckboxControl, SelectControl, ColorPicker
-} from '@wordpress/components';
 import Icon from '../../global/icons';
-import getInspectorControls from "../../core/getInspectorControls";
+import getInspectorControls from "../../controls/getInspectorControls";
 import classnames from "classnames";
 
-import Container from "../../core/container";
-import Row from "../../core/row";
-import Columns from "../../core/columns";
-import Column from "../../core/column";
+import Container from "../../layout/container";
+import Row from "../../layout/row";
+import Columns from "../../layout/columns";
+import Column from "../../layout/column";
 
 export const name = 'lettera/cover';
 

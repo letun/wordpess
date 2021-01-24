@@ -4,7 +4,7 @@ import {
 } from '@wordpress/block-editor';
 import Icon from '../../global/icons';
 import Config from '../../global/config';
-import getInspectorControls from "../../core/getInspectorControls";
+import getInspectorControls from "../../controls/getInspectorControls";
 
 export const name = 'lettera/block-btn';
 
