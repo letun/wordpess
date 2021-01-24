@@ -10,7 +10,10 @@ var postcss = require('gulp-postcss');
 sass.compiler = require('node-sass');
 
 gulp.task('sass', function () {
-	return gulp.src('./wp-content/themes/lettera/**/*.scss', '!./wp-content/themes/lettera/**/lettera.scss')
+	return gulp.src(
+		'./wp-content/themes/lettera/*.scss',
+		'!./wp-content/themes/lettera/**/lettera.scss'
+		)
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('./wp-content/themes/lettera/'));
 });

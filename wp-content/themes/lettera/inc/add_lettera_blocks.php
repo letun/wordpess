@@ -4,6 +4,11 @@ function render_lettera_blocks($attr, $content) {
 	return $content;
 }
 
+function lettera_add_editor_styles() {
+	add_editor_style('lettera-admin.css');
+}
+add_action('admin_init', 'lettera_add_editor_styles');
+
 function lettera_blocks() {
 
 	// automatically load dependencies and version
