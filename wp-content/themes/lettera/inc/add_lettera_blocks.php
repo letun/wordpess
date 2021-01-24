@@ -5,8 +5,10 @@ function render_lettera_blocks($attr, $content) {
 }
 
 function lettera_add_editor_styles() {
+	add_theme_support( 'editor-styles' );
 	add_editor_style('lettera-admin.css');
 }
+add_action( 'after_setup_theme', 'lettera_add_editor_styles' );
 add_action('admin_init', 'lettera_add_editor_styles');
 
 function lettera_blocks() {
