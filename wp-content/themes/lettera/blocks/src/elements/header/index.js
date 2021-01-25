@@ -9,6 +9,8 @@ import {
 	Toolbar,
 	ToolbarButton
 } from '@wordpress/components';
+import classnames from "classnames";
+
 import Icon from '../../global/icons';
 import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
@@ -35,7 +37,12 @@ export const settings = {
 		placeholder: {
 			type: 'string',
 			default: 'Write heading…',
-		}
+		},
+		addClass: {
+			type: 'array',
+			source: 'attribute',
+			default: ''
+		},
 	},
 	edit: withSelect( ( select, blockData ) => {
 		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( blockData.clientId );
@@ -47,7 +54,7 @@ export const settings = {
 		};
 	} )( props => {
 		const {
-			attributes: { content, level, placeholder },
+			attributes,
 			setAttributes,
 			cliendId,
 			parentClientId,
@@ -55,9 +62,12 @@ export const settings = {
 			className,
 		} = props;
 
+		const { content, level, placeholder, addClass } = attributes;
+
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
-		let classHeader = ( level > 1 ) ? 'h' + level : '';
+		const classHeader = ( level > 1 ) ? 'h' + level : '';
+		let classElement = [classHeader, addClass];
 
 		const buttons = HEADING_LEVELS.map( ( targetLevel ) => {
 			const isActive = targetLevel === level;
@@ -83,7 +93,7 @@ export const settings = {
 				<RichText
 					identifier="content"
 					tagName='h1'
-					className={ [className, classHeader] }
+					className={ classnames(className, classElement) }
 					onChange={ ( value ) => setAttributes( { content: value } ) }
 					value={ content }
 					placeholder={ placeholder }
@@ -94,13 +104,21 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { content, level }
+			attributes,
+			className,
 		} = props;
 
+		const { content, level, addClass } = attributes;
+
 		const classHeader = ( level > 1 ) ? 'h' + level : '';
+		let classElement = [classHeader, addClass];
 
 		return (
-			content && <RichText.Content tagName='h1' value={ content } className={ classHeader } />
+			content && <RichText.Content
+				tagName='h1'
+				value={ content }
+				className={ classnames(className, classElement) }
+			/>
 		);
 	},
 };

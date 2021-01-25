@@ -123,7 +123,10 @@ export const settings = {
 		} = props;
 
 		return (
-			content && <RichText.Content tagName="p" value={ content } />
+			content && <RichText.Content
+				tagName="p"
+				value={ content }
+			/>
 		);
 	},
 };

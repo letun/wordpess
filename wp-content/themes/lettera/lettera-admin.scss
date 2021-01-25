@@ -1,3 +1,11 @@
-.block {
-	color: red;
+.post-type-lettera .block-editor-writing-flow {
+	@import 'scss/lettera/variables';
+	@import 'scss/lettera/typography';
+	@import 'scss/lettera/layout';
+	@import 'scss/lettera/grid';
+	@import 'scss/lettera/alignment';
+	@import 'scss/lettera/button';
+	@import 'scss/lettera/background';
+
+	background: #F2F4F8;
 }

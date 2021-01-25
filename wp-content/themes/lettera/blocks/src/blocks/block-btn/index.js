@@ -2,6 +2,8 @@ import { withSelect } from '@wordpress/data';
 import {
 	InnerBlocks,
 } from '@wordpress/block-editor';
+import classnames from "classnames";
+
 import Icon from '../../global/icons';
 import Config from '../../global/config';
 import getInspectorControls from "../../controls/getInspectorControls";
@@ -15,7 +17,8 @@ export const settings = {
 	parent: Config.childElemets.mainBlocks,
 	attributes: {
 		content: {
-			type: 'string'
+			type: 'string',
+			source: 'html'
 		},
 		button_type: {
 			type: "string",
@@ -87,16 +90,16 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { addClass }
+			attributes,
+			className
 		} = props;
 
-		let classBtn = 'btn-block';
-		if ( addClass ) {
-			classBtn += ' ' + addClass;
-		}
+		const { addClass, content } = attributes;
+
+		let classElement = ["btn-block", addClass];
 
 		return (
-			<div className={ classBtn }>
+			content && <div className={ classnames( className, classElement ) }>
 				<InnerBlocks.Content />
 			</div>
 		);

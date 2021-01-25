@@ -6,6 +6,8 @@ import {
 	Toolbar, ToolbarButton,
 	Button
 } from '@wordpress/components';
+import classnames from "classnames";
+
 import Icon from '../../global/icons';
 import Config from '../../global/config';
 import getInspectorControls from "../../controls/getInspectorControls";
@@ -77,12 +79,16 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { },
-			innerBlocks,
+			attributes,
+			className
 		} = props;
 
+		const { addClass, content } = attributes;
+
+		let classElement = ["text-block", addClass];
+
 		return (
-			<div className="calypso-text">
+			content && <div className={ classnames( className, classElement ) }>
 				<InnerBlocks.Content />
 			</div>
 		);

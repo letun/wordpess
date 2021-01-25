@@ -32,7 +32,8 @@ export const settings = {
 			default: 'Write preheading…',
 		},
 		addClass: {
-			type: 'string',
+			type: 'array',
+			source: 'attribute',
 			default: ''
 		},
 	},
@@ -46,7 +47,7 @@ export const settings = {
 		};
 	} )( props => {
 		const {
-			attributes: { content, placeholder, addClass },
+			attributes,
 			setAttributes,
 			parentClientId,
 			parentBlockAttributes,
@@ -54,14 +55,15 @@ export const settings = {
 			className,
 		} = props;
 
+		const { content, placeholder, addClass } = attributes;
+
 		if (parentBlockAttributes.textColor === 'white') {
-			setAttributes( { addClass: 'text-white' } );
+			//setAttributes( { addClass: 'text-white' } );
 		} else {
-			setAttributes( { addClass: 'text-gray' } );
+			//setAttributes( { addClass: 'text-gray' } );
 		}
 
 		let classElement = ["text-normal", addClass];
-
 
 		//classElement.push(parentBlockAttributes.textColor === 'white' ? "text-white" : "text-gray");
 
@@ -84,11 +86,13 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { content, className, addClass, parentBlockAttributes }
+			attributes,
+			className
 		} = props;
 
+		const { content, addClass } = attributes;
+
 		let classElement = ["text-normal", addClass];
-		//classElement.push(parentBlockAttributes.textColor === 'white' ? "text-white" : "text-gray");
 
 		return (
 			content && <RichText.Content
