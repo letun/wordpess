@@ -4,6 +4,8 @@ import {
 } from '@wordpress/block-editor';
 import classnames from "classnames";
 
+import Spacer from '../../layout/spacer';
+
 import Icon from '../../global/icons';
 import Config from '../../global/config';
 import getInspectorControls from "../../controls/getInspectorControls";
@@ -99,9 +101,12 @@ export const settings = {
 		let classElement = ["btn-block", addClass];
 
 		return (
-			content && <div className={ classnames( className, classElement ) }>
-				<InnerBlocks.Content />
-			</div>
+			1 && (
+				<>
+					<Spacer height="16" />
+					<InnerBlocks.Content />
+				</>
+				)
 		);
 	},
 };

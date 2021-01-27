@@ -195,7 +195,7 @@ export const settings = {
 				>
 					<span className={ classnames('btn-link__content') }>
 						<RichText.Content
-							value={content}/>
+							value={content}/> →
 					</span>
 				</a>
 			)

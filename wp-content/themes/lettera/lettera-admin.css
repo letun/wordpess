@@ -333,104 +333,83 @@
     margin-right: auto;
     margin-left: auto;
     text-align: center; }
-  .post-type-lettera .block-editor-writing-flow table.button {
+  .post-type-lettera .block-editor-writing-flow table.button-main {
     width: 100%;
+    max-width: 360px !important;
     margin: 0 0 16px 0; }
     @media only screen and (min-width: 541px) {
-      .post-type-lettera .block-editor-writing-flow table.button {
+      .post-type-lettera .block-editor-writing-flow table.button-main {
         width: auto !important;
         min-width: 220px; } }
-    .post-type-lettera .block-editor-writing-flow table.button table {
-      width: 100%; }
-      .post-type-lettera .block-editor-writing-flow table.button table td {
-        color: #000000;
-        text-align: center; }
-        .post-type-lettera .block-editor-writing-flow table.button table td a {
-          display: inline-block;
-          color: #000000;
-          font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
-          font-size: 18px;
-          font-weight: bold;
-          font-weight: 500;
-          text-align: center;
-          text-decoration: none; }
-  .post-type-lettera .block-editor-writing-flow table.button:hover table tr td a,
-  .post-type-lettera .block-editor-writing-flow table.button:active table tr td a,
-  .post-type-lettera .block-editor-writing-flow table.button table tr td a:visited {
-    color: #000000; }
-  .post-type-lettera .block-editor-writing-flow table.button--primary {
-    width: 100%;
-    margin: 0 0 16px 0;
-    max-width: 360px !important; }
-    @media only screen and (min-width: 541px) {
-      .post-type-lettera .block-editor-writing-flow table.button--primary {
-        width: auto !important;
-        min-width: 220px; } }
-    .post-type-lettera .block-editor-writing-flow table.button--primary table {
-      width: 100%; }
-      .post-type-lettera .block-editor-writing-flow table.button--primary table td {
-        color: #000000;
-        text-align: center; }
-        .post-type-lettera .block-editor-writing-flow table.button--primary table td a {
-          display: inline-block;
-          color: #000000;
-          font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
-          font-size: 18px;
-          font-weight: bold;
-          font-weight: 500;
-          text-align: center;
-          text-decoration: none; }
-    .post-type-lettera .block-editor-writing-flow table.button--primary table {
+    .post-type-lettera .block-editor-writing-flow table.button-main table {
+      width: 100%;
       border-radius: 4px;
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08); }
-      .post-type-lettera .block-editor-writing-flow table.button--primary table td {
+      .post-type-lettera .block-editor-writing-flow table.button-main table td {
         padding-right: 0 !important;
         padding-left: 0 !important;
         border: none;
         border-radius: 4px;
-        background: #0A0A0A; }
-        .post-type-lettera .block-editor-writing-flow table.button--primary table td a {
+        background: #000000;
+        color: #FFFFFF;
+        text-align: center; }
+        .post-type-lettera .block-editor-writing-flow table.button-main table td a {
+          display: inline-block;
           box-sizing: border-box;
           width: 100%;
-          padding: 16px 32px 16px 32px;
-          border: 0 solid #0A0A0A;
+          padding: 16px 24px 16px 24px;
+          border: 0 solid #000000;
           border-radius: 4px;
+          color: #FFFFFF;
+          font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+          font-size: 18px;
+          font-weight: bold;
+          font-weight: 500;
+          text-align: center;
+          text-decoration: none; }
+        .post-type-lettera .block-editor-writing-flow table.button-main table td a:visited {
           color: #FFFFFF; }
-        .post-type-lettera .block-editor-writing-flow table.button--primary table td a:visited {
-          color: #FFFFFF; }
-  .post-type-lettera .block-editor-writing-flow table.button--primary:hover table td,
-  .post-type-lettera .block-editor-writing-flow table.button--primary:visited table td,
-  .post-type-lettera .block-editor-writing-flow table.button--primary:active table td {
+  .post-type-lettera .block-editor-writing-flow .button-main.button-main--yellow table td {
+    background: #FAE053;
+    color: #000000; }
+    .post-type-lettera .block-editor-writing-flow .button-main.button-main--yellow table td a {
+      color: #000000; }
+    .post-type-lettera .block-editor-writing-flow .button-main.button-main--yellow table td a:visited {
+      color: #000000; }
+  .post-type-lettera .block-editor-writing-flow .button-main.button-main--silver table td {
+    background: #FAE053;
+    color: #000000; }
+    .post-type-lettera .block-editor-writing-flow .button-main.button-main--silver table td a {
+      color: #000000; }
+    .post-type-lettera .block-editor-writing-flow .button-main.button-main--silver table td a:visited {
+      color: #000000; }
+  .post-type-lettera .block-editor-writing-flow .button-main.button-main--white table td {
+    background: #FAE053;
+    color: #000000; }
+    .post-type-lettera .block-editor-writing-flow .button-main.button-main--white table td a {
+      color: #000000; }
+    .post-type-lettera .block-editor-writing-flow .button-main.button-main--white table td a:visited {
+      color: #000000; }
+  .post-type-lettera .block-editor-writing-flow table.button-main:hover table td,
+  .post-type-lettera .block-editor-writing-flow table.button-main:visited table td,
+  .post-type-lettera .block-editor-writing-flow table.button-main:active table td {
     background: #303030; }
-  .post-type-lettera .block-editor-writing-flow table.button--primary:hover table a,
-  .post-type-lettera .block-editor-writing-flow table.button--primary:visited table a,
-  .post-type-lettera .block-editor-writing-flow table.button--primary:active table a {
+  .post-type-lettera .block-editor-writing-flow table.button-main:hover table a,
+  .post-type-lettera .block-editor-writing-flow table.button-main:visited table a,
+  .post-type-lettera .block-editor-writing-flow table.button-main:active table a {
     border: 0 solid #242424;
     background: #303030;
     color: #FFFFFF; }
   .post-type-lettera .block-editor-writing-flow table.button--yellow {
     width: 100%;
-    margin: 0 0 16px 0;
-    max-width: 360px !important; }
+    max-width: 360px !important;
+    margin: 0 0 16px 0; }
     @media only screen and (min-width: 541px) {
       .post-type-lettera .block-editor-writing-flow table.button--yellow {
         width: auto !important;
         min-width: 220px; } }
     .post-type-lettera .block-editor-writing-flow table.button--yellow table {
-      width: 100%; }
-      .post-type-lettera .block-editor-writing-flow table.button--yellow table td {
-        color: #000000;
-        text-align: center; }
-        .post-type-lettera .block-editor-writing-flow table.button--yellow table td a {
-          display: inline-block;
-          color: #000000;
-          font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
-          font-size: 18px;
-          font-weight: bold;
-          font-weight: 500;
-          text-align: center;
-          text-decoration: none; }
-    .post-type-lettera .block-editor-writing-flow table.button--yellow table {
+      width: 100%;
       border-radius: 4px;
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08); }
       .post-type-lettera .block-editor-writing-flow table.button--yellow table td {
@@ -438,14 +417,23 @@
         padding-left: 0 !important;
         border: none;
         border-radius: 4px;
-        background: #0A0A0A; }
+        background: #000000;
+        color: #FFFFFF;
+        text-align: center; }
         .post-type-lettera .block-editor-writing-flow table.button--yellow table td a {
+          display: inline-block;
           box-sizing: border-box;
           width: 100%;
-          padding: 16px 32px 16px 32px;
-          border: 0 solid #0A0A0A;
+          padding: 16px 24px 16px 24px;
+          border: 0 solid #000000;
           border-radius: 4px;
-          color: #FFFFFF; }
+          color: #FFFFFF;
+          font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+          font-size: 18px;
+          font-weight: bold;
+          font-weight: 500;
+          text-align: center;
+          text-decoration: none; }
         .post-type-lettera .block-editor-writing-flow table.button--yellow table td a:visited {
           color: #FFFFFF; }
     .post-type-lettera .block-editor-writing-flow table.button--yellow table td {
@@ -467,29 +455,6 @@
       color: #000000; }
   .post-type-lettera .block-editor-writing-flow table.button--yellow:active table td a {
     color: #000000; }
-  .post-type-lettera .block-editor-writing-flow table.button--white {
-    width: 100%;
-    margin: 0 0 16px 0; }
-    @media only screen and (min-width: 541px) {
-      .post-type-lettera .block-editor-writing-flow table.button--white {
-        width: auto !important;
-        min-width: 220px; } }
-    .post-type-lettera .block-editor-writing-flow table.button--white table {
-      width: 100%; }
-      .post-type-lettera .block-editor-writing-flow table.button--white table td {
-        color: #000000;
-        text-align: center; }
-        .post-type-lettera .block-editor-writing-flow table.button--white table td a {
-          display: inline-block;
-          color: #000000;
-          font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
-          font-size: 18px;
-          font-weight: bold;
-          font-weight: 500;
-          text-align: center;
-          text-decoration: none; }
-    .post-type-lettera .block-editor-writing-flow table.button--white table td a {
-      color: #FFFFFF !important; }
   .post-type-lettera .block-editor-writing-flow table.background-black {
     background: #000000; }
     .post-type-lettera .block-editor-writing-flow table.background-black table.body,

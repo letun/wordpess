@@ -16,6 +16,8 @@ import {
 } from '@wordpress/components';
 import classnames from "classnames";
 
+import ButtonMain from '../../layout/button-main';
+
 import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
 import ToolbarButtonColor from '../../controls/toolbarButtonColor';
 import getInspectorControls from "../../controls/getInspectorControls";
@@ -32,33 +34,35 @@ export const settings = {
 	attributes: {
 		content: {
 			type: "string",
-			source: "html",
-			selector: "a.btn",
+			source: "text",
+			selector: "a",
 		},
 		linkHref: {
 			type: "string",
 			source: "attribute",
-			selector: "a.btn",
+			selector: "a",
 			attribute: "href",
 			default: "https://my.ecwid.com/cp#register",
 		},
-		title: {
+		linkTitle: {
 			type: "string",
 			source: "attribute",
-			selector: "a.btn",
+			selector: "a",
 			attribute: "title"
 		},
 		linkTarget: {
 			type: "string",
 			source: "attribute",
-			selector: "a.btn",
-			attribute: "target"
+			selector: "a",
+			attribute: "target",
+			default: "_blank"
 		},
-		rel: {
+		linkRel: {
 			type: "string",
 			source: "attribute",
-			selector: "a.btn",
-			attribute: "rel"
+			selector: "a",
+			attribute: "rel",
+			defauld: "noopener"
 		},
 		placeholder: {
 			type: "string",
@@ -96,8 +100,9 @@ export const settings = {
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
 		const btnColors = [
-			{name: 'Black', slug: 'black', color: '#000'},
-			{name: 'Yellow', slug: 'yellow',  color: '#ffbf06'},
+			{name: 'Black', slug: 'black', color: '#000000'},
+			{name: 'Yellow', slug: 'yellow',  color: '#FFBF06'},
+			{name: 'Silver', slug: 'silver',  color: '#DDE1E6'},
 			{name: 'White', slug: 'white',  color: '#FFFFFF'},
 		];
 
@@ -148,13 +153,16 @@ export const settings = {
 			</>
 		);
 
+		console.log(2222, content, linkHref);
+
 		return (
 			<>
 				<BlockControls>
 					{toolbar}
 				</BlockControls>
 				{ inspectorControls }
-				<div className={ classnames(classBtn, className) }>
+				<ButtonMain
+					className={ classnames(classBtn, className) }>
 					<RichText
 						identifier="content"
 						onChange={ ( value ) => setAttributes( { content: value } ) }
@@ -162,13 +170,13 @@ export const settings = {
 						placeholder={ placeholder }
 						allowedFormats={[]}
 					/>
-				</div>
+				</ButtonMain>
 			</>
 		);
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { buttonColor, buttonSize, linkTarget, rel, content, title, linkHref }
+			attributes: { buttonColor, buttonSize, linkTarget, linkRel, content, linkTitle, linkHref }
 		} = props;
 
 		let classBtn = ['btn', 'btn--shadow'];
@@ -181,18 +189,20 @@ export const settings = {
 			classBtn.push('btn--' + buttonColor);
 		}
 
+		console.log(linkHref);
+
 		return (
-			content && (
-				<a
-					className={ classnames(className, classBtn) }
-					href={linkHref}
-					title={title}
-					target={linkTarget}
-					rel={rel}
+			(
+				content && <ButtonMain
+					color={ "black" }
+					align={ "center" }
+					linkHref={ linkHref }
+					linkTarget={ linkTarget }
+					linkRel={ linkRel }
+					linkTitle={ linkTitle }
 				>
-					<RichText.Content
-						value={content}/>
-				</a>
+					<RichText.Content value={ content } />
+				</ButtonMain>
 			)
 		);
 	},

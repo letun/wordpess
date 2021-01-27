@@ -98,7 +98,7 @@ export const settings = {
 			[ 'lettera/preheader', { placeholder: 'Preheader', addClass: ['text-gray', 'text-center'] } ],
 			[ 'lettera/header', { placeholder: 'Header', level: 1, addClass: ['text-center'] } ],
 			[ 'lettera/block-text', { addClass: ['text-center'] } ],
-			[ 'lettera/block-btn', { button_text: true, button_type: 'btn-link', addClass: ['text-center'] } ],
+			[ 'lettera/block-btn', { button_text: true, button_type: 'button-main', addClass: ['text-center'] } ],
 		];
 
 		const ALLOWED_BLOCKS = [

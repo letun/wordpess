@@ -2,7 +2,7 @@
 @media only screen {
 	html {
 		min-height: 100%;
-		background: $body-background;
+		background: $background-body;
 	}
 }
 
@@ -10,7 +10,7 @@ table {
 	&.body {
 		width: 100%;
 		height: 100%;
-		background: $body-background;
+		background: $background-body;
 
 		td.body-inner {
 			padding-right: 8px !important;
@@ -22,8 +22,8 @@ table {
 		width: 100%;
 		max-width: $global-width;
 		margin: 0 auto 24px;
-		border-radius: $global-padding;
-		background: $container-background;
+		border-radius: $global-size;
+		background: $background-container;
 		text-align: inherit;
 
 		@media only screen and (min-width: #{$global-breakpoint}) {
@@ -65,9 +65,9 @@ table {
 
 		td.column-inner {
 			margin: 0 auto;
-			padding-right: $global-padding !important;
-			padding-bottom: $global-padding !important;
-			padding-left: $global-padding !important;
+			padding-right: $global-size !important;
+			padding-bottom: $global-size !important;
+			padding-left: $global-size !important;
 		}
 	}
 

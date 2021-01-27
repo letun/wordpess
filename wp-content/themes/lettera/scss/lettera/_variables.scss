@@ -1,26 +1,34 @@
 // 1. Global
 // ---------
-$primary-color: #0A0A0A;
-$primary-font-size: 16px;
-$primary-line-height: 24px;
-$body-background: #F2F4F8;
-$global-padding: 16px;
-$global-margin: 16px;
+$global-color: #0A0A0A;
+$global-font-size: 16px;
+$global-font-size-md: 18px;
+$global-line-height: 24px;
+$global-font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+
+$global-size: 16px;
+$global-size-sm: 8px;
+$global-size-md: 24px;
+$global-size-lg: 24px;
+
 $global-radius: 4px;
+
 $global-width: 648px;
-$container-background: #FFFFFF;
 $global-breakpoint: 541px;
+
+$background-container: #FFFFFF;
+$background-body: #F2F4F8;
 
 // 2. Typography
 // -------------
-$text-color: $primary-color;
+$text-color: $global-color;
 $font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
 $font-weight: normal;
 $header-color: inherit;
-$font-size: $primary-font-size;
-$line-height: $primary-line-height;
+$font-size: $global-font-size;
+$line-height: $global-line-height;
 
-$header-color: $primary-color;
+$header-color: $global-color;
 $sh-font-size: 64px;
 $sh-line-height: 64px;
 
@@ -51,12 +59,12 @@ $gray-text-color: #979797;
 // 3. Button
 // ---------
 $button-font-size: 18px;
-$button-line-height: $primary-line-height;
+$button-line-height: $global-line-height;
 $button-color: #000000;
 $button-font-weight: bold;
-$button-margin: 0 0 $global-margin 0;
+$button-margin: 0 0 $global-size 0;
 $button-padding: 16px 32px 16px 32px;
-$button-background: $primary-color;
+$button-background: $global-color;
 $button-border: 2px solid $button-background;
 $button-border-radius: 4px;
 
