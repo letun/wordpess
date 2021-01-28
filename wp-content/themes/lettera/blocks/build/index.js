@@ -6358,7 +6358,12 @@ var settings = {
   icon: _global_icons__WEBPACK_IMPORTED_MODULE_8__["default"].text,
   category: _global_config__WEBPACK_IMPORTED_MODULE_9__["default"].category,
   parent: _global_config__WEBPACK_IMPORTED_MODULE_9__["default"].childElemets.mainBlocks,
-  attributes: {},
+  attributes: {
+    hasContent: {
+      type: "boolean",
+      default: false
+    }
+  },
   edit: Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__["compose"])([Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (select, blockData) {
     var parentClientId = select('core/block-editor').getBlockHierarchyRootClientId(blockData.clientId);
     return {
@@ -6382,7 +6387,23 @@ var settings = {
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className,
-        insertBlock = props.insertBlock;
+        innerBlocks = props.innerBlocks;
+    wp.element.useEffect(function () {
+      var isEmpty = true;
+
+      if (innerBlocks) {
+        for (var i = 0; i < innerBlocks.length; i++) {
+          if (innerBlocks[i].attributes.content) {
+            isEmpty = false;
+            break;
+          }
+        }
+      }
+
+      setAttributes({
+        hasContent: !isEmpty
+      });
+    });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_10__["default"])(parentClientId, parentBlockAttributes);
     var MY_TEMPLATE = [['lettera/text', {
       placeholder: 'Write text here',
@@ -6401,9 +6422,9 @@ var settings = {
     var attributes = props.attributes,
         className = props.className;
     var addClass = attributes.addClass,
-        content = attributes.content;
+        hasContent = attributes.hasContent;
     var classElement = ["text-block", addClass];
-    return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    return hasContent && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
       className: classnames__WEBPACK_IMPORTED_MODULE_7___default()(className, classElement)
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InnerBlocks"].Content, null));
   }

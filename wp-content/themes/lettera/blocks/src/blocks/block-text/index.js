@@ -21,7 +21,10 @@ export const settings = {
 	category: Config.category,
 	parent: Config.childElemets.mainBlocks,
 	attributes: {
-
+		hasContent: {
+			type: "boolean",
+			default: false
+		}
 	},
 	edit: compose([
 		withSelect( ( select, blockData ) => {
@@ -50,8 +53,21 @@ export const settings = {
 			parentClientId,
 			parentBlockAttributes,
 			className,
-			insertBlock,
+			innerBlocks,
 		} = props;
+
+		wp.element.useEffect(() => {
+			let isEmpty = true;
+			if (innerBlocks) {
+				for (let i = 0; i < innerBlocks.length; i++) {
+					if (innerBlocks[i].attributes.content) {
+						isEmpty = false;
+						break;
+					}
+				}
+			}
+			setAttributes({ hasContent: !isEmpty });
+		});
 
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
@@ -83,12 +99,12 @@ export const settings = {
 			className
 		} = props;
 
-		const { addClass, content } = attributes;
+		const { addClass, hasContent } = attributes;
 
 		let classElement = ["text-block", addClass];
 
 		return (
-			content && <div className={ classnames( className, classElement ) }>
+			hasContent && <div className={ classnames( className, classElement ) }>
 				<InnerBlocks.Content />
 			</div>
 		);
