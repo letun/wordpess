@@ -16,12 +16,13 @@ import {
 } from '@wordpress/components';
 import classnames from "classnames";
 
-import Icons from '../../global/icons';
-import LetteraConfig from '../../global/config';
-import getInspectorControls from "../../controls/getInspectorControls";
+import ButtonSecondary from "../../layout/button-secondary";
+
 import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
 import ToolbarButtonColor from '../../controls/toolbarButtonColor';
-import ButtonSecondary from "../../layout/button-secondary";
+import getInspectorControls from "../../controls/getInspectorControls";
+import Icons from '../../global/icons';
+import LetteraConfig from '../../global/config';
 
 export const name = 'lettera/button-secondary';
 
@@ -43,7 +44,7 @@ export const settings = {
 			attribute: "href",
 			default: "https://my.ecwid.com/cp#register",
 		},
-		title: {
+		linkTitle: {
 			type: "string",
 			source: "attribute",
 			selector: "a",
@@ -59,13 +60,18 @@ export const settings = {
 			type: "string",
 			source: "attribute",
 			selector: "a",
-			attribute: "rel"
+			attribute: "rel",
+			defauld: "noopener"
 		},
 		placeholder: {
 			type: "string",
 			default: 'Button text…',
 		},
 		buttonColor: {
+			type: "string",
+			default: null //black, yellow, blue, green
+		},
+		buttonBlockClientId: {
 			type: "string",
 			default: null
 		}
@@ -80,7 +86,7 @@ export const settings = {
 		};
 	} )( props => {
 		const {
-			attributes: { buttonColor, buttonSize, content, placeholder, linkHref },
+			attributes,
 			setAttributes,
 			parentClientId,
 			cliendId,
@@ -88,26 +94,22 @@ export const settings = {
 			className,
 		} = props;
 
+		const { buttonColor, content, placeholder, linkHref } = attributes;
 		const curCliendId = cliendId;
-
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
 		const btnColors = [
-			{name: 'Yellow', slug: 'yellow', color: '#FDDE00'},
-			{name: 'Orange', slug: 'dark-orange',  color: '#d29d38'},
-			{name: 'Green', slug: 'rest-green',  color: '#4cb178'},
-			{name: 'Blue', slug: 'facebook-blue',  color: '#6A8DD4'},
+			{name: 'None', slug: 'none', color: '#FFFFFF'},
+			{name: 'Orange', slug: 'yellow',  color: '#FAE053'},
+			{name: 'Green', slug: 'black',  color: '#000000'},
+			{name: 'Blue', slug: 'blue',  color: '#6A8DD4'},
+			{name: 'Green', slug: 'green',  color: '#31CC8F'},
 		];
 
-		let classBtn = ['btn-link'];
-
-		if (buttonSize === 'small') {
-			classBtn.push('btn-link--small');
-		}
+		let classBtn = ['button-secondary'];
 
 		if (buttonColor) {
-			classBtn.push('btn-link--' + buttonColor);
-			classBtn.push('btn-link--active');
+			classBtn.push('button-secondary--' + buttonColor);
 		}
 
 		const toolbar = (
@@ -120,6 +122,10 @@ export const settings = {
 						onClick={ () => {
 							const block = wp.blocks.createBlock( 'lettera/button-main', { content } );
 							wp.data.dispatch( 'core/block-editor' ).updateBlock(curCliendId, block);
+							const buttonBlockClientId = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(cliendId, 'lettera/block-btn')[0];
+							if (buttonBlockClientId) {
+								wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes(buttonBlockClientId, {buttonType: 'button-main'});
+							}
 						} }
 					/>
 					<ToolbarButton
@@ -139,7 +145,7 @@ export const settings = {
 					onChange={
 						( value ) => {
 							setAttributes( {
-								buttonColor: value? ( getColorObjectByColorValue(btnColors, value)?.slug) : 'yellow'
+								buttonColor: (value && value !== 'none' )? ( getColorObjectByColorValue(btnColors, value)?.slug) : null
 							} );
 						}
 					}
@@ -153,17 +159,16 @@ export const settings = {
 					{toolbar}
 				</BlockControls>
 				{ inspectorControls }
-				<div className={ classnames(className, classBtn) }>
-					<span className={ classnames('btn-link__content') }>
-						<RichText
-							identifier="content"
-							onChange={ ( value ) => setAttributes( { content: value } ) }
-							value={ content }
-							placeholder={ placeholder }
-							allowedFormats={[]}
-						/>
-					</span>
-				</div>
+				<ButtonSecondary
+					className={ classnames(classBtn, className) }>
+					<RichText
+						identifier="content"
+						onChange={ ( value ) => setAttributes( { content: value } ) }
+						value={ content }
+						placeholder={ placeholder }
+						allowedFormats={[]}
+					/>
+				</ButtonSecondary>
 			</>
 		);
 	}),

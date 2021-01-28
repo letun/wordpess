@@ -16,17 +16,17 @@ export const settings = {
 	category: Config.category,
 	parent: Config.childElemets.mainBlocks,
 	attributes: {
-		content: {
-			type: 'string',
-			source: 'html'
+		hasContent: {
+			type: 'boolean',
+			default: false,
 		},
-		button_type: {
+		buttonType: {
 			type: "string",
 			default: "button-main",
 		},
-		button_text: {
+		buttonAltText: {
 			type: "string",
-			default: "none",
+			default: null,
 		},
 		addClass: {
 			type: 'string'
@@ -48,8 +48,22 @@ export const settings = {
 			parentClientId,
 			parentBlockAttributes,
 			className,
+			innerBlocks
 		} = props;
-		const {button_type, button_text, addClass} = attributes;
+		const {buttonType, buttonAltText, addClass, hasContent} = attributes;
+
+		wp.element.useEffect(() => {
+			let isEmpty = true;
+			if (innerBlocks) {
+				for (let i = 0; i < innerBlocks.length; i++) {
+					if (innerBlocks[i].attributes.content) {
+						isEmpty = false;
+						break;
+					}
+				}
+			}
+			setAttributes({ hasContent: !isEmpty });
+		});
 
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
@@ -59,13 +73,13 @@ export const settings = {
 		}
 
 		let MY_TEMPLATE = [];
-		if (button_type === 'button-main') {
-			MY_TEMPLATE.push([ 'lettera/button-main', { placeholder: 'Button text' } ]);
-		} else {
+		if (buttonType === 'button-secondary') {
 			MY_TEMPLATE.push([ 'lettera/button-secondary', { placeholder: 'Button text' } ]);
+		} else {
+			MY_TEMPLATE.push([ 'lettera/button-main', { placeholder: 'Button text' } ]);
 		}
 
-		if (button_text !== 'none') {
+		if (buttonAltText) {
 			MY_TEMPLATE.push([ 'lettera/text-small', { placeholder: 'Text bellow button', addClass: 'text-gray' } ]);
 		}
 
@@ -78,13 +92,11 @@ export const settings = {
 		return (
 			<>
 				{inspectorControls}
-				<div className={ classBtn }>
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ MY_TEMPLATE }
-						templateLock="all"
-					/>
-				</div>
+				<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					template={ MY_TEMPLATE }
+					templateLock="all"
+				/>
 			</>
 		);
 	}),
@@ -94,12 +106,12 @@ export const settings = {
 			className
 		} = props;
 
-		const { addClass, content } = attributes;
+		const { addClass, hasContent } = attributes;
 
 		let classElement = ["btn-block", addClass];
-
+console.log(hasContent);
 		return (
-			1 && (
+			hasContent && (
 				<>
 					<Spacer height="8" />
 					<InnerBlocks.Content className={ classnames(classElement, className) } />

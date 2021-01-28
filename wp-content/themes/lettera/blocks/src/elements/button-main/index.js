@@ -55,7 +55,6 @@ export const settings = {
 			source: "attribute",
 			selector: "a",
 			attribute: "target",
-			default: "_blank"
 		},
 		linkRel: {
 			type: "string",
@@ -132,6 +131,10 @@ export const settings = {
 						onClick={ () => {
 							const block = wp.blocks.createBlock( 'lettera/button-secondary', { content } );
 							wp.data.dispatch( 'core/block-editor' ).updateBlock(curCliendId, block);
+							const buttonBlockClientId = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(cliendId, 'lettera/block-btn')[0];
+							if (buttonBlockClientId) {
+								wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes(buttonBlockClientId, {buttonType: 'button-secondary'});
+							}
 						} }
 					/>
 				</ToolbarGroup>
@@ -167,6 +170,7 @@ export const settings = {
 						value={ content }
 						placeholder={ placeholder }
 						allowedFormats={[]}
+						unstableOnSplit={ () => false }
 					/>
 				</ButtonMain>
 			</>
