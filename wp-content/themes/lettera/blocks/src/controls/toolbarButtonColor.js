@@ -1,6 +1,8 @@
 import { withState } from '@wordpress/compose';
 import {
-	Toolbar, ToolbarButton, Popover, ColorIndicator
+	Toolbar,
+	ToolbarButton,
+	Popover
 } from '@wordpress/components';
 import {
 	PanelColorSettings,
@@ -9,6 +11,7 @@ import {
 	getColorObjectByAttributeValues,
 } from '@wordpress/block-editor';
 const { Component } = wp.element;
+
 import Icons from '../global/icons';
 
 class toolbarButtonColor extends Component {

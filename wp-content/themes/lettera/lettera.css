@@ -410,99 +410,105 @@ table.button-main {
       table.button-main table td a:visited {
         color: #FFFFFF; }
 
-.button-main.button-main--yellow table td {
-  background: #FAE053;
-  color: #000000; }
-  .button-main.button-main--yellow table td a {
-    color: #000000; }
-  .button-main.button-main--yellow table td a:visited {
-    color: #000000; }
+table.button-main table td {
+  background: #000000;
+  color: #FFFFFF; }
+  table.button-main table td a {
+    color: #FFFFFF; }
+  table.button-main table td a:visited {
+    color: #FFFFFF; }
 
-.button-main.button-main--silver table td {
-  background: #FAE053;
-  color: #000000; }
-  .button-main.button-main--silver table td a {
-    color: #000000; }
-  .button-main.button-main--silver table td a:visited {
-    color: #000000; }
+table.button-main:hover table td, table.button-main:visited table td, table.button-main:active table td {
+  background: #262626; }
 
-.button-main.button-main--white table td {
-  background: #FAE053;
-  color: #000000; }
-  .button-main.button-main--white table td a {
-    color: #000000; }
-  .button-main.button-main--white table td a:visited {
-    color: #000000; }
-
-table.button-main:hover table td,
-table.button-main:visited table td,
-table.button-main:active table td {
-  background: #303030; }
-
-table.button-main:hover table a,
-table.button-main:visited table a,
-table.button-main:active table a {
-  border: 0 solid #242424;
-  background: #303030;
+table.button-main:hover table a, table.button-main:visited table a, table.button-main:active table a {
+  border: 0 solid #262626;
+  background: #262626;
   color: #FFFFFF; }
 
-table.button--yellow {
+table.button-main.button-main--yellow table td {
+  background: #FAE053;
+  color: #0A0A0A; }
+  table.button-main.button-main--yellow table td a {
+    color: #0A0A0A; }
+  table.button-main.button-main--yellow table td a:visited {
+    color: #0A0A0A; }
+
+table.button-main.button-main--yellow:hover table td, table.button-main.button-main--yellow:visited table td, table.button-main.button-main--yellow:active table td {
+  background: #fbe985; }
+
+table.button-main.button-main--yellow:hover table a, table.button-main.button-main--yellow:visited table a, table.button-main.button-main--yellow:active table a {
+  border: 0 solid #fbe985;
+  background: #fbe985;
+  color: #0A0A0A; }
+
+table.button-main.button-main--silver table td {
+  background: #DDE1E6;
+  color: #0A0A0A; }
+  table.button-main.button-main--silver table td a {
+    color: #0A0A0A; }
+  table.button-main.button-main--silver table td a:visited {
+    color: #0A0A0A; }
+
+table.button-main.button-main--silver:hover table td, table.button-main.button-main--silver:visited table td, table.button-main.button-main--silver:active table td {
+  background: #ced4db; }
+
+table.button-main.button-main--silver:hover table a, table.button-main.button-main--silver:visited table a, table.button-main.button-main--silver:active table a {
+  border: 0 solid #ced4db;
+  background: #ced4db;
+  color: #0A0A0A; }
+
+table.button-main.button-main--white table td {
+  background: #FFFFFF;
+  color: #0A0A0A; }
+  table.button-main.button-main--white table td a {
+    color: #0A0A0A; }
+  table.button-main.button-main--white table td a:visited {
+    color: #0A0A0A; }
+
+table.button-main.button-main--white:hover table td, table.button-main.button-main--white:visited table td, table.button-main.button-main--white:active table td {
+  background: #e6e6e6; }
+
+table.button-main.button-main--white:hover table a, table.button-main.button-main--white:visited table a, table.button-main.button-main--white:active table a {
+  border: 0 solid #e6e6e6;
+  background: #e6e6e6;
+  color: #0A0A0A; }
+
+table.button-secondary {
   width: 100%;
-  max-width: 360px !important;
   margin: 0 0 16px 0; }
   @media only screen and (min-width: 541px) {
-    table.button--yellow {
+    table.button-secondary {
       width: auto !important;
       min-width: 220px; } }
-  table.button--yellow table {
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08); }
-    table.button--yellow table td {
-      padding-right: 0 !important;
-      padding-left: 0 !important;
-      border: none;
-      border-radius: 4px;
-      background: #000000;
-      color: #FFFFFF;
+  table.button-secondary table {
+    width: 100%; }
+    table.button-secondary table td {
+      color: #0A0A0A;
       text-align: center; }
-      table.button--yellow table td a {
+      table.button-secondary table td a {
         display: inline-block;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 16px 24px 16px 24px;
-        border: 0 solid #000000;
-        border-radius: 4px;
-        color: #FFFFFF;
+        color: #0A0A0A;
         font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
         font-weight: 500;
         text-align: center;
         text-decoration: none; }
-      table.button--yellow table td a:visited {
-        color: #FFFFFF; }
-  table.button--yellow table td {
-    background: #FAE053;
-    color: #000000; }
-    table.button--yellow table td a {
-      color: #000000; }
-    table.button--yellow table td a:visited {
-      color: #000000; }
+        table.button-secondary table td a span {
+          border-bottom: 3px solid transparent; }
 
-table.button--yellow:hover table td,
-table.button--yellow:visited table td,
-table.button--yellow:active table td {
-  background: #fbe985;
-  color: #000000; }
-  table.button--yellow:hover table td a,
-  table.button--yellow:visited table td a,
-  table.button--yellow:active table td a {
-    background: #fbe985;
-    color: #000000; }
+table.button-secondary.button-secondary--yellow table td a span {
+  border-bottom-color: #FAE053; }
 
-table.button--yellow:active table td a {
-  color: #000000; }
+table.button-secondary.button-secondary--black table td a span {
+  border-bottom-color: #000000; }
+
+table.button-secondary.button-secondary--blue table td a span {
+  border-bottom-color: #6A8DD4; }
+
+table.button-secondary.button-secondary--green table td a span {
+  border-bottom-color: #31CC8F; }
 
 table.background-black {
   background: #000000; }

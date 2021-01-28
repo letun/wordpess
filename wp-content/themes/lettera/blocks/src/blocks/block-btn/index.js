@@ -1,7 +1,5 @@
 import { withSelect } from '@wordpress/data';
-import {
-	InnerBlocks,
-} from '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 import classnames from "classnames";
 
 import Spacer from '../../layout/spacer';
@@ -64,7 +62,7 @@ export const settings = {
 		if (button_type === 'button-main') {
 			MY_TEMPLATE.push([ 'lettera/button-main', { placeholder: 'Button text' } ]);
 		} else {
-			MY_TEMPLATE.push([ 'lettera/button-link', { placeholder: 'Button text' } ]);
+			MY_TEMPLATE.push([ 'lettera/button-secondary', { placeholder: 'Button text' } ]);
 		}
 
 		if (button_text !== 'none') {
@@ -73,7 +71,7 @@ export const settings = {
 
 		const ALLOWED_BLOCKS = [
 			'lettera/button-main',
-			'lettera/button-link',
+			'lettera/button-secondary',
 			'lettera/text-small'
 		];
 
@@ -103,10 +101,10 @@ export const settings = {
 		return (
 			1 && (
 				<>
-					<Spacer height="16" />
-					<InnerBlocks.Content />
+					<Spacer height="8" />
+					<InnerBlocks.Content className={ classnames(classElement, className) } />
 				</>
-				)
+			)
 		);
 	},
 };

@@ -1,3 +1,5 @@
+@import "./variables";
+
 $bm-font-size: $global-font-size-md;
 $bm-line-height: $global-line-height;
 $bm-font-weight: bold;
@@ -9,12 +11,12 @@ $bm-background: #000000;
 $bm-border: 2px solid $bm-background;
 $bm-border-radius: $global-radius;
 
-//btn name, color, background, dark-button
+//btn name, color, background, dark-button, hover
 $bm-list: (
-	(null, $bm-color, $bm-background, true),
-	("yellow", #FFFFFF, #FAE053, true),
-	("silver", #FFFFFF, #DDE1E6, false),
-	("white", $bm-background, $bm-color, false),
+	(null, $bm-color, $bm-background, true, 15%),
+	("yellow", $global-color, #FAE053, true, 10%),
+	("silver", $global-color, #DDE1E6, false, 5%),
+	("white", $global-color, $bm-color, false, 10%),
 );
 
 @mixin button-main {
@@ -65,11 +67,13 @@ $bm-list: (
 	}
 }
 
-@mixin make-button($name, $color, $background, $dart) {
+@mixin make-button($name, $color, $background, $dart, $hover) {
 	$_suffix: "";
+
 	@if $name {
 		$_suffix: ".button-main--#{unquote($name)}";
 	}
+
 	table.button-main#{$_suffix} {
 		table {
 			td {
@@ -92,16 +96,26 @@ $bm-list: (
 			table {
 				td {
 					@if ($dart) {
-						background: lighten($button-background, 15%);
-					} @else {
-						background: darken($button-background, 15%);
+						background: lighten($background, $hover);
+					}
+
+					@else {
+						background: darken($background, $hover);
 					}
 				}
 
 				a {
-					border: 0 solid lighten($button-background, 10%);
-					background: lighten($button-background, 15%);
-					color: $button-color-primary;
+					@if ($dart) {
+						border: 0 solid lighten($background, $hover);
+						background: lighten($background, $hover);
+					}
+
+					@else {
+						border: 0 solid darken($background, $hover);
+						background: darken($background, $hover);
+					}
+
+					color: $color;
 				}
 			}
 		}
@@ -113,66 +127,7 @@ table.button-main {
 }
 
 @each $btn in $bm-list {
-	@include make-button(nth($btn, 1), nth($btn, 2), nth($btn, 3), nth($btn, 4));
-}
-
-table.button-main:hover,
-table.button-main:visited,
-table.button-main:active {
-	table {
-		td {
-			background: lighten($button-background, 15%);
-		}
-
-		a {
-			border: 0 solid lighten($button-background, 10%);
-			background: lighten($button-background, 15%);
-			color: $button-color-primary;
-		}
-	}
-}
-
-table.button--yellow {
-	@include button-main;
-
-	table {
-		td {
-			background: $secondary-button-background;
-			color: $secondary-button-color;
-
-			a {
-				color: $secondary-button-color;
-			}
-
-			a:visited {
-				color: $secondary-button-color;
-			}
-		}
-	}
-}
-
-table.button--yellow:hover,
-table.button--yellow:visited,
-table.button--yellow:active {
-	table {
-		td {
-			background: lighten($secondary-button-background, 10%);
-			color: $secondary-button-color;
-
-			a {
-				background: lighten($secondary-button-background, 10%);
-				color: $secondary-button-color;
-			}
-		}
-	}
-}
-
-table.button--yellow:active {
-	table {
-		td a {
-			color: $secondary-button-color;
-		}
-	}
+	@include make-button(nth($btn, 1), nth($btn, 2), nth($btn, 3), nth($btn, 4), nth($btn, 5));
 }
 
 @mixin dark-button {

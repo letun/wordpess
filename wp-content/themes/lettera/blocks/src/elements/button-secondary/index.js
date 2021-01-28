@@ -21,8 +21,9 @@ import LetteraConfig from '../../global/config';
 import getInspectorControls from "../../controls/getInspectorControls";
 import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
 import ToolbarButtonColor from '../../controls/toolbarButtonColor';
+import ButtonSecondary from "../../layout/button-secondary";
 
-export const name = 'lettera/button-link';
+export const name = 'lettera/button-secondary';
 
 export const settings = {
 	title: 'Button',
@@ -33,44 +34,40 @@ export const settings = {
 		content: {
 			type: "string",
 			source: "html",
-			selector: "span.btn-link__content",
+			selector: "span",
 		},
 		linkHref: {
 			type: "string",
 			source: "attribute",
-			selector: "a.btn-link",
+			selector: "a",
 			attribute: "href",
 			default: "https://my.ecwid.com/cp#register",
 		},
 		title: {
 			type: "string",
 			source: "attribute",
-			selector: "a.btn-link",
+			selector: "a",
 			attribute: "title"
 		},
 		linkTarget: {
 			type: "string",
 			source: "attribute",
-			selector: "a.btn-link",
+			selector: "a",
 			attribute: "target"
 		},
-		rel: {
+		linkRel: {
 			type: "string",
 			source: "attribute",
-			selector: "a.btn-link",
+			selector: "a",
 			attribute: "rel"
 		},
 		placeholder: {
 			type: "string",
 			default: 'Button text…',
 		},
-		buttonSize: {
-			type: "string",
-			default: 'normal', /* small, medium, large */
-		},
 		buttonColor: {
 			type: "string",
-			default: "yellow"
+			default: null
 		}
 	},
 	edit: withSelect( ( select, blockData ) => {
@@ -172,33 +169,22 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { buttonColor, buttonSize, linkTarget, rel, content, title, linkHref }
+			attributes
 		} = props;
 
-		let classBtn = ['btn-link'];
-
-		if (buttonSize === 'small') {
-			classBtn.push('btn-link--small');
-		}
-
-		if (buttonColor !== 'yellow') {
-			classBtn.push('btn-link--' + buttonColor);
-		}
+		const { content, buttonColor, linkTarget, linkRel, linkTitle, linkHref } = attributes;
 
 		return (
-			content && ( <a
-				className={ classnames(classBtn, className) }
-				href={ linkHref }
-				title={ title }
-				target={ linkTarget }
-				rel={ rel }
-				>
-					<span className={ classnames('btn-link__content') }>
-						<RichText.Content
-							value={content}/> →
-					</span>
-				</a>
-			)
+			content && <ButtonSecondary
+				buttonColor={ buttonColor }
+				align={ "center" }
+				linkHref={ linkHref }
+				linkTarget={ linkTarget }
+				linkRel={ linkRel }
+				linkTitle={ linkTitle }
+			>
+				<RichText.Content value={ content } />
+			</ButtonSecondary>
 		);
 	},
 };

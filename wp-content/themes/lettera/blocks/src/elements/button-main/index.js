@@ -106,14 +106,14 @@ export const settings = {
 			{name: 'White', slug: 'white',  color: '#FFFFFF'},
 		];
 
-		let classBtn = ['btn'];
+		let classBtn = ['button-main'];
 
 		if (buttonSize === 'large') {
-			classBtn.push('btn--large');
+			classBtn.push('button-main--large');
 		}
 
-		if (buttonColor) {
-			classBtn.push('btn--' + buttonColor);
+		if (buttonColor && buttonColor !== 'black') {
+			classBtn.push('button-main--' + buttonColor);
 		}
 
 		const toolbar = (
@@ -127,17 +127,17 @@ export const settings = {
 					/>
 					<ToolbarButton
 						icon={ Icons._button['typeLink'] }
-						title={'Secondary button'}
+						title={ 'Secondary button' }
 						isActive={ false }
 						onClick={ () => {
-							const block = wp.blocks.createBlock( 'lettera/button-link', { content } );
+							const block = wp.blocks.createBlock( 'lettera/button-secondary', { content } );
 							wp.data.dispatch( 'core/block-editor' ).updateBlock(curCliendId, block);
 						} }
 					/>
 				</ToolbarGroup>
 				<ToolbarButtonLinkHref
 					linkHref={ linkHref }
-					onChange={( value ) => setAttributes( { linkHref: value.url } )}
+					onChange={ ( value ) => setAttributes( { linkHref: value.url } ) }
 				/>
 				<ToolbarButtonColor
 					buttonColor={ buttonColor }
@@ -152,8 +152,6 @@ export const settings = {
 				/>
 			</>
 		);
-
-		console.log(2222, content, linkHref);
 
 		return (
 			<>
@@ -176,25 +174,16 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { buttonColor, buttonSize, linkTarget, linkRel, content, linkTitle, linkHref }
+			attributes
 		} = props;
 
-		let classBtn = ['btn', 'btn--shadow'];
-
-		if (buttonSize === 'large') {
-			classBtn.push('btn--large');
-		}
-
-		if (buttonColor !== 'black') {
-			classBtn.push('btn--' + buttonColor);
-		}
-
-		console.log(linkHref);
+		const { content, buttonColor, buttonSize, linkTarget, linkRel, linkTitle, linkHref } = attributes;
 
 		return (
 			(
 				content && <ButtonMain
-					color={ "black" }
+					buttonColor={ buttonColor }
+					buttonSize={ buttonSize }
 					align={ "center" }
 					linkHref={ linkHref }
 					linkTarget={ linkTarget }

@@ -1,11 +1,15 @@
 import classnames from "classnames";
 
-const ButtonMain = ( { children, align, color, linkTarget, linkRel, linkTitle, linkHref, className } ) => {
-	let tableClass = [];
+const ButtonMain = ( { children, buttonColor, buttonSize, linkTarget, linkRel, linkTitle, linkHref, className } ) => {
+	let tableClass = ["float-center"];
 
-	tableClass.push((align == 'left') ? 'float-left' : 'float-center');
-	tableClass.push((color) ? `button--${color}` : "button--black");
-	console.log(1111, linkHref);
+	if (buttonSize === 'large') {
+		tableClass.push('button-main--large');
+	}
+
+	if (buttonColor && buttonColor !== 'black') {
+		tableClass.push(`button-main--${buttonColor}`);
+	}
 
 	return (
 		<center>

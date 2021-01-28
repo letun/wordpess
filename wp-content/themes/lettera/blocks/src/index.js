@@ -7,7 +7,7 @@ import * as elHeading from './elements/heading';
 import * as elText from './elements/text';
 import * as elList from './elements/list';
 import * as elButtonMain from './elements/button-main';
-import * as elButtonLink from './elements/button-link';
+import * as elButtonSecondary from './elements/button-secondary';
 import * as elSmallText from './elements/text-small';
 
 /* Block Template: text/list */
@@ -26,7 +26,7 @@ const blocks = [
 	elText,
 	elList,
 	elButtonMain,
-	elButtonLink,
+	elButtonSecondary,
 	elSmallText,
 
 	blockBtn,

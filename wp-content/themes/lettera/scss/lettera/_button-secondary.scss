@@ -1,6 +1,24 @@
-@mixin button {
+@import "./variables";
+
+$bs-font-size: $global-font-size-md;
+$bs-line-height: $global-line-height;
+$bs-font-weight: bold;
+$bs-color: $global-color;
+$bs-margin: 0 0 $global-size 0;
+$bs-background: #000000;
+
+//btn name, color, border-color
+$bs-list: (
+	(null, $bs-color, null),
+	("yellow", $bs-color, #FAE053),
+	("black", $bs-color, #000000),
+	("blue", $bs-color, #6A8DD4),
+	("green", $bs-color, #31CC8F),
+);
+
+@mixin button-secondary {
 	width: 100%;
-	margin: $button-margin;
+	margin: $bs-margin;
 
 	@media only screen and (min-width: #{$global-breakpoint}) {
 		width: auto !important;
@@ -11,137 +29,55 @@
 		width: 100%;
 
 		td {
-			color: $button-color;
+			color: $bs-color;
 			text-align: center;
 
 			a {
 				display: inline-block;
-				color: $button-color;
-				font-family: $font-family;
-				font-size: $button-font-size;
-				font-weight: $button-font-weight;
+				color: $bs-color;
+				font-family: $global-font-family;
+				font-size: $bs-font-size;
+				font-weight: $bs-font-weight;
 				font-weight: 500;
 				text-align: center;
 				text-decoration: none;
+
+				span {
+					border-bottom: 3gpx solid transparent;
+				}
 			}
 		}
 	}
 }
 
-@mixin button-primary {
-	@include button;
+@mixin make-button-secondary($name, $color, $border) {
+	$_suffix: "";
 
-	max-width: 360px !important;
+	@if $name {
+		$_suffix: ".button-secondary--#{unquote($name)}";
+	}
 
-	table {
-		border-radius: $button-border-radius;
-		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .08);
-
-		td {
-			//Fix in Outlook.com
-			padding-right: 0 !important;
-			padding-left: 0 !important;
-			border: none;
-			border-radius: $button-border-radius;
-			background: $button-background;
-
-			a {
-				box-sizing: border-box;
-				width: 100%;
-				padding: $button-padding;
-				border: 0 solid $button-background;
-				border-radius: $button-border-radius;
-				color: $button-color-primary;
-			}
-
-			a:visited {
-				color: $button-color-primary;
+	table.button-secondary#{$_suffix} {
+		table {
+			td {
+				a {
+					span {
+						@if $border {
+							border-bottom-color: $border;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
-table.button {
-	@include button;
+table.button-secondary {
+	@include button-secondary;
 }
 
-table.button:hover table tr td a,
-table.button:active table tr td a,
-table.button table tr td a:visited {
-	color: $button-color;
-}
-
-table.button--primary {
-	@include button-primary;
-}
-
-table.button--primary:hover,
-table.button--primary:visited,
-table.button--primary:active {
-	table {
-		td {
-			background: lighten($button-background, 15%);
-		}
-
-		a {
-			border: 0 solid lighten($button-background, 10%);
-			background: lighten($button-background, 15%);
-			color: $button-color-primary;
-		}
-	}
-}
-
-table.button--yellow {
-	@include button-primary;
-
-	table {
-		td {
-			background: $secondary-button-background;
-			color: $secondary-button-color;
-
-			a {
-				color: $secondary-button-color;
-			}
-
-			a:visited {
-				color: $secondary-button-color;
-			}
-		}
-	}
-}
-
-table.button--yellow:hover,
-table.button--yellow:visited,
-table.button--yellow:active {
-	table {
-		td {
-			background: lighten($secondary-button-background, 10%);
-			color: $secondary-button-color;
-
-			a {
-				background: lighten($secondary-button-background, 10%);
-				color: $secondary-button-color;
-			}
-		}
-	}
-}
-
-table.button--yellow:active {
-	table {
-		td a {
-			color: $secondary-button-color;
-		}
-	}
-}
-
-table.button--white {
-	@include button;
-
-	table {
-		td a {
-			color: #FFFFFF !important;
-		}
-	}
+@each $btn in $bs-list {
+	@include make-button-secondary(nth($btn, 1), nth($btn, 2), nth($btn, 3));
 }
 
 @mixin dark-button {
