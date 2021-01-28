@@ -109,7 +109,7 @@ export const settings = {
 		const { addClass, hasContent } = attributes;
 
 		let classElement = ["btn-block", addClass];
-console.log(hasContent);
+
 		return (
 			hasContent && (
 				<>
