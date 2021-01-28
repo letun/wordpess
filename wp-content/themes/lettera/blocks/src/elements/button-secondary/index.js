@@ -81,7 +81,7 @@ export const settings = {
 		return {
 			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
 			parentClientId: parentClientId,
-			cliendId: blockData.clientId,
+			clientId: blockData.clientId,
 			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
 		};
 	} )( props => {
@@ -89,13 +89,13 @@ export const settings = {
 			attributes,
 			setAttributes,
 			parentClientId,
-			cliendId,
+			clientId,
 			parentBlockAttributes,
 			className,
 		} = props;
 
 		const { buttonColor, content, placeholder, linkHref } = attributes;
-		const curCliendId = cliendId;
+		const curClientId = clientId;
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
 		const btnColors = [
@@ -121,8 +121,8 @@ export const settings = {
 						isActive={ false }
 						onClick={ () => {
 							const block = wp.blocks.createBlock( 'lettera/button-main', { content } );
-							wp.data.dispatch( 'core/block-editor' ).updateBlock(curCliendId, block);
-							const buttonBlockClientId = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(cliendId, 'lettera/block-btn')[0];
+							wp.data.dispatch( 'core/block-editor' ).updateBlock(curClientId, block);
+							const buttonBlockClientId = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(clientId, 'lettera/block-btn')[0];
 							if (buttonBlockClientId) {
 								wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes(buttonBlockClientId, {buttonType: 'button-main'});
 							}

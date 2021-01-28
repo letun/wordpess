@@ -1,7 +1,7 @@
-import { getBlockType } from "@wordpress/blocks";
+import { getBlockType, createBlock } from "@wordpress/blocks";
 import { withState } from '@wordpress/compose';
 import {
-	Toolbar, Button, Icon
+	ToolbarButton, ToolbarGroup,
 } from '@wordpress/components';
 
 import Icons from "../global/icons";
@@ -10,41 +10,29 @@ const { Component } = wp.element;
 
 class addBlockButton extends Component {
 	render() {
-		const { allowedBlocks, cliendId, isActive, setState } = this.props;
+		const { allowedBlocks, clientId } = this.props;
 
 		return (
-			<Toolbar className={ "nomi-block__add-block-toolbar" }>
-				<Button
+			<ToolbarGroup title={ "Add new" } className={ "lettera-admin__add-block-toolbar" }>
+				<ToolbarButton
 					icon={Icons._plus}
-					className={"nomi-block__add-block-button"}
-					isPressed={ isActive }
-					onClick={ () => setState( state => ( { isActive: !isActive } ) ) }
+					className={"lettera-admin__add-block-button"}
+					isPressed={ true }
 				/>
-				{isActive && (
-					<>
-
+					<ToolbarGroup>
 						{ allowedBlocks.map( (blockSlug) => {
 							const insertBlock = getBlockType(blockSlug);
-							return <Button
-								icon={ 'plus' }
-								className={ ["nomi-block__add-block-button", "nomi-block__add-block-button--inserted"] }
+							return <ToolbarButton
+								icon={ insertBlock.icon.src }
+								className={ ["lettera-admin__add-block-button"] }
 								label={ insertBlock.title }
 								onClick={ () => {
-									insertBlock(createBlock(blockSlug, {canDelete: true}), 100, cliendId);
-								} }
-							/>;
-							return <Button
-								icon={ insertBlock.icon }
-								className={ ["nomi-block__add-block-button", "nomi-block__add-block-button--inserted"] }
-								label={ insertBlock.title }
-								onClick={ () => {
-									insertBlock(createBlock('calypso/list', {canDelete: true}), 100, cliendId);
+									wp.data.dispatch( 'core/block-editor' ).insertBlock(createBlock(blockSlug, {canDelete: true}), 100, clientId);
 								} }
 							/>;
 						} ) }
-					</>
-				) }
-			</Toolbar>
+					</ToolbarGroup>
+			</ToolbarGroup>
 		);
 	}
 }

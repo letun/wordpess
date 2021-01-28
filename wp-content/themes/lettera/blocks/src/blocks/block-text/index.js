@@ -2,10 +2,6 @@ import { createBlock } from '@wordpress/blocks';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { withState, compose } from '@wordpress/compose';
-import {
-	Toolbar, ToolbarButton,
-	Button
-} from '@wordpress/components';
 import classnames from "classnames";
 
 import Icon from '../../global/icons';
@@ -32,7 +28,7 @@ export const settings = {
 			return {
 				innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
 				parentClientId: parentClientId,
-				cliendId: blockData.clientId,
+				clientId: blockData.clientId,
 				parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
 			};
 		} ),
@@ -49,7 +45,7 @@ export const settings = {
 		const {
 			attributes: { },
 			setAttributes,
-			cliendId,
+			clientId,
 			parentClientId,
 			parentBlockAttributes,
 			className,
@@ -83,13 +79,16 @@ export const settings = {
 		return (
 			<>
 				{inspectorControls}
-				<div className="calypso-text">
-					<InnerBlocks
-						allowedBlocks={ ALLOWED_BLOCKS }
-						template={ MY_TEMPLATE }
-						templateLock={ false }
-					/>
-				</div>
+				<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					template={ MY_TEMPLATE }
+					templateLock={ false }
+					renderAppender={ false }
+				/>
+				<AddBlockButton
+					allowedBlocks={ ALLOWED_BLOCKS }
+					clientId={ clientId }
+				/>
 			</>
 		);
 	}),
@@ -104,9 +103,9 @@ export const settings = {
 		let classElement = ["text-block", addClass];
 
 		return (
-			hasContent && <div className={ classnames( className, classElement ) }>
+			hasContent && (
 				<InnerBlocks.Content />
-			</div>
+			)
 		);
 	},
 };
@@ -117,25 +116,25 @@ TODO: AddBlockButton
 		icon={ Icon._plus }
 		className={ "nomi-block__add-block-button" }
 		onClick={ () => {
-			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, cliendId);
+			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, clientId);
 		} }
 	/>
 	<Button
 		icon={ Icon.text }
 		onClick={ () => {
-			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, cliendId);
+			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, clientId);
 		} }
 	/>
 	<Button
 		icon={ Icon.list }
 		onClick={ () => {
-			insertBlock(createBlock('calypso/list', {canDelete: true}), 100, cliendId);
+			insertBlock(createBlock('calypso/list', {canDelete: true}), 100, clientId);
 		} }
 	/>
 </Toolbar>
 //Try to add AddBlockButton
 <AddBlockButton
 	allowedBlocks={ ALLOWED_BLOCKS }
-	cliendId={ cliendId }
+	clientId={ clientId }
 />
  */

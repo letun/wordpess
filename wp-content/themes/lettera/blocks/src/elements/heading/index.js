@@ -42,14 +42,14 @@ export const settings = {
 		return {
 			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
 			parentClientId: parentClientId,
-			cliendId: blockData.clientId,
+			clientId: blockData.clientId,
 			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
 		};
 	} )( props => {
 		const {
 			attributes: { content, level, placeholder, allowedLevels },
 			setAttributes,
-			cliendId,
+			clientId,
 			parentClientId,
 			parentBlockAttributes,
 			className,

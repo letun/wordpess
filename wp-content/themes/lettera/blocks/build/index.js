@@ -6229,13 +6229,13 @@ var settings = {
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
       parentClientId: parentClientId,
-      cliendId: blockData.clientId,
+      clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
   })(function (props) {
     var attributes = props.attributes,
         setAttributes = props.setAttributes,
-        cliendId = props.cliendId,
+        clientId = props.clientId,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className,
@@ -6332,15 +6332,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _global_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../global/icons */ "./src/global/icons.js");
-/* harmony import */ var _global_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../global/config */ "./src/global/config.js");
-/* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
-/* harmony import */ var _controls_addBlockButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../controls/addBlockButton */ "./src/controls/addBlockButton.js");
-
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _global_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../global/icons */ "./src/global/icons.js");
+/* harmony import */ var _global_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../global/config */ "./src/global/config.js");
+/* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
+/* harmony import */ var _controls_addBlockButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../controls/addBlockButton */ "./src/controls/addBlockButton.js");
 
 
 
@@ -6355,9 +6352,9 @@ __webpack_require__.r(__webpack_exports__);
 var name = 'lettera/block-text';
 var settings = {
   title: 'Block: Text',
-  icon: _global_icons__WEBPACK_IMPORTED_MODULE_8__["default"].text,
-  category: _global_config__WEBPACK_IMPORTED_MODULE_9__["default"].category,
-  parent: _global_config__WEBPACK_IMPORTED_MODULE_9__["default"].childElemets.mainBlocks,
+  icon: _global_icons__WEBPACK_IMPORTED_MODULE_7__["default"].text,
+  category: _global_config__WEBPACK_IMPORTED_MODULE_8__["default"].category,
+  parent: _global_config__WEBPACK_IMPORTED_MODULE_8__["default"].childElemets.mainBlocks,
   attributes: {
     hasContent: {
       type: "boolean",
@@ -6369,7 +6366,7 @@ var settings = {
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
       parentClientId: parentClientId,
-      cliendId: blockData.clientId,
+      clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
   }), Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withDispatch"])(function (dispatch) {
@@ -6383,7 +6380,7 @@ var settings = {
     _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0___default()(props.attributes);
 
     var setAttributes = props.setAttributes,
-        cliendId = props.cliendId,
+        clientId = props.clientId,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className,
@@ -6404,19 +6401,21 @@ var settings = {
         hasContent: !isEmpty
       });
     });
-    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_10__["default"])(parentClientId, parentBlockAttributes);
+    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_9__["default"])(parentClientId, parentBlockAttributes);
     var MY_TEMPLATE = [['lettera/text', {
       placeholder: 'Write text here',
       canDelete: true
     }]];
     var ALLOWED_BLOCKS = ['lettera/text', 'lettera/list'];
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-      className: "calypso-text"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InnerBlocks"], {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InnerBlocks"], {
       allowedBlocks: ALLOWED_BLOCKS,
       template: MY_TEMPLATE,
-      templateLock: false
-    })));
+      templateLock: false,
+      renderAppender: false
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_controls_addBlockButton__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      allowedBlocks: ALLOWED_BLOCKS,
+      clientId: clientId
+    }));
   }),
   save: function save(props) {
     var attributes = props.attributes,
@@ -6424,9 +6423,7 @@ var settings = {
     var addClass = attributes.addClass,
         hasContent = attributes.hasContent;
     var classElement = ["text-block", addClass];
-    return hasContent && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-      className: classnames__WEBPACK_IMPORTED_MODULE_7___default()(className, classElement)
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InnerBlocks"].Content, null));
+    return hasContent && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InnerBlocks"].Content, null);
   }
 };
 /*
@@ -6436,26 +6433,26 @@ TODO: AddBlockButton
 		icon={ Icon._plus }
 		className={ "nomi-block__add-block-button" }
 		onClick={ () => {
-			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, cliendId);
+			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, clientId);
 		} }
 	/>
 	<Button
 		icon={ Icon.text }
 		onClick={ () => {
-			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, cliendId);
+			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, clientId);
 		} }
 	/>
 	<Button
 		icon={ Icon.list }
 		onClick={ () => {
-			insertBlock(createBlock('calypso/list', {canDelete: true}), 100, cliendId);
+			insertBlock(createBlock('calypso/list', {canDelete: true}), 100, clientId);
 		} }
 	/>
 </Toolbar>
 //Try to add AddBlockButton
 <AddBlockButton
 	allowedBlocks={ ALLOWED_BLOCKS }
-	cliendId={ cliendId }
+	clientId={ clientId }
 />
  */
 
@@ -6500,38 +6497,19 @@ var settings = {
   icon: _global_icons__WEBPACK_IMPORTED_MODULE_3__["default"].promo,
   category: 'common',
   attributes: {
-    mediaID: {
-      type: "number"
-    },
-    mediaURL: {
+    textAlign: {
       type: "string",
-      source: "attribute",
-      selector: "img",
-      attribute: "src"
-    },
-    imagePosition: {
-      type: "string",
-      default: "none"
-    },
-    imageSize: {
-      type: "string",
-      default: "medium"
+      default: "right"
     },
     bgColor: {
-      type: "string",
-      default: "none"
-    },
-    textColor: {
       type: "string",
       default: "none"
     },
     blockSettings: {
       type: "object",
       default: {
-        imagePosition: "right",
-        imageSize: "medium",
-        bgColor: "none",
-        textColor: "none"
+        textAlign: "right",
+        bgColor: "none"
       }
     }
   },
@@ -6583,9 +6561,7 @@ var settings = {
       placeholder: 'Header',
       level: 1,
       addClass: ['text-center']
-    }], ['lettera/block-text', {
-      addClass: ['text-center']
-    }], ['lettera/block-btn', {
+    }], ['lettera/block-text'], ['lettera/block-btn', {
       button_text: true,
       button_type: 'button-main',
       addClass: ['text-center']
@@ -6723,42 +6699,24 @@ var addBlockButton = /*#__PURE__*/function (_Component) {
     value: function render() {
       var _this$props = this.props,
           allowedBlocks = _this$props.allowedBlocks,
-          cliendId = _this$props.cliendId,
-          isActive = _this$props.isActive,
-          setState = _this$props.setState;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["Toolbar"], {
-        className: "nomi-block__add-block-toolbar"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+          clientId = _this$props.clientId;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarGroup"], {
+        title: "Add new",
+        className: "lettera-admin__add-block-toolbar"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarButton"], {
         icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"]._plus,
-        className: "nomi-block__add-block-button",
-        isPressed: isActive,
-        onClick: function onClick() {
-          return setState(function (state) {
-            return {
-              isActive: !isActive
-            };
-          });
-        }
-      }), isActive && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["Fragment"], null, allowedBlocks.map(function (blockSlug) {
+        className: "lettera-admin__add-block-button",
+        isPressed: true
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarGroup"], null, allowedBlocks.map(function (blockSlug) {
         var insertBlock = Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__["getBlockType"])(blockSlug);
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-          icon: 'plus',
-          className: ["nomi-block__add-block-button", "nomi-block__add-block-button--inserted"],
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarButton"], {
+          icon: insertBlock.icon.src,
+          className: ["lettera-admin__add-block-button"],
           label: insertBlock.title,
           onClick: function onClick() {
-            insertBlock(createBlock(blockSlug, {
+            wp.data.dispatch('core/block-editor').insertBlock(Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__["createBlock"])(blockSlug, {
               canDelete: true
-            }), 100, cliendId);
-          }
-        });
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-          icon: insertBlock.icon,
-          className: ["nomi-block__add-block-button", "nomi-block__add-block-button--inserted"],
-          label: insertBlock.title,
-          onClick: function onClick() {
-            insertBlock(createBlock('calypso/list', {
-              canDelete: true
-            }), 100, cliendId);
+            }), 100, clientId);
           }
         });
       })));
@@ -6802,6 +6760,23 @@ function getInspectorControls(clientId, blockAttributes) {
 
     wp.data.dispatch('core/block-editor').updateBlock(clientId, componentBlock);
   };
+
+  if (blockSettings && blockSettings.textAlign) {
+    imagePositionPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+      label: "Text align",
+      value: blockAttributes.textAlign,
+      options: [{
+        label: 'Text right',
+        value: 'right'
+      }, {
+        label: 'Text center',
+        value: 'center'
+      }],
+      onChange: function onChange(value) {
+        onChangeSettings(clientId, 'textAlign', value);
+      }
+    });
+  }
 
   if (blockSettings && blockSettings.imagePosition) {
     imagePositionPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
@@ -6885,13 +6860,9 @@ function getInspectorControls(clientId, blockAttributes) {
       slug: 'none',
       color: '#FFFFFF'
     }, {
-      name: 'Gray',
-      slug: 'gray',
-      color: '#F0F0F0'
-    }, {
       name: 'Black',
       slug: 'black',
-      color: '#333333'
+      color: '#1D1D1D'
     }, {
       name: 'Yellow',
       slug: 'yellow',
@@ -6899,7 +6870,7 @@ function getInspectorControls(clientId, blockAttributes) {
     }, {
       name: 'Blue',
       slug: 'blue',
-      color: '#EDF8FF'
+      color: '#D3EEFF'
     }];
     var bgColor = blockAttributes.bgColor;
     bgPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["BaseControl"], {
@@ -7280,14 +7251,14 @@ var settings = {
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
       parentClientId: parentClientId,
-      cliendId: blockData.clientId,
+      clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
   })(function (props) {
     var attributes = props.attributes,
         setAttributes = props.setAttributes,
         parentClientId = props.parentClientId,
-        cliendId = props.cliendId,
+        clientId = props.clientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className;
     var buttonColor = attributes.buttonColor,
@@ -7295,7 +7266,7 @@ var settings = {
         content = attributes.content,
         placeholder = attributes.placeholder,
         linkHref = attributes.linkHref;
-    var curCliendId = cliendId;
+    var curClientId = clientId;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
     var btnColors = [{
       name: 'Black',
@@ -7343,8 +7314,8 @@ var settings = {
         var block = wp.blocks.createBlock('lettera/button-secondary', {
           content: content
         });
-        wp.data.dispatch('core/block-editor').updateBlock(curCliendId, block);
-        var buttonBlockClientId = wp.data.select('core/block-editor').getBlockParentsByBlockName(cliendId, 'lettera/block-btn')[0];
+        wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
+        var buttonBlockClientId = wp.data.select('core/block-editor').getBlockParentsByBlockName(clientId, 'lettera/block-btn')[0];
 
         if (buttonBlockClientId) {
           wp.data.dispatch('core/block-editor').updateBlockAttributes(buttonBlockClientId, {
@@ -7507,21 +7478,21 @@ var settings = {
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
       parentClientId: parentClientId,
-      cliendId: blockData.clientId,
+      clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
   })(function (props) {
     var attributes = props.attributes,
         setAttributes = props.setAttributes,
         parentClientId = props.parentClientId,
-        cliendId = props.cliendId,
+        clientId = props.clientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className;
     var buttonColor = attributes.buttonColor,
         content = attributes.content,
         placeholder = attributes.placeholder,
         linkHref = attributes.linkHref;
-    var curCliendId = cliendId;
+    var curClientId = clientId;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
     var btnColors = [{
       name: 'None',
@@ -7560,8 +7531,8 @@ var settings = {
         var block = wp.blocks.createBlock('lettera/button-main', {
           content: content
         });
-        wp.data.dispatch('core/block-editor').updateBlock(curCliendId, block);
-        var buttonBlockClientId = wp.data.select('core/block-editor').getBlockParentsByBlockName(cliendId, 'lettera/block-btn')[0];
+        wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
+        var buttonBlockClientId = wp.data.select('core/block-editor').getBlockParentsByBlockName(clientId, 'lettera/block-btn')[0];
 
         if (buttonBlockClientId) {
           wp.data.dispatch('core/block-editor').updateBlockAttributes(buttonBlockClientId, {
@@ -7697,13 +7668,13 @@ var settings = {
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
       parentClientId: parentClientId,
-      cliendId: blockData.clientId,
+      clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
   })(function (props) {
     var attributes = props.attributes,
         setAttributes = props.setAttributes,
-        cliendId = props.cliendId,
+        clientId = props.clientId,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className;
@@ -7820,7 +7791,7 @@ var settings = {
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
       parentClientId: parentClientId,
-      cliendId: blockData.clientId,
+      clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
   })(function (props) {
@@ -7830,7 +7801,7 @@ var settings = {
         placeholder = _props$attributes.placeholder,
         allowedLevels = _props$attributes.allowedLevels,
         setAttributes = props.setAttributes,
-        cliendId = props.cliendId,
+        clientId = props.clientId,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className;
@@ -7947,7 +7918,7 @@ var settings = {
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
       parentClientId: parentClientId,
-      cliendId: blockData.clientId,
+      clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
   })(function (props) {
@@ -8089,7 +8060,7 @@ var settings = {
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
       parentClientId: parentClientId,
-      cliendId: blockData.clientId,
+      clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
   })(function (props) {
@@ -8097,7 +8068,7 @@ var settings = {
         setAttributes = props.setAttributes,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
-        cliendId = props.cliendId,
+        clientId = props.clientId,
         className = props.className;
     var content = attributes.content,
         placeholder = attributes.placeholder,

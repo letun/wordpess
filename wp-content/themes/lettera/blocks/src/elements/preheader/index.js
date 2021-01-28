@@ -42,7 +42,7 @@ export const settings = {
 		return {
 			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
 			parentClientId: parentClientId,
-			cliendId: blockData.clientId,
+			clientId: blockData.clientId,
 			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
 		};
 	} )( props => {
@@ -51,7 +51,7 @@ export const settings = {
 			setAttributes,
 			parentClientId,
 			parentBlockAttributes,
-			cliendId,
+			clientId,
 			className,
 		} = props;
 

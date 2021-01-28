@@ -23,38 +23,19 @@ export const settings = {
 	icon: Icon.promo,
 	category: 'common',
 	attributes: {
-		mediaID: {
-			type: "number"
-		},
-		mediaURL: {
+		textAlign: {
 			type: "string",
-			source: "attribute",
-			selector: "img",
-			attribute: "src"
-		},
-		imagePosition: {
-			type: "string",
-			default: "none",
-		},
-		imageSize: {
-			type: "string",
-			default: "medium",
+			default: "right"
 		},
 		bgColor: {
-			type: "string",
-			default: "none",
-		},
-		textColor: {
 			type: "string",
 			default: "none",
 		},
 		blockSettings: {
 			type: "object",
 			default: {
-				imagePosition: "right",
-				imageSize: "medium",
+				textAlign: "right",
 				bgColor: "none",
-				textColor: "none",
 			}
 		}
 	},
@@ -97,7 +78,7 @@ export const settings = {
 		const MY_TEMPLATE = [
 			[ 'lettera/preheader', { placeholder: 'Preheader', addClass: ['text-gray', 'text-center'] } ],
 			[ 'lettera/header', { placeholder: 'Header', level: 1, addClass: ['text-center'] } ],
-			[ 'lettera/block-text', { addClass: ['text-center'] } ],
+			[ 'lettera/block-text' ],
 			[ 'lettera/block-btn', { button_text: true, button_type: 'button-main', addClass: ['text-center'] } ],
 		];
 

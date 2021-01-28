@@ -22,6 +22,22 @@ function getInspectorControls(clientId, blockAttributes) {
 		wp.data.dispatch( 'core/block-editor' ).updateBlock(clientId, componentBlock);
 	};
 
+	if (blockSettings && blockSettings.textAlign) {
+		imagePositionPanel = (
+			<SelectControl
+				label="Text align"
+				value={ blockAttributes.textAlign }
+				options={ [
+					{ label: 'Text right', value: 'right' },
+					{ label: 'Text center', value: 'center' },
+				] }
+				onChange={ ( value ) => {
+					onChangeSettings(clientId, 'textAlign', value);
+				} }
+			/>
+		);
+	}
+
 	if (blockSettings && blockSettings.imagePosition) {
 		imagePositionPanel = (
 			<SelectControl
@@ -91,10 +107,9 @@ function getInspectorControls(clientId, blockAttributes) {
 	if (blockSettings && blockSettings.bgColor) {
 		const bgColors = [
 			{name: 'None', slug: 'none', color: '#FFFFFF'},
-			{name: 'Gray', slug: 'gray',  color: '#F0F0F0'},
-			{name: 'Black', slug: 'black',  color: '#333333'},
+			{name: 'Black', slug: 'black',  color: '#1D1D1D'},
 			{name: 'Yellow', slug: 'yellow', color: '#FAE053'},
-			{name: 'Blue', slug: 'blue',  color: '#EDF8FF'},
+			{name: 'Blue', slug: 'blue',  color: '#D3EEFF'},
 		];
 
 		let bgColor = blockAttributes.bgColor;
