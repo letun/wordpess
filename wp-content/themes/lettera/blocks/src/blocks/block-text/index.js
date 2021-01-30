@@ -20,6 +20,14 @@ export const settings = {
 		hasContent: {
 			type: "boolean",
 			default: false
+		},
+		defaultTextAlign: {
+			type: "string",
+			default: "text-left"
+		},
+		textAlign: {
+			type: "string",
+			default: null
 		}
 	},
 	edit: compose([
@@ -43,7 +51,7 @@ export const settings = {
 		}),
 		])( props => {
 		const {
-			attributes: { },
+			attributes: { defaultTextAlign, textAlign },
 			setAttributes,
 			clientId,
 			parentClientId,
@@ -68,8 +76,10 @@ export const settings = {
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
 		const MY_TEMPLATE = [
-			[ 'lettera/text', { placeholder: 'Write text here', canDelete: true } ],
+			[ 'lettera/text', { placeholder: 'Write text here', textAlign: (textAlign ? textAlign : defaultTextAlign), canDelete: true } ],
 		];
+
+		console.log(MY_TEMPLATE, textAlign, defaultTextAlign);
 
 		const ALLOWED_BLOCKS = [
 			'lettera/text',
@@ -87,6 +97,7 @@ export const settings = {
 				/>
 				<AddBlockButton
 					allowedBlocks={ ALLOWED_BLOCKS }
+					attributes={ [defaultTextAlign, textAlign] }
 					clientId={ clientId }
 				/>
 			</>

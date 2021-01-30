@@ -3,6 +3,7 @@ import { withSelect } from '@wordpress/data';
 import { RichText, BlockControls } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton } from '@wordpress/components';
 import { paragraph } from '@wordpress/icons';
+import classnames from "classnames";
 
 import Icon from '../../global/icons';
 import getInspectorControls from "../../controls/getInspectorControls";
@@ -25,6 +26,14 @@ export const settings = {
 		placeholder: {
 			type: 'string',
 			default: 'Text here…',
+		},
+		defaultTextAlign: {
+			type: "string",
+			default: "left"
+		},
+		textAlign: {
+			type: "string",
+			default: null
 		},
 		canDelete: {
 			type: 'boolean',
@@ -77,9 +86,16 @@ export const settings = {
 			className,
 		} = props;
 
-		const { content, placeholder } = attributes;
+		const { content, placeholder, defaultTextAlign, textAlign } = attributes;
 
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
+
+		let addClass = [];
+		if ((textAlign ? textAlign : defaultTextAlign) == 'text-center') {
+			addClass.push('text-center');
+		}
+
+		console.log(addClass, textAlign, defaultTextAlign);
 
 		return (
 			<>
@@ -96,7 +112,7 @@ export const settings = {
 				{ inspectorControls }
 				<RichText
 					tagName="p"
-					className={ className }
+					className={ classnames(addClass, className) }
 					onChange={ ( newContent ) => { setAttributes( { content: newContent } ) } }
 					value={ content }
 					placeholder={ placeholder }
@@ -119,12 +135,18 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { content }
+			attributes: { content, defaultTextAlign, textAlign }
 		} = props;
+
+		let addClass = [];
+		if ((textAlign ? textAlign : defaultTextAlign) == 'text-center') {
+			addClass.push('text-center');
+		}
 
 		return (
 			content && <RichText.Content
 				tagName="p"
+				className={ classnames(addClass) }
 				value={ content }
 			/>
 		);

@@ -10,7 +10,7 @@ const { Component } = wp.element;
 
 class addBlockButton extends Component {
 	render() {
-		const { allowedBlocks, clientId } = this.props;
+		const { allowedBlocks, attributes, clientId } = this.props;
 
 		return (
 			<ToolbarGroup title={ "Add new" } className={ "lettera-admin__add-block-toolbar" }>
@@ -27,7 +27,7 @@ class addBlockButton extends Component {
 								className={ ["lettera-admin__add-block-button"] }
 								label={ insertBlock.title }
 								onClick={ () => {
-									wp.data.dispatch( 'core/block-editor' ).insertBlock(createBlock(blockSlug, {canDelete: true}), 100, clientId);
+									wp.data.dispatch( 'core/block-editor' ).insertBlock(createBlock(blockSlug, {attributes, canDelete: true}), 100, clientId);
 								} }
 							/>;
 						} ) }

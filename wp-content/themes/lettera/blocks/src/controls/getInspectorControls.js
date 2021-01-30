@@ -28,8 +28,8 @@ function getInspectorControls(clientId, blockAttributes) {
 				label="Text align"
 				value={ blockAttributes.textAlign }
 				options={ [
-					{ label: 'Text right', value: 'right' },
-					{ label: 'Text center', value: 'center' },
+					{ label: 'Text left', value: 'text-left' },
+					{ label: 'Text center', value: 'text-center' },
 				] }
 				onChange={ ( value ) => {
 					onChangeSettings(clientId, 'textAlign', value);

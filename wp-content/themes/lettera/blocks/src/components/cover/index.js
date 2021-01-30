@@ -25,7 +25,7 @@ export const settings = {
 	attributes: {
 		textAlign: {
 			type: "string",
-			default: "right"
+			default: "text-left"
 		},
 		bgColor: {
 			type: "string",
@@ -56,7 +56,7 @@ export const settings = {
 		};
 	} )( props => {
 		const {
-			attributes: {content, mediaID, mediaURL, imagePosition, imageSize, bgColor, textColor},
+			attributes: {content, bgColor, textAlign},
 			clientId,
 			setAttributes,
 			className,
@@ -69,18 +69,20 @@ export const settings = {
 			} );
 		};
 
-		let classSection = [];
+		let classContainer = [];
 
 		if (bgColor !== undefined && bgColor !== 'none') {
-			classSection.push("calypso-background", "calypso-background--" + bgColor);
+			classContainer.push("background-" + bgColor);
 		}
 
 		const MY_TEMPLATE = [
 			[ 'lettera/preheader', { placeholder: 'Preheader', addClass: ['text-gray', 'text-center'] } ],
 			[ 'lettera/header', { placeholder: 'Header', level: 1, addClass: ['text-center'] } ],
-			[ 'lettera/block-text' ],
-			[ 'lettera/block-btn', { button_text: true, button_type: 'button-main', addClass: ['text-center'] } ],
+			[ 'lettera/block-text', { textAlign: textAlign } ],
+			[ 'lettera/block-btn', { button_text: true, defaultButtonType: 'button-main', textAlign: 'text-center' } ],
 		];
+
+		console.log(MY_TEMPLATE, textAlign);
 
 		const ALLOWED_BLOCKS = [
 			'lettera/preheader',
@@ -99,7 +101,7 @@ export const settings = {
 		return (
 			<>
 				{ inspectorControls }
-				<Container>
+				<Container className={ classnames(classContainer) }>
 					<Row>
 						<Column className={classnames('text-center')}>
 							<InnerBlocks
@@ -121,46 +123,15 @@ export const settings = {
 			attributes: { mediaURL, imagePosition, imageSize, bgColor, textColor}
 		} = props;
 
-		let classSection = ["calypso-block"];
-		let classPromo = ["row", "calypso-promo"];
-		let classCol1 = ["col-12"];
-		let classCol2 = ["col-12"];
-		if (imagePosition === 'center') {
-			classCol1.push("col-md-10 offset-md-1 col-lg-10 offset-lg-1 offset-xl-2 col-xl-8 text-center calypso-promo__first");
-			if (imageSize === 'small') {
-				classCol2.push("col-md-8 offset-md-2 offset-xl-3 col-xl-6 text-center calypso-promo__second calypso-promo__second--center");
-			} else if (imageSize === 'large') {
-				classCol2.push("col-md-10 offset-md-1 col-lg-8 offset-lg-2 offset-xl-1 col-xl-10 text-center calypso-promo__second calypso-promo__second--center");
-			} else {
-				classCol2.push("col-md-10 offset-md-1 col-lg-8 offset-lg-2 offset-xl-2 col-xl-8 text-center calypso-promo__second calypso-promo__second--center");
-			}
-		} else {
-			if (imagePosition === "left") {
-				classPromo.push("calypso-promo--xl-swap");
-			}
-			if (imageSize === 'small') {
-				classCol1.push("col-md-10 offset-md-1 col-lg-10 offset-lg-1 offset-xl-0 col-xl-7 calypso-promo__first align-center text-left");
-				classCol2.push("col-md-10 offset-md-1 col-xl-5 offset-xl-0 calypso-promo__second text-center");
-			} else if (imageSize === 'large') {
-				classCol1.push("col-md-10 offset-md-1 col-lg-10 offset-lg-1 offset-xl-0 col-xl-5 calypso-promo__first align-center text-left");
-				classCol2.push("col-md-10 offset-md-1 col-xl-7 offset-xl-0 calypso-promo__second text-center");
-			} else {
-				classCol1.push("col-md-10 offset-md-1 col-lg-10 offset-lg-1 offset-xl-0 col-xl-6 calypso-promo__first align-center text-left");
-				classCol2.push("col-md-10 offset-md-1 col-xl-6 offset-xl-0 calypso-promo__second text-center");
-			}
-		}
-
-		if (textColor === 'white') {
-			classSection.push("text-white");
-		}
+		let classContainer = [];
 
 		if (bgColor !== undefined && bgColor !== 'none') {
-			classSection.push("calypso-background", "calypso-background--" + bgColor);
+			classContainer.push("background-" + bgColor);
 		}
 
 		return (
 			<>
-				<Container>
+				<Container className={ classnames(classContainer) }>
 					<Row>
 						<Column className={ classnames('text-center') }>
 							<InnerBlocks.Content />

@@ -20,9 +20,13 @@ export const settings = {
 			type: 'boolean',
 			default: false,
 		},
-		buttonType: {
+		defaultButtonType: {
 			type: "string",
 			default: "button-main",
+		},
+		buttonType: {
+			type: "string",
+			default: null,
 		},
 		buttonAltText: {
 			type: "string",
@@ -50,7 +54,7 @@ export const settings = {
 			className,
 			innerBlocks
 		} = props;
-		const {buttonType, buttonAltText, addClass, hasContent} = attributes;
+		const {defaultButtonType, buttonType, buttonAltText, addClass, hasContent} = attributes;
 
 		wp.element.useEffect(() => {
 			let isEmpty = true;
@@ -72,12 +76,9 @@ export const settings = {
 			classBtn += ' ' + addClass;
 		}
 
-		let MY_TEMPLATE = [];
-		if (buttonType === 'button-secondary') {
-			MY_TEMPLATE.push([ 'lettera/button-secondary', { placeholder: 'Button text' } ]);
-		} else {
-			MY_TEMPLATE.push([ 'lettera/button-main', { placeholder: 'Button text' } ]);
-		}
+		let MY_TEMPLATE = [
+			[ `lettera/${buttonType ? buttonType : defaultButtonType}`, { placeholder: 'Button text' } ]
+		];
 
 		if (buttonAltText) {
 			MY_TEMPLATE.push([ 'lettera/text-small', { placeholder: 'Text bellow button', addClass: 'text-gray' } ]);

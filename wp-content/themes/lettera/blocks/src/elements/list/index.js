@@ -40,6 +40,18 @@ export const settings = {
 		placeholder: {
 			type: "string",
 			default: 'Write list…',
+		},
+		defaultTextAlign: {
+			type: "string",
+			default: "left"
+		},
+		textAlign: {
+			type: "string",
+			default: null
+		},
+		canDelete: {
+			type: 'boolean',
+			default: false
 		}
 	},
 	edit: withSelect( ( select, blockData ) => {
