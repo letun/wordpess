@@ -8,6 +8,7 @@ import { Toolbar, ToolbarButton } from '@wordpress/components';
 import Icon from '../../global/icons';
 import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
+import classnames from "classnames";
 
 export const name = 'lettera/list';
 
@@ -41,13 +42,13 @@ export const settings = {
 			type: "string",
 			default: 'Write list…',
 		},
-		defaultTextAlign: {
-			type: "string",
-			default: "left"
-		},
 		textAlign: {
 			type: "string",
 			default: null
+		},
+		isGlobalTextAlign: {
+			type: "boolean",
+			default: false
 		},
 		canDelete: {
 			type: 'boolean',
@@ -64,7 +65,7 @@ export const settings = {
 		};
 	} )( props => {
 		const {
-			attributes: { ordered, values, type, reversed, start, placeholder },
+			attributes: { ordered, values, type, reversed, start, placeholder, textAlign, isGlobalTextAlign },
 			setAttributes,
 			clientId,
 			parentClientId,
@@ -72,11 +73,22 @@ export const settings = {
 			className,
 		} = props;
 
+		wp.element.useEffect(() => {
+			if (isGlobalTextAlign) {
+				setAttributes({textAlign: parentBlockAttributes.textAlign});
+			}
+		});
+
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
 		const tagName = ordered ? 'ol' : 'ul';
 		const isOrdered = true;
 		const isUnordered = false;
+
+		let addClass = [];
+		if ( textAlign === 'text-center' ) {
+			addClass.push('text-center');
+		}
 
 		return (
 			<>
@@ -91,6 +103,7 @@ export const settings = {
 					reversed={ reversed }
 					type={ type }
 					allowedFormats={[ 'core/bold', 'core/italic', 'core/link' ] }
+					className={ classnames(addClass, className) }
 				/>
 				<BlockControls>
 					<Toolbar>
@@ -122,9 +135,14 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: {ordered, values, type, reversed, start}
+			attributes: {ordered, values, type, reversed, start, textAlign}
 		} = props;
 		const tagName = ordered ? 'ol' : 'ul';
+
+		let addClass = [];
+		if (textAlign === 'text-center') {
+			addClass.push('text-center');
+		}
 
 		return (
 			values && <RichText.Content
@@ -134,6 +152,7 @@ export const settings = {
 				reversed={ reversed }
 				start={ start }
 				multiline="li"
+				className={ classnames(addClass) }
 			/>
 		);
 	},

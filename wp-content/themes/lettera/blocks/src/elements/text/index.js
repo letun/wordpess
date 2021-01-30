@@ -27,13 +27,13 @@ export const settings = {
 			type: 'string',
 			default: 'Text here…',
 		},
-		defaultTextAlign: {
-			type: "string",
-			default: "left"
-		},
 		textAlign: {
 			type: "string",
 			default: null
+		},
+		isGlobalTextAlign: {
+			type: "boolean",
+			default: false
 		},
 		canDelete: {
 			type: 'boolean',
@@ -86,16 +86,20 @@ export const settings = {
 			className,
 		} = props;
 
-		const { content, placeholder, defaultTextAlign, textAlign } = attributes;
+		const { content, placeholder, textAlign, isGlobalTextAlign } = attributes;
 
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
+		wp.element.useEffect(() => {
+			if (isGlobalTextAlign) {
+				setAttributes({textAlign: parentBlockAttributes.textAlign});
+			}
+		});
+
 		let addClass = [];
-		if ((textAlign ? textAlign : defaultTextAlign) == 'text-center') {
+		if ( textAlign === 'text-center' ) {
 			addClass.push('text-center');
 		}
-
-		console.log(addClass, textAlign, defaultTextAlign);
 
 		return (
 			<>
@@ -135,11 +139,11 @@ export const settings = {
 	}),
 	save: ( props ) => {
 		const {
-			attributes: { content, defaultTextAlign, textAlign }
+			attributes: { content, textAlign }
 		} = props;
 
 		let addClass = [];
-		if ((textAlign ? textAlign : defaultTextAlign) == 'text-center') {
+		if (textAlign === 'text-center') {
 			addClass.push('text-center');
 		}
 

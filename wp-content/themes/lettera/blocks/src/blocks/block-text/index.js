@@ -76,10 +76,8 @@ export const settings = {
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
 		const MY_TEMPLATE = [
-			[ 'lettera/text', { placeholder: 'Write text here', textAlign: (textAlign ? textAlign : defaultTextAlign), canDelete: true } ],
+			[ 'lettera/text', { placeholder: 'Write text here', isGlobalTextAlign: true, canDelete: true } ],
 		];
-
-		console.log(MY_TEMPLATE, textAlign, defaultTextAlign);
 
 		const ALLOWED_BLOCKS = [
 			'lettera/text',
@@ -97,7 +95,7 @@ export const settings = {
 				/>
 				<AddBlockButton
 					allowedBlocks={ ALLOWED_BLOCKS }
-					attributes={ [defaultTextAlign, textAlign] }
+					attributes={ [{isGlobalTextAlign: true}] }
 					clientId={ clientId }
 				/>
 			</>

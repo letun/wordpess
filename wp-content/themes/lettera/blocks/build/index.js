@@ -6392,10 +6392,9 @@ var settings = {
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
     var MY_TEMPLATE = [['lettera/text', {
       placeholder: 'Write text here',
-      textAlign: textAlign ? textAlign : defaultTextAlign,
+      isGlobalTextAlign: true,
       canDelete: true
     }]];
-    console.log(MY_TEMPLATE, textAlign, defaultTextAlign);
     var ALLOWED_BLOCKS = ['lettera/text', 'lettera/list'];
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
       allowedBlocks: ALLOWED_BLOCKS,
@@ -6404,7 +6403,9 @@ var settings = {
       renderAppender: false
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_addBlockButton__WEBPACK_IMPORTED_MODULE_9__["default"], {
       allowedBlocks: ALLOWED_BLOCKS,
-      attributes: [defaultTextAlign, textAlign],
+      attributes: [{
+        isGlobalTextAlign: true
+      }],
       clientId: clientId
     }));
   }),
@@ -6555,7 +6556,6 @@ var settings = {
       defaultButtonType: 'button-main',
       textAlign: 'text-center'
     }]];
-    console.log(MY_TEMPLATE, textAlign);
     var ALLOWED_BLOCKS = ['lettera/preheader', 'lettera/header', 'lettera/heading', 'lettera/text', 'lettera/list', 'lettera/btn', 'lettera/text-small', 'lettera/block-text', 'lettera/block-btn'];
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"])(clientId, props.attributes);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_container__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -7836,6 +7836,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _global_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../global/icons */ "./src/global/icons.js");
 /* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
 /* harmony import */ var _global_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../global/config */ "./src/global/config.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -7874,13 +7877,13 @@ var settings = {
       type: "string",
       default: 'Write list…'
     },
-    defaultTextAlign: {
-      type: "string",
-      default: "left"
-    },
     textAlign: {
       type: "string",
       default: null
+    },
+    isGlobalTextAlign: {
+      type: "boolean",
+      default: false
     },
     canDelete: {
       type: 'boolean',
@@ -7903,15 +7906,30 @@ var settings = {
         reversed = _props$attributes.reversed,
         start = _props$attributes.start,
         placeholder = _props$attributes.placeholder,
+        textAlign = _props$attributes.textAlign,
+        isGlobalTextAlign = _props$attributes.isGlobalTextAlign,
         setAttributes = props.setAttributes,
         clientId = props.clientId,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className;
+    wp.element.useEffect(function () {
+      if (isGlobalTextAlign) {
+        setAttributes({
+          textAlign: parentBlockAttributes.textAlign
+        });
+      }
+    });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"])(parentClientId, parentBlockAttributes);
     var tagName = ordered ? 'ol' : 'ul';
     var isOrdered = true;
     var isUnordered = false;
+    var addClass = [];
+
+    if (textAlign === 'text-center') {
+      addClass.push('text-center');
+    }
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
       tagName: tagName,
       multiline: "li",
@@ -7925,7 +7943,8 @@ var settings = {
       start: start,
       reversed: reversed,
       type: type,
-      allowedFormats: ['core/bold', 'core/italic', 'core/link']
+      allowedFormats: ['core/bold', 'core/italic', 'core/link'],
+      className: classnames__WEBPACK_IMPORTED_MODULE_7___default()(addClass, className)
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
       icon: 'trash',
       title: 'Remove block',
@@ -7962,15 +7981,23 @@ var settings = {
         values = _props$attributes2.values,
         type = _props$attributes2.type,
         reversed = _props$attributes2.reversed,
-        start = _props$attributes2.start;
+        start = _props$attributes2.start,
+        textAlign = _props$attributes2.textAlign;
     var tagName = ordered ? 'ol' : 'ul';
+    var addClass = [];
+
+    if (textAlign === 'text-center') {
+      addClass.push('text-center');
+    }
+
     return values && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
       tagName: tagName,
       value: values,
       type: type,
       reversed: reversed,
       start: start,
-      multiline: "li"
+      multiline: "li",
+      className: classnames__WEBPACK_IMPORTED_MODULE_7___default()(addClass)
     });
   }
 };
@@ -8257,13 +8284,13 @@ var settings = {
       type: 'string',
       default: 'Text here…'
     },
-    defaultTextAlign: {
-      type: "string",
-      default: "left"
-    },
     textAlign: {
       type: "string",
       default: null
+    },
+    isGlobalTextAlign: {
+      type: "boolean",
+      default: false
     },
     canDelete: {
       type: 'boolean',
@@ -8309,16 +8336,22 @@ var settings = {
         className = props.className;
     var content = attributes.content,
         placeholder = attributes.placeholder,
-        defaultTextAlign = attributes.defaultTextAlign,
-        textAlign = attributes.textAlign;
+        textAlign = attributes.textAlign,
+        isGlobalTextAlign = attributes.isGlobalTextAlign;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_9__["default"])(parentClientId, parentBlockAttributes);
+    wp.element.useEffect(function () {
+      if (isGlobalTextAlign) {
+        setAttributes({
+          textAlign: parentBlockAttributes.textAlign
+        });
+      }
+    });
     var addClass = [];
 
-    if ((textAlign ? textAlign : defaultTextAlign) == 'text-center') {
+    if (textAlign === 'text-center') {
       addClass.push('text-center');
     }
 
-    console.log(addClass, textAlign, defaultTextAlign);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Toolbar"], {
       className: "components-toolbar-group--no-right-border"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToolbarButton"], {
@@ -8356,11 +8389,10 @@ var settings = {
   save: function save(props) {
     var _props$attributes = props.attributes,
         content = _props$attributes.content,
-        defaultTextAlign = _props$attributes.defaultTextAlign,
         textAlign = _props$attributes.textAlign;
     var addClass = [];
 
-    if ((textAlign ? textAlign : defaultTextAlign) == 'text-center') {
+    if (textAlign === 'text-center') {
       addClass.push('text-center');
     }
 

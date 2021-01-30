@@ -82,8 +82,6 @@ export const settings = {
 			[ 'lettera/block-btn', { button_text: true, defaultButtonType: 'button-main', textAlign: 'text-center' } ],
 		];
 
-		console.log(MY_TEMPLATE, textAlign);
-
 		const ALLOWED_BLOCKS = [
 			'lettera/preheader',
 			'lettera/header',
