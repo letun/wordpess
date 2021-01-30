@@ -2,7 +2,7 @@ const Icon = [];
 
 /* Elements */
 Icon.preheader = <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"/></svg>;
-Icon.text = <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M5 4v3h5.5v12h3V7H19V4H5z"/></svg>;
+Icon.paragraph = <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M5 4v3h5.5v12h3V7H19V4H5z"/></svg>;
 Icon.list = <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><g><path d="M9 19h12v-2H9v2zm0-6h12v-2H9v2zm0-8v2h12V5H9zm-4-.5c-.828 0-1.5.672-1.5 1.5S4.172 7.5 5 7.5 6.5 6.828 6.5 6 5.828 4.5 5 4.5zm0 6c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm0 6c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5z"></path></g></svg>;
 Icon.button = <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><path fill="none" d="M0 0h24v24H0V0z"></path><g><path d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z"></path></g></svg>;
 
@@ -25,8 +25,7 @@ Icon._button = [];
 Icon._button['typeButton'] = <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M-1-1h26v26H-1z"/><g><text font-family="Helvetica, Arial, sans-serif" font-size="20" y="18.9" x="5.33" stroke-width="0" stroke="#000">P</text></g></svg>;
 Icon._button['typeLink'] = <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M-1-1h26v26H-1z"/><g><text font-family="Helvetica, Arial, sans-serif" font-size="20" y="18.9" x="5.33" stroke-width="0" stroke="#000">S</text></g></svg>;
 Icon._button['color'] = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#000000" role="img" aria-hidden="true" focusable="false"><path d="M9 18.6L3.5 13l1-1L9 16.4l9.5-9.9 1 1z"></path></svg>
-/* Tile */
-Icon.promo = <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="#555D66" stroke-width="2"><path d="M1 3h10v18H1zM15 10h9M15 14h6"/></g></svg>;
-Icon.cta = <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="#555D66" stroke-width="2"><rect transform="rotate(90 12 18)" x="10" y="12" width="4" height="12" rx="2"></rect><path d="M4 6h16M8 10h8"></path></g></svg>;
 
+/* Tiles */
+Icon.text = <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="#555D66" stroke-width="2"><path d="M7 6h10M3 10h18M3 14h18M3 18h18"/></g></svg>;
 export default Icon;

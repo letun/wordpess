@@ -76,11 +76,11 @@ export const settings = {
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
 		const MY_TEMPLATE = [
-			[ 'lettera/text', { placeholder: 'Write text here', isGlobalTextAlign: true, canDelete: true } ],
+			[ 'lettera/paragraph', { placeholder: 'Write text here', isGlobalTextAlign: true, canDelete: true } ],
 		];
 
 		const ALLOWED_BLOCKS = [
-			'lettera/text',
+			'lettera/paragraph',
 			'lettera/list'
 		];
 

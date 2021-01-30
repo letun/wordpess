@@ -28,7 +28,7 @@ function lettera_blocks() {
 		get_template_directory_uri() . '/lettera-admin.css'
 	);
 
-	register_block_type( 'lettera/cover', array(
+	register_block_type( 'lettera/text', array(
 		'editor_script' => 'lettera-blocks',
 		'render_callback' => 'render_lettera_blocks',
 		'editor_style'    => 'lettera-admin-css'
@@ -38,7 +38,7 @@ function lettera_blocks() {
 	register_block_type( 'lettera/preheader');
 	register_block_type( 'lettera/header');
 	register_block_type( 'lettera/heading');
-	register_block_type( 'lettera/text');
+	register_block_type( 'lettera/paragraph');
 	register_block_type( 'lettera/list');
 	register_block_type( 'lettera/button');
 	register_block_type( 'lettera/text-small');

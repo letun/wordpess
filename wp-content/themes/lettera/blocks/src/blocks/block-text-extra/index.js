@@ -39,11 +39,11 @@ export const settings = {
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
 		const MY_TEMPLATE = [
-			[ 'lettera/text', { placeholder: 'Write text here' } ],
+			[ 'lettera/paragraph', { placeholder: 'Write text here' } ],
 		];
 
 		const ALLOWED_BLOCKS = [
-			'lettera/text',
+			'lettera/paragraph',
 			'lettera/list',
 			'lettera/heading',
 		];
@@ -73,7 +73,7 @@ export const settings = {
 		for (let i = 0; i < innerBlocks.length; i++) {
 			if (
 				(
-					innerBlocks[i].name === 'lettera/text'
+					innerBlocks[i].name === 'lettera/paragraph'
 					&& (
 						innerBlocks[i].attributes.content !== ''
 						|| innerBlocks[i].attributes.content === undefined

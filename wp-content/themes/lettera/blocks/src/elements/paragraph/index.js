@@ -9,10 +9,10 @@ import Icon from '../../global/icons';
 import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
 
-export const name = 'lettera/text';
+export const name = 'lettera/paragraph';
 
 export const settings = {
-	title: 'Text',
+	title: 'Paragraph',
 	icon: paragraph,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,

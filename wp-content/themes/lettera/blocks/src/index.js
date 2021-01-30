@@ -4,7 +4,7 @@ import {registerBlockType} from '@wordpress/blocks';
 import * as elPreheader from './elements/preheader';
 import * as elHeader from './elements/header'
 import * as elHeading from './elements/heading';
-import * as elText from './elements/text';
+import * as elParagraph from './elements/paragraph';
 import * as elList from './elements/list';
 import * as elButtonMain from './elements/button-main';
 import * as elButtonSecondary from './elements/button-secondary';
@@ -17,13 +17,13 @@ import * as blockText from './blocks/block-text';
 import * as blockBtn from './blocks/block-btn';
 
 //Components
-import * as cmCover from './components/cover';
+import * as cmText from './components/text';
 
 const blocks = [
 	elPreheader,
 	elHeader,
 	elHeading,
-	elText,
+	elParagraph,
 	elList,
 	elButtonMain,
 	elButtonSecondary,
@@ -32,7 +32,7 @@ const blocks = [
 	blockBtn,
 	blockText,
 
-	cmCover
+	cmText
 ];
 
 function registerBlock(block) {

@@ -31,6 +31,10 @@ export const settings = {
 			type: 'string',
 			default: 'Write preheading…',
 		},
+		textAlign: {
+			type: 'string',
+			default: 'text-left'
+		},
 		addClass: {
 			type: 'array',
 			source: 'attribute',
@@ -55,17 +59,12 @@ export const settings = {
 			className,
 		} = props;
 
-		const { content, placeholder, addClass } = attributes;
+		const { content, placeholder, addClass, textAlign} = attributes;
 
-		if (parentBlockAttributes.textColor === 'white') {
-			//setAttributes( { addClass: 'text-white' } );
-		} else {
-			//setAttributes( { addClass: 'text-gray' } );
+		let classElement = ["text-normal", "text-gray", addClass];
+		if (textAlign === 'text-center') {
+			classElement.push('text-center');
 		}
-
-		let classElement = ["text-normal", addClass];
-
-		//classElement.push(parentBlockAttributes.textColor === 'white' ? "text-white" : "text-gray");
 
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
@@ -90,9 +89,12 @@ export const settings = {
 			className
 		} = props;
 
-		const { content, addClass } = attributes;
+		const { content, textAlign, addClass } = attributes;
 
-		let classElement = ["text-normal", addClass];
+		let classElement = ["text-normal", "text-gray", addClass];
+		if (textAlign === 'text-center') {
+			classElement.push('text-center');
+		}
 
 		return (
 			content && <RichText.Content

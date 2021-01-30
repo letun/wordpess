@@ -98,6 +98,8 @@
       color: #2199E8; }
   .post-type-lettera .block-editor-writing-flow .text-gray {
     color: #979797; }
+  .post-type-lettera .block-editor-writing-flow .text-normal {
+    font-weight: normal; }
   .post-type-lettera .block-editor-writing-flow span.preheader {
     display: none !important;
     visibility: hidden;
@@ -443,7 +445,7 @@
           text-align: center;
           text-decoration: none; }
           .post-type-lettera .block-editor-writing-flow table.button-secondary table td a span {
-            border-bottom: 3px solid transparent; }
+            border-bottom: 3gpx solid transparent; }
   .post-type-lettera .block-editor-writing-flow table.button-secondary.button-secondary--yellow table td a span {
     border-bottom-color: #FAE053; }
   .post-type-lettera .block-editor-writing-flow table.button-secondary.button-secondary--black table td a span {

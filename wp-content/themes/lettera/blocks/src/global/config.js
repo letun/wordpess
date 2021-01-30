@@ -6,7 +6,7 @@ LetteraConfig.childElemets = [];
 
 /* Elements */
 LetteraConfig.childElemets.mainBlocks = [
-	'nomi/cover',
+	'lettera/text',
 ];
 
 export default LetteraConfig;

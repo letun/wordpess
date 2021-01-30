@@ -16,11 +16,13 @@ import Container from "../../layout/container";
 import Row from "../../layout/row";
 import Column from "../../layout/column";
 
-export const name = 'lettera/cover';
+import { ReactComponent as MyIcon } from '../../../../svg/components/text.svg';
+
+export const name = 'lettera/text';
 
 export const settings = {
-	title: 'Cover',
-	icon: Icon.promo,
+	title: 'Text',
+	icon: MyIcon,
 	category: 'common',
 	attributes: {
 		textAlign: {
@@ -76,7 +78,7 @@ export const settings = {
 		}
 
 		const MY_TEMPLATE = [
-			[ 'lettera/preheader', { placeholder: 'Preheader', addClass: ['text-gray', 'text-center'] } ],
+			[ 'lettera/preheader', { placeholder: 'Preheader', textAlign: 'text-center' } ],
 			[ 'lettera/header', { placeholder: 'Header', level: 1, addClass: ['text-center'] } ],
 			[ 'lettera/block-text', { textAlign: textAlign } ],
 			[ 'lettera/block-btn', { button_text: true, defaultButtonType: 'button-main', textAlign: 'text-center' } ],
@@ -86,7 +88,7 @@ export const settings = {
 			'lettera/preheader',
 			'lettera/header',
 			'lettera/heading',
-			'lettera/text',
+			'lettera/paragraph',
 			'lettera/list',
 			'lettera/btn',
 			'lettera/text-small',
