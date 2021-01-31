@@ -6349,13 +6349,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _global_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../global/icons */ "./src/global/icons.js");
-/* harmony import */ var _global_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../global/config */ "./src/global/config.js");
-/* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
-/* harmony import */ var _controls_addBlockButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../controls/addBlockButton */ "./src/controls/addBlockButton.js");
-
+/* harmony import */ var _global_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../global/icons */ "./src/global/icons.js");
+/* harmony import */ var _global_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../global/config */ "./src/global/config.js");
+/* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
+/* harmony import */ var _controls_addBlockButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../controls/addBlockButton */ "./src/controls/addBlockButton.js");
 
 
 
@@ -6368,9 +6365,9 @@ __webpack_require__.r(__webpack_exports__);
 var name = 'lettera/block-text';
 var settings = {
   title: 'Block: Text',
-  icon: _global_icons__WEBPACK_IMPORTED_MODULE_6__["default"].text,
-  category: _global_config__WEBPACK_IMPORTED_MODULE_7__["default"].category,
-  parent: _global_config__WEBPACK_IMPORTED_MODULE_7__["default"].childElemets.mainBlocks,
+  icon: _global_icons__WEBPACK_IMPORTED_MODULE_5__["default"].preheader,
+  category: _global_config__WEBPACK_IMPORTED_MODULE_6__["default"].category,
+  parent: _global_config__WEBPACK_IMPORTED_MODULE_6__["default"].childElemets.mainBlocks,
   attributes: {
     hasContent: {
       type: "boolean",
@@ -6426,7 +6423,7 @@ var settings = {
         hasContent: !isEmpty
       });
     });
-    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
+    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"])(parentClientId, parentBlockAttributes);
     var MY_TEMPLATE = [['lettera/paragraph', {
       placeholder: 'Write text here',
       isGlobalTextAlign: true,
@@ -6438,7 +6435,7 @@ var settings = {
       template: MY_TEMPLATE,
       templateLock: false,
       renderAppender: false
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_addBlockButton__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_addBlockButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
       allowedBlocks: ALLOWED_BLOCKS,
       attributes: [{
         isGlobalTextAlign: true

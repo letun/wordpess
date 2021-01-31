@@ -2,7 +2,6 @@ import { createBlock } from '@wordpress/blocks';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { withState, compose } from '@wordpress/compose';
-import classnames from "classnames";
 
 import Icon from '../../global/icons';
 import Config from '../../global/config';
@@ -13,7 +12,7 @@ export const name = 'lettera/block-text';
 
 export const settings = {
 	title: 'Block: Text',
-	icon: Icon.text,
+	icon: Icon.preheader,
 	category: Config.category,
 	parent: Config.childElemets.mainBlocks,
 	attributes: {
