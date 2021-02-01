@@ -42,7 +42,7 @@ export const settings = {
 			source: "attribute",
 			selector: "a",
 			attribute: "href",
-			default: "https://my.ecwid.com/cp#register",
+			default: "https://www.letun.dev/",
 		},
 		linkTitle: {
 			type: "string",

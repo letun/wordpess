@@ -13,9 +13,8 @@
 															<tbody>
 															<tr>
 																<td class="column-inner">
-																	<p><a href="https://my.ecwid.com/cp/" class="first">Sign in</a></p>
-																	<p><a href="https://support.ecwid.com/">Help Center</a></p>
-																	<p><a href="https://www.ecwid.com/">Ecwid.com</a></p>
+																	<p><a href="#" class="first">Sign in</a></p>
+																	<p><a href="#">Website</a></p>
 																	<p><a href="{{unsubscribe_url}}">Unsubscribe</a></p>
 																</td>
 															</tr>
@@ -28,28 +27,27 @@
 															<tbody>
 															<tr>
 																<td class="column-inner">
-																	<p class="text-gray">Download our app for <a href="https://itunes.apple.com/us/app/ecwid/id626731456?mt=8">Iphone</a> and <a href="https://play.google.com/store/apps/details?id=com.ecwid.android">Android</a></p>
-																	<p class="text-gray">687 S. Coast Highway 101, Suite 239, Encinitas, CA 92024 USA</p>
+																	<p class="text-gray">Download our app for <a href="#">Iphone</a> and <a href="#">Android</a></p>
 																	<table width="240" cellpadding="0" cellspacing="0" class="footer-social-links">
 																		<tbody>
 																		<tr>
 																			<td align="left" width="40">
-																				<a href="https://www.facebook.com/ecwid"><img src="https://don16obqbay2c.cloudfront.net/lettera/img/footer/fb@2x.png" width="32" height="32" alt="Facebook"></a>
+																				<a href="#"><img src="/wp-content/themes/lettera/images/footer/social/fb.png" width="32" height="32" alt="Facebook"></a>
 																			</td>
 																			<td align="left" width="40">
-																				<a href="https://www.instagram.com/ecwid/"><img src="https://don16obqbay2c.cloudfront.net/lettera/img/footer/in@2x.png" width="32" height="32" alt="Instagram"></a>
+																				<a href="#"><img src="/wp-content/themes/lettera/images/footer/social/in.png" width="32" height="32" alt="Instagram"></a>
 																			</td>
 																			<td align="left" width="40">
-																				<a href="https://ecwid.com/podcast"><img src="https://don16obqbay2c.cloudfront.net/lettera/img/footer/sc@2x.png" width="32" height="32" alt="Podcast"></a>
+																				<a href="#"><img src="/wp-content/themes/lettera/images/footer/social/sc.png" width="32" height="32" alt="Podcast"></a>
 																			</td>
 																			<td align="left" width="40">
-																				<a href="https://twitter.com/ecwid"><img src="https://don16obqbay2c.cloudfront.net/lettera/img/footer/tw@2x.png" width="32" height="32" alt="Twitter"></a>
+																				<a href="#"><img src="/wp-content/themes/lettera/images/footer/social/tw.png" width="32" height="32" alt="Twitter"></a>
 																			</td>
 																			<td align="left" width="40">
-																				<a href="http://www.youtube.com/user/EcwidTeam"><img src="https://don16obqbay2c.cloudfront.net/lettera/img/footer/yt@2x.png" width="32" height="32" alt="Youtube"></a>
+																				<a href="#"><img src="/wp-content/themes/lettera/images/footer/social/yt.png" width="32" height="32" alt="Youtube"></a>
 																			</td>
 																			<td align="left" width="40">
-																				<a href="https://www.linkedin.com/company/ecwid"><img src="https://don16obqbay2c.cloudfront.net/lettera/img/footer/ln@2x.png" width="32" height="32" alt="LinkedIn"></a>
+																				<a href="#"><img src="/wp-content/themes/lettera/images/footer/social/ln.png" width="32" height="32" alt="LinkedIn"></a>
 																			</td>
 																		</tr>
 																		</tbody>

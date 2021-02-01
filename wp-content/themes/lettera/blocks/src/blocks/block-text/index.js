@@ -117,32 +117,3 @@ export const settings = {
 		);
 	},
 };
-/*
-TODO: AddBlockButton
-<Toolbar className={"nomi-block__add-block-toolbar"}>
-	<Button
-		icon={ Icon._plus }
-		className={ "nomi-block__add-block-button" }
-		onClick={ () => {
-			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, clientId);
-		} }
-	/>
-	<Button
-		icon={ Icon.text }
-		onClick={ () => {
-			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, clientId);
-		} }
-	/>
-	<Button
-		icon={ Icon.list }
-		onClick={ () => {
-			insertBlock(createBlock('calypso/list', {canDelete: true}), 100, clientId);
-		} }
-	/>
-</Toolbar>
-//Try to add AddBlockButton
-<AddBlockButton
-	allowedBlocks={ ALLOWED_BLOCKS }
-	clientId={ clientId }
-/>
- */

@@ -6452,35 +6452,6 @@ var settings = {
     return hasContent && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, null);
   }
 };
-/*
-TODO: AddBlockButton
-<Toolbar className={"nomi-block__add-block-toolbar"}>
-	<Button
-		icon={ Icon._plus }
-		className={ "nomi-block__add-block-button" }
-		onClick={ () => {
-			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, clientId);
-		} }
-	/>
-	<Button
-		icon={ Icon.text }
-		onClick={ () => {
-			insertBlock(createBlock('calypso/text', {canDelete: true}), 100, clientId);
-		} }
-	/>
-	<Button
-		icon={ Icon.list }
-		onClick={ () => {
-			insertBlock(createBlock('calypso/list', {canDelete: true}), 100, clientId);
-		} }
-	/>
-</Toolbar>
-//Try to add AddBlockButton
-<AddBlockButton
-	allowedBlocks={ ALLOWED_BLOCKS }
-	clientId={ clientId }
-/>
- */
 
 /***/ }),
 
@@ -7032,10 +7003,12 @@ var toolbarButtonColor = /*#__PURE__*/function (_Component) {
           isActive = _this$props.isActive,
           _onChange = _this$props.onChange,
           setState = _this$props.setState;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Toolbar"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToolbarButton"], {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Toolbar"], {
+        className: "la-button-color-panel"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToolbarButton"], {
         icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"]._button.color,
         isPressed: isActive,
-        className: ["nomi-admin__color-button-circular", "nomi-admin__color-button-circular--" + buttonColor],
+        className: ["la-button-color-panel__button", "la-button-color-panel__button--" + buttonColor],
         onClick: function onClick() {
           return setState(function (state) {
             return {
@@ -7061,7 +7034,7 @@ var toolbarButtonColor = /*#__PURE__*/function (_Component) {
         colors: btnColors,
         disableCustomColors: true,
         clearable: false,
-        className: ["nomi-admin__color-button-palette"]
+        className: ["la-button-color-panel__palette"]
       })));
     }
   }]);
@@ -7070,20 +7043,6 @@ var toolbarButtonColor = /*#__PURE__*/function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__["withState"])()(toolbarButtonColor));
-/*
-TODO: Color Button with underline color
-<ToolbarButton
-	icon={"admin-appearance"}
-	isPressed={ isActive }
-	className={["format-library-text-color-button", "nomi-admin__color-button"]}
-	onClick={ () => setState( state => ( { isActive: !isActive } ) ) }
->
-	<ColorIndicator
-		colorValue={ getColorObjectByAttributeValues(btnColors, buttonColor)?.color }
-		className={["format-library-text-color-button__indicator", "nomi-admin__color-button-indicator"]}
-	/>
-</ToolbarButton>
- */
 
 /***/ }),
 
@@ -7247,7 +7206,7 @@ var settings = {
       source: "attribute",
       selector: "a",
       attribute: "href",
-      default: "https://my.ecwid.com/cp#register"
+      default: "https://www.letun.dev/lettera"
     },
     linkTitle: {
       type: "string",
@@ -7475,7 +7434,7 @@ var settings = {
       source: "attribute",
       selector: "a",
       attribute: "href",
-      default: "https://my.ecwid.com/cp#register"
+      default: "https://www.letun.dev/"
     },
     linkTitle: {
       type: "string",
@@ -8214,7 +8173,6 @@ var settings = {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToolbarButton"], {
       icon: 'trash',
       title: 'Remove block',
-      className: "nomi--delete-button",
       onClick: function onClick() {
         return wp.data.dispatch('core/block-editor').removeBlock(clientId);
       }

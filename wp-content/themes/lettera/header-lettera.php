@@ -26,11 +26,11 @@
 					                    <tr>
 						                    <td align="center">
 							                    <center>
-								                    <a href="https://www.ecwid.com/" align="center" class="float-center">
-									                    <img src="https://don16obqbay2c.cloudfront.net/lettera/img/header/ecwid-logo-black.png" width="112" height="24" alt="" class="logo light-img">
+								                    <a href="https://www.letun.dev/" align="center" class="float-center">
+									                    <img src="/wp-content/themes/lettera/images/header/logo/lettera.png" width="108" height="24" alt="Lettera" class="logo light-img">
 
 									                    <!--[if !mso]><! --><div class="dark-img" align="center">
-										                    <img src="https://don16obqbay2c.cloudfront.net/lettera/img/header/ecwid-logo-white.png" width="112" height="24" alt="Ecwid" class="logo">
+										                    <img src="/wp-content/themes/lettera/images/header/logo/lettera-white.png" width="108" height="24" alt="Lettera" class="logo">
 									                    </div><!--<![endif]-->
 								                    </a>
 							                    </center>

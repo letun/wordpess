@@ -108,7 +108,6 @@ export const settings = {
 						<ToolbarButton
 							icon={ 'trash' }
 							title={ 'Remove block' }
-							className={"nomi--delete-button"}
 							onClick={ () => wp.data.dispatch( 'core/block-editor' ).removeBlock(clientId) }
 						/>
 					</Toolbar>

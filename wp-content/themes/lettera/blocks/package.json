@@ -1,10 +1,10 @@
 {
-  "name": "nomi-cover",
+  "name": "lettera",
   "version": "0.9.0",
   "private": true,
-  "description": "Ecwid Nomi: Page cover component",
-  "author": "Ecwid",
-  "homepage": "https://www.ecwid.com/",
+  "description": "Lettera: Email builder",
+  "author": "Serge Andreev",
+  "homepage": "https://www.letun.dev/",
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
     "@wordpress/components": "^9.5.0",

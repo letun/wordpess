@@ -19,11 +19,11 @@ class toolbarButtonColor extends Component {
 		const { buttonColor, btnColors, isActive, onChange, setState } = this.props;
 
 		return (
-			<Toolbar>
+			<Toolbar className={ "la-button-color-panel" }>
 				<ToolbarButton
 					icon={ Icons._button.color }
 					isPressed={ isActive }
-					className={["nomi-admin__color-button-circular", "nomi-admin__color-button-circular--" + buttonColor]}
+					className={["la-button-color-panel__button", "la-button-color-panel__button--" + buttonColor]}
 					onClick={ () => setState( state => ( { isActive: !isActive } ) ) }
 				/>
 				{isActive && (
@@ -38,7 +38,7 @@ class toolbarButtonColor extends Component {
 							colors={ btnColors }
 							disableCustomColors={ true }
 							clearable={ false }
-							className={["nomi-admin__color-button-palette"]}
+							className={["la-button-color-panel__palette"]}
 						/>
 					</Popover>
 				) }
@@ -48,18 +48,3 @@ class toolbarButtonColor extends Component {
 }
 
 export default withState()(toolbarButtonColor);
-
-/*
-TODO: Color Button with underline color
-<ToolbarButton
-	icon={"admin-appearance"}
-	isPressed={ isActive }
-	className={["format-library-text-color-button", "nomi-admin__color-button"]}
-	onClick={ () => setState( state => ( { isActive: !isActive } ) ) }
->
-	<ColorIndicator
-		colorValue={ getColorObjectByAttributeValues(btnColors, buttonColor)?.color }
-		className={["format-library-text-color-button__indicator", "nomi-admin__color-button-indicator"]}
-	/>
-</ToolbarButton>
- */
