@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var jslint = require('gulp-jslint');
-var jshint = require('gulp-jshint');
+var eslint = require('gulp-eslint');
 var phplint = require('gulp-phplint');
 var scsslint = require('gulp-stylelint');
 var postcss = require('gulp-postcss');
@@ -69,16 +69,17 @@ gulp.task('jslint', function () {
 		.pipe(jslint.reporter('default', true));
 });
 
-gulp.task('jshint', function () {
+gulp.task('eslint', function () {
 	return gulp.src(['./wp-content/themes/lettera/blocks/src/**/*.js'])
-		.pipe(jshint({}))
-		.pipe(jshint.reporter('default', true));
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
 });
 
 gulp.task('scsslint', function lintCssTask() {
 	return gulp
 		.src('./wp-content/themes/lettera/scss/lettera/**/*.scss')
-		.pipe(scsslint({
+		.pipe(eslint({
 			reporters: [
 				{formatter: 'string', console: true}
 			]

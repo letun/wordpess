@@ -1,23 +1,23 @@
-import {registerBlockType} from '@wordpress/blocks';
+import {registerBlockType} from "@wordpress/blocks";
 
-//Elements
-import * as elPreheader from './elements/preheader';
-import * as elHeader from './elements/header'
-import * as elHeading from './elements/heading';
-import * as elParagraph from './elements/paragraph';
-import * as elList from './elements/list';
-import * as elButtonMain from './elements/button-main';
-import * as elButtonSecondary from './elements/button-secondary';
-import * as elSmallText from './elements/text-small';
+// Elements
+import * as elPreheader from "./elements/preheader";
+import * as elHeader from "./elements/header";
+import * as elHeading from "./elements/heading";
+import * as elParagraph from "./elements/paragraph";
+import * as elList from "./elements/list";
+import * as elButtonMain from "./elements/button-main";
+import * as elButtonSecondary from "./elements/button-secondary";
+import * as elSmallText from "./elements/text-small";
 
-/* Block Template: text/list */
-import * as blockText from './blocks/block-text';
+// Block Template: text/list
+import * as blockText from "./blocks/block-text";
 
-/* Block Button (templateLock): btn + small text */
-import * as blockBtn from './blocks/block-btn';
+// Block Button (templateLock): btn + small text
+import * as blockBtn from "./blocks/block-btn";
 
-//Components
-import * as cmText from './components/text';
+// Components
+import * as cmText from "./components/text";
 
 const blocks = [
 	elPreheader,
@@ -35,9 +35,13 @@ const blocks = [
 	cmText
 ];
 
-function registerBlock(block) {
-	const {name, settings} = block;
-	registerBlockType(name, settings);
-}
+blocks.forEach((block) => {
 
-blocks.forEach(registerBlock);
+	const {name, settings} = block;
+
+	return registerBlockType(
+		name,
+		settings
+	);
+
+});
