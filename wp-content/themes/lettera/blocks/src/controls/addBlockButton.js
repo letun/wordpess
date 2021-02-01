@@ -1,3 +1,4 @@
+import {withState} from "@wordpress/compose";
 import {
     getBlockType,
     createBlock
@@ -6,23 +7,25 @@ import {
     ToolbarButton,
     ToolbarGroup
 } from "@wordpress/components";
-import {withState} from "@wordpress/compose";
 
 import Icons from "../global/icons";
 
-const { Component } = wp.element;
+/* global wp */
+const {Component} = wp.element;
 
 class addBlockButton extends Component {
-    render() {
-        const { allowedBlocks, attributes, clientId } = this.props;
+
+    render () {
+
+        const {allowedBlocks, attributes, clientId} = this.props;
 
         return (
             <div className={"la-add-block-toolbar"}>
-                <ToolbarGroup title={"Add new"}  className={"la-add-block-toolbar__panel"}>
+                <ToolbarGroup title={"Add new"} className={"la-add-block-toolbar__panel"}>
                     <ToolbarButton
                         icon={Icons.plus}
-                        className={ ["la-add-block-toolbar__button-plus"] }
-                        isPressed={ true }
+                        className={["la-add-block-toolbar__button-plus"]}
+                        isPressed={true}
                     />
                     <ToolbarGroup className={"la-add-block-toolbar__button-group"}>
                         {
@@ -35,7 +38,14 @@ class addBlockButton extends Component {
                                     icon={ insertBlock.icon.src }
                                     className={ ["la-add-block-toolbar__button"] }
                                     label={ insertBlock.title }
-                                    onClick={() => wp.data.dispatch("core/block-editor").insertBlock(createBlock(blockSlug, {attributes, canDelete: true}), 100, clientId)}
+                                    onClick={() => {
+
+                                        wp.data.dispatch("core/block-editor").insertBlock(createBlock(blockSlug, {
+                                            attributes,
+                                            "canDelete": true
+                                        }), 100, clientId);
+
+                                    }}
                                 />;
 
                             })
