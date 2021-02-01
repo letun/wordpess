@@ -80,7 +80,7 @@ gulp.task('scsslint', function lintCssTask() {
 });
 
 gulp.task('eslint', function () {
-	return gulp.src(['./wp-content/themes/lettera/blocks/src/global/config.js'])
+	return gulp.src(['./wp-content/themes/lettera/blocks/src/**/*.js'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
