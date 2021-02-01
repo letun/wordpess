@@ -6724,184 +6724,86 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+/* Update Main component (/components) attribute by ComponentClientId */
 
-function getInspectorControls(clientId, blockAttributes) {
-  var blockSettings = blockAttributes.blockSettings;
-  var inspectorControls, bgPanel, textColorPanel, imagePositionPanel, imagePositionPromoPanel;
-  var imageSizePanel, spaceSizePanel, dividerPanel;
+/* global wp */
 
-  var onChangeSettings = function onChangeSettings(clientId, name, value) {
-    var componentBlock = wp.data.select('core/block-editor').getBlock(clientId);
-    componentBlock.attributes[name] = value; //wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes(clientId, {name: value});
+var onChangeSettings = function onChangeSettings(clientId, name, value) {
+  var componentBlock = wp.data.select("core/block-editor").getBlock(clientId);
+  componentBlock.attributes[name] = value;
+  wp.data.dispatch("core/block-editor").updateBlock(clientId, componentBlock);
+};
+/* Define all attribute panels by attribute name */
 
-    wp.data.dispatch('core/block-editor').updateBlock(clientId, componentBlock);
-  };
 
-  if (blockSettings && blockSettings.textAlign) {
-    imagePositionPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
-      label: "Text align",
-      value: blockAttributes.textAlign,
-      options: [{
-        label: 'Text left',
-        value: 'text-left'
-      }, {
-        label: 'Text center',
-        value: 'text-center'
-      }],
-      onChange: function onChange(value) {
-        onChangeSettings(clientId, 'textAlign', value);
-      }
-    });
-  }
+var panels = [];
 
-  if (blockSettings && blockSettings.imagePosition) {
-    imagePositionPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
-      label: "Image position",
-      value: blockAttributes.imagePosition,
-      options: [{
-        label: 'Image right',
-        value: 'right'
-      }, {
-        label: 'Image Left',
-        value: 'left'
-      }, {
-        label: 'Image center',
-        value: 'center'
-      }],
-      onChange: function onChange(value) {
-        onChangeSettings(clientId, 'imagePosition', value);
-      }
-    });
-  }
-
-  if (blockSettings && blockSettings.imagePositionPromo) {
-    imagePositionPromoPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
-      label: "Image position",
-      value: blockAttributes.imagePositionPromo,
-      options: [{
-        label: 'Image right',
-        value: 'right'
-      }, {
-        label: 'Image Left',
-        value: 'left'
-      }],
-      onChange: function onChange(value) {
-        onChangeSettings(clientId, 'imagePositionPromo', value);
-      }
-    });
-  }
-
-  if (blockSettings && blockSettings.imageSize) {
-    imageSizePanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
-      label: "Image size",
-      value: blockAttributes.imageSize,
-      options: [{
-        label: 'Small',
-        value: 'small'
-      }, {
-        label: 'Medium',
-        value: 'medium'
-      }, {
-        label: 'Large',
-        value: 'large'
-      }],
-      onChange: function onChange(value) {
-        onChangeSettings(clientId, 'imageSize', value);
-      }
-    });
-  }
-
-  if (blockSettings && blockSettings.spaceSize) {
-    spaceSizePanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
-      label: "Space size",
-      value: blockAttributes.spaceSize,
-      options: [{
-        label: 'Small',
-        value: 'small'
-      }, {
-        label: 'Medium',
-        value: 'none'
-      }],
-      onChange: function onChange(value) {
-        onChangeSettings(clientId, 'spaceSize', value);
-      }
-    });
-  }
-
-  if (blockSettings && blockSettings.bgColor) {
-    var _getColorObjectByAttr;
-
-    var bgColors = [{
-      name: 'None',
-      slug: 'none',
-      color: '#FFFFFF'
+panels.textAlign = function (clientId, value) {
+  return value && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+    label: "Text align",
+    value: value,
+    options: [{
+      "label": "Text left",
+      "value": "text-left"
     }, {
-      name: 'Black',
-      slug: 'black',
-      color: '#1D1D1D'
-    }, {
-      name: 'Yellow',
-      slug: 'yellow',
-      color: '#FAE053'
-    }, {
-      name: 'Blue',
-      slug: 'blue',
-      color: '#D3EEFF'
-    }];
-    var bgColor = blockAttributes.bgColor;
-    bgPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["BaseControl"], {
-      label: "Background color"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["ColorPalette"], {
-      colors: bgColors,
-      value: (_getColorObjectByAttr = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["getColorObjectByAttributeValues"])(bgColors, bgColor)) === null || _getColorObjectByAttr === void 0 ? void 0 : _getColorObjectByAttr.color,
-      onChange: function onChange(newColor) {
-        if (newColor) {
-          var _getColorObjectByColo;
+      "label": "Text center",
+      "value": "text-center"
+    }],
+    onChange: function onChange(newValue) {
+      onChangeSettings(clientId, "textAlign", newValue);
+    }
+  });
+};
 
-          onChangeSettings(clientId, 'bgColor', (_getColorObjectByColo = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["getColorObjectByColorValue"])(bgColors, newColor)) === null || _getColorObjectByColo === void 0 ? void 0 : _getColorObjectByColo.slug);
-        }
-      },
-      disableCustomColors: true,
-      clearable: false,
-      className: "la-inspector-control__color-panel"
-    })));
-  }
+panels.bgColor = function (clientId, bgColor) {
+  var _getColorObjectByAttr;
 
-  if (blockSettings && blockSettings.textColor) {
-    var textColor = blockAttributes.textColor;
-    textColorPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ToggleControl"], {
-      label: "Invert text color",
-      checked: textColor !== 'none' ? true : false,
-      onChange: function onChange(value) {
-        var textColor = value ? 'white' : 'none';
-        onChangeSettings(clientId, 'textColor', textColor);
+  var bgColors = [{
+    "color": "#FFFFFF",
+    "name": "None",
+    "slug": "none"
+  }, {
+    "color": "#1D1D1D",
+    "name": "Black",
+    "slug": "black"
+  }, {
+    "color": "#FAE053",
+    "name": "Yellow",
+    "slug": "yellow"
+  }, {
+    "color": "#D3EEFF",
+    "name": "Blue",
+    "slug": "blue"
+  }];
+  return bgColor && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["BaseControl"], {
+    label: "Background color"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["ColorPalette"], {
+    colors: bgColors,
+    value: (_getColorObjectByAttr = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["getColorObjectByAttributeValues"])(bgColors, bgColor)) === null || _getColorObjectByAttr === void 0 ? void 0 : _getColorObjectByAttr.color,
+    onChange: function onChange(newColor) {
+      if (newColor) {
+        var _getColorObjectByColo;
+
+        onChangeSettings(clientId, "bgColor", (_getColorObjectByColo = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["getColorObjectByColorValue"])(bgColors, newColor)) === null || _getColorObjectByColo === void 0 ? void 0 : _getColorObjectByColo.slug);
       }
-    });
-  }
+    },
+    disableCustomColors: true,
+    clearable: false,
+    className: "la-inspector-control__color-panel"
+  }));
+};
 
-  if (blockSettings && blockSettings.divider) {
-    var divider = blockAttributes.divider;
-    dividerPanel = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ToggleControl"], {
-      label: "Divider",
-      checked: divider !== 'none' ? true : false,
-      onChange: function onChange(value) {
-        var divider = value ? 'line' : 'none';
-        onChangeSettings(clientId, 'divider', divider);
-      }
-    });
-  }
-
-  if (imagePositionPanel || imageSizePanel || bgPanel || textColorPanel || imagePositionPromoPanel || spaceSizePanel || dividerPanel) {
-    inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], {
-      className: "la-inspector-control"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
-      title: "Block settings",
-      initialOpen: true
-    }, imagePositionPanel, imagePositionPromoPanel, imageSizePanel, spaceSizePanel, bgPanel, textColorPanel, dividerPanel));
-  }
-
-  return inspectorControls;
-}
+var getInspectorControls = function getInspectorControls(clientId, blockAttributes) {
+  var getPanels = Object.keys(blockAttributes.blockSettings).map(function (key) {
+    return panels[key](clientId, blockAttributes[key]);
+  });
+  return getPanels && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], {
+    className: "la-inspector-control"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
+    title: "Block settings",
+    initialOpen: true
+  }, getPanels));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (getInspectorControls);
 
