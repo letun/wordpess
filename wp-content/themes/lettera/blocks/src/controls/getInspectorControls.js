@@ -116,7 +116,7 @@ function getInspectorControls(clientId, blockAttributes) {
 
 		bgPanel = (
 			<>
-				<BaseControl label="Background color">
+				<BaseControl label={ "Background color" }>
 					<ColorPalette
 						colors={ bgColors }
 						value={ getColorObjectByAttributeValues(bgColors, bgColor)?.color }
@@ -127,6 +127,7 @@ function getInspectorControls(clientId, blockAttributes) {
 							} }
 						disableCustomColors={ true }
 						clearable={ false }
+						className={ "la-inspector-control__color-panel" }
 					/>
 				</BaseControl>
 			</>
@@ -172,7 +173,7 @@ function getInspectorControls(clientId, blockAttributes) {
 		|| dividerPanel
 	) {
 		inspectorControls = (
-			<InspectorControls>
+			<InspectorControls className={ "la-inspector-control" }>
 				<PanelBody
 					title="Block settings"
 					initialOpen={true}

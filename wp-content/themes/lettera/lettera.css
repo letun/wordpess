@@ -499,7 +499,7 @@ table.button-secondary {
         text-align: center;
         text-decoration: none; }
         table.button-secondary table td a span {
-          border-bottom: 3gpx solid transparent; }
+          border-bottom: 3px solid transparent; }
 
 table.button-secondary.button-secondary--yellow table td a span {
   border-bottom-color: #FAE053; }

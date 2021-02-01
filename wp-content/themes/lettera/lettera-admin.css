@@ -1,6 +1,6 @@
 .post-type-lettera .block-editor-writing-flow {
-  /* Windows Phone Viewport Fix */
-  background: #F2F4F8; }
+  background: #F2F4F8;
+  /* Windows Phone Viewport Fix */ }
   .post-type-lettera .block-editor-writing-flow body,
   .post-type-lettera .block-editor-writing-flow table.body,
   .post-type-lettera .block-editor-writing-flow h1,
@@ -445,7 +445,7 @@
           text-align: center;
           text-decoration: none; }
           .post-type-lettera .block-editor-writing-flow table.button-secondary table td a span {
-            border-bottom: 3gpx solid transparent; }
+            border-bottom: 3px solid transparent; }
   .post-type-lettera .block-editor-writing-flow table.button-secondary.button-secondary--yellow table td a span {
     border-bottom-color: #FAE053; }
   .post-type-lettera .block-editor-writing-flow table.button-secondary.button-secondary--black table td a span {
@@ -473,3 +473,49 @@
     background: #D3EEFF; }
   .post-type-lettera .block-editor-writing-flow table.background-gray {
     background: #F8F8F8; }
+
+.la-remove-button {
+  position: absolute !important;
+  top: 10px;
+  right: 10px; }
+
+.background-black .la-remove-button {
+  color: #FFFFFF; }
+
+.la-inspector-control {
+  display: block; }
+
+.la-inspector-control__color-panel {
+  margin-top: 10px; }
+
+.la-add-block-toolbar {
+  display: block;
+  text-align: left; }
+
+.la-add-block-toolbar__panel {
+  height: 32px !important;
+  min-height: 32px !important;
+  border-radius: 4px; }
+
+.la-add-block-toolbar__button-group {
+  height: 32px !important;
+  min-height: 32px !important;
+  background: transparent; }
+
+.la-add-block-toolbar__button {
+  height: 24px !important;
+  padding: 5px 0 0 0 !important; }
+
+.la-add-block-toolbar__button-plus {
+  min-width: 32px !important;
+  height: 24px !important;
+  padding: 4px 0 0 0 !important; }
+  .la-add-block-toolbar__button-plus::before {
+    top: 0 !important;
+    left: 0 !important;
+    width: 32px;
+    height: 30px !important;
+    border-radius: 4px 0 0 4px !important;
+    background: #999999 !important; }
+  .la-add-block-toolbar__button-plus svg {
+    margin: 0 !important; }

@@ -1,4 +1,6 @@
 .post-type-lettera .block-editor-writing-flow {
+	background: #F2F4F8;
+
 	@import 'scss/lettera/variables';
 	@import 'scss/lettera/typography';
 	@import 'scss/lettera/layout';
@@ -7,6 +9,8 @@
 	@import 'scss/lettera/button-main';
 	@import 'scss/lettera/button-secondary';
 	@import 'scss/lettera/background';
-
-	background: #F2F4F8;
 }
+
+@import 'scss/lettera-admin/remove-button';
+@import 'scss/lettera-admin/inspector-control-panel';
+@import 'scss/lettera-admin/add-block-toolbar';

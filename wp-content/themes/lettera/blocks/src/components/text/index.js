@@ -8,13 +8,13 @@ import {
 	getColorObjectByColorValue,
 	getColorObjectByAttributeValues,
 } from '@wordpress/block-editor';
-import Icon from '../../global/icons';
-import getInspectorControls from "../../controls/getInspectorControls";
 import classnames from "classnames";
 
 import Container from "../../layout/container";
 import Row from "../../layout/row";
 import Column from "../../layout/column";
+import getInspectorControls from "../../controls/getInspectorControls";
+import removeComponentButton from "../../controls/removeComponentButton";
 
 import { ReactComponent as MyIcon } from '../../../../svg/components/text.svg';
 
@@ -97,11 +97,13 @@ export const settings = {
 		];
 
 		const inspectorControls = getInspectorControls(clientId, props.attributes);
+		const removeComponent = removeComponentButton(clientId);
 
 		return (
 			<>
 				{ inspectorControls }
 				<Container className={ classnames(classContainer) }>
+					{ removeComponent }
 					<Row>
 						<Column className={classnames('text-center')}>
 							<InnerBlocks

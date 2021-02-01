@@ -13,26 +13,28 @@ class addBlockButton extends Component {
 		const { allowedBlocks, attributes, clientId } = this.props;
 
 		return (
-			<ToolbarGroup title={ "Add new" } className={ "lettera-admin__add-block-toolbar" }>
-				<ToolbarButton
-					icon={Icons._plus}
-					className={"lettera-admin__add-block-button"}
-					isPressed={ true }
-				/>
-					<ToolbarGroup>
-						{ allowedBlocks.map( (blockSlug) => {
-							const insertBlock = getBlockType(blockSlug);
-							return <ToolbarButton
-								icon={ insertBlock.icon.src }
-								className={ ["lettera-admin__add-block-button"] }
-								label={ insertBlock.title }
-								onClick={ () => {
-									wp.data.dispatch( 'core/block-editor' ).insertBlock(createBlock(blockSlug, {attributes, canDelete: true}), 100, clientId);
-								} }
-							/>;
-						} ) }
-					</ToolbarGroup>
-			</ToolbarGroup>
+			<div className={ "la-add-block-toolbar" }>
+				<ToolbarGroup title={ "Add new" }  className={ "la-add-block-toolbar__panel" }>
+					<ToolbarButton
+						icon={Icons._plus}
+						className={ ["la-add-block-toolbar__button-plus"] }
+						isPressed={ true }
+					/>
+						<ToolbarGroup className={ "la-add-block-toolbar__button-group" }>
+							{ allowedBlocks.map( (blockSlug) => {
+								const insertBlock = getBlockType(blockSlug);
+								return <ToolbarButton
+									icon={ insertBlock.icon.src }
+									className={ ["la-add-block-toolbar__button"] }
+									label={ insertBlock.title }
+									onClick={ () => {
+										wp.data.dispatch( 'core/block-editor' ).insertBlock(createBlock(blockSlug, {attributes, canDelete: true}), 100, clientId);
+									} }
+								/>;
+							} ) }
+						</ToolbarGroup>
+				</ToolbarGroup>
+			</div>
 		);
 	}
 }
