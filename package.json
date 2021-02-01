@@ -19,7 +19,11 @@
     "stylelint-scss": "^3.18.0",
     "stylelint-value-no-unknown-custom-properties": "^3.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-jshint": "^2.1.0",
+    "jshint": "^2.12.0",
+    "jslint": "^0.12.1"
+  },
   "scripts": {
     "test": "test"
   },
