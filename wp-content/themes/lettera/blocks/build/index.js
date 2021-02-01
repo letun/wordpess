@@ -6675,7 +6675,7 @@ var addBlockButton = /*#__PURE__*/function (_Component) {
         title: "Add new",
         className: "la-add-block-toolbar__panel"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarButton"], {
-        icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"]._plus,
+        icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].plus,
         className: ["la-add-block-toolbar__button-plus"],
         isPressed: true
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarGroup"], {
@@ -7006,7 +7006,7 @@ var toolbarButtonColor = /*#__PURE__*/function (_Component) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Toolbar"], {
         className: "la-button-color-panel"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToolbarButton"], {
-        icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"]._button.color,
+        icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].button.color,
         isPressed: isActive,
         className: ["la-button-color-panel__button", "la-button-color-panel__button--" + buttonColor],
         onClick: function onClick() {
@@ -7294,7 +7294,7 @@ var settings = {
     var toolbar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarGroup"], {
       label: "Button style"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"]._button['typeButton'],
+      icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].buttonType.typeButton,
       title: 'Primary button',
       isActive: true,
       onClick: function onClick() {
@@ -7303,7 +7303,7 @@ var settings = {
         });
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"]._button['typeLink'],
+      icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].buttonType.typeLink,
       title: 'Secondary button',
       isActive: false,
       onClick: function onClick() {
@@ -7520,7 +7520,7 @@ var settings = {
     var toolbar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarGroup"], {
       label: "Button style"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"]._button['typeButton'],
+      icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].buttonType.typeButton,
       title: 'Primary button',
       isActive: false,
       onClick: function onClick() {
@@ -7537,7 +7537,7 @@ var settings = {
         }
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"]._button['typeLink'],
+      icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].buttonType.typeLink,
       title: 'Secondary button',
       isActive: true,
       onClick: function onClick() {
@@ -7684,7 +7684,7 @@ var settings = {
     var buttons = HEADING_LEVELS.map(function (targetLevel) {
       var isActive = targetLevel === level;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-        icon: _global_icons__WEBPACK_IMPORTED_MODULE_5__["default"]._heading['level' + targetLevel],
+        icon: _global_icons__WEBPACK_IMPORTED_MODULE_5__["default"].heading['level' + targetLevel],
         title: 'Heading ' + targetLevel,
         isActive: isActive,
         value: targetLevel,
@@ -7806,7 +7806,7 @@ var settings = {
     var buttons = allowedLevels.map(function (targetLevel) {
       var isActive = targetLevel === level;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-        icon: _global_icons__WEBPACK_IMPORTED_MODULE_4__["default"]._heading['level' + targetLevel],
+        icon: _global_icons__WEBPACK_IMPORTED_MODULE_4__["default"].heading['level' + targetLevel],
         title: 'Heading ' + targetLevel,
         isActive: isActive,
         value: targetLevel,
@@ -7988,7 +7988,7 @@ var settings = {
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], {
       className: "components-toolbar-group--no-right-border"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      icon: _global_icons__WEBPACK_IMPORTED_MODULE_4__["default"]._list['unordered'],
+      icon: _global_icons__WEBPACK_IMPORTED_MODULE_4__["default"].listType.unordered,
       title: 'Unordered list',
       isActive: tagName == 'ul' ? true : false,
       value: isUnordered,
@@ -7998,7 +7998,7 @@ var settings = {
         });
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      icon: _global_icons__WEBPACK_IMPORTED_MODULE_4__["default"]._list['ordered'],
+      icon: _global_icons__WEBPACK_IMPORTED_MODULE_4__["default"].listType.ordered,
       title: 'Ordered list',
       isActive: tagName == 'ol' ? true : false,
       value: isOrdered,
@@ -8532,8 +8532,8 @@ Icon.button = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElem
 })));
 /* Toolbar icons */
 
-Icon._heading = [];
-Icon._heading['level1'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.heading = [];
+Icon.heading.level1 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   viewBox: "0 0 20 20",
@@ -8541,7 +8541,7 @@ Icon._heading['level1'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M9 5h2v10H9v-4H5v4H3V5h2v4h4V5zm6.6 0c-.6.9-1.5 1.7-2.6 2v1h2v7h2V5h-1.4z"
 }));
-Icon._heading['level2'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.heading.level2 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   viewBox: "0 0 20 20",
@@ -8549,7 +8549,7 @@ Icon._heading['level2'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M7 5h2v10H7v-4H3v4H1V5h2v4h4V5zm8 8c.5-.4.6-.6 1.1-1.1.4-.4.8-.8 1.2-1.3.3-.4.6-.8.9-1.3.2-.4.3-.8.3-1.3 0-.4-.1-.9-.3-1.3-.2-.4-.4-.7-.8-1-.3-.3-.7-.5-1.2-.6-.5-.2-1-.2-1.5-.2-.4 0-.7 0-1.1.1-.3.1-.7.2-1 .3-.3.1-.6.3-.9.5-.3.2-.6.4-.8.7l1.2 1.2c.3-.3.6-.5 1-.7.4-.2.7-.3 1.2-.3s.9.1 1.3.4c.3.3.5.7.5 1.1 0 .4-.1.8-.4 1.1-.3.5-.6.9-1 1.2-.4.4-1 .9-1.6 1.4-.6.5-1.4 1.1-2.2 1.6V15h8v-2H15z"
 }));
-Icon._heading['level3'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.heading.level3 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   viewBox: "0 0 20 20",
@@ -8557,7 +8557,7 @@ Icon._heading['level3'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M12.1 12.2c.4.3.8.5 1.2.7.4.2.9.3 1.4.3.5 0 1-.1 1.4-.3.3-.1.5-.5.5-.8 0-.2 0-.4-.1-.6-.1-.2-.3-.3-.5-.4-.3-.1-.7-.2-1-.3-.5-.1-1-.1-1.5-.1V9.1c.7.1 1.5-.1 2.2-.4.4-.2.6-.5.6-.9 0-.3-.1-.6-.4-.8-.3-.2-.7-.3-1.1-.3-.4 0-.8.1-1.1.3-.4.2-.7.4-1.1.6l-1.2-1.4c.5-.4 1.1-.7 1.6-.9.5-.2 1.2-.3 1.8-.3.5 0 1 .1 1.6.2.4.1.8.3 1.2.5.3.2.6.5.8.8.2.3.3.7.3 1.1 0 .5-.2.9-.5 1.3-.4.4-.9.7-1.5.9v.1c.6.1 1.2.4 1.6.8.4.4.7.9.7 1.5 0 .4-.1.8-.3 1.2-.2.4-.5.7-.9.9-.4.3-.9.4-1.3.5-.5.1-1 .2-1.6.2-.8 0-1.6-.1-2.3-.4-.6-.2-1.1-.6-1.6-1l1.1-1.4zM7 9H3V5H1v10h2v-4h4v4h2V5H7v4z"
 }));
-Icon._heading['level4'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.heading.level4 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   viewBox: "0 0 20 20",
@@ -8565,7 +8565,7 @@ Icon._heading['level4'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M9 15H7v-4H3v4H1V5h2v4h4V5h2v10zm10-2h-1v2h-2v-2h-5v-2l4-6h3v6h1v2zm-3-2V7l-2.8 4H16z"
 }));
-Icon._heading['level5'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.heading.level5 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   viewBox: "0 0 20 20",
@@ -8573,7 +8573,7 @@ Icon._heading['level5'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M12.1 12.2c.4.3.7.5 1.1.7.4.2.9.3 1.3.3.5 0 1-.1 1.4-.4.4-.3.6-.7.6-1.1 0-.4-.2-.9-.6-1.1-.4-.3-.9-.4-1.4-.4H14c-.1 0-.3 0-.4.1l-.4.1-.5.2-1-.6.3-5h6.4v1.9h-4.3L14 8.8c.2-.1.5-.1.7-.2.2 0 .5-.1.7-.1.5 0 .9.1 1.4.2.4.1.8.3 1.1.6.3.2.6.6.8.9.2.4.3.9.3 1.4 0 .5-.1 1-.3 1.4-.2.4-.5.8-.9 1.1-.4.3-.8.5-1.3.7-.5.2-1 .3-1.5.3-.8 0-1.6-.1-2.3-.4-.6-.2-1.1-.6-1.6-1-.1-.1 1-1.5 1-1.5zM9 15H7v-4H3v4H1V5h2v4h4V5h2v10z"
 }));
-Icon._heading['level6'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.heading.level6 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   viewBox: "0 0 20 20",
@@ -8581,8 +8581,8 @@ Icon._heading['level6'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M9 15H7v-4H3v4H1V5h2v4h4V5h2v10zm8.6-7.5c-.2-.2-.5-.4-.8-.5-.6-.2-1.3-.2-1.9 0-.3.1-.6.3-.8.5l-.6.9c-.2.5-.2.9-.2 1.4.4-.3.8-.6 1.2-.8.4-.2.8-.3 1.3-.3.4 0 .8 0 1.2.2.4.1.7.3 1 .6.3.3.5.6.7.9.2.4.3.8.3 1.3s-.1.9-.3 1.4c-.2.4-.5.7-.8 1-.4.3-.8.5-1.2.6-1 .3-2 .3-3 0-.5-.2-1-.5-1.4-.9-.4-.4-.8-.9-1-1.5-.2-.6-.3-1.3-.3-2.1s.1-1.6.4-2.3c.2-.6.6-1.2 1-1.6.4-.4.9-.7 1.4-.9.6-.3 1.1-.4 1.7-.4.7 0 1.4.1 2 .3.5.2 1 .5 1.4.8 0 .1-1.3 1.4-1.3 1.4zm-2.4 5.8c.2 0 .4 0 .6-.1.2 0 .4-.1.5-.2.1-.1.3-.3.4-.5.1-.2.1-.5.1-.7 0-.4-.1-.8-.4-1.1-.3-.2-.7-.3-1.1-.3-.3 0-.7.1-1 .2-.4.2-.7.4-1 .7 0 .3.1.7.3 1 .1.2.3.4.4.6.2.1.3.3.5.3.2.1.5.2.7.1z"
 }));
-Icon._list = [];
-Icon._list['ordered'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.listType = [];
+Icon.listType.ordered = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   "aria-hidden": "true",
   role: "img",
   focusable: "false",
@@ -8594,7 +8594,7 @@ Icon._list['ordered'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M6 7V3h-.69L4.02 4.03l.4.51.46-.37c.06-.05.16-.14.3-.28l-.02.42V7H6zm2-2h9v1H8V5zm-1.23 6.95v-.7H5.05v-.04l.51-.48c.33-.31.57-.54.7-.71.14-.17.24-.33.3-.49.07-.16.1-.33.1-.51 0-.21-.05-.4-.16-.56-.1-.16-.25-.28-.44-.37s-.41-.14-.65-.14c-.19 0-.36.02-.51.06-.15.03-.29.09-.42.15-.12.07-.29.19-.48.35l.45.54c.16-.13.31-.23.45-.3.15-.07.3-.1.45-.1.14 0 .26.03.35.11s.13.2.13.36c0 .1-.02.2-.06.3s-.1.21-.19.33c-.09.11-.29.32-.58.62l-.99 1v.58h2.76zM8 10h9v1H8v-1zm-1.29 3.95c0-.3-.12-.54-.37-.71-.24-.17-.58-.26-1-.26-.52 0-.96.13-1.33.4l.4.6c.17-.11.32-.19.46-.23.14-.05.27-.07.41-.07.38 0 .58.15.58.46 0 .2-.07.35-.22.43s-.38.12-.7.12h-.31v.66h.31c.34 0 .59.04.75.12.15.08.23.22.23.41 0 .22-.07.37-.2.47-.14.1-.35.15-.63.15-.19 0-.38-.03-.57-.08s-.36-.12-.52-.2v.74c.34.15.74.22 1.18.22.53 0 .94-.11 1.22-.33.29-.22.43-.52.43-.92 0-.27-.09-.48-.26-.64s-.42-.26-.74-.3v-.02c.27-.06.49-.19.65-.37.15-.18.23-.39.23-.65zM8 15h9v1H8v-1z"
 }));
-Icon._list['unordered'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.listType.unordered = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   "aria-hidden": "true",
   role: "img",
   focusable: "false",
@@ -8606,7 +8606,7 @@ Icon._list['unordered'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M5.5 7C4.67 7 4 6.33 4 5.5 4 4.68 4.67 4 5.5 4 6.32 4 7 4.68 7 5.5 7 6.33 6.32 7 5.5 7zM8 5h9v1H8V5zm-2.5 7c-.83 0-1.5-.67-1.5-1.5C4 9.68 4.67 9 5.5 9c.82 0 1.5.68 1.5 1.5 0 .83-.68 1.5-1.5 1.5zM8 10h9v1H8v-1zm-2.5 7c-.83 0-1.5-.67-1.5-1.5 0-.82.67-1.5 1.5-1.5.82 0 1.5.68 1.5 1.5 0 .83-.68 1.5-1.5 1.5zM8 15h9v1H8v-1z"
 }));
-Icon._plus = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.plus = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   xmlns: "http://www.w3.org/2000/svg",
@@ -8617,8 +8617,8 @@ Icon._plus = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createEleme
 }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
   d: "M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z"
 }));
-Icon._button = [];
-Icon._button['typeButton'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.buttonType = [];
+Icon.buttonType.typeButton = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   xmlns: "http://www.w3.org/2000/svg"
@@ -8633,7 +8633,7 @@ Icon._button['typeButton'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_
   "stroke-width": "0",
   stroke: "#000"
 }, "P")));
-Icon._button['typeLink'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.buttonType.typeLink = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   width: "24",
   height: "24",
   xmlns: "http://www.w3.org/2000/svg"
@@ -8648,7 +8648,7 @@ Icon._button['typeLink'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0_
   "stroke-width": "0",
   stroke: "#000"
 }, "S")));
-Icon._button['color'] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+Icon.buttonType.color = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 24 24",
   width: "24",

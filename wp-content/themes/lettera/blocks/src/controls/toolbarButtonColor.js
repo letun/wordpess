@@ -21,7 +21,7 @@ class toolbarButtonColor extends Component {
 		return (
 			<Toolbar className={ "la-button-color-panel" }>
 				<ToolbarButton
-					icon={ Icons._button.color }
+					icon={ Icons.button.color }
 					isPressed={ isActive }
 					className={["la-button-color-panel__button", "la-button-color-panel__button--" + buttonColor]}
 					onClick={ () => setState( state => ( { isActive: !isActive } ) ) }

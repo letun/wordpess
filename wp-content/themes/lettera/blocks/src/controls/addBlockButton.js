@@ -16,7 +16,7 @@ class addBlockButton extends Component {
 			<div className={ "la-add-block-toolbar" }>
 				<ToolbarGroup title={ "Add new" }  className={ "la-add-block-toolbar__panel" }>
 					<ToolbarButton
-						icon={Icons._plus}
+						icon={Icons.plus}
 						className={ ["la-add-block-toolbar__button-plus"] }
 						isPressed={ true }
 					/>

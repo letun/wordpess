@@ -116,7 +116,7 @@ export const settings = {
 			<>
 				<ToolbarGroup label="Button style">
 					<ToolbarButton
-						icon={ Icons._button['typeButton'] }
+						icon={ Icons.buttonType.typeButton }
 						title={'Primary button'}
 						isActive={ false }
 						onClick={ () => {
@@ -129,7 +129,7 @@ export const settings = {
 						} }
 					/>
 					<ToolbarButton
-						icon={ Icons._button['typeLink'] }
+						icon={ Icons.buttonType.typeLink }
 						title={'Secondary button'}
 						isActive={ true }
 						onClick={ () => setAttributes( { buttonColor: 'yellow' } ) }

@@ -115,14 +115,14 @@ export const settings = {
 					</Toolbar>
 					<Toolbar className={"components-toolbar-group--no-right-border"}>
 						<ToolbarButton
-							icon={ Icon._list['unordered'] }
+							icon={ Icon.listType.unordered }
 							title={'Unordered list'}
 							isActive={tagName == 'ul' ? true : false}
 							value={isUnordered}
 							onClick={ () => setAttributes( { ordered: isUnordered } ) }
 						/>
 						<ToolbarButton
-							icon={ Icon._list['ordered'] }
+							icon={ Icon.listType.ordered }
 							title={'Ordered list'}
 							isActive={tagName == 'ol' ? true : false}
 							value={isOrdered}

@@ -73,7 +73,7 @@ export const settings = {
 			const isActive = targetLevel === level;
 			return (
 				<ToolbarButton
-					icon={ Icon._heading['level' + targetLevel] }
+					icon={ Icon.heading['level' + targetLevel] }
 					title={'Heading ' + targetLevel}
 					isActive={isActive}
 					value={targetLevel}

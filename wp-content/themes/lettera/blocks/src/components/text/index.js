@@ -16,13 +16,13 @@ import Column from "../../layout/column";
 import getInspectorControls from "../../controls/getInspectorControls";
 import removeComponentButton from "../../controls/removeComponentButton";
 
-import { ReactComponent as MyIcon } from '../../../../svg/components/text.svg';
+import { ReactComponent as componentIcon } from '../../../../svg/components/text.svg';
 
 export const name = 'lettera/text';
 
 export const settings = {
 	title: 'Text',
-	icon: MyIcon,
+	icon: componentIcon,
 	category: 'common',
 	attributes: {
 		textAlign: {
