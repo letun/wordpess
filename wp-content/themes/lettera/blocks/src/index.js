@@ -20,28 +20,28 @@ import * as blockBtn from "./blocks/block-btn";
 import * as cmText from "./components/text";
 
 const blocks = [
-	elPreheader,
-	elHeader,
-	elHeading,
-	elParagraph,
-	elList,
-	elButtonMain,
-	elButtonSecondary,
-	elSmallText,
+    elPreheader,
+    elHeader,
+    elHeading,
+    elParagraph,
+    elList,
+    elButtonMain,
+    elButtonSecondary,
+    elSmallText,
 
-	blockBtn,
-	blockText,
+    blockBtn,
+    blockText,
 
-	cmText
+    cmText
 ];
 
 blocks.forEach((block) => {
 
-	const {name, settings} = block;
+    const {name, settings} = block;
 
-	return registerBlockType(
-		name,
-		settings
-	);
+    return registerBlockType(
+        name,
+        settings
+    );
 
 });

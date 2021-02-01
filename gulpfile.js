@@ -69,13 +69,6 @@ gulp.task('jslint', function () {
 		.pipe(jslint.reporter('default', true));
 });
 
-gulp.task('eslint', function () {
-	return gulp.src(['./wp-content/themes/lettera/blocks/src/**/*.js'])
-		.pipe(eslint())
-		.pipe(eslint.format())
-		.pipe(eslint.failAfterError());
-});
-
 gulp.task('scsslint', function lintCssTask() {
 	return gulp
 		.src('./wp-content/themes/lettera/scss/lettera/**/*.scss')
@@ -86,4 +79,11 @@ gulp.task('scsslint', function lintCssTask() {
 		}));
 });
 
-gulp.task("test", gulp.series("phplint", "jslint", "scsslint") );
+gulp.task('eslint', function () {
+	return gulp.src(['./wp-content/themes/lettera/blocks/src/global/config.js'])
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
+});
+
+gulp.task("test", gulp.series("phplint", "jslint", "scsslint", "eslint") );

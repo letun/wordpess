@@ -8459,11 +8459,11 @@ var settings = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var LetteraConfig = [];
-LetteraConfig.category = 'common';
+LetteraConfig.category = "common";
 LetteraConfig.childElemets = [];
 /* Elements */
 
-LetteraConfig.childElemets.mainBlocks = ['lettera/text'];
+LetteraConfig.childElemets.mainBlocks = ["lettera/text"];
 /* harmony default export */ __webpack_exports__["default"] = (LetteraConfig);
 
 /***/ }),
