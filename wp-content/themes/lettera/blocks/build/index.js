@@ -6824,17 +6824,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 
 
+/* global wp */
 
-function removeComponentButton(clientId) {
+var removeComponentButton = function removeComponentButton(clientId) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["ToolbarButton"], {
-    icon: 'trash',
-    title: 'Remove block',
+    icon: "trash",
+    title: "Remove block",
     className: "la-remove-button",
     onClick: function onClick() {
-      return wp.data.dispatch('core/block-editor').removeBlock(clientId);
+      return wp.data.dispatch("core/block-editor").removeBlock(clientId);
     }
   });
-}
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (removeComponentButton);
 
@@ -6882,6 +6883,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
+/* global wp */
+
 var Component = wp.element.Component;
 
 
@@ -6910,13 +6913,13 @@ var toolbarButtonColor = /*#__PURE__*/function (_Component) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Toolbar"], {
         className: "la-button-color-panel"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToolbarButton"], {
-        icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].button.color,
+        icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].buttonType.color,
         isPressed: isActive,
-        className: ["la-button-color-panel__button", "la-button-color-panel__button--" + buttonColor],
+        className: ["la-button-color-panel__button", "la-button-color-panel__button--".concat(buttonColor)],
         onClick: function onClick() {
-          return setState(function (state) {
+          return setState(function () {
             return {
-              isActive: !isActive
+              "isActive": !isActive
             };
           });
         }
@@ -6929,9 +6932,9 @@ var toolbarButtonColor = /*#__PURE__*/function (_Component) {
         onChange: function onChange(value) {
           _onChange(value);
 
-          setState(function (state) {
+          setState(function () {
             return {
-              isActive: false
+              "isActive": false
             };
           });
         },
