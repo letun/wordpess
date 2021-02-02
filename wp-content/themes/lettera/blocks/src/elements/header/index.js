@@ -21,8 +21,6 @@ const headingIcons = {
 	level6: headingIcon6,
 };
 
-const HEADING_LEVELS = [ 1, 2, 3 ];
-
 export const name = 'lettera/header';
 
 export const settings = {
@@ -34,11 +32,15 @@ export const settings = {
 		content: {
 			type: 'string',
 			source: 'html',
-			selector: 'h1',
+			selector: 'h1,h2,h3,h4,h5,h6',
 		},
 		level: {
 			type: 'number',
 			default: 1,
+		},
+		allowedLevels: {
+			type: 'array',
+			default: [ 1, 2, 3 ],
 		},
 		placeholder: {
 			type: 'string',
@@ -73,7 +75,13 @@ export const settings = {
 			className,
 		} = props;
 
-		const { content, level, placeholder, addClass } = attributes;
+		const {
+			content,
+			level,
+			allowedLevels,
+			placeholder,
+			addClass,
+		} = attributes;
 
 		const inspectorControls = getInspectorControls(
 			parentClientId,
@@ -83,8 +91,9 @@ export const settings = {
 		const classHeader = level > 1 ? 'h' + level : '';
 		const classElement = [ classHeader, addClass ];
 
-		const buttons = HEADING_LEVELS.map( ( targetLevel ) => {
+		const buttons = allowedLevels.map( ( targetLevel ) => {
 			const isActive = targetLevel === level;
+
 			return (
 				<ToolbarButton
 					key={ '' }
@@ -92,7 +101,7 @@ export const settings = {
 					title={ 'Heading ' + targetLevel }
 					isActive={ isActive }
 					value={ targetLevel }
-					onClick={ ( value ) => setAttributes( { level: value } ) }
+					onClick={ () => setAttributes( { level: targetLevel } ) }
 				/>
 			);
 		} );
@@ -104,8 +113,8 @@ export const settings = {
 				</BlockControls>
 				{ inspectorControls }
 				<RichText
-					identifier="content"
-					tagName="h1"
+					identifier={ 'content' }
+					tagName={ `h${ level }` }
 					className={ classnames( className, classElement ) }
 					onChange={ ( value ) =>
 						setAttributes( { content: value } )
@@ -128,7 +137,7 @@ export const settings = {
 		return (
 			content && (
 				<RichText.Content
-					tagName="h1"
+					tagName={ `h${ level }` }
 					value={ content }
 					className={ classnames( className, classElement ) }
 				/>

@@ -8110,7 +8110,6 @@ var headingIcons = {
   level5: _svg_buttons_heading5_svg__WEBPACK_IMPORTED_MODULE_11__["ReactComponent"],
   level6: _svg_buttons_heading6_svg__WEBPACK_IMPORTED_MODULE_12__["ReactComponent"]
 };
-var HEADING_LEVELS = [1, 2, 3];
 var name = 'lettera/header';
 var settings = {
   title: 'Header H1',
@@ -8121,11 +8120,15 @@ var settings = {
     content: {
       type: 'string',
       source: 'html',
-      selector: 'h1'
+      selector: 'h1,h2,h3,h4,h5,h6'
     },
     level: {
       type: 'number',
       default: 1
+    },
+    allowedLevels: {
+      type: 'array',
+      default: [1, 2, 3]
     },
     placeholder: {
       type: 'string',
@@ -8153,12 +8156,13 @@ var settings = {
         className = props.className;
     var content = attributes.content,
         level = attributes.level,
+        allowedLevels = attributes.allowedLevels,
         placeholder = attributes.placeholder,
         addClass = attributes.addClass;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"])(parentClientId, parentBlockAttributes);
     var classHeader = level > 1 ? 'h' + level : '';
     var classElement = [classHeader, addClass];
-    var buttons = HEADING_LEVELS.map(function (targetLevel) {
+    var buttons = allowedLevels.map(function (targetLevel) {
       var isActive = targetLevel === level;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
         key: '',
@@ -8166,16 +8170,16 @@ var settings = {
         title: 'Heading ' + targetLevel,
         isActive: isActive,
         value: targetLevel,
-        onClick: function onClick(value) {
+        onClick: function onClick() {
           return setAttributes({
-            level: value
+            level: targetLevel
           });
         }
       });
     });
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, buttons)), inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
-      identifier: "content",
-      tagName: "h1",
+      identifier: 'content',
+      tagName: "h".concat(level),
       className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, classElement),
       onChange: function onChange(value) {
         return setAttributes({
@@ -8196,7 +8200,7 @@ var settings = {
     var classHeader = level > 1 ? 'h' + level : '';
     var classElement = [classHeader, addClass];
     return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
-      tagName: "h1",
+      tagName: "h".concat(level),
       value: content,
       className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, classElement)
     });
