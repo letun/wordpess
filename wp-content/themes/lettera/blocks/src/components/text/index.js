@@ -1,20 +1,12 @@
 import { withSelect } from '@wordpress/data';
-import {
-	InnerBlocks,
-	MediaUpload,
-	InspectorControls,
-	PanelColorSettings,
-	ColorPalette,
-	getColorObjectByColorValue,
-	getColorObjectByAttributeValues,
-} from '@wordpress/block-editor';
-import classnames from "classnames";
+import { InnerBlocks } from '@wordpress/block-editor';
+import classnames from 'classnames';
 
-import Container from "../../layout/container";
-import Row from "../../layout/row";
-import Column from "../../layout/column";
-import getInspectorControls from "../../controls/getInspectorControls";
-import removeComponentButton from "../../controls/removeComponentButton";
+import Container from '../../layout/container';
+import Row from '../../layout/row';
+import Column from '../../layout/column';
+import getInspectorControls from '../../controls/getInspectorControls';
+import removeComponentButton from '../../controls/removeComponentButton';
 
 import { ReactComponent as componentIcon } from '../../../../svg/components/text.svg';
 
@@ -26,62 +18,74 @@ export const settings = {
 	category: 'common',
 	attributes: {
 		textAlign: {
-			type: "string",
-			default: "text-left"
+			type: 'string',
+			default: 'text-left',
 		},
 		bgColor: {
-			type: "string",
-			default: "none",
+			type: 'string',
+			default: 'none',
 		},
 		blockSettings: {
-			type: "object",
+			type: 'object',
 			default: {
-				textAlign: "right",
-				bgColor: "none",
-			}
-		}
+				textAlign: 'right',
+				bgColor: 'none',
+			},
+		},
 	},
 	example: {
 		attributes: {
 			blockSettings: {
-				imagePosition: "right",
-				imageSize: "medium",
-				bgColor: "none",
-				textColor: "none",
-			}
+				imagePosition: 'right',
+				imageSize: 'medium',
+				bgColor: 'none',
+				textColor: 'none',
+			},
 		},
 	},
 	edit: withSelect( ( select, blockData ) => {
 		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
-			clientId: blockData.clientId
+			innerBlocks: select( 'core/block-editor' ).getBlocks(
+				blockData.clientId
+			),
+			clientId: blockData.clientId,
 		};
-	} )( props => {
+	} )( ( props ) => {
 		const {
-			attributes: {content, bgColor, textAlign},
+			attributes: { content, bgColor, textAlign },
 			clientId,
 			setAttributes,
 			className,
 		} = props;
 
-		const onSelectImage = ( media ) => {
-			setAttributes( {
-				mediaURL: media.url,
-				mediaID: media.id,
-			} );
-		};
+		const classContainer = [];
 
-		let classContainer = [];
-
-		if (bgColor !== undefined && bgColor !== 'none') {
-			classContainer.push("background-" + bgColor);
+		if ( bgColor !== undefined && bgColor !== 'none' ) {
+			classContainer.push( 'background-' + bgColor );
 		}
 
 		const MY_TEMPLATE = [
-			[ 'lettera/preheader', { placeholder: 'Preheader', textAlign: 'text-center' } ],
-			[ 'lettera/header', { placeholder: 'Header', level: 1, addClass: ['text-center'] } ],
-			[ 'lettera/block-text', { textAlign: textAlign } ],
-			[ 'lettera/block-btn', { button_text: true, defaultButtonType: 'button-main', textAlign: 'text-center' } ],
+			[
+				'lettera/preheader',
+				{ placeholder: 'Preheader', textAlign: 'text-center' },
+			],
+			[
+				'lettera/header',
+				{
+					placeholder: 'Header',
+					level: 1,
+					addClass: [ 'text-center' ],
+				},
+			],
+			[ 'lettera/block-text', { textAlign } ],
+			[
+				'lettera/block-btn',
+				{
+					button_text: true,
+					defaultButtonType: 'button-main',
+					textAlign: 'text-center',
+				},
+			],
 		];
 
 		const ALLOWED_BLOCKS = [
@@ -96,22 +100,29 @@ export const settings = {
 			'lettera/block-btn',
 		];
 
-		const inspectorControls = getInspectorControls(clientId, props.attributes);
-		const removeComponent = removeComponentButton(clientId);
+		const inspectorControls = getInspectorControls(
+			clientId,
+			props.attributes
+		);
+		const removeComponent = removeComponentButton( clientId );
 
 		return (
 			<>
 				{ inspectorControls }
-				<Container className={ classnames(classContainer) }>
+				<Container
+					className={ classnames( classContainer, className ) }
+				>
 					{ removeComponent }
 					<Row>
-						<Column className={classnames('text-center')}>
+						<Column className={ classnames( 'text-center' ) }>
 							<InnerBlocks
 								allowedBlocks={ ALLOWED_BLOCKS }
 								template={ MY_TEMPLATE }
 								templateLock="all"
 								value={ content }
-								onChange={ ( value ) => setAttributes( { content: value } ) }
+								onChange={ ( value ) =>
+									setAttributes( { content: value } )
+								}
 							/>
 						</Column>
 					</Row>
@@ -122,20 +133,22 @@ export const settings = {
 	save: ( props ) => {
 		const {
 			className,
-			attributes: { mediaURL, imagePosition, imageSize, bgColor, textColor}
+			attributes: { bgColor },
 		} = props;
 
-		let classContainer = [];
+		const classContainer = [];
 
-		if (bgColor !== undefined && bgColor !== 'none') {
-			classContainer.push("background-" + bgColor);
+		if ( bgColor !== undefined && bgColor !== 'none' ) {
+			classContainer.push( 'background-' + bgColor );
 		}
 
 		return (
 			<>
-				<Container className={ classnames(classContainer) }>
+				<Container
+					className={ classnames( classContainer, className ) }
+				>
 					<Row>
-						<Column className={ classnames('text-center') }>
+						<Column className={ classnames( 'text-center' ) }>
 							<InnerBlocks.Content />
 						</Column>
 					</Row>

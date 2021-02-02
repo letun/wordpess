@@ -85,7 +85,7 @@ gulp.task('scsslint', function lintCssTask() {
 });
 
 gulp.task('eslint', function () {
-	return gulp.src(['./wp-content/themes/lettera/blocks/src/elements/**/*.js'])
+	return gulp.src(['./wp-content/themes/lettera/blocks/src/components/**/*.js'])
 		.pipe(eslint({fix:true}))
 		//.pipe(eslint())
 		.pipe(eslint.format())

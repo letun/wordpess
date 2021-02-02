@@ -7062,28 +7062,28 @@ var settings = {
   category: 'common',
   attributes: {
     textAlign: {
-      type: "string",
-      default: "text-left"
+      type: 'string',
+      default: 'text-left'
     },
     bgColor: {
-      type: "string",
-      default: "none"
+      type: 'string',
+      default: 'none'
     },
     blockSettings: {
-      type: "object",
+      type: 'object',
       default: {
-        textAlign: "right",
-        bgColor: "none"
+        textAlign: 'right',
+        bgColor: 'none'
       }
     }
   },
   example: {
     attributes: {
       blockSettings: {
-        imagePosition: "right",
-        imageSize: "medium",
-        bgColor: "none",
-        textColor: "none"
+        imagePosition: 'right',
+        imageSize: 'medium',
+        bgColor: 'none',
+        textColor: 'none'
       }
     }
   },
@@ -7100,18 +7100,10 @@ var settings = {
         clientId = props.clientId,
         setAttributes = props.setAttributes,
         className = props.className;
-
-    var onSelectImage = function onSelectImage(media) {
-      setAttributes({
-        mediaURL: media.url,
-        mediaID: media.id
-      });
-    };
-
     var classContainer = [];
 
     if (bgColor !== undefined && bgColor !== 'none') {
-      classContainer.push("background-" + bgColor);
+      classContainer.push('background-' + bgColor);
     }
 
     var MY_TEMPLATE = [['lettera/preheader', {
@@ -7132,7 +7124,7 @@ var settings = {
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"])(clientId, props.attributes);
     var removeComponent = Object(_controls_removeComponentButton__WEBPACK_IMPORTED_MODULE_8__["default"])(clientId);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(classContainer)
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(classContainer, className)
     }, removeComponent, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_row__WEBPACK_IMPORTED_MODULE_5__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_column__WEBPACK_IMPORTED_MODULE_6__["default"], {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('text-center')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
@@ -7149,20 +7141,15 @@ var settings = {
   }),
   save: function save(props) {
     var className = props.className,
-        _props$attributes2 = props.attributes,
-        mediaURL = _props$attributes2.mediaURL,
-        imagePosition = _props$attributes2.imagePosition,
-        imageSize = _props$attributes2.imageSize,
-        bgColor = _props$attributes2.bgColor,
-        textColor = _props$attributes2.textColor;
+        bgColor = props.attributes.bgColor;
     var classContainer = [];
 
     if (bgColor !== undefined && bgColor !== 'none') {
-      classContainer.push("background-" + bgColor);
+      classContainer.push('background-' + bgColor);
     }
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(classContainer)
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(classContainer, className)
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_row__WEBPACK_IMPORTED_MODULE_5__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_column__WEBPACK_IMPORTED_MODULE_6__["default"], {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('text-center')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)))));
