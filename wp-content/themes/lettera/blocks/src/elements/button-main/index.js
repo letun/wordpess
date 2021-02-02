@@ -26,6 +26,8 @@ import LetteraConfig from '../../global/config';
 
 export const name = 'lettera/button-main';
 
+console.log()
+
 export const settings = {
 	title: 'Button',
 	icon: Icons.button,
@@ -94,7 +96,7 @@ export const settings = {
 			className,
 		} = props;
 
-		const { buttonColor, buttonSize, content, placeholder, linkHref } = attributes;
+		const { buttonColor, buttonSize, content, placeholder, linkHref, linkTarget } = attributes;
 		const curClientId = clientId;
 		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
 
@@ -140,6 +142,7 @@ export const settings = {
 				</ToolbarGroup>
 				<ToolbarButtonLinkHref
 					linkHref={ linkHref }
+                    linkTarget={linkTarget}
 					onChange={ ( value ) => setAttributes( { linkHref: value.url } ) }
 				/>
 				<ToolbarButtonColor

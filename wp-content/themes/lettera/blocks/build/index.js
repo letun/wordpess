@@ -6997,7 +6997,9 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
-var LinkControl = wp.blockEditor.__experimentalLinkControl;
+/* global wp */
+
+var LinkControl = wp.blockEditor["__experimentalLinkControl"];
 
 var toolbarButtonLinkHref = /*#__PURE__*/function (_Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(toolbarButtonLinkHref, _Component);
@@ -7017,6 +7019,7 @@ var toolbarButtonLinkHref = /*#__PURE__*/function (_Component) {
 
       var _this$props = this.props,
           linkHref = _this$props.linkHref,
+          linkTarget = _this$props.linkTarget,
           isActive = _this$props.isActive,
           onChange = _this$props.onChange,
           setState = _this$props.setState;
@@ -7024,9 +7027,9 @@ var toolbarButtonLinkHref = /*#__PURE__*/function (_Component) {
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["link"],
         isPressed: isActive,
         onClick: function onClick() {
-          setState(function (state) {
+          return setState(function () {
             return {
-              isActive: !isActive
+              "isActive": !isActive
             };
           });
         }
@@ -7036,14 +7039,14 @@ var toolbarButtonLinkHref = /*#__PURE__*/function (_Component) {
         noArrow: false,
         renderSettings: function renderSettings() {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToggleControl"], {
-            label: __('Open in new tab'),
-            checked: opensInNewWindow,
+            label: "Open in new tab",
+            checked: linkTarget,
             onChange: _this.setTarget
           });
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(LinkControl, {
         value: {
-          url: linkHref
+          "url": linkHref
         },
         onChange: onChange,
         showSuggestions: false
@@ -7097,6 +7100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var name = 'lettera/button-main';
+console.log();
 var settings = {
   title: 'Button',
   icon: _global_icons__WEBPACK_IMPORTED_MODULE_9__["default"].button,
@@ -7168,7 +7172,8 @@ var settings = {
         buttonSize = attributes.buttonSize,
         content = attributes.content,
         placeholder = attributes.placeholder,
-        linkHref = attributes.linkHref;
+        linkHref = attributes.linkHref,
+        linkTarget = attributes.linkTarget;
     var curClientId = clientId;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
     var btnColors = [{
@@ -7228,6 +7233,7 @@ var settings = {
       }
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_toolbarButtonLinkHref__WEBPACK_IMPORTED_MODULE_6__["default"], {
       linkHref: linkHref,
+      linkTarget: linkTarget,
       onChange: function onChange(value) {
         return setAttributes({
           linkHref: value.url

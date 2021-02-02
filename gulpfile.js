@@ -80,7 +80,7 @@ gulp.task('scsslint', function lintCssTask() {
 });
 
 gulp.task('eslint', function () {
-	return gulp.src(['./wp-content/themes/lettera/blocks/src/controls/getInspectorControls.js'])
+	return gulp.src(['./wp-content/themes/lettera/blocks/src/controls/toolbarButtonLinkHref.js'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
