@@ -1,11 +1,11 @@
 import { withSelect } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
-import classnames from "classnames";
+import classnames from 'classnames';
 
 import Spacer from '../../layout/spacer';
 
 import Config from '../../global/config';
-import getInspectorControls from "../../controls/getInspectorControls";
+import getInspectorControls from '../../controls/getInspectorControls';
 
 import { ReactComponent as elementIcon } from '../../../../svg/elements/button.svg';
 
@@ -22,78 +22,86 @@ export const settings = {
 			default: false,
 		},
 		defaultButtonType: {
-			type: "string",
-			default: "button-main",
+			type: 'string',
+			default: 'button-main',
 		},
 		buttonType: {
-			type: "string",
+			type: 'string',
 			default: null,
 		},
 		buttonAltText: {
-			type: "string",
+			type: 'string',
 			default: null,
 		},
 		addClass: {
-			type: 'string'
+			type: 'string',
 		},
 	},
 	edit: withSelect( ( select, blockData ) => {
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( blockData.clientId );
+		const parentClientId = select(
+			'core/block-editor'
+		).getBlockHierarchyRootClientId( blockData.clientId );
 		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
-			parentClientId: parentClientId,
+			innerBlocks: select( 'core/block-editor' ).getBlocks(
+				blockData.clientId
+			),
+			parentClientId,
 			clientId: blockData.clientId,
-			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
+			parentBlockAttributes: select(
+				'core/block-editor'
+			).getBlockAttributes( parentClientId ),
 		};
-	} )( props => {
+	} )( ( props ) => {
 		const {
 			attributes,
 			setAttributes,
-			clientId,
 			parentClientId,
 			parentBlockAttributes,
-			className,
-			innerBlocks
+			innerBlocks,
 		} = props;
-		const {defaultButtonType, buttonType, buttonAltText, addClass, hasContent} = attributes;
+		const { defaultButtonType, buttonType, buttonAltText } = attributes;
 
-		wp.element.useEffect(() => {
+		wp.element.useEffect( () => {
 			let isEmpty = true;
-			if (innerBlocks) {
-				for (let i = 0; i < innerBlocks.length; i++) {
-					if (innerBlocks[i].attributes.content) {
+			if ( innerBlocks ) {
+				for ( let i = 0; i < innerBlocks.length; i++ ) {
+					if ( innerBlocks[ i ].attributes.content ) {
 						isEmpty = false;
 						break;
 					}
 				}
 			}
-			setAttributes({ hasContent: !isEmpty });
-		});
+			setAttributes( { hasContent: ! isEmpty } );
+		} );
 
-		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
+		const inspectorControls = getInspectorControls(
+			parentClientId,
+			parentBlockAttributes
+		);
 
-		let classBtn = 'btn-block';
-		if ( addClass ) {
-			classBtn += ' ' + addClass;
-		}
-
-		let MY_TEMPLATE = [
-			[ `lettera/${buttonType ? buttonType : defaultButtonType}`, { placeholder: 'Button text' } ]
+		const MY_TEMPLATE = [
+			[
+				`lettera/${ buttonType ? buttonType : defaultButtonType }`,
+				{ placeholder: 'Button text' },
+			],
 		];
 
-		if (buttonAltText) {
-			MY_TEMPLATE.push([ 'lettera/text-small', { placeholder: 'Text bellow button', addClass: 'text-gray' } ]);
+		if ( buttonAltText ) {
+			MY_TEMPLATE.push( [
+				'lettera/text-small',
+				{ placeholder: 'Text bellow button', addClass: 'text-gray' },
+			] );
 		}
 
 		const ALLOWED_BLOCKS = [
 			'lettera/button-main',
 			'lettera/button-secondary',
-			'lettera/text-small'
+			'lettera/text-small',
 		];
 
 		return (
 			<>
-				{inspectorControls}
+				{ inspectorControls }
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ MY_TEMPLATE }
@@ -101,22 +109,21 @@ export const settings = {
 				/>
 			</>
 		);
-	}),
+	} ),
 	save: ( props ) => {
-		const {
-			attributes,
-			className
-		} = props;
+		const { attributes, className } = props;
 
 		const { addClass, hasContent } = attributes;
 
-		let classElement = ["btn-block", addClass];
+		const classElement = [ 'btn-block', addClass ];
 
 		return (
 			hasContent && (
 				<>
 					<Spacer height="8" />
-					<InnerBlocks.Content className={ classnames(classElement, className) } />
+					<InnerBlocks.Content
+						className={ classnames( classElement, className ) }
+					/>
 				</>
 			)
 		);

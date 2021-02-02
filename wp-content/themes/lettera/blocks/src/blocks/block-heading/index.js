@@ -1,9 +1,9 @@
 import { withSelect } from '@wordpress/data';
-import {
-	InnerBlocks,
-} from '@wordpress/block-editor';
-import LetteraCongif from '../../global/config';
-import getInspectorControls from "../../controls/getInspectorControls";
+import { InnerBlocks } from '@wordpress/block-editor';
+import classnames from 'classnames';
+
+import LetteraConfig from '../../global/config';
+import getInspectorControls from '../../controls/getInspectorControls';
 
 export const name = 'lettera/block-heading';
 
@@ -14,31 +14,38 @@ export const settings = {
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
 		content: {
-			type: 'string'
+			type: 'string',
 		},
 		addClass: {
-			type: 'string'
+			type: 'string',
 		},
 	},
 	edit: withSelect( ( select, blockData ) => {
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( blockData.clientId );
+		const parentClientId = select(
+			'core/block-editor'
+		).getBlockHierarchyRootClientId( blockData.clientId );
 		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
-			parentClientId: parentClientId,
+			innerBlocks: select( 'core/block-editor' ).getBlocks(
+				blockData.clientId
+			),
+			parentClientId,
 			clientId: blockData.clientId,
-			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
+			parentBlockAttributes: select(
+				'core/block-editor'
+			).getBlockAttributes( parentClientId ),
 		};
-	} )( props => {
+	} )( ( props ) => {
 		const {
 			attributes: { addClass },
-			setAttributes,
-			clientId,
 			parentClientId,
 			parentBlockAttributes,
 			className,
 		} = props;
 
-		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
+		const inspectorControls = getInspectorControls(
+			parentClientId,
+			parentBlockAttributes
+		);
 
 		const MY_TEMPLATE = [
 			[ 'lettera/preheader', { placeholder: 'Preheader text' } ],
@@ -49,27 +56,31 @@ export const settings = {
 		const ALLOWED_BLOCKS = [
 			'lettera/preheader',
 			'lettera/heading',
-			'lettera/block-text'
+			'lettera/block-text',
 		];
 
 		return (
 			<>
-				{inspectorControls}
+				{ inspectorControls }
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ MY_TEMPLATE }
 					templateLock="all"
+					classname={ classnames( className, addClass ) }
 				/>
 			</>
 		);
-	}),
+	} ),
 	save: ( props ) => {
 		const {
-			attributes: { content, addClass }
+			attributes: { addClass },
+			className,
 		} = props;
 
 		return (
-			<InnerBlocks.Content />
+			<InnerBlocks.Content
+				classname={ classnames( className, addClass ) }
+			/>
 		);
 	},
 };
