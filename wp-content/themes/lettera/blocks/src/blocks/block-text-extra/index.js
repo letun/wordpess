@@ -1,14 +1,16 @@
 import { withSelect } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
-import Icon from '../../global/icons';
+
 import LetteraConfig from '../../global/config';
 import getInspectorControls from "../../controls/getInspectorControls";
+
+import { ReactComponent as elementIcon } from '../../../../svg/elements/preheader.svg';
 
 export const name = 'lettera/block-text-extra';
 
 export const settings = {
 	title: 'Block: Text Extra',
-	icon: Icon.text,
+	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {

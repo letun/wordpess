@@ -4,15 +4,16 @@ import classnames from "classnames";
 
 import Spacer from '../../layout/spacer';
 
-import Icon from '../../global/icons';
 import Config from '../../global/config';
 import getInspectorControls from "../../controls/getInspectorControls";
+
+import { ReactComponent as elementIcon } from '../../../../svg/elements/button.svg';
 
 export const name = 'lettera/block-btn';
 
 export const settings = {
 	title: 'Block: Button',
-	icon: Icon.button,
+	icon: elementIcon,
 	category: Config.category,
 	parent: Config.childElemets.mainBlocks,
 	attributes: {

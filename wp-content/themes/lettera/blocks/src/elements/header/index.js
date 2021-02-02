@@ -11,9 +11,23 @@ import {
 } from '@wordpress/components';
 import classnames from "classnames";
 
-import Icon from '../../global/icons';
 import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
+
+import { ReactComponent as headingIcon1 } from '../../../../svg/buttons/heading1.svg';
+import { ReactComponent as headingIcon2 } from '../../../../svg/buttons/heading2.svg';
+import { ReactComponent as headingIcon3 } from '../../../../svg/buttons/heading3.svg';
+import { ReactComponent as headingIcon4 } from '../../../../svg/buttons/heading4.svg';
+import { ReactComponent as headingIcon5 } from '../../../../svg/buttons/heading5.svg';
+import { ReactComponent as headingIcon6 } from '../../../../svg/buttons/heading6.svg';
+const headingIcons = {
+	level1: headingIcon1,
+	level2: headingIcon2,
+	level3: headingIcon3,
+	level4: headingIcon4,
+	level5: headingIcon5,
+	level6: headingIcon6,
+};
 
 const HEADING_LEVELS = [ 1, 2, 3 ];
 
@@ -73,7 +87,7 @@ export const settings = {
 			const isActive = targetLevel === level;
 			return (
 				<ToolbarButton
-					icon={ Icon.heading['level' + targetLevel] }
+					icon={ headingIcons['level' + targetLevel] }
 					title={'Heading ' + targetLevel}
 					isActive={isActive}
 					value={targetLevel}

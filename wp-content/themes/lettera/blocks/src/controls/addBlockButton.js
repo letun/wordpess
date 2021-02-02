@@ -8,9 +8,8 @@ import {
     ToolbarGroup
 } from "@wordpress/components";
 
-import Icons from "../global/icons";
+import { ReactComponent as plusIcon } from '../../../svg/buttons/plus.svg';
 
-/* global wp */
 const {Component} = wp.element;
 
 class addBlockButton extends Component {
@@ -23,7 +22,7 @@ class addBlockButton extends Component {
             <div className={"la-add-block-toolbar"}>
                 <ToolbarGroup title={"Add new"} className={"la-add-block-toolbar__panel"}>
                     <ToolbarButton
-                        icon={Icons.plus}
+                        icon={plusIcon}
                         className={["la-add-block-toolbar__button-plus"]}
                         isPressed={true}
                     />

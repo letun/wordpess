@@ -2,18 +2,18 @@ import { getBlockTransforms } from '@wordpress/blocks';
 import { withSelect } from '@wordpress/data';
 import { RichText, BlockControls } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton } from '@wordpress/components';
-import { paragraph } from '@wordpress/icons';
 import classnames from "classnames";
 
-import Icon from '../../global/icons';
 import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
+
+import { ReactComponent as elementIcon } from '../../../../svg/elements/paragraph.svg';
 
 export const name = 'lettera/paragraph';
 
 export const settings = {
 	title: 'Paragraph',
-	icon: paragraph,
+	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {

@@ -11,10 +11,9 @@ import {
     getColorObjectByAttributeValues
 } from "@wordpress/block-editor";
 
-/* global wp */
 const {Component} = wp.element;
 
-import Icons from "../global/icons";
+import { ReactComponent as colorIcon } from '../../../svg/buttons/color.svg';
 
 class toolbarButtonColor extends Component {
 
@@ -31,7 +30,7 @@ class toolbarButtonColor extends Component {
         return (
             <Toolbar className={"la-button-color-panel"}>
                 <ToolbarButton
-                    icon={ Icons.buttonType.color }
+                    icon={ colorIcon }
                     isPressed={isActive}
                     className={[
                         "la-button-color-panel__button",

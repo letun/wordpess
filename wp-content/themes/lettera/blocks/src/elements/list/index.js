@@ -5,16 +5,20 @@ import {
 	RichTextToolbarButton,
 } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton } from '@wordpress/components';
-import Icon from '../../global/icons';
+
+import classnames from "classnames";
+
 import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
-import classnames from "classnames";
+import { ReactComponent as elementIcon } from '../../../../svg/elements/list.svg';
+import { ReactComponent as listTypeUnorderedIcon } from '../../../../svg/buttons/listTypeUnordered.svg';
+import { ReactComponent as listTypeOrderedIcon } from '../../../../svg/buttons/listTypeOrdered.svg';
 
 export const name = 'lettera/list';
 
 export const settings = {
 	title: 'Calypso: List',
-	icon: Icon.list,
+	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
@@ -115,14 +119,14 @@ export const settings = {
 					</Toolbar>
 					<Toolbar className={"components-toolbar-group--no-right-border"}>
 						<ToolbarButton
-							icon={ Icon.listType.unordered }
+							icon={ listTypeUnorderedIcon }
 							title={'Unordered list'}
 							isActive={tagName == 'ul' ? true : false}
 							value={isUnordered}
 							onClick={ () => setAttributes( { ordered: isUnordered } ) }
 						/>
 						<ToolbarButton
-							icon={ Icon.listType.ordered }
+							icon={ listTypeOrderedIcon }
 							title={'Ordered list'}
 							isActive={tagName == 'ol' ? true : false}
 							value={isOrdered}

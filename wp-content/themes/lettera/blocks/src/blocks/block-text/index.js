@@ -3,16 +3,17 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { withState, compose } from '@wordpress/compose';
 
-import Icon from '../../global/icons';
 import Config from '../../global/config';
 import getInspectorControls from "../../controls/getInspectorControls";
 import AddBlockButton from "../../controls/addBlockButton";
+
+import { ReactComponent as elementIcon } from '../../../../svg/elements/preheader.svg';
 
 export const name = 'lettera/block-text';
 
 export const settings = {
 	title: 'Block: Text',
-	icon: Icon.preheader,
+	icon: elementIcon,
 	category: Config.category,
 	parent: Config.childElemets.mainBlocks,
 	attributes: {

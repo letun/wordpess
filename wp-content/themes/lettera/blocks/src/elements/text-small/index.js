@@ -2,15 +2,16 @@ import { withSelect } from '@wordpress/data';
 import { RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
 
-import Icon from '../../global/icons';
 import getInspectorControls from '../../controls/getInspectorControls';
 import LetteraConfig from '../../global/config';
+
+import { ReactComponent as elementIcon } from '../../../../svg/elements/preheader.svg';
 
 export const name = 'lettera/text-small';
 
 export const settings = {
 	title: 'Small text',
-	icon: Icon.text,
+	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {

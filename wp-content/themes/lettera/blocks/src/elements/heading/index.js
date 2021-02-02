@@ -5,9 +5,16 @@ import {
 	RichTextToolbarButton,
 } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton } from '@wordpress/components';
-import Icon from '../../global/icons';
+
 import getInspectorControls from "../../controls/getInspectorControls";
 import LetteraConfig from "../../global/config";
+
+import { ReactComponent as headingIcon2 } from '../../../../svg/buttons/heading2.svg';
+import { ReactComponent as headingIcon3 } from '../../../../svg/buttons/heading3.svg';
+const headingIcons = {
+	level2: headingIcon2,
+	level3: headingIcon3,
+};
 
 const HEADING_LEVELS = [ 2, 3 ];
 
@@ -63,7 +70,7 @@ export const settings = {
 			const isActive = targetLevel === level;
 			return (
 				<ToolbarButton
-					icon={ Icon.heading['level' + targetLevel] }
+					icon={ headingIcons['level' + targetLevel] }
 					title={'Heading ' + targetLevel}
 					isActive={isActive}
 					value={targetLevel}

@@ -21,16 +21,18 @@ import ButtonMain from '../../layout/button-main';
 import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
 import ToolbarButtonColor from '../../controls/toolbarButtonColor';
 import getInspectorControls from "../../controls/getInspectorControls";
-import Icons from '../../global/icons';
+
 import LetteraConfig from '../../global/config';
+
+import { ReactComponent as elementIcon } from '../../../../svg/elements/button.svg';
+import { ReactComponent as primaryButtonIcon } from '../../../../svg/buttons/primaryButton.svg';
+import { ReactComponent as secondaryButtonIcon } from '../../../../svg/buttons/secondaryButton.svg';
 
 export const name = 'lettera/button-main';
 
-console.log()
-
 export const settings = {
 	title: 'Button',
-	icon: Icons.button,
+	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
@@ -121,13 +123,13 @@ export const settings = {
 			<>
 				<ToolbarGroup label="Button style">
 					<ToolbarButton
-						icon={ Icons.buttonType.typeButton }
+						icon={ primaryButtonIcon }
 						title={'Primary button'}
 						isActive={ true }
 						onClick={ () => setAttributes( { buttonColor: 'black' } ) }
 					/>
 					<ToolbarButton
-						icon={ Icons.buttonType.typeLink }
+						icon={ secondaryButtonIcon }
 						title={ 'Secondary button' }
 						isActive={ false }
 						onClick={ () => {

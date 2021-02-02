@@ -10,15 +10,16 @@ import {
 } from '@wordpress/block-editor';
 import classnames from "classnames";
 
-import Icon from '../../global/icons';
 import getInspectorControls from '../../controls/getInspectorControls';
 import LetteraConfig from "../../global/config";
+
+import { ReactComponent as elementIcon } from '../../../../svg/elements/preheader.svg';
 
 export const name = 'lettera/preheader';
 
 export const settings = {
 	title: 'Preheader',
-	icon: Icon.preheader,
+	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
