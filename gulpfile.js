@@ -50,6 +50,11 @@ gulp.task('watch', function () {
 	gulp.watch('./wp-content/themes/lettera/**/*.scss', gulp.series('sass', 'sass--lettera'));
 });
 
+gulp.task('watch-eslint', function () {
+	gulp.watch('./wp-content/themes/lettera/blocks/src/**/*.js', gulp.series('eslint'));
+});
+
+
 gulp.task('phplint', function () {
 	return gulp.src(['./wp-content/themes/lettera/**/*.php'])
 		.pipe(phplint('', {
@@ -80,7 +85,7 @@ gulp.task('scsslint', function lintCssTask() {
 });
 
 gulp.task('eslint', function () {
-	return gulp.src(['./wp-content/themes/lettera/blocks/src/layout/**/*.js'])
+	return gulp.src(['./wp-content/themes/lettera/blocks/src/controls/**/*.js'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());

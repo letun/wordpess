@@ -7226,10 +7226,9 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
-var Component = wp.element.Component;
 
-var addBlockButton = /*#__PURE__*/function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(addBlockButton, _Component);
+var addBlockButton = /*#__PURE__*/function (_wp$element$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(addBlockButton, _wp$element$Component);
 
   var _super = _createSuper(addBlockButton);
 
@@ -7247,26 +7246,27 @@ var addBlockButton = /*#__PURE__*/function (_Component) {
           attributes = _this$props.attributes,
           clientId = _this$props.clientId;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("div", {
-        className: "la-add-block-toolbar"
+        className: 'la-add-block-toolbar'
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarGroup"], {
-        title: "Add new",
-        className: "la-add-block-toolbar__panel"
+        title: 'Add new',
+        className: 'la-add-block-toolbar__panel'
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarButton"], {
         icon: _svg_buttons_plus_svg__WEBPACK_IMPORTED_MODULE_9__["ReactComponent"],
-        className: ["la-add-block-toolbar__button-plus"],
+        className: 'la-add-block-toolbar__button-plus',
         isPressed: true
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarGroup"], {
-        className: "la-add-block-toolbar__button-group"
+        className: 'la-add-block-toolbar__button-group'
       }, allowedBlocks.map(function (blockSlug) {
         var insertBlock = Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_7__["getBlockType"])(blockSlug);
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarButton"], {
+          key: '',
           icon: insertBlock.icon.src,
-          className: ["la-add-block-toolbar__button"],
+          className: 'la-add-block-toolbar__button',
           label: insertBlock.title,
           onClick: function onClick() {
-            wp.data.dispatch("core/block-editor").insertBlock(Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_7__["createBlock"])(blockSlug, {
+            wp.data.dispatch('core/block-editor').insertBlock(Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_7__["createBlock"])(blockSlug, {
               attributes: attributes,
-              "canDelete": true
+              canDelete: true
             }), 100, clientId);
           }
         });
@@ -7275,7 +7275,7 @@ var addBlockButton = /*#__PURE__*/function (_Component) {
   }]);
 
   return addBlockButton;
-}(Component);
+}(wp.element.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__["withState"])()(addBlockButton));
 
@@ -7301,12 +7301,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* Update Main component (/components) attribute by ComponentClientId */
 
-/* global wp */
-
 var onChangeSettings = function onChangeSettings(clientId, name, value) {
-  var componentBlock = wp.data.select("core/block-editor").getBlock(clientId);
+  var componentBlock = wp.data.select('core/block-editor').getBlock(clientId);
   componentBlock.attributes[name] = value;
-  wp.data.dispatch("core/block-editor").updateBlock(clientId, componentBlock);
+  wp.data.dispatch('core/block-editor').updateBlock(clientId, componentBlock);
 };
 /* Define all attribute panels by attribute name */
 
@@ -7315,17 +7313,17 @@ var panels = [];
 
 panels.textAlign = function (clientId, value) {
   return value && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
-    label: "Text align",
+    label: 'Text align',
     value: value,
     options: [{
-      "label": "Text left",
-      "value": "text-left"
+      label: 'Text left',
+      value: 'text-left'
     }, {
-      "label": "Text center",
-      "value": "text-center"
+      label: 'Text center',
+      value: 'text-center'
     }],
     onChange: function onChange(newValue) {
-      onChangeSettings(clientId, "textAlign", newValue);
+      onChangeSettings(clientId, 'textAlign', newValue);
     }
   });
 };
@@ -7334,24 +7332,25 @@ panels.bgColor = function (clientId, bgColor) {
   var _getColorObjectByAttr;
 
   var bgColors = [{
-    "color": "#FFFFFF",
-    "name": "None",
-    "slug": "none"
+    slug: 'none',
+    name: 'None',
+    color: '#FFFFFF'
   }, {
-    "color": "#1D1D1D",
-    "name": "Black",
-    "slug": "black"
+    name: 'Black',
+    slug: 'black',
+    color: '#1D1D1D'
   }, {
-    "color": "#FAE053",
-    "name": "Yellow",
-    "slug": "yellow"
+    name: 'Yellow',
+    slug: 'yellow',
+    color: '#FAE053'
   }, {
-    "color": "#D3EEFF",
-    "name": "Blue",
-    "slug": "blue"
+    name: 'Blue',
+    slug: 'blue',
+    color: '#D3EEFF'
   }];
   return bgColor && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["BaseControl"], {
-    label: "Background color"
+    id: '',
+    label: 'Background color'
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["ColorPalette"], {
     colors: bgColors,
     value: (_getColorObjectByAttr = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["getColorObjectByAttributeValues"])(bgColors, bgColor)) === null || _getColorObjectByAttr === void 0 ? void 0 : _getColorObjectByAttr.color,
@@ -7359,12 +7358,12 @@ panels.bgColor = function (clientId, bgColor) {
       if (newColor) {
         var _getColorObjectByColo;
 
-        onChangeSettings(clientId, "bgColor", (_getColorObjectByColo = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["getColorObjectByColorValue"])(bgColors, newColor)) === null || _getColorObjectByColo === void 0 ? void 0 : _getColorObjectByColo.slug);
+        onChangeSettings(clientId, 'bgColor', (_getColorObjectByColo = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["getColorObjectByColorValue"])(bgColors, newColor)) === null || _getColorObjectByColo === void 0 ? void 0 : _getColorObjectByColo.slug);
       }
     },
     disableCustomColors: true,
     clearable: false,
-    className: "la-inspector-control__color-panel"
+    className: 'la-inspector-control__color-panel'
   }));
 };
 
@@ -7373,9 +7372,9 @@ var getInspectorControls = function getInspectorControls(clientId, blockAttribut
     return panels[key](clientId, blockAttributes[key]);
   });
   return getPanels && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], {
-    className: "la-inspector-control"
+    className: 'la-inspector-control'
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
-    title: "Block settings",
+    title: 'Block settings',
     initialOpen: true
   }, getPanels));
 };
@@ -7399,15 +7398,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 
 
-/* global wp */
 
 var removeComponentButton = function removeComponentButton(clientId) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["ToolbarButton"], {
-    icon: "trash",
-    title: "Remove block",
-    className: "la-remove-button",
+    icon: 'trash',
+    title: 'Remove block',
+    className: 'la-remove-button',
     onClick: function onClick() {
-      return wp.data.dispatch("core/block-editor").removeBlock(clientId);
+      wp.data.dispatch('core/block-editor').removeBlock(clientId);
     }
   });
 };
@@ -7458,11 +7456,10 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
-var Component = wp.element.Component;
 
 
-var toolbarButtonColor = /*#__PURE__*/function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(toolbarButtonColor, _Component);
+var toolbarButtonColor = /*#__PURE__*/function (_wp$element$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(toolbarButtonColor, _wp$element$Component);
 
   var _super = _createSuper(toolbarButtonColor);
 
@@ -7484,15 +7481,15 @@ var toolbarButtonColor = /*#__PURE__*/function (_Component) {
           _onChange = _this$props.onChange,
           setState = _this$props.setState;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Toolbar"], {
-        className: "la-button-color-panel"
+        className: 'la-button-color-panel'
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToolbarButton"], {
         icon: _svg_buttons_color_svg__WEBPACK_IMPORTED_MODULE_9__["ReactComponent"],
         isPressed: isActive,
-        className: ["la-button-color-panel__button", "la-button-color-panel__button--".concat(buttonColor)],
+        className: ['la-button-color-panel__button', "la-button-color-panel__button--".concat(buttonColor)],
         onClick: function onClick() {
-          return setState(function () {
+          setState(function () {
             return {
-              "isActive": !isActive
+              isActive: !isActive
             };
           });
         }
@@ -7507,20 +7504,20 @@ var toolbarButtonColor = /*#__PURE__*/function (_Component) {
 
           setState(function () {
             return {
-              "isActive": false
+              isActive: false
             };
           });
         },
         colors: btnColors,
         disableCustomColors: true,
         clearable: false,
-        className: ["la-button-color-panel__palette"]
+        className: 'la-button-color-panel__palette'
       })));
     }
   }]);
 
   return toolbarButtonColor;
-}(Component);
+}(wp.element.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__["withState"])()(toolbarButtonColor));
 
@@ -7551,9 +7548,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
 
 
 
@@ -7569,10 +7564,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
-
-/* global wp */
-
-var LinkControl = wp.blockEditor["__experimentalLinkControl"];
+var LinkControl = wp.blockEditor.__experimentalLinkControl;
 
 var toolbarButtonLinkHref = /*#__PURE__*/function (_Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(toolbarButtonLinkHref, _Component);
@@ -7597,29 +7589,29 @@ var toolbarButtonLinkHref = /*#__PURE__*/function (_Component) {
           onChange = _this$props.onChange,
           setState = _this$props.setState;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Toolbar"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToolbarButton"], {
-        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["link"],
+        icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["link"],
         isPressed: isActive,
         onClick: function onClick() {
-          return setState(function () {
+          setState(function () {
             return {
-              "isActive": !isActive
+              isActive: !isActive
             };
           });
         }
       }), isActive && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Popover"], {
-        position: "bottom center",
-        focusOnMount: "container",
+        position: 'bottom center',
+        focusOnMount: 'container',
         noArrow: false,
         renderSettings: function renderSettings() {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["ToggleControl"], {
-            label: "Open in new tab",
+            label: 'Open in new tab',
             checked: linkTarget,
             onChange: _this.setTarget
           });
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(LinkControl, {
         value: {
-          "url": linkHref
+          url: linkHref
         },
         onChange: onChange,
         showSuggestions: false
