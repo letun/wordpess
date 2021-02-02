@@ -63,13 +63,15 @@
     margin-bottom: 16px; }
   .post-type-lettera .block-editor-writing-flow ul,
   .post-type-lettera .block-editor-writing-flow ol {
+    margin-top: 0;
     margin-bottom: 16px;
-    padding-left: 20px; }
+    padding-left: 20px;
+    text-align: left; }
     .post-type-lettera .block-editor-writing-flow ul li,
     .post-type-lettera .block-editor-writing-flow ol li {
       margin-bottom: 8px; }
   .post-type-lettera .block-editor-writing-flow small,
-  .post-type-lettera .block-editor-writing-flow .small {
+  .post-type-lettera .block-editor-writing-flow .text-small {
     font-size: 14px;
     line-height: 24px; }
   .post-type-lettera .block-editor-writing-flow a,
@@ -310,6 +312,11 @@
   .post-type-lettera .block-editor-writing-flow p.text-right,
   .post-type-lettera .block-editor-writing-flow span.text-right {
     text-align: right; }
+  .post-type-lettera .block-editor-writing-flow ul.text-center,
+  .post-type-lettera .block-editor-writing-flow ol.text-center {
+    display: inline-block;
+    text-align: left;
+    min-width: 160px; }
   .post-type-lettera .block-editor-writing-flow span.text-center {
     display: block;
     width: 100%;

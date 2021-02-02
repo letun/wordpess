@@ -78,8 +78,10 @@ p {
 
 ul,
 ol {
+	margin-top: 0;
 	margin-bottom: $paragraph-margin-bottom;
 	padding-left: $list-left-padding;
+	text-align: left;
 
 	li {
 		margin-bottom: $paragraph-margin-bottom / 2;
@@ -87,7 +89,7 @@ ol {
 }
 
 small,
-.small {
+.text-small {
 	font-size: $small-font-size;
 	line-height: $small-line-height;
 }

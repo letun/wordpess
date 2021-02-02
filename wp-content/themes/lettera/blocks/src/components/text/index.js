@@ -81,7 +81,7 @@ export const settings = {
 			[
 				'lettera/block-btn',
 				{
-					button_text: true,
+					buttonAltText: true,
 					defaultButtonType: 'button-main',
 					textAlign: 'text-center',
 				},

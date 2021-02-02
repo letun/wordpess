@@ -22,6 +22,13 @@ span {
 	}
 }
 
+ul.text-center,
+ol.text-center {
+	display: inline-block;
+	text-align: left;
+	min-width: 160px;
+}
+
 span.text-center {
 	display: block;
 	width: 100%;

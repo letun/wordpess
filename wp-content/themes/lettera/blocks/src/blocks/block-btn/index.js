@@ -30,8 +30,8 @@ export const settings = {
 			default: null,
 		},
 		buttonAltText: {
-			type: 'string',
-			default: null,
+			type: 'boolean',
+			default: true,
 		},
 		addClass: {
 			type: 'string',
@@ -89,7 +89,10 @@ export const settings = {
 		if ( buttonAltText ) {
 			MY_TEMPLATE.push( [
 				'lettera/text-small',
-				{ placeholder: 'Text bellow button', addClass: 'text-gray' },
+				{
+					placeholder: 'Text bellow button',
+					addClass: [ 'text-gray', 'text-center' ],
+				},
 			] );
 		}
 

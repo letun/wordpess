@@ -6820,8 +6820,8 @@ var settings = {
       default: null
     },
     buttonAltText: {
-      type: 'string',
-      default: null
+      type: 'boolean',
+      default: true
     },
     addClass: {
       type: 'string'
@@ -6868,7 +6868,7 @@ var settings = {
     if (buttonAltText) {
       MY_TEMPLATE.push(['lettera/text-small', {
         placeholder: 'Text bellow button',
-        addClass: 'text-gray'
+        addClass: ['text-gray', 'text-center']
       }]);
     }
 
@@ -7116,7 +7116,7 @@ var settings = {
     }], ['lettera/block-text', {
       textAlign: textAlign
     }], ['lettera/block-btn', {
-      button_text: true,
+      buttonAltText: true,
       defaultButtonType: 'button-main',
       textAlign: 'text-center'
     }]];
@@ -8282,7 +8282,7 @@ var settings = {
     },
     isGlobalTextAlign: {
       type: 'boolean',
-      default: false
+      default: true
     },
     canDelete: {
       type: 'boolean',
@@ -8746,8 +8746,8 @@ var settings = {
       default: 'Text bellow button…'
     },
     addClass: {
-      type: 'string',
-      default: ''
+      type: 'array',
+      default: null
     }
   },
   edit: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
@@ -8766,17 +8766,6 @@ var settings = {
     var content = attributes.content,
         placeholder = attributes.placeholder,
         addClass = attributes.addClass;
-
-    if (parentBlockAttributes.textColor === 'white') {
-      setAttributes({
-        addClass: 'text-white'
-      });
-    } else {
-      setAttributes({
-        addClass: 'text-gray'
-      });
-    }
-
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"])(parentClientId, parentBlockAttributes);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
       identifier: "content",

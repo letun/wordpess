@@ -48,7 +48,7 @@ export const settings = {
 		},
 		isGlobalTextAlign: {
 			type: 'boolean',
-			default: false,
+			default: true,
 		},
 		canDelete: {
 			type: 'boolean',

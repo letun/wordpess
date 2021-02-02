@@ -25,8 +25,8 @@ export const settings = {
 			default: 'Text bellow button…',
 		},
 		addClass: {
-			type: 'string',
-			default: '',
+			type: 'array',
+			default: null,
 		},
 	},
 	edit: withSelect( ( select, blockData ) => {
@@ -51,12 +51,6 @@ export const settings = {
 		} = props;
 
 		const { content, placeholder, addClass } = attributes;
-
-		if ( parentBlockAttributes.textColor === 'white' ) {
-			setAttributes( { addClass: 'text-white' } );
-		} else {
-			setAttributes( { addClass: 'text-gray' } );
-		}
 
 		const inspectorControls = getInspectorControls(
 			parentClientId,
