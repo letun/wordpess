@@ -4,6 +4,8 @@
   "description": "Email builder",
   "main": "gulpfile.js",
   "dependencies": {
+    "@wordpress/block-editor": "^5.2.5",
+    "@wordpress/data": "^4.26.5",
     "@wordpress/format-library": "^1.26.5",
     "gulp": "^4.0.2",
     "gulp-jslint": "^1.0.10",
