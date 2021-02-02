@@ -1,18 +1,10 @@
 import { withSelect } from '@wordpress/data';
-import {
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	RichTextToolbarButton,
-} from '@wordpress/block-editor';
-import {
-	Toolbar,
-	ToolbarButton
-} from '@wordpress/components';
-import classnames from "classnames";
+import { RichText, BlockControls } from '@wordpress/block-editor';
+import { Toolbar, ToolbarButton } from '@wordpress/components';
+import classnames from 'classnames';
 
-import getInspectorControls from "../../controls/getInspectorControls";
-import LetteraConfig from "../../global/config";
+import getInspectorControls from '../../controls/getInspectorControls';
+import LetteraConfig from '../../global/config';
 
 import { ReactComponent as headingIcon1 } from '../../../../svg/buttons/heading1.svg';
 import { ReactComponent as headingIcon2 } from '../../../../svg/buttons/heading2.svg';
@@ -55,22 +47,27 @@ export const settings = {
 		addClass: {
 			type: 'array',
 			source: 'attribute',
-			default: ''
+			default: '',
 		},
 	},
 	edit: withSelect( ( select, blockData ) => {
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( blockData.clientId );
+		const parentClientId = select(
+			'core/block-editor'
+		).getBlockHierarchyRootClientId( blockData.clientId );
 		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
-			parentClientId: parentClientId,
+			innerBlocks: select( 'core/block-editor' ).getBlocks(
+				blockData.clientId
+			),
+			parentClientId,
 			clientId: blockData.clientId,
-			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
+			parentBlockAttributes: select(
+				'core/block-editor'
+			).getBlockAttributes( parentClientId ),
 		};
-	} )( props => {
+	} )( ( props ) => {
 		const {
 			attributes,
 			setAttributes,
-			clientId,
 			parentClientId,
 			parentBlockAttributes,
 			className,
@@ -78,61 +75,64 @@ export const settings = {
 
 		const { content, level, placeholder, addClass } = attributes;
 
-		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
+		const inspectorControls = getInspectorControls(
+			parentClientId,
+			parentBlockAttributes
+		);
 
-		const classHeader = ( level > 1 ) ? 'h' + level : '';
-		let classElement = [classHeader, addClass];
+		const classHeader = level > 1 ? 'h' + level : '';
+		const classElement = [ classHeader, addClass ];
 
 		const buttons = HEADING_LEVELS.map( ( targetLevel ) => {
 			const isActive = targetLevel === level;
 			return (
 				<ToolbarButton
-					icon={ headingIcons['level' + targetLevel] }
-					title={'Heading ' + targetLevel}
-					isActive={isActive}
-					value={targetLevel}
-					onClick={ (value) => setAttributes( { level: targetLevel } )}
+					key={ '' }
+					icon={ headingIcons[ 'level' + targetLevel ] }
+					title={ 'Heading ' + targetLevel }
+					isActive={ isActive }
+					value={ targetLevel }
+					onClick={ ( value ) => setAttributes( { level: value } ) }
 				/>
 			);
-		});
+		} );
 
 		return (
 			<>
 				<BlockControls>
-					<Toolbar>
-						{ buttons }
-					</Toolbar>
+					<Toolbar>{ buttons }</Toolbar>
 				</BlockControls>
 				{ inspectorControls }
 				<RichText
 					identifier="content"
-					tagName='h1'
-					className={ classnames(className, classElement) }
-					onChange={ ( value ) => setAttributes( { content: value } ) }
+					tagName="h1"
+					className={ classnames( className, classElement ) }
+					onChange={ ( value ) =>
+						setAttributes( { content: value } )
+					}
 					value={ content }
 					placeholder={ placeholder }
-					allowedFormats={[]}
+					allowedFormats={ [] }
 				/>
 			</>
 		);
-	}),
+	} ),
 	save: ( props ) => {
-		const {
-			attributes,
-			className,
-		} = props;
+		const { attributes, className } = props;
 
 		const { content, level, addClass } = attributes;
 
-		const classHeader = ( level > 1 ) ? 'h' + level : '';
-		let classElement = [classHeader, addClass];
+		const classHeader = level > 1 ? 'h' + level : '';
+		const classElement = [ classHeader, addClass ];
 
 		return (
-			content && <RichText.Content
-				tagName='h1'
-				value={ content }
-				className={ classnames(className, classElement) }
-			/>
+			content && (
+				<RichText.Content
+					tagName="h1"
+					value={ content }
+					className={ classnames( className, classElement ) }
+				/>
+			)
 		);
 	},
 };

@@ -1,31 +1,21 @@
 import { withSelect } from '@wordpress/data';
 import {
-	URLPopover,
-	URLInputButton,
-	URLInput,
 	RichText,
 	BlockControls,
-	InspectorControls,
-	PanelColorSettings,
-	ColorPalette,
 	getColorObjectByColorValue,
-	getColorObjectByAttributeValues,
 } from '@wordpress/block-editor';
-import {
-	ToolbarButton, ToolbarGroup
-} from '@wordpress/components';
-import classnames from "classnames";
+import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
+import classnames from 'classnames';
 
-import ButtonSecondary from "../../layout/button-secondary";
+import ButtonSecondary from '../../layout/button-secondary';
 
 import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
 import ToolbarButtonColor from '../../controls/toolbarButtonColor';
-import getInspectorControls from "../../controls/getInspectorControls";
+import getInspectorControls from '../../controls/getInspectorControls';
 import LetteraConfig from '../../global/config';
 import { ReactComponent as elementIcon } from '../../../../svg/elements/button.svg';
 import { ReactComponent as primaryButtonIcon } from '../../../../svg/buttons/primaryButton.svg';
 import { ReactComponent as secondaryButtonIcon } from '../../../../svg/buttons/secondaryButton.svg';
-
 
 export const name = 'lettera/button-secondary';
 
@@ -36,58 +26,64 @@ export const settings = {
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
 		content: {
-			type: "string",
-			source: "html",
-			selector: "span",
+			type: 'string',
+			source: 'html',
+			selector: 'span',
 		},
 		linkHref: {
-			type: "string",
-			source: "attribute",
-			selector: "a",
-			attribute: "href",
-			default: "https://www.letun.dev/",
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
+			default: 'https://www.letun.dev/',
 		},
 		linkTitle: {
-			type: "string",
-			source: "attribute",
-			selector: "a",
-			attribute: "title"
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'title',
 		},
 		linkTarget: {
-			type: "string",
-			source: "attribute",
-			selector: "a",
-			attribute: "target"
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'target',
 		},
 		linkRel: {
-			type: "string",
-			source: "attribute",
-			selector: "a",
-			attribute: "rel",
-			defauld: "noopener"
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'rel',
+			defauld: 'noopener',
 		},
 		placeholder: {
-			type: "string",
+			type: 'string',
 			default: 'Button text…',
 		},
 		buttonColor: {
-			type: "string",
-			default: null //black, yellow, blue, green
+			type: 'string',
+			default: null, //black, yellow, blue, green
 		},
 		buttonBlockClientId: {
-			type: "string",
-			default: null
-		}
+			type: 'string',
+			default: null,
+		},
 	},
 	edit: withSelect( ( select, blockData ) => {
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( blockData.clientId );
+		const parentClientId = select(
+			'core/block-editor'
+		).getBlockHierarchyRootClientId( blockData.clientId );
 		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
-			parentClientId: parentClientId,
+			innerBlocks: select( 'core/block-editor' ).getBlocks(
+				blockData.clientId
+			),
+			parentClientId,
 			clientId: blockData.clientId,
-			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
+			parentBlockAttributes: select(
+				'core/block-editor'
+			).getBlockAttributes( parentClientId ),
 		};
-	} )( props => {
+	} )( ( props ) => {
 		const {
 			attributes,
 			setAttributes,
@@ -99,20 +95,23 @@ export const settings = {
 
 		const { buttonColor, content, placeholder, linkHref } = attributes;
 		const curClientId = clientId;
-		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
+		const inspectorControls = getInspectorControls(
+			parentClientId,
+			parentBlockAttributes
+		);
 
 		const btnColors = [
-			{name: 'None', slug: 'none', color: '#FFFFFF'},
-			{name: 'Orange', slug: 'yellow',  color: '#FAE053'},
-			{name: 'Green', slug: 'black',  color: '#000000'},
-			{name: 'Blue', slug: 'blue',  color: '#6A8DD4'},
-			{name: 'Green', slug: 'green',  color: '#31CC8F'},
+			{ name: 'None', slug: 'none', color: '#FFFFFF' },
+			{ name: 'Orange', slug: 'yellow', color: '#FAE053' },
+			{ name: 'Green', slug: 'black', color: '#000000' },
+			{ name: 'Blue', slug: 'blue', color: '#6A8DD4' },
+			{ name: 'Green', slug: 'green', color: '#31CC8F' },
 		];
 
-		let classBtn = ['button-secondary'];
+		const classBtn = [ 'button-secondary' ];
 
-		if (buttonColor) {
-			classBtn.push('button-secondary--' + buttonColor);
+		if ( buttonColor ) {
+			classBtn.push( 'button-secondary--' + buttonColor );
 		}
 
 		const toolbar = (
@@ -120,79 +119,110 @@ export const settings = {
 				<ToolbarGroup label="Button style">
 					<ToolbarButton
 						icon={ primaryButtonIcon }
-						title={'Primary button'}
+						title={ 'Primary button' }
 						isActive={ false }
 						onClick={ () => {
-							const block = wp.blocks.createBlock( 'lettera/button-main', { content } );
-							wp.data.dispatch( 'core/block-editor' ).updateBlock(curClientId, block);
-							const buttonBlockClientId = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(clientId, 'lettera/block-btn')[0];
-							if (buttonBlockClientId) {
-								wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes(buttonBlockClientId, {buttonType: 'button-main'});
+							const block = wp.blocks.createBlock(
+								'lettera/button-main',
+								{ content }
+							);
+							wp.data
+								.dispatch( 'core/block-editor' )
+								.updateBlock( curClientId, block );
+							const buttonBlockClientId = wp.data
+								.select( 'core/block-editor' )
+								.getBlockParentsByBlockName(
+									clientId,
+									'lettera/block-btn'
+								)[ 0 ];
+							if ( buttonBlockClientId ) {
+								wp.data
+									.dispatch( 'core/block-editor' )
+									.updateBlockAttributes(
+										buttonBlockClientId,
+										{ buttonType: 'button-main' }
+									);
 							}
 						} }
 					/>
 					<ToolbarButton
 						icon={ secondaryButtonIcon }
-						title={'Secondary button'}
+						title={ 'Secondary button' }
 						isActive={ true }
-						onClick={ () => setAttributes( { buttonColor: 'yellow' } ) }
+						onClick={ () =>
+							setAttributes( { buttonColor: 'yellow' } )
+						}
 					/>
 				</ToolbarGroup>
 				<ToolbarButtonLinkHref
 					linkHref={ linkHref }
-					onChange={( value ) => setAttributes( { linkHref: value.url } )}
+					onChange={ ( value ) =>
+						setAttributes( { linkHref: value.url } )
+					}
 				/>
 				<ToolbarButtonColor
 					buttonColor={ buttonColor }
 					btnColors={ btnColors }
-					onChange={
-						( value ) => {
-							setAttributes( {
-								buttonColor: (value && value !== 'none' )? ( getColorObjectByColorValue(btnColors, value)?.slug) : null
-							} );
-						}
-					}
+					onChange={ ( value ) => {
+						setAttributes( {
+							buttonColor:
+								value && value !== 'none'
+									? getColorObjectByColorValue(
+											btnColors,
+											value
+									  )?.slug
+									: null,
+						} );
+					} }
 				/>
 			</>
 		);
 
 		return (
 			<>
-				<BlockControls>
-					{toolbar}
-				</BlockControls>
+				<BlockControls>{ toolbar }</BlockControls>
 				{ inspectorControls }
 				<ButtonSecondary
-					className={ classnames(classBtn, className) }>
+					className={ classnames( classBtn, className ) }
+				>
 					<RichText
 						identifier="content"
-						onChange={ ( value ) => setAttributes( { content: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { content: value } )
+						}
 						value={ content }
 						placeholder={ placeholder }
-						allowedFormats={[]}
+						allowedFormats={ [] }
 					/>
 				</ButtonSecondary>
 			</>
 		);
-	}),
+	} ),
 	save: ( props ) => {
-		const {
-			attributes
-		} = props;
+		const { attributes } = props;
 
-		const { content, buttonColor, linkTarget, linkRel, linkTitle, linkHref } = attributes;
+		const {
+			content,
+			buttonColor,
+			linkTarget,
+			linkRel,
+			linkTitle,
+			linkHref,
+		} = attributes;
 
 		return (
-			content && <ButtonSecondary
-				buttonColor={ buttonColor }
-				align={ "center" }
-				linkHref={ linkHref }
-				linkTarget={ linkTarget }
-				linkRel={ linkRel }
-				linkTitle={ linkTitle }
-			>
-				<RichText.Content value={ content } />
-			</ButtonSecondary>
+			content && (
+				<ButtonSecondary
+					buttonColor={ buttonColor }
+					align={ 'center' }
+					linkHref={ linkHref }
+					linkTarget={ linkTarget }
+					linkRel={ linkRel }
+					linkTitle={ linkTitle }
+				>
+					<RichText.Content value={ content } />
+				</ButtonSecondary>
+			)
 		);
 	},
 };

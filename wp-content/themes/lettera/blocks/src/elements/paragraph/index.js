@@ -1,11 +1,11 @@
-import { getBlockTransforms } from '@wordpress/blocks';
 import { withSelect } from '@wordpress/data';
 import { RichText, BlockControls } from '@wordpress/block-editor';
 import { Toolbar, ToolbarButton } from '@wordpress/components';
-import classnames from "classnames";
+import { createBlock } from '@wordpress/blocks';
+import classnames from 'classnames';
 
-import getInspectorControls from "../../controls/getInspectorControls";
-import LetteraConfig from "../../global/config";
+import getInspectorControls from '../../controls/getInspectorControls';
+import LetteraConfig from '../../global/config';
 
 import { ReactComponent as elementIcon } from '../../../../svg/elements/paragraph.svg';
 
@@ -21,24 +21,24 @@ export const settings = {
 			type: 'string',
 			source: 'html',
 			selector: 'p',
-			default: ''
+			default: '',
 		},
 		placeholder: {
 			type: 'string',
 			default: 'Text here…',
 		},
 		textAlign: {
-			type: "string",
-			default: null
+			type: 'string',
+			default: null,
 		},
 		isGlobalTextAlign: {
-			type: "boolean",
-			default: false
+			type: 'boolean',
+			default: false,
 		},
 		canDelete: {
 			type: 'boolean',
-			default: false
-		}
+			default: false,
+		},
 	},
 	transforms: {
 		from: [
@@ -57,23 +57,26 @@ export const settings = {
 				type: 'block',
 				blocks: [ 'calypso/list' ],
 				transform: ( content ) => {
-					return createBlock(
-						'calypso/list',
-						content.content
-					);
+					return createBlock( 'calypso/list', content.content );
 				},
 			},
 		],
 	},
 	edit: withSelect( ( select, blockData ) => {
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( blockData.clientId );
+		const parentClientId = select(
+			'core/block-editor'
+		).getBlockHierarchyRootClientId( blockData.clientId );
 		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
-			parentClientId: parentClientId,
+			innerBlocks: select( 'core/block-editor' ).getBlocks(
+				blockData.clientId
+			),
+			parentClientId,
 			clientId: blockData.clientId,
-			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
+			parentBlockAttributes: select(
+				'core/block-editor'
+			).getBlockAttributes( parentClientId ),
 		};
-	} )( props => {
+	} )( ( props ) => {
 		const {
 			attributes,
 			onReplace,
@@ -86,46 +89,68 @@ export const settings = {
 			className,
 		} = props;
 
-		const { content, placeholder, textAlign, isGlobalTextAlign } = attributes;
+		const {
+			content,
+			placeholder,
+			textAlign,
+			isGlobalTextAlign,
+		} = attributes;
 
-		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
+		const inspectorControls = getInspectorControls(
+			parentClientId,
+			parentBlockAttributes
+		);
 
-		wp.element.useEffect(() => {
-			if (isGlobalTextAlign) {
-				setAttributes({textAlign: parentBlockAttributes.textAlign});
+		wp.element.useEffect( () => {
+			if ( isGlobalTextAlign ) {
+				setAttributes( { textAlign: parentBlockAttributes.textAlign } );
 			}
-		});
+		} );
 
-		let addClass = [];
+		const addClass = [];
 		if ( textAlign === 'text-center' ) {
-			addClass.push('text-center');
+			addClass.push( 'text-center' );
 		}
 
 		return (
 			<>
 				<BlockControls>
-					<Toolbar className={"components-toolbar-group--no-right-border"}>
+					<Toolbar
+						className={
+							'components-toolbar-group--no-right-border'
+						}
+					>
 						<ToolbarButton
 							icon={ 'trash' }
 							title={ 'Remove block' }
-							onClick={ () => wp.data.dispatch( 'core/block-editor' ).removeBlock(clientId) }
+							onClick={ () =>
+								wp.data
+									.dispatch( 'core/block-editor' )
+									.removeBlock( clientId )
+							}
 						/>
 					</Toolbar>
 				</BlockControls>
 				{ inspectorControls }
 				<RichText
 					tagName="p"
-					className={ classnames(addClass, className) }
-					onChange={ ( newContent ) => { setAttributes( { content: newContent } ) } }
+					className={ classnames( addClass, className ) }
+					onChange={ ( newContent ) => {
+						setAttributes( { content: newContent } );
+					} }
 					value={ content }
 					placeholder={ placeholder }
-					allowedFormats={[ 'core/bold', 'core/italic', 'core/link' ] }
+					allowedFormats={ [
+						'core/bold',
+						'core/italic',
+						'core/link',
+					] }
 					onSplit={ ( value ) => {
 						if ( ! value ) {
 							return createBlock( name );
 						}
 						return createBlock( name, {
-								...attributes,
+							...attributes,
 							content: value,
 						} );
 					} }
@@ -135,23 +160,25 @@ export const settings = {
 				/>
 			</>
 		);
-	}),
+	} ),
 	save: ( props ) => {
 		const {
-			attributes: { content, textAlign }
+			attributes: { content, textAlign },
 		} = props;
 
-		let addClass = [];
-		if (textAlign === 'text-center') {
-			addClass.push('text-center');
+		const addClass = [];
+		if ( textAlign === 'text-center' ) {
+			addClass.push( 'text-center' );
 		}
 
 		return (
-			content && <RichText.Content
-				tagName="p"
-				className={ classnames(addClass) }
-				value={ content }
-			/>
+			content && (
+				<RichText.Content
+					tagName="p"
+					className={ classnames( addClass ) }
+					value={ content }
+				/>
+			)
 		);
 	},
 };

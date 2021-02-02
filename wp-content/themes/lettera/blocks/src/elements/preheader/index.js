@@ -1,17 +1,9 @@
 import { withSelect } from '@wordpress/data';
 import { RichText } from '@wordpress/block-editor';
-import {
-	BlockControls,
-	InspectorControls,
-	PanelColorSettings,
-	ColorPalette,
-	getColorObjectByColorValue,
-	getColorObjectByAttributeValues,
-} from '@wordpress/block-editor';
-import classnames from "classnames";
+import classnames from 'classnames';
 
 import getInspectorControls from '../../controls/getInspectorControls';
-import LetteraConfig from "../../global/config";
+import LetteraConfig from '../../global/config';
 
 import { ReactComponent as elementIcon } from '../../../../svg/elements/preheader.svg';
 
@@ -34,75 +26,84 @@ export const settings = {
 		},
 		textAlign: {
 			type: 'string',
-			default: 'text-left'
+			default: 'text-left',
 		},
 		addClass: {
 			type: 'array',
 			source: 'attribute',
-			default: ''
+			default: '',
 		},
 	},
 	edit: withSelect( ( select, blockData ) => {
-		const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( blockData.clientId );
+		const parentClientId = select(
+			'core/block-editor'
+		).getBlockHierarchyRootClientId( blockData.clientId );
 		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks( blockData.clientId ),
-			parentClientId: parentClientId,
+			innerBlocks: select( 'core/block-editor' ).getBlocks(
+				blockData.clientId
+			),
+			parentClientId,
 			clientId: blockData.clientId,
-			parentBlockAttributes: select( 'core/block-editor' ).getBlockAttributes( parentClientId ),
+			parentBlockAttributes: select(
+				'core/block-editor'
+			).getBlockAttributes( parentClientId ),
 		};
-	} )( props => {
+	} )( ( props ) => {
 		const {
 			attributes,
 			setAttributes,
 			parentClientId,
 			parentBlockAttributes,
-			clientId,
 			className,
 		} = props;
 
-		const { content, placeholder, addClass, textAlign} = attributes;
+		const { content, placeholder, addClass, textAlign } = attributes;
 
-		let classElement = ["text-normal", "text-gray", addClass];
-		if (textAlign === 'text-center') {
-			classElement.push('text-center');
+		const classElement = [ 'text-normal', 'text-gray', addClass ];
+		if ( textAlign === 'text-center' ) {
+			classElement.push( 'text-center' );
 		}
 
-		const inspectorControls = getInspectorControls(parentClientId, parentBlockAttributes);
+		const inspectorControls = getInspectorControls(
+			parentClientId,
+			parentBlockAttributes
+		);
 
 		return (
 			<>
 				{ inspectorControls }
 				<RichText
 					identifier="content"
-					tagName='h4'
-					className={ classnames(className, classElement) }
-					onChange={ ( value ) => setAttributes( { content: value } ) }
+					tagName="h4"
+					className={ classnames( className, classElement ) }
+					onChange={ ( value ) =>
+						setAttributes( { content: value } )
+					}
 					value={ content }
 					placeholder={ placeholder }
-					allowedFormats={[]}
+					allowedFormats={ [] }
 				/>
 			</>
 		);
-	}),
+	} ),
 	save: ( props ) => {
-		const {
-			attributes,
-			className
-		} = props;
+		const { attributes, className } = props;
 
 		const { content, textAlign, addClass } = attributes;
 
-		let classElement = ["text-normal", "text-gray", addClass];
-		if (textAlign === 'text-center') {
-			classElement.push('text-center');
+		const classElement = [ 'text-normal', 'text-gray', addClass ];
+		if ( textAlign === 'text-center' ) {
+			classElement.push( 'text-center' );
 		}
 
 		return (
-			content && <RichText.Content
-				tagName='h4'
-				value={ content }
-				className={ classnames(className, classElement) }
-			/>
+			content && (
+				<RichText.Content
+					tagName="h4"
+					value={ content }
+					className={ classnames( className, classElement ) }
+				/>
+			)
 		);
 	},
 };

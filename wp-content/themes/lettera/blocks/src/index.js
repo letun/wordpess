@@ -3,7 +3,6 @@ import {registerBlockType} from "@wordpress/blocks";
 // Elements
 import * as elPreheader from "./elements/preheader";
 import * as elHeader from "./elements/header";
-import * as elHeading from "./elements/heading";
 import * as elParagraph from "./elements/paragraph";
 import * as elList from "./elements/list";
 import * as elButtonMain from "./elements/button-main";
@@ -22,7 +21,6 @@ import * as cmText from "./components/text";
 const blocks = [
     elPreheader,
     elHeader,
-    elHeading,
     elParagraph,
     elList,
     elButtonMain,
