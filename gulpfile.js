@@ -85,11 +85,11 @@ gulp.task('scsslint', function lintCssTask() {
 });
 
 gulp.task('eslint', function () {
-	return gulp.src(['./wp-content/themes/lettera/blocks/src/components/**/*.js'])
-		.pipe(eslint({fix:true}))
-		//.pipe(eslint())
+	return gulp.src(['./wp-content/themes/lettera/blocks/src/**/*.js'])
+		//.pipe(eslint({fix:true}))
+		.pipe(eslint())
 		.pipe(eslint.format())
-		.pipe(gulp.dest(file => file.base))
+		//.pipe(gulp.dest(file => file.base))
 		.pipe(eslint.failAfterError());
 });
 
