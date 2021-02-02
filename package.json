@@ -4,6 +4,7 @@
   "description": "Email builder",
   "main": "gulpfile.js",
   "dependencies": {
+    "@wordpress/format-library": "^1.26.5",
     "gulp": "^4.0.2",
     "gulp-jslint": "^1.0.10",
     "gulp-phplint": "^0.9.0",
@@ -20,6 +21,7 @@
     "stylelint-value-no-unknown-custom-properties": "^3.0.0"
   },
   "devDependencies": {
+    "@wordpress/eslint-plugin": "^8.0.2",
     "gulp-eslint": "^6.0.0",
     "jshint": "^2.12.0",
     "jslint": "^0.12.1"

@@ -8281,81 +8281,78 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var name = 'lettera/text-small';
+var name = "lettera/text-small";
 var settings = {
-  title: 'Small text',
+  title: "Small text",
   icon: _global_icons__WEBPACK_IMPORTED_MODULE_4__["default"].text,
   category: _global_config__WEBPACK_IMPORTED_MODULE_6__["default"].category,
   parent: _global_config__WEBPACK_IMPORTED_MODULE_6__["default"].childElemets.mainBlocks,
   attributes: {
     content: {
-      type: 'string',
-      source: 'html',
-      selector: 'p.text-small'
+      type: "string",
+      source: "html",
+      selector: "p.text-small"
     },
     placeholder: {
-      type: 'string',
-      default: 'Text bellow button…'
+      type: "string",
+      default: "Text bellow button…"
     },
     addClass: {
-      type: 'string',
-      default: ''
+      type: "string",
+      default: ""
     }
   },
   edit: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
-    var parentClientId = select('core/block-editor').getBlockHierarchyRootClientId(blockData.clientId);
+    var parentClientId = select("core/block-editor").getBlockHierarchyRootClientId(blockData.clientId);
     return {
       clientId: blockData.clientId,
       parentClientId: parentClientId,
-      parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
+      parentBlockAttributes: select("core/block-editor").getBlockAttributes(parentClientId)
     };
   })(function (props) {
-    var _props$attributes = props.attributes,
-        content = _props$attributes.content,
-        placeholder = _props$attributes.placeholder,
-        addClass = _props$attributes.addClass,
+    var attributes = props.attributes,
         setAttributes = props.setAttributes,
-        clientId = props.clientId,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className;
+    var content = attributes.content,
+        placeholder = attributes.placeholder,
+        addClass = attributes.addClass;
 
-    if (parentBlockAttributes.textColor === 'white') {
+    if (parentBlockAttributes.textColor === "white") {
       setAttributes({
-        addClass: 'text-white'
+        "addClass": "text-white"
       });
     } else {
       setAttributes({
-        addClass: 'text-gray'
+        "addClass": "text-gray"
       });
     }
 
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"])(parentClientId, parentBlockAttributes);
-    var classElement = ["text-small", addClass];
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
       identifier: "content",
       tagName: "p",
-      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classElement),
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, "text-small", addClass),
       onChange: function onChange(value) {
         return setAttributes({
-          content: value
+          "content": value
         });
       },
       value: content,
       placeholder: placeholder,
-      allowedFormats: ['core/bold', 'core/italic', 'core/link']
+      allowedFormats: ["core/bold", "core/italic", "core/link"]
     }));
   }),
-  save: function save(props) {
-    var _props$attributes2 = props.attributes,
-        className = _props$attributes2.className,
-        content = _props$attributes2.content,
-        addClass = _props$attributes2.addClass;
-    var classElement = ["text-small", addClass];
+  "save": function save(props) {
+    var _props$attributes = props["attributes"],
+        className = _props$attributes.className,
+        content = _props$attributes.content,
+        addClass = _props$attributes.addClass;
     return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
       tagName: "p",
       value: content,
-      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, classElement)
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, "text-small", addClass)
     });
   }
 };
