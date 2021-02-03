@@ -46,10 +46,8 @@ export const settings = {
 	example: {
 		attributes: {
 			blockSettings: {
-				imagePosition: 'right',
-				imageSize: 'medium',
+				textAlign: 'right',
 				bgColor: 'none',
-				textColor: 'none',
 			},
 		},
 	},

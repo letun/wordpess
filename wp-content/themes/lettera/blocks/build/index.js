@@ -7128,10 +7128,8 @@ var settings = {
   example: {
     attributes: {
       blockSettings: {
-        imagePosition: 'right',
-        imageSize: 'medium',
-        bgColor: 'none',
-        textColor: 'none'
+        textAlign: 'right',
+        bgColor: 'none'
       }
     }
   },
@@ -7297,10 +7295,8 @@ var settings = {
   example: {
     attributes: {
       blockSettings: {
-        imagePosition: 'right',
-        imageSize: 'medium',
-        bgColor: 'none',
-        textColor: 'none'
+        textAlign: 'right',
+        bgColor: 'none'
       }
     }
   },
