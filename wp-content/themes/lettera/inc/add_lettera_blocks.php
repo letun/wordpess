@@ -48,6 +48,8 @@ function lettera_blocks() {
 	register_block_type( 'lettera/block-btn');
 	register_block_type( 'lettera/block-heading');
 
+	//Components
+	register_block_type( 'lettera/text-image');
 
 	//Add HTML comment to columns
 	add_filter('the_content', 'addHTMLComment', 10001);
