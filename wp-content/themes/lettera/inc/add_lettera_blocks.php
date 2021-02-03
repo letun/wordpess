@@ -50,6 +50,7 @@ function lettera_blocks() {
 
 	//Components
 	register_block_type( 'lettera/text-image');
+	register_block_type( 'lettera/promo');
 
 	//Add HTML comment to columns
 	add_filter('the_content', 'addHTMLComment', 10001);

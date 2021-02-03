@@ -18,6 +18,7 @@ import * as blockBtn from './blocks/block-btn';
 // Components
 import * as cmText from './components/text';
 import * as cmTextImage from './components/text-image';
+import * as cmPromo from './components/promo';
 
 const blocks = [
 	elPreheader,
@@ -33,6 +34,7 @@ const blocks = [
 
 	cmText,
 	cmTextImage,
+	cmPromo,
 ];
 
 blocks.forEach( ( block ) => {

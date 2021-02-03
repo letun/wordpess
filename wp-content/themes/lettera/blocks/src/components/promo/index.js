@@ -4,17 +4,18 @@ import classnames from 'classnames';
 
 import Container from '../../layout/container';
 import Row from '../../layout/row';
+import Columns from '../../layout/columns';
 import Column from '../../layout/column';
 import Spacer from "../../layout/spacer";
 import getInspectorControls from '../../controls/getInspectorControls';
 import removeComponentButton from '../../controls/removeComponentButton';
 
-import { ReactComponent as componentIcon } from '../../../../svg/components/hero.svg';
+import { ReactComponent as componentIcon } from '../../../../svg/components/promo.svg';
 
-export const name = 'lettera/text-image';
+export const name = 'lettera/promo';
 
 export const settings = {
-	title: 'Text with image',
+	title: 'Promo',
 	icon: componentIcon,
 	category: 'common',
 	attributes: {
@@ -27,9 +28,9 @@ export const settings = {
 			selector: "img",
 			attribute: "src"
 		},
-		textAlign: {
-			type: 'string',
-			default: 'text-left',
+		imagePosition: {
+			type: "string",
+			default: "left",
 		},
 		bgColor: {
 			type: 'string',
@@ -38,7 +39,7 @@ export const settings = {
 		blockSettings: {
 			type: 'object',
 			default: {
-				textAlign: 'right',
+				imagePosition: 'left',
 				bgColor: 'none',
 			},
 		},
@@ -46,7 +47,7 @@ export const settings = {
 	example: {
 		attributes: {
 			blockSettings: {
-				textAlign: 'right',
+				imagePosition: 'left',
 				bgColor: 'none',
 			},
 		},
@@ -75,23 +76,22 @@ export const settings = {
 		const MY_TEMPLATE = [
 			[
 				'lettera/preheader',
-				{ placeholder: 'Preheader', textAlign: 'text-center' },
+				{ placeholder: 'Preheader' },
 			],
 			[
 				'lettera/header',
 				{
 					placeholder: 'Header',
 					level: 1,
-					addClass: [ 'text-center' ],
 				},
 			],
-			[ 'lettera/block-text', { textAlign } ],
+			[ 'lettera/block-text' ],
 			[
 				'lettera/block-btn',
 				{
 					buttonAltText: true,
 					defaultButtonType: 'button-main',
-					textAlign: 'text-center',
+					textAlign: 'text-right',
 				},
 			],
 		];
@@ -122,34 +122,38 @@ export const settings = {
 				>
 					{ removeComponent }
 					<Row>
-						<Column className={ classnames( 'text-center' ) }>
-							<MediaUpload
-								onSelect={ (media) => {
-									setAttributes( {
-										mediaURL: media.url,
-										mediaID: media.id,
-									} );
-								} }
-								allowedTypes={["image"]}
-								value={ mediaID }
-								render={ ( { open } ) => (
-									<img
-										src={ ! mediaID ? ("/wp-content/themes/lettera/images/components/hero.png") : (mediaURL)}
-										className={ "calypso-promo__image" }
-										onClick={ open }
-									/>
-								) }
-							/>
-							<InnerBlocks
-								allowedBlocks={ ALLOWED_BLOCKS }
-								template={ MY_TEMPLATE }
-								templateLock="all"
-								value={ content }
-								onChange={ ( value ) =>
-									setAttributes( { content: value } )
-								}
-							/>
-						</Column>
+						<Columns>
+							<Column className={ classnames( 'text-center' ) }>
+								<MediaUpload
+									onSelect={ (media) => {
+										setAttributes( {
+											mediaURL: media.url,
+											mediaID: media.id,
+										} );
+									} }
+									allowedTypes={["image"]}
+									value={ mediaID }
+									render={ ( { open } ) => (
+										<img
+											src={ ! mediaID ? ("/wp-content/themes/lettera/images/components/hero.png") : (mediaURL)}
+											className={ "calypso-promo__image" }
+											onClick={ open }
+										/>
+									) }
+								/>
+							</Column>
+							<Column>
+								<InnerBlocks
+									allowedBlocks={ ALLOWED_BLOCKS }
+									template={ MY_TEMPLATE }
+									templateLock="all"
+									value={ content }
+									onChange={ ( value ) =>
+										setAttributes( { content: value } )
+									}
+								/>
+							</Column>
+						</Columns>
 					</Row>
 				</Container>
 			</>
@@ -173,19 +177,23 @@ export const settings = {
 					className={ classnames( classContainer, className ) }
 				>
 					<Row>
-						<Column className={ classnames( 'text-center' ) }>
-							{ mediaURL ? (
-								<img
-									className="calypso-promo__image"
-									src={ mediaURL }
-									alt="Promo image"
-								/>
-							) : (
-								<img src="/wp-content/themes/lettera/images/components/hero.png" alt={ 'Promo image' } className={ "calypso-promo__image" } />
-							) }
-							<Spacer height={ '32' } />
-							<InnerBlocks.Content />
-						</Column>
+						<Columns>
+							<Column className={ classnames( 'text-center' ) }>
+								{ mediaURL ? (
+									<img
+										className="calypso-promo__image"
+										src={ mediaURL }
+										alt="Promo image"
+									/>
+								) : (
+									<img src="/wp-content/themes/lettera/images/components/hero.png" alt={ 'Promo image' } className={ "calypso-promo__image" } />
+								) }
+								<Spacer height={ '8' } />
+							</Column>
+							<Column>
+								<InnerBlocks.Content />
+							</Column>
+						</Columns>
 					</Row>
 				</Container>
 			</>

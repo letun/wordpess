@@ -1,5 +1,14 @@
 import classnames from 'classnames';
 
+const CenterButton = ({align, children}) => {
+	return (align === 'center' ?
+			<center>
+				{children}
+			</center>
+		: {children}
+	)
+};
+
 const ButtonMain = ( {
 	children,
 	buttonColor,
@@ -8,9 +17,13 @@ const ButtonMain = ( {
 	linkRel,
 	linkTitle,
 	linkHref,
+	align,
 	className,
 } ) => {
-	const tableClass = [ 'float-center' ];
+	const tableClass = [ ];
+	if (align === 'center') {
+		tableClass.push('float-center');
+	}
 
 	if ( buttonSize === 'large' ) {
 		tableClass.push( 'button-main--large' );
@@ -21,7 +34,7 @@ const ButtonMain = ( {
 	}
 
 	return (
-		<center>
+		<CenterButton align={align}>
 			<table
 				className={ classnames( 'button-main', tableClass, className ) }
 				border={ '0' }
@@ -55,7 +68,7 @@ const ButtonMain = ( {
 					</tr>
 				</tbody>
 			</table>
-		</center>
+		</CenterButton>
 	);
 };
 

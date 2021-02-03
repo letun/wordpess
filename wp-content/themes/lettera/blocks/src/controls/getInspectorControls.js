@@ -45,6 +45,30 @@ panels.textAlign = ( clientId, value ) => {
 	);
 };
 
+panels.imagePosition = ( clientId, value ) => {
+	return (
+		value && (
+			<SelectControl
+				label={ 'Image position' }
+				value={ value }
+				options={ [
+					{
+						label: 'Image left',
+						value: 'left',
+					},
+					{
+						label: 'Image right',
+						value: 'right',
+					},
+				] }
+				onChange={ ( newValue ) => {
+					onChangeSettings( clientId, 'imagePosition', newValue );
+				} }
+			/>
+		)
+	);
+};
+
 panels.bgColor = ( clientId, bgColor ) => {
 	const bgColors = [
 		{
