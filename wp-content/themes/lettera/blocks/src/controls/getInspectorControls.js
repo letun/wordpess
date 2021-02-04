@@ -122,9 +122,9 @@ panels.bgColor = ( clientId, bgColor ) => {
 };
 
 const getInspectorControls = ( clientId, blockAttributes ) => {
-	const getPanels = Object.keys( blockAttributes.blockSettings ).map(
-		( key ) => panels[ key ]( clientId, blockAttributes[ key ] )
-	);
+	const getPanels = Object.keys(
+		blockAttributes.blockSettings
+	).map( ( key ) => panels[ key ]( clientId, blockAttributes[ key ] ) );
 
 	return (
 		getPanels && (

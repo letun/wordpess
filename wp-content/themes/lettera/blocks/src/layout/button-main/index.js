@@ -12,8 +12,8 @@ const ButtonMain = ( {
 	className,
 } ) => {
 	const tableClass = [];
-	if (textAlign === 'center') {
-		tableClass.push('float-center');
+	if ( textAlign === 'center' ) {
+		tableClass.push( 'float-center' );
 	}
 
 	if ( buttonSize === 'large' ) {
@@ -32,40 +32,36 @@ const ButtonMain = ( {
 			cellspacing={ '0' }
 		>
 			<tbody>
-			<tr>
-				<td align={ 'center' }>
-					<table
-						border={ '0' }
-						cellpadding={ '0' }
-						cellspacing={ '0' }
-					>
-						<tbody>
-						<tr>
-							<td align={ 'center' }>
-								<a
-									href={ linkHref }
-									target={ linkTarget }
-									title={ linkTitle }
-									rel={ linkRel }
-								>
-									{ children }
-								</a>
-							</td>
-						</tr>
-						</tbody>
-					</table>
-				</td>
-			</tr>
+				<tr>
+					<td align={ 'center' }>
+						<table
+							border={ '0' }
+							cellpadding={ '0' }
+							cellspacing={ '0' }
+						>
+							<tbody>
+								<tr>
+									<td align={ 'center' }>
+										<a
+											href={ linkHref }
+											target={ linkTarget }
+											title={ linkTitle }
+											rel={ linkRel }
+										>
+											{ children }
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	);
 
-	if (textAlign === 'center') {
-		return (
-			<center>
-				{ButtonInner}
-			</center>
-		);
+	if ( textAlign === 'center' ) {
+		return <center>{ ButtonInner }</center>;
 	}
 
 	return ButtonInner;

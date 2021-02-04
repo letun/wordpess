@@ -62,8 +62,8 @@ export const settings = {
 		);
 
 		const elementClass = [];
-		if (textAlign === 'center') {
-			elementClass.push('text-center');
+		if ( textAlign === 'center' ) {
+			elementClass.push( 'text-center' );
 		}
 
 		return (
@@ -98,8 +98,8 @@ export const settings = {
 		} = props;
 
 		const elementClass = [];
-		if (textAlign === 'center') {
-			elementClass.push('text-center');
+		if ( textAlign === 'center' ) {
+			elementClass.push( 'text-center' );
 		}
 
 		return (

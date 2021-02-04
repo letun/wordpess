@@ -97,7 +97,13 @@ export const settings = {
 			className,
 		} = props;
 
-		const { buttonColor, content, placeholder, linkHref, textAlign } = attributes;
+		const {
+			buttonColor,
+			content,
+			placeholder,
+			linkHref,
+			textAlign,
+		} = attributes;
 		const curClientId = clientId;
 		const inspectorControls = getInspectorControls(
 			parentClientId,
@@ -117,7 +123,7 @@ export const settings = {
 		if ( buttonColor ) {
 			classBtn.push( 'button-secondary--' + buttonColor );
 		}
-		console.log('btn-secondary', textAlign);
+		console.log( 'btn-secondary', textAlign );
 
 		const toolbar = (
 			<>
@@ -129,7 +135,7 @@ export const settings = {
 						onClick={ () => {
 							const block = wp.blocks.createBlock(
 								'lettera/button-main',
-								{ content, textAlign: textAlign }
+								{ content, textAlign }
 							);
 							wp.data
 								.dispatch( 'core/block-editor' )
@@ -145,7 +151,10 @@ export const settings = {
 									.dispatch( 'core/block-editor' )
 									.updateBlockAttributes(
 										buttonBlockClientId,
-										{ buttonType: 'button-main', textAlign: textAlign }
+										{
+											buttonType: 'button-main',
+											textAlign,
+										}
 									);
 							}
 						} }

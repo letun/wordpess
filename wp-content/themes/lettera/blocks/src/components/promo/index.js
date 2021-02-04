@@ -6,7 +6,7 @@ import Container from '../../layout/container';
 import Row from '../../layout/row';
 import Columns from '../../layout/columns';
 import Column from '../../layout/column';
-import Spacer from "../../layout/spacer";
+import Spacer from '../../layout/spacer';
 import getInspectorControls from '../../controls/getInspectorControls';
 import removeComponentButton from '../../controls/removeComponentButton';
 
@@ -20,17 +20,17 @@ export const settings = {
 	category: 'common',
 	attributes: {
 		mediaID: {
-			type: "number"
+			type: 'number',
 		},
 		mediaURL: {
-			type: "string",
-			source: "attribute",
-			selector: "img",
-			attribute: "src"
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'src',
 		},
 		imagePosition: {
-			type: "string",
-			default: "left",
+			type: 'string',
+			default: 'left',
 		},
 		bgColor: {
 			type: 'string',
@@ -74,10 +74,7 @@ export const settings = {
 		}
 
 		const MY_TEMPLATE = [
-			[
-				'lettera/preheader',
-				{ placeholder: 'Preheader' },
-			],
+			[ 'lettera/preheader', { placeholder: 'Preheader' } ],
 			[
 				'lettera/header',
 				{
@@ -125,18 +122,22 @@ export const settings = {
 						<Columns>
 							<Column className={ classnames( 'text-center' ) }>
 								<MediaUpload
-									onSelect={ (media) => {
+									onSelect={ ( media ) => {
 										setAttributes( {
 											mediaURL: media.url,
 											mediaID: media.id,
 										} );
 									} }
-									allowedTypes={["image"]}
+									allowedTypes={ [ 'image' ] }
 									value={ mediaID }
 									render={ ( { open } ) => (
 										<img
-											src={ ! mediaID ? ("/wp-content/themes/lettera/images/components/hero.png") : (mediaURL)}
-											className={ "calypso-promo__image" }
+											src={
+												! mediaID
+													? '/wp-content/themes/lettera/images/components/hero.png'
+													: mediaURL
+											}
+											className={ 'calypso-promo__image' }
 											onClick={ open }
 										/>
 									) }
@@ -186,7 +187,11 @@ export const settings = {
 										alt="Promo image"
 									/>
 								) : (
-									<img src="/wp-content/themes/lettera/images/components/hero.png" alt={ 'Promo image' } className={ "calypso-promo__image" } />
+									<img
+										src="/wp-content/themes/lettera/images/components/hero.png"
+										alt={ 'Promo image' }
+										className={ 'calypso-promo__image' }
+									/>
 								) }
 								<Spacer height={ '8' } />
 							</Column>

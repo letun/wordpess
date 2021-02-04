@@ -130,7 +130,7 @@ export const settings = {
 		if ( buttonColor && buttonColor !== 'black' ) {
 			classBtn.push( 'button-main--' + buttonColor );
 		}
-		console.log('btn-main', textAlign);
+		console.log( 'btn-main', textAlign );
 
 		const toolbar = (
 			<>
@@ -150,7 +150,7 @@ export const settings = {
 						onClick={ () => {
 							const block = wp.blocks.createBlock(
 								'lettera/button-secondary',
-								{ content, textAlign: textAlign }
+								{ content, textAlign }
 							);
 							wp.data
 								.dispatch( 'core/block-editor' )
@@ -166,7 +166,10 @@ export const settings = {
 									.dispatch( 'core/block-editor' )
 									.updateBlockAttributes(
 										buttonBlockClientId,
-										{ buttonType: 'button-secondary', textAlign: textAlign }
+										{
+											buttonType: 'button-secondary',
+											textAlign,
+										}
 									);
 							}
 						} }
@@ -198,7 +201,10 @@ export const settings = {
 			<>
 				<BlockControls>{ toolbar }</BlockControls>
 				{ inspectorControls }
-				<ButtonMain className={ classnames( classBtn, className ) } textAlign={ textAlign }>
+				<ButtonMain
+					className={ classnames( classBtn, className ) }
+					textAlign={ textAlign }
+				>
 					<RichText
 						identifier="content"
 						onChange={ ( value ) =>

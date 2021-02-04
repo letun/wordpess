@@ -64,7 +64,12 @@ export const settings = {
 			parentBlockAttributes,
 			innerBlocks,
 		} = props;
-		const { defaultButtonType, buttonType, buttonAltText, textAlign } = attributes;
+		const {
+			defaultButtonType,
+			buttonType,
+			buttonAltText,
+			textAlign,
+		} = attributes;
 
 		wp.element.useEffect( () => {
 			let isEmpty = true;
@@ -87,18 +92,18 @@ export const settings = {
 		const MY_TEMPLATE = [
 			[
 				`lettera/${ buttonType ? buttonType : defaultButtonType }`,
-				{ placeholder: 'Button text', textAlign: textAlign },
+				{ placeholder: 'Button text', textAlign },
 			],
 		];
 
-		console.log('block', textAlign);
+		console.log( 'block', textAlign );
 		if ( buttonAltText ) {
 			MY_TEMPLATE.push( [
 				'lettera/text-small',
 				{
 					placeholder: 'Text bellow button',
 					addClass: [ 'text-gray' ],
-					textAlign: textAlign
+					textAlign,
 				},
 			] );
 		}
