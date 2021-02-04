@@ -134,6 +134,7 @@ export const settings = {
 								value={ mediaID }
 								render={ ( { open } ) => (
 									<img
+										alt={ '' }
 										src={
 											! mediaID
 												? '/wp-content/themes/lettera/images/components/hero.png'

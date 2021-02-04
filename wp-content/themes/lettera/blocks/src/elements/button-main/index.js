@@ -130,7 +130,6 @@ export const settings = {
 		if ( buttonColor && buttonColor !== 'black' ) {
 			classBtn.push( 'button-main--' + buttonColor );
 		}
-		console.log( 'btn-main', textAlign );
 
 		const toolbar = (
 			<>
@@ -155,23 +154,6 @@ export const settings = {
 							wp.data
 								.dispatch( 'core/block-editor' )
 								.updateBlock( curClientId, block );
-							const buttonBlockClientId = wp.data
-								.select( 'core/block-editor' )
-								.getBlockParentsByBlockName(
-									clientId,
-									'lettera/block-btn'
-								)[ 0 ];
-							if ( buttonBlockClientId ) {
-								wp.data
-									.dispatch( 'core/block-editor' )
-									.updateBlockAttributes(
-										buttonBlockClientId,
-										{
-											buttonType: 'button-secondary',
-											textAlign,
-										}
-									);
-							}
 						} }
 					/>
 				</ToolbarGroup>
@@ -206,7 +188,7 @@ export const settings = {
 					textAlign={ textAlign }
 				>
 					<RichText
-						identifier="content"
+						identifier={ 'content' }
 						onChange={ ( value ) =>
 							setAttributes( { content: value } )
 						}

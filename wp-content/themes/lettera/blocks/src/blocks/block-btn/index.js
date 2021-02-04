@@ -69,6 +69,7 @@ export const settings = {
 			buttonType,
 			buttonAltText,
 			textAlign,
+			hasContent,
 		} = attributes;
 
 		wp.element.useEffect( () => {
@@ -96,7 +97,6 @@ export const settings = {
 			],
 		];
 
-		console.log( 'block', textAlign );
 		if ( buttonAltText ) {
 			MY_TEMPLATE.push( [
 				'lettera/text-small',
@@ -113,6 +113,18 @@ export const settings = {
 			'lettera/button-secondary',
 			'lettera/text-small',
 		];
+
+		if ( hasContent ) {
+			return (
+				<>
+					{ inspectorControls }
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						templateLock="all"
+					/>
+				</>
+			);
+		}
 
 		return (
 			<>

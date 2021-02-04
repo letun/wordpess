@@ -123,7 +123,6 @@ export const settings = {
 		if ( buttonColor ) {
 			classBtn.push( 'button-secondary--' + buttonColor );
 		}
-		console.log( 'btn-secondary', textAlign );
 
 		const toolbar = (
 			<>
@@ -140,23 +139,6 @@ export const settings = {
 							wp.data
 								.dispatch( 'core/block-editor' )
 								.updateBlock( curClientId, block );
-							const buttonBlockClientId = wp.data
-								.select( 'core/block-editor' )
-								.getBlockParentsByBlockName(
-									clientId,
-									'lettera/block-btn'
-								)[ 0 ];
-							if ( buttonBlockClientId ) {
-								wp.data
-									.dispatch( 'core/block-editor' )
-									.updateBlockAttributes(
-										buttonBlockClientId,
-										{
-											buttonType: 'button-main',
-											textAlign,
-										}
-									);
-							}
 						} }
 					/>
 					<ToolbarButton

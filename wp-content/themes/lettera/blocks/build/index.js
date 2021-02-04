@@ -6923,7 +6923,8 @@ var settings = {
     var defaultButtonType = attributes.defaultButtonType,
         buttonType = attributes.buttonType,
         buttonAltText = attributes.buttonAltText,
-        textAlign = attributes.textAlign;
+        textAlign = attributes.textAlign,
+        hasContent = attributes.hasContent;
     wp.element.useEffect(function () {
       var isEmpty = true;
 
@@ -6945,7 +6946,6 @@ var settings = {
       placeholder: 'Button text',
       textAlign: textAlign
     }]];
-    console.log('block', textAlign);
 
     if (buttonAltText) {
       MY_TEMPLATE.push(['lettera/text-small', {
@@ -6956,6 +6956,14 @@ var settings = {
     }
 
     var ALLOWED_BLOCKS = ['lettera/button-main', 'lettera/button-secondary', 'lettera/text-small'];
+
+    if (hasContent) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
+        allowedBlocks: ALLOWED_BLOCKS,
+        templateLock: "all"
+      }));
+    }
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
       allowedBlocks: ALLOWED_BLOCKS,
       template: MY_TEMPLATE,
@@ -7409,6 +7417,7 @@ var settings = {
       render: function render(_ref) {
         var open = _ref.open;
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+          alt: '',
           src: !mediaID ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
           className: 'calypso-promo__image',
           onClick: open
@@ -7669,6 +7678,7 @@ var addBlockButton = /*#__PURE__*/function (_wp$element$Component) {
       }, allowedBlocks.map(function (blockSlug) {
         var insertBlock = Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_7__["getBlockType"])(blockSlug);
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarButton"], {
+          key: '',
           icon: insertBlock.icon.src,
           className: 'la-add-block-toolbar__button',
           label: insertBlock.title,
@@ -8202,7 +8212,6 @@ var settings = {
       classBtn.push('button-main--' + buttonColor);
     }
 
-    console.log('btn-main', textAlign);
     var toolbar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarGroup"], {
       label: "Button style"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
@@ -8224,14 +8233,6 @@ var settings = {
           textAlign: textAlign
         });
         wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
-        var buttonBlockClientId = wp.data.select('core/block-editor').getBlockParentsByBlockName(clientId, 'lettera/block-btn')[0];
-
-        if (buttonBlockClientId) {
-          wp.data.dispatch('core/block-editor').updateBlockAttributes(buttonBlockClientId, {
-            buttonType: 'button-secondary',
-            textAlign: textAlign
-          });
-        }
       }
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_toolbarButtonLinkHref__WEBPACK_IMPORTED_MODULE_6__["default"], {
       linkHref: linkHref,
@@ -8256,7 +8257,7 @@ var settings = {
       className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(classBtn, className),
       textAlign: textAlign
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
-      identifier: "content",
+      identifier: 'content',
       onChange: function onChange(value) {
         return setAttributes({
           content: value
@@ -8443,7 +8444,6 @@ var settings = {
       classBtn.push('button-secondary--' + buttonColor);
     }
 
-    console.log('btn-secondary', textAlign);
     var toolbar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarGroup"], {
       label: "Button style"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
@@ -8456,14 +8456,6 @@ var settings = {
           textAlign: textAlign
         });
         wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
-        var buttonBlockClientId = wp.data.select('core/block-editor').getBlockParentsByBlockName(clientId, 'lettera/block-btn')[0];
-
-        if (buttonBlockClientId) {
-          wp.data.dispatch('core/block-editor').updateBlockAttributes(buttonBlockClientId, {
-            buttonType: 'button-main',
-            textAlign: textAlign
-          });
-        }
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
       icon: _svg_buttons_secondaryButton_svg__WEBPACK_IMPORTED_MODULE_12__["ReactComponent"],
@@ -8636,6 +8628,7 @@ var settings = {
     var buttons = allowedLevels.map(function (targetLevel) {
       var isActive = targetLevel === level;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
+        key: '',
         icon: headingIcons['level' + targetLevel],
         title: 'Heading ' + targetLevel,
         isActive: isActive,
@@ -9473,7 +9466,6 @@ var ButtonSecondary = function ButtonSecondary(_ref) {
     title: linkTitle,
     rel: linkRel
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, children), "\xA0\u2192")))))))));
-  console.log('layout', textAlign);
 
   if (textAlign === 'center') {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("center", null, ButtonInner);

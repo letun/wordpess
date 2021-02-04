@@ -27,6 +27,7 @@ class addBlockButton extends wp.element.Component {
 
 							return (
 								<ToolbarButton
+									key={ '' }
 									icon={ insertBlock.icon.src }
 									className={ 'la-add-block-toolbar__button' }
 									label={ insertBlock.title }

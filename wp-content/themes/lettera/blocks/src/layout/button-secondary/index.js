@@ -55,7 +55,6 @@ const ButtonSecondary = ( {
 			</tbody>
 		</table>
 	);
-	console.log( 'layout', textAlign );
 
 	if ( textAlign === 'center' ) {
 		return <center>{ ButtonInner }</center>;
