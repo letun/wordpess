@@ -7057,6 +7057,7 @@ var settings = {
     };
   })])(function (props) {
     var setAttributes = props.setAttributes,
+        hasContent = props.attributes.hasContent,
         clientId = props.clientId,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
@@ -7086,7 +7087,7 @@ var settings = {
     var ALLOWED_BLOCKS = ['lettera/paragraph', 'lettera/list'];
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
       allowedBlocks: ALLOWED_BLOCKS,
-      template: MY_TEMPLATE,
+      template: !hasContent ? MY_TEMPLATE : null,
       templateLock: false,
       renderAppender: false
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_addBlockButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -8719,7 +8720,7 @@ var settings = {
       type: 'boolean',
       default: false
     },
-    values: {
+    content: {
       type: 'string',
       source: 'html',
       selector: 'ol,ul',
@@ -8763,7 +8764,7 @@ var settings = {
   })(function (props) {
     var _props$attributes = props.attributes,
         ordered = _props$attributes.ordered,
-        values = _props$attributes.values,
+        content = _props$attributes.content,
         type = _props$attributes.type,
         reversed = _props$attributes.reversed,
         start = _props$attributes.start,
@@ -8797,10 +8798,10 @@ var settings = {
       multiline: "li",
       onChange: function onChange(value) {
         setAttributes({
-          values: value
+          content: value
         });
       },
-      value: values,
+      value: content,
       placeholder: placeholder,
       start: start,
       reversed: reversed,
@@ -8840,7 +8841,7 @@ var settings = {
   save: function save(props) {
     var _props$attributes2 = props.attributes,
         ordered = _props$attributes2.ordered,
-        values = _props$attributes2.values,
+        content = _props$attributes2.content,
         type = _props$attributes2.type,
         reversed = _props$attributes2.reversed,
         start = _props$attributes2.start,
@@ -8852,9 +8853,9 @@ var settings = {
       addClass.push('text-center');
     }
 
-    return values && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
+    return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
       tagName: tagName,
-      value: values,
+      value: content,
       type: type,
       reversed: reversed,
       start: start,

@@ -57,6 +57,7 @@ export const settings = {
 	] )( ( props ) => {
 		const {
 			setAttributes,
+			attributes: { hasContent },
 			clientId,
 			parentClientId,
 			parentBlockAttributes,
@@ -93,13 +94,12 @@ export const settings = {
 		];
 
 		const ALLOWED_BLOCKS = [ 'lettera/paragraph', 'lettera/list' ];
-
 		return (
 			<>
 				{ inspectorControls }
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
-					template={ MY_TEMPLATE }
+					template={ ! hasContent ? MY_TEMPLATE : null }
 					templateLock={ false }
 					renderAppender={ false }
 				/>

@@ -22,7 +22,7 @@ export const settings = {
 			type: 'boolean',
 			default: false,
 		},
-		values: {
+		content: {
 			type: 'string',
 			source: 'html',
 			selector: 'ol,ul',
@@ -73,7 +73,7 @@ export const settings = {
 		const {
 			attributes: {
 				ordered,
-				values,
+				content,
 				type,
 				reversed,
 				start,
@@ -115,9 +115,9 @@ export const settings = {
 					tagName={ tagName }
 					multiline="li"
 					onChange={ ( value ) => {
-						setAttributes( { values: value } );
+						setAttributes( { content: value } );
 					} }
-					value={ values }
+					value={ content }
 					placeholder={ placeholder }
 					start={ start }
 					reversed={ reversed }
@@ -171,7 +171,7 @@ export const settings = {
 	} ),
 	save: ( props ) => {
 		const {
-			attributes: { ordered, values, type, reversed, start, textAlign },
+			attributes: { ordered, content, type, reversed, start, textAlign },
 		} = props;
 		const tagName = ordered ? 'ol' : 'ul';
 
@@ -181,10 +181,10 @@ export const settings = {
 		}
 
 		return (
-			values && (
+			content && (
 				<RichText.Content
 					tagName={ tagName }
-					value={ values }
+					value={ content }
 					type={ type }
 					reversed={ reversed }
 					start={ start }
