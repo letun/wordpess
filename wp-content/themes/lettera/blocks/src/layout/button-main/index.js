@@ -1,14 +1,5 @@
 import classnames from 'classnames';
 
-const CenterButton = ({align, children}) => {
-	return (align === 'center' ?
-			<center>
-				{children}
-			</center>
-		: {children}
-	)
-};
-
 const ButtonMain = ( {
 	children,
 	buttonColor,
@@ -17,11 +8,11 @@ const ButtonMain = ( {
 	linkRel,
 	linkTitle,
 	linkHref,
-	align,
+	textAlign,
 	className,
 } ) => {
-	const tableClass = [ ];
-	if (align === 'center') {
+	const tableClass = [];
+	if (textAlign === 'center') {
 		tableClass.push('float-center');
 	}
 
@@ -33,43 +24,51 @@ const ButtonMain = ( {
 		tableClass.push( `button-main--${ buttonColor }` );
 	}
 
-	return (
-		<CenterButton align={align}>
-			<table
-				className={ classnames( 'button-main', tableClass, className ) }
-				border={ '0' }
-				cellpadding={ '0' }
-				cellspacing={ '0' }
-			>
-				<tbody>
-					<tr>
-						<td align={ 'center' }>
-							<table
-								border={ '0' }
-								cellpadding={ '0' }
-								cellspacing={ '0' }
-							>
-								<tbody>
-									<tr>
-										<td align={ 'center' }>
-											<a
-												href={ linkHref }
-												target={ linkTarget }
-												title={ linkTitle }
-												rel={ linkRel }
-											>
-												{ children }
-											</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</CenterButton>
+	const ButtonInner = (
+		<table
+			className={ classnames( 'button-main', tableClass, className ) }
+			border={ '0' }
+			cellpadding={ '0' }
+			cellspacing={ '0' }
+		>
+			<tbody>
+			<tr>
+				<td align={ 'center' }>
+					<table
+						border={ '0' }
+						cellpadding={ '0' }
+						cellspacing={ '0' }
+					>
+						<tbody>
+						<tr>
+							<td align={ 'center' }>
+								<a
+									href={ linkHref }
+									target={ linkTarget }
+									title={ linkTitle }
+									rel={ linkRel }
+								>
+									{ children }
+								</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			</tbody>
+		</table>
 	);
+
+	if (textAlign === 'center') {
+		return (
+			<center>
+				{ButtonInner}
+			</center>
+		);
+	}
+
+	return ButtonInner;
 };
 
 export default ButtonMain;

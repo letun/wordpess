@@ -68,6 +68,10 @@ export const settings = {
 			type: 'string',
 			default: null,
 		},
+		textAlign: {
+			type: 'string',
+			default: 'left',
+		},
 	},
 	edit: withSelect( ( select, blockData ) => {
 		const parentClientId = select(
@@ -93,7 +97,7 @@ export const settings = {
 			className,
 		} = props;
 
-		const { buttonColor, content, placeholder, linkHref } = attributes;
+		const { buttonColor, content, placeholder, linkHref, textAlign } = attributes;
 		const curClientId = clientId;
 		const inspectorControls = getInspectorControls(
 			parentClientId,
@@ -113,6 +117,7 @@ export const settings = {
 		if ( buttonColor ) {
 			classBtn.push( 'button-secondary--' + buttonColor );
 		}
+		console.log('btn-secondary', textAlign);
 
 		const toolbar = (
 			<>
@@ -124,7 +129,7 @@ export const settings = {
 						onClick={ () => {
 							const block = wp.blocks.createBlock(
 								'lettera/button-main',
-								{ content }
+								{ content, textAlign: textAlign }
 							);
 							wp.data
 								.dispatch( 'core/block-editor' )
@@ -140,7 +145,7 @@ export const settings = {
 									.dispatch( 'core/block-editor' )
 									.updateBlockAttributes(
 										buttonBlockClientId,
-										{ buttonType: 'button-main' }
+										{ buttonType: 'button-main', textAlign: textAlign }
 									);
 							}
 						} }
@@ -184,6 +189,7 @@ export const settings = {
 				{ inspectorControls }
 				<ButtonSecondary
 					className={ classnames( classBtn, className ) }
+					textAlign={ textAlign }
 				>
 					<RichText
 						identifier="content"
@@ -208,17 +214,18 @@ export const settings = {
 			linkRel,
 			linkTitle,
 			linkHref,
+			textAlign,
 		} = attributes;
 
 		return (
 			content && (
 				<ButtonSecondary
 					buttonColor={ buttonColor }
-					align={ 'center' }
 					linkHref={ linkHref }
 					linkTarget={ linkTarget }
 					linkRel={ linkRel }
 					linkTitle={ linkTitle }
+					textAlign={ textAlign }
 				>
 					<RichText.Content value={ content } />
 				</ButtonSecondary>

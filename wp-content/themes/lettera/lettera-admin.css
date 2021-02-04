@@ -435,24 +435,21 @@
     margin: 0 0 16px 0; }
     @media only screen and (min-width: 541px) {
       .post-type-lettera .block-editor-writing-flow table.button-secondary {
-        width: auto !important;
-        min-width: 220px; } }
-    .post-type-lettera .block-editor-writing-flow table.button-secondary table {
-      width: 100%; }
-      .post-type-lettera .block-editor-writing-flow table.button-secondary table td {
+        width: auto !important; } }
+    .post-type-lettera .block-editor-writing-flow table.button-secondary table td {
+      color: #0A0A0A;
+      text-align: center; }
+      .post-type-lettera .block-editor-writing-flow table.button-secondary table td a {
+        display: inline-block;
         color: #0A0A0A;
-        text-align: center; }
-        .post-type-lettera .block-editor-writing-flow table.button-secondary table td a {
-          display: inline-block;
-          color: #0A0A0A;
-          font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
-          font-size: 18px;
-          font-weight: bold;
-          font-weight: 500;
-          text-align: center;
-          text-decoration: none; }
-          .post-type-lettera .block-editor-writing-flow table.button-secondary table td a span {
-            border-bottom: 3px solid transparent; }
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        font-weight: 500;
+        text-align: center;
+        text-decoration: none; }
+        .post-type-lettera .block-editor-writing-flow table.button-secondary table td a span {
+          border-bottom: 3px solid transparent; }
   .post-type-lettera .block-editor-writing-flow table.button-secondary.button-secondary--yellow table td a span {
     border-bottom-color: #FAE053; }
   .post-type-lettera .block-editor-writing-flow table.button-secondary.button-secondary--black table td a span {
@@ -526,3 +523,6 @@
     background: #999999 !important; }
   .la-add-block-toolbar__button-plus svg {
     margin: 0 !important; }
+
+.row-inner pre {
+  display: none; }

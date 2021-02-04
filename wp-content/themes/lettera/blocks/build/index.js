@@ -6898,7 +6898,12 @@ var settings = {
       default: true
     },
     addClass: {
-      type: 'string'
+      type: 'string',
+      default: ''
+    },
+    textAlign: {
+      type: 'string',
+      default: 'left'
     }
   },
   edit: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
@@ -6917,7 +6922,8 @@ var settings = {
         innerBlocks = props.innerBlocks;
     var defaultButtonType = attributes.defaultButtonType,
         buttonType = attributes.buttonType,
-        buttonAltText = attributes.buttonAltText;
+        buttonAltText = attributes.buttonAltText,
+        textAlign = attributes.textAlign;
     wp.element.useEffect(function () {
       var isEmpty = true;
 
@@ -6936,13 +6942,16 @@ var settings = {
     });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"])(parentClientId, parentBlockAttributes);
     var MY_TEMPLATE = [["lettera/".concat(buttonType ? buttonType : defaultButtonType), {
-      placeholder: 'Button text'
+      placeholder: 'Button text',
+      textAlign: textAlign
     }]];
+    console.log('block', textAlign);
 
     if (buttonAltText) {
       MY_TEMPLATE.push(['lettera/text-small', {
         placeholder: 'Text bellow button',
-        addClass: ['text-gray', 'text-center']
+        addClass: ['text-gray'],
+        textAlign: textAlign
       }]);
     }
 
@@ -7201,7 +7210,7 @@ var settings = {
     }], ['lettera/block-text'], ['lettera/block-btn', {
       buttonAltText: true,
       defaultButtonType: 'button-main',
-      textAlign: 'text-right'
+      textAlign: 'left'
     }]];
     var ALLOWED_BLOCKS = ['lettera/preheader', 'lettera/header', 'lettera/heading', 'lettera/paragraph', 'lettera/list', 'lettera/btn', 'lettera/text-small', 'lettera/block-text', 'lettera/block-btn'];
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_9__["default"])(clientId, props.attributes);
@@ -7379,7 +7388,7 @@ var settings = {
     }], ['lettera/block-btn', {
       buttonAltText: true,
       defaultButtonType: 'button-main',
-      textAlign: 'text-center'
+      textAlign: 'center'
     }]];
     var ALLOWED_BLOCKS = ['lettera/preheader', 'lettera/header', 'lettera/heading', 'lettera/paragraph', 'lettera/list', 'lettera/btn', 'lettera/text-small', 'lettera/block-text', 'lettera/block-btn'];
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(clientId, props.attributes);
@@ -7660,7 +7669,6 @@ var addBlockButton = /*#__PURE__*/function (_wp$element$Component) {
       }, allowedBlocks.map(function (blockSlug) {
         var insertBlock = Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_7__["getBlockType"])(blockSlug);
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__["ToolbarButton"], {
-          key: '',
           icon: insertBlock.icon.src,
           className: 'la-add-block-toolbar__button',
           label: insertBlock.title,
@@ -8137,6 +8145,10 @@ var settings = {
     buttonColor: {
       type: 'string',
       default: 'black'
+    },
+    textAlign: {
+      type: 'string',
+      default: 'left'
     }
   },
   edit: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
@@ -8159,7 +8171,8 @@ var settings = {
         content = attributes.content,
         placeholder = attributes.placeholder,
         linkHref = attributes.linkHref,
-        linkTarget = attributes.linkTarget;
+        linkTarget = attributes.linkTarget,
+        textAlign = attributes.textAlign;
     var curClientId = clientId;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
     var btnColors = [{
@@ -8189,6 +8202,7 @@ var settings = {
       classBtn.push('button-main--' + buttonColor);
     }
 
+    console.log('btn-main', textAlign);
     var toolbar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarGroup"], {
       label: "Button style"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
@@ -8206,14 +8220,16 @@ var settings = {
       isActive: false,
       onClick: function onClick() {
         var block = wp.blocks.createBlock('lettera/button-secondary', {
-          content: content
+          content: content,
+          textAlign: textAlign
         });
         wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
         var buttonBlockClientId = wp.data.select('core/block-editor').getBlockParentsByBlockName(clientId, 'lettera/block-btn')[0];
 
         if (buttonBlockClientId) {
           wp.data.dispatch('core/block-editor').updateBlockAttributes(buttonBlockClientId, {
-            buttonType: 'button-secondary'
+            buttonType: 'button-secondary',
+            textAlign: textAlign
           });
         }
       }
@@ -8237,7 +8253,8 @@ var settings = {
       }
     }));
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"], null, toolbar), inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_main__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(classBtn, className)
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(classBtn, className),
+      textAlign: textAlign
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
       identifier: "content",
       onChange: function onChange(value) {
@@ -8261,11 +8278,12 @@ var settings = {
         linkTarget = attributes.linkTarget,
         linkRel = attributes.linkRel,
         linkTitle = attributes.linkTitle,
-        linkHref = attributes.linkHref;
+        linkHref = attributes.linkHref,
+        textAlign = attributes.textAlign;
     return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_main__WEBPACK_IMPORTED_MODULE_5__["default"], {
       buttonColor: buttonColor,
       buttonSize: buttonSize,
-      align: 'center',
+      textAlign: textAlign,
       linkHref: linkHref,
       linkTarget: linkTarget,
       linkRel: linkRel,
@@ -8370,6 +8388,10 @@ var settings = {
     buttonBlockClientId: {
       type: 'string',
       default: null
+    },
+    textAlign: {
+      type: 'string',
+      default: 'left'
     }
   },
   edit: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
@@ -8390,7 +8412,8 @@ var settings = {
     var buttonColor = attributes.buttonColor,
         content = attributes.content,
         placeholder = attributes.placeholder,
-        linkHref = attributes.linkHref;
+        linkHref = attributes.linkHref,
+        textAlign = attributes.textAlign;
     var curClientId = clientId;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
     var btnColors = [{
@@ -8420,6 +8443,7 @@ var settings = {
       classBtn.push('button-secondary--' + buttonColor);
     }
 
+    console.log('btn-secondary', textAlign);
     var toolbar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarGroup"], {
       label: "Button style"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
@@ -8428,14 +8452,16 @@ var settings = {
       isActive: false,
       onClick: function onClick() {
         var block = wp.blocks.createBlock('lettera/button-main', {
-          content: content
+          content: content,
+          textAlign: textAlign
         });
         wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
         var buttonBlockClientId = wp.data.select('core/block-editor').getBlockParentsByBlockName(clientId, 'lettera/block-btn')[0];
 
         if (buttonBlockClientId) {
           wp.data.dispatch('core/block-editor').updateBlockAttributes(buttonBlockClientId, {
-            buttonType: 'button-main'
+            buttonType: 'button-main',
+            textAlign: textAlign
           });
         }
       }
@@ -8467,7 +8493,8 @@ var settings = {
       }
     }));
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"], null, toolbar), inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_secondary__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(classBtn, className)
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(classBtn, className),
+      textAlign: textAlign
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
       identifier: "content",
       onChange: function onChange(value) {
@@ -8487,14 +8514,15 @@ var settings = {
         linkTarget = attributes.linkTarget,
         linkRel = attributes.linkRel,
         linkTitle = attributes.linkTitle,
-        linkHref = attributes.linkHref;
+        linkHref = attributes.linkHref,
+        textAlign = attributes.textAlign;
     return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_secondary__WEBPACK_IMPORTED_MODULE_5__["default"], {
       buttonColor: buttonColor,
-      align: 'center',
       linkHref: linkHref,
       linkTarget: linkTarget,
       linkRel: linkRel,
-      linkTitle: linkTitle
+      linkTitle: linkTitle,
+      textAlign: textAlign
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
       value: content
     }));
@@ -8608,7 +8636,6 @@ var settings = {
     var buttons = allowedLevels.map(function (targetLevel) {
       var isActive = targetLevel === level;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-        key: '',
         icon: headingIcons['level' + targetLevel],
         title: 'Heading ' + targetLevel,
         isActive: isActive,
@@ -9188,6 +9215,10 @@ var settings = {
       type: 'string',
       default: 'Text bellow button…'
     },
+    textAlign: {
+      type: 'string',
+      default: 'left'
+    },
     addClass: {
       type: 'array',
       default: null
@@ -9208,12 +9239,19 @@ var settings = {
         className = props.className;
     var content = attributes.content,
         placeholder = attributes.placeholder,
-        addClass = attributes.addClass;
+        addClass = attributes.addClass,
+        textAlign = attributes.textAlign;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"])(parentClientId, parentBlockAttributes);
+    var elementClass = [];
+
+    if (textAlign === 'center') {
+      elementClass.push('text-center');
+    }
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
       identifier: "content",
       tagName: "p",
-      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, 'text-small', addClass),
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, 'text-small', addClass, elementClass),
       onChange: function onChange(value) {
         return setAttributes({
           content: value
@@ -9228,11 +9266,18 @@ var settings = {
     var _props$attributes = props.attributes,
         className = _props$attributes.className,
         content = _props$attributes.content,
-        addClass = _props$attributes.addClass;
+        addClass = _props$attributes.addClass,
+        textAlign = _props$attributes.textAlign;
+    var elementClass = [];
+
+    if (textAlign === 'center') {
+      elementClass.push('text-center');
+    }
+
     return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
       tagName: "p",
       value: content,
-      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, 'text-small', addClass)
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, 'text-small', addClass, elementClass)
     });
   }
 };
@@ -9323,27 +9368,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CenterButton = function CenterButton(_ref) {
-  var align = _ref.align,
-      children = _ref.children;
-  return align === 'center' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("center", null, children) : {
-    children: children
-  };
-};
-
-var ButtonMain = function ButtonMain(_ref2) {
-  var children = _ref2.children,
-      buttonColor = _ref2.buttonColor,
-      buttonSize = _ref2.buttonSize,
-      linkTarget = _ref2.linkTarget,
-      linkRel = _ref2.linkRel,
-      linkTitle = _ref2.linkTitle,
-      linkHref = _ref2.linkHref,
-      align = _ref2.align,
-      className = _ref2.className;
+var ButtonMain = function ButtonMain(_ref) {
+  var children = _ref.children,
+      buttonColor = _ref.buttonColor,
+      buttonSize = _ref.buttonSize,
+      linkTarget = _ref.linkTarget,
+      linkRel = _ref.linkRel,
+      linkTitle = _ref.linkTitle,
+      linkHref = _ref.linkHref,
+      textAlign = _ref.textAlign,
+      className = _ref.className;
   var tableClass = [];
 
-  if (align === 'center') {
+  if (textAlign === 'center') {
     tableClass.push('float-center');
   }
 
@@ -9355,9 +9392,7 @@ var ButtonMain = function ButtonMain(_ref2) {
     tableClass.push("button-main--".concat(buttonColor));
   }
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CenterButton, {
-    align: align
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("table", {
+  var ButtonInner = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("table", {
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('button-main', tableClass, className),
     border: '0',
     cellpadding: '0',
@@ -9375,7 +9410,13 @@ var ButtonMain = function ButtonMain(_ref2) {
     target: linkTarget,
     title: linkTitle,
     rel: linkRel
-  }, children))))))))));
+  }, children)))))))));
+
+  if (textAlign === 'center') {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("center", null, ButtonInner);
+  }
+
+  return ButtonInner;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ButtonMain);
@@ -9405,14 +9446,15 @@ var ButtonSecondary = function ButtonSecondary(_ref) {
       linkRel = _ref.linkRel,
       linkTitle = _ref.linkTitle,
       linkHref = _ref.linkHref,
-      className = _ref.className;
+      className = _ref.className,
+      textAlign = _ref.textAlign;
   var tableClass = ['float-center'];
 
   if (buttonColor) {
     tableClass.push("button-secondary--".concat(buttonColor));
   }
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("center", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("table", {
+  var ButtonInner = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("table", {
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('button-secondary', tableClass, className),
     border: '0',
     cellpadding: '0',
@@ -9430,7 +9472,14 @@ var ButtonSecondary = function ButtonSecondary(_ref) {
     target: linkTarget,
     title: linkTitle,
     rel: linkRel
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, children), "\xA0\u2192"))))))))));
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, children), "\xA0\u2192")))))))));
+  console.log('layout', textAlign);
+
+  if (textAlign === 'center') {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("center", null, ButtonInner);
+  }
+
+  return ButtonInner;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ButtonSecondary);

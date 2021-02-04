@@ -35,6 +35,11 @@ export const settings = {
 		},
 		addClass: {
 			type: 'string',
+			default: '',
+		},
+		textAlign: {
+			type: 'string',
+			default: 'left',
 		},
 	},
 	edit: withSelect( ( select, blockData ) => {
@@ -59,7 +64,7 @@ export const settings = {
 			parentBlockAttributes,
 			innerBlocks,
 		} = props;
-		const { defaultButtonType, buttonType, buttonAltText } = attributes;
+		const { defaultButtonType, buttonType, buttonAltText, textAlign } = attributes;
 
 		wp.element.useEffect( () => {
 			let isEmpty = true;
@@ -82,16 +87,18 @@ export const settings = {
 		const MY_TEMPLATE = [
 			[
 				`lettera/${ buttonType ? buttonType : defaultButtonType }`,
-				{ placeholder: 'Button text' },
+				{ placeholder: 'Button text', textAlign: textAlign },
 			],
 		];
 
+		console.log('block', textAlign);
 		if ( buttonAltText ) {
 			MY_TEMPLATE.push( [
 				'lettera/text-small',
 				{
 					placeholder: 'Text bellow button',
-					addClass: [ 'text-gray', 'text-center' ],
+					addClass: [ 'text-gray' ],
+					textAlign: textAlign
 				},
 			] );
 		}

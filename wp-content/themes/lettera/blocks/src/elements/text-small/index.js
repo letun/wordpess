@@ -24,6 +24,10 @@ export const settings = {
 			type: 'string',
 			default: 'Text bellow button…',
 		},
+		textAlign: {
+			type: 'string',
+			default: 'left',
+		},
 		addClass: {
 			type: 'array',
 			default: null,
@@ -50,12 +54,17 @@ export const settings = {
 			className,
 		} = props;
 
-		const { content, placeholder, addClass } = attributes;
+		const { content, placeholder, addClass, textAlign } = attributes;
 
 		const inspectorControls = getInspectorControls(
 			parentClientId,
 			parentBlockAttributes
 		);
+
+		const elementClass = [];
+		if (textAlign === 'center') {
+			elementClass.push('text-center');
+		}
 
 		return (
 			<>
@@ -66,7 +75,8 @@ export const settings = {
 					className={ classnames(
 						className,
 						'text-small',
-						addClass
+						addClass,
+						elementClass
 					) }
 					onChange={ ( value ) =>
 						setAttributes( { content: value } )
@@ -84,8 +94,13 @@ export const settings = {
 	} ),
 	save: ( props ) => {
 		const {
-			attributes: { className, content, addClass },
+			attributes: { className, content, addClass, textAlign },
 		} = props;
+
+		const elementClass = [];
+		if (textAlign === 'center') {
+			elementClass.push('text-center');
+		}
 
 		return (
 			content && (
@@ -95,7 +110,8 @@ export const settings = {
 					className={ classnames(
 						className,
 						'text-small',
-						addClass
+						addClass,
+						elementClass
 					) }
 				/>
 			)

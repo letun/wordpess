@@ -22,11 +22,9 @@ $bs-list: (
 
 	@media only screen and (min-width: #{$global-breakpoint}) {
 		width: auto !important;
-		min-width: 220px;
 	}
 
 	table {
-		width: 100%;
 
 		td {
 			color: $bs-color;

@@ -96,7 +96,6 @@ export const settings = {
 
 			return (
 				<ToolbarButton
-					key={ '' }
 					icon={ headingIcons[ 'level' + targetLevel ] }
 					title={ 'Heading ' + targetLevel }
 					isActive={ isActive }

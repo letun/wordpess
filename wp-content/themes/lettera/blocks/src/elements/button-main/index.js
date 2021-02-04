@@ -70,6 +70,10 @@ export const settings = {
 			type: 'string',
 			default: 'black',
 		},
+		textAlign: {
+			type: 'string',
+			default: 'left',
+		},
 	},
 	edit: withSelect( ( select, blockData ) => {
 		const parentClientId = select(
@@ -102,6 +106,7 @@ export const settings = {
 			placeholder,
 			linkHref,
 			linkTarget,
+			textAlign,
 		} = attributes;
 		const curClientId = clientId;
 		const inspectorControls = getInspectorControls(
@@ -125,6 +130,7 @@ export const settings = {
 		if ( buttonColor && buttonColor !== 'black' ) {
 			classBtn.push( 'button-main--' + buttonColor );
 		}
+		console.log('btn-main', textAlign);
 
 		const toolbar = (
 			<>
@@ -144,7 +150,7 @@ export const settings = {
 						onClick={ () => {
 							const block = wp.blocks.createBlock(
 								'lettera/button-secondary',
-								{ content }
+								{ content, textAlign: textAlign }
 							);
 							wp.data
 								.dispatch( 'core/block-editor' )
@@ -160,7 +166,7 @@ export const settings = {
 									.dispatch( 'core/block-editor' )
 									.updateBlockAttributes(
 										buttonBlockClientId,
-										{ buttonType: 'button-secondary' }
+										{ buttonType: 'button-secondary', textAlign: textAlign }
 									);
 							}
 						} }
@@ -192,7 +198,7 @@ export const settings = {
 			<>
 				<BlockControls>{ toolbar }</BlockControls>
 				{ inspectorControls }
-				<ButtonMain className={ classnames( classBtn, className ) }>
+				<ButtonMain className={ classnames( classBtn, className ) } textAlign={ textAlign }>
 					<RichText
 						identifier="content"
 						onChange={ ( value ) =>
@@ -218,6 +224,7 @@ export const settings = {
 			linkRel,
 			linkTitle,
 			linkHref,
+			textAlign,
 		} = attributes;
 
 		return (
@@ -225,7 +232,7 @@ export const settings = {
 				<ButtonMain
 					buttonColor={ buttonColor }
 					buttonSize={ buttonSize }
-					align={ 'center' }
+					textAlign={ textAlign }
 					linkHref={ linkHref }
 					linkTarget={ linkTarget }
 					linkRel={ linkRel }
