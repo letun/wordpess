@@ -61,7 +61,7 @@ export const settings = {
 		};
 	} )( ( props ) => {
 		const {
-			attributes: { content, mediaID, mediaURL, bgColor, textAlign },
+			attributes: { content, mediaID, mediaURL, bgColor },
 			clientId,
 			setAttributes,
 			className,
@@ -132,6 +132,7 @@ export const settings = {
 									value={ mediaID }
 									render={ ( { open } ) => (
 										<img
+											alt={ '' }
 											src={
 												! mediaID
 													? '/wp-content/themes/lettera/images/components/hero.png'
@@ -184,12 +185,12 @@ export const settings = {
 									<img
 										className="calypso-promo__image"
 										src={ mediaURL }
-										alt="Promo image"
+										alt="Promo"
 									/>
 								) : (
 									<img
 										src="/wp-content/themes/lettera/images/components/hero.png"
-										alt={ 'Promo image' }
+										alt={ 'Promo' }
 										className={ 'calypso-promo__image' }
 									/>
 								) }

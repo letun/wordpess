@@ -7200,7 +7200,6 @@ var settings = {
         mediaID = _props$attributes.mediaID,
         mediaURL = _props$attributes.mediaURL,
         bgColor = _props$attributes.bgColor,
-        textAlign = _props$attributes.textAlign,
         clientId = props.clientId,
         setAttributes = props.setAttributes,
         className = props.className;
@@ -7239,6 +7238,7 @@ var settings = {
       render: function render(_ref) {
         var open = _ref.open;
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+          alt: '',
           src: !mediaID ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
           className: 'calypso-promo__image',
           onClick: open
@@ -7274,10 +7274,10 @@ var settings = {
     }, mediaURL ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       className: "calypso-promo__image",
       src: mediaURL,
-      alt: "Promo image"
+      alt: "Promo"
     }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: "/wp-content/themes/lettera/images/components/hero.png",
-      alt: 'Promo image',
+      alt: 'Promo',
       className: 'calypso-promo__image'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_spacer__WEBPACK_IMPORTED_MODULE_8__["default"], {
       height: '8'
@@ -7417,7 +7417,7 @@ var settings = {
       render: function render(_ref) {
         var open = _ref.open;
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-          alt: '',
+          alt: 'Promo',
           src: !mediaID ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
           className: 'calypso-promo__image',
           onClick: open
@@ -7453,10 +7453,10 @@ var settings = {
     }, mediaURL ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       className: "calypso-promo__image",
       src: mediaURL,
-      alt: "Promo image"
+      alt: "Promo"
     }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: "/wp-content/themes/lettera/images/components/hero.png",
-      alt: 'Promo image',
+      alt: 'Promo',
       className: 'calypso-promo__image'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_spacer__WEBPACK_IMPORTED_MODULE_7__["default"], {
       height: '32'

@@ -134,7 +134,7 @@ export const settings = {
 								value={ mediaID }
 								render={ ( { open } ) => (
 									<img
-										alt={ '' }
+										alt={ 'Promo' }
 										src={
 											! mediaID
 												? '/wp-content/themes/lettera/images/components/hero.png'
@@ -183,12 +183,12 @@ export const settings = {
 								<img
 									className="calypso-promo__image"
 									src={ mediaURL }
-									alt="Promo image"
+									alt="Promo"
 								/>
 							) : (
 								<img
 									src="/wp-content/themes/lettera/images/components/hero.png"
-									alt={ 'Promo image' }
+									alt={ 'Promo' }
 									className={ 'calypso-promo__image' }
 								/>
 							) }
