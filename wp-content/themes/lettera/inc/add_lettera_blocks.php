@@ -51,6 +51,7 @@ function lettera_blocks() {
 	//Components
 	register_block_type( 'lettera/text-image');
 	register_block_type( 'lettera/promo');
+	register_block_type( 'lettera/cards');
 
 	//Add HTML comment to columns
 	add_filter('the_content', 'addHTMLComment', 10001);
