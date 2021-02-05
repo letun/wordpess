@@ -6900,10 +6900,6 @@ var settings = {
     addClass: {
       type: 'string',
       default: ''
-    },
-    textAlign: {
-      type: 'string',
-      default: 'left'
     }
   },
   edit: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
@@ -6923,7 +6919,6 @@ var settings = {
     var defaultButtonType = attributes.defaultButtonType,
         buttonType = attributes.buttonType,
         buttonAltText = attributes.buttonAltText,
-        textAlign = attributes.textAlign,
         hasContent = attributes.hasContent;
     wp.element.useEffect(function () {
       var isEmpty = true;
@@ -6943,15 +6938,13 @@ var settings = {
     });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"])(parentClientId, parentBlockAttributes);
     var MY_TEMPLATE = [["lettera/".concat(buttonType ? buttonType : defaultButtonType), {
-      placeholder: 'Button text',
-      textAlign: textAlign
+      placeholder: 'Button text'
     }]];
 
     if (buttonAltText) {
       MY_TEMPLATE.push(['lettera/text-small', {
         placeholder: 'Text bellow button',
-        addClass: ['text-gray'],
-        textAlign: textAlign
+        addClass: ['text-gray']
       }]);
     }
 
@@ -7030,14 +7023,6 @@ var settings = {
     hasContent: {
       type: 'boolean',
       default: false
-    },
-    defaultTextAlign: {
-      type: 'string',
-      default: 'text-left'
-    },
-    textAlign: {
-      type: 'string',
-      default: null
     }
   },
   edit: Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__["compose"])([Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
@@ -7081,7 +7066,6 @@ var settings = {
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"])(parentClientId, parentBlockAttributes);
     var MY_TEMPLATE = [['lettera/paragraph', {
       placeholder: 'Write text here',
-      isGlobalTextAlign: true,
       canDelete: true
     }]];
     var ALLOWED_BLOCKS = ['lettera/paragraph', 'lettera/list'];
@@ -7092,9 +7076,6 @@ var settings = {
       renderAppender: false
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_addBlockButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
       allowedBlocks: ALLOWED_BLOCKS,
-      attributes: [{
-        isGlobalTextAlign: true
-      }],
       clientId: clientId
     }));
   }),
@@ -7217,8 +7198,7 @@ var settings = {
       level: 1
     }], ['lettera/block-text'], ['lettera/block-btn', {
       buttonAltText: true,
-      defaultButtonType: 'button-main',
-      textAlign: 'left'
+      defaultButtonType: 'button-main'
     }]];
     var ALLOWED_BLOCKS = ['lettera/preheader', 'lettera/header', 'lettera/heading', 'lettera/paragraph', 'lettera/list', 'lettera/btn', 'lettera/text-small', 'lettera/block-text', 'lettera/block-btn'];
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_9__["default"])(clientId, props.attributes);
@@ -7340,19 +7320,27 @@ var settings = {
       selector: 'img',
       attribute: 'src'
     },
-    textAlign: {
-      type: 'string',
-      default: 'text-left'
-    },
     bgColor: {
       type: 'string',
       default: 'none'
+    },
+    textAlign: {
+      type: 'string',
+      default: 'text-left'
     },
     blockSettings: {
       type: 'object',
       default: {
         textAlign: 'right',
         bgColor: 'none'
+      }
+    },
+    blockAttributes: {
+      type: 'object',
+      default: {
+        headerAlign: 'center',
+        textAlign: 'component',
+        btnAlign: 'center'
       }
     }
   },
@@ -7519,15 +7507,23 @@ var settings = {
     blockSettings: {
       type: 'object',
       default: {
-        textAlign: 'right',
+        textAlign: 'left',
         bgColor: 'none'
+      }
+    },
+    blockAttributes: {
+      type: 'object',
+      default: {
+        headerAlign: 'center',
+        textAlign: 'component',
+        btnAlign: 'center'
       }
     }
   },
   example: {
     attributes: {
       blockSettings: {
-        textAlign: 'right',
+        textAlign: 'left',
         bgColor: 'none'
       }
     }
@@ -7541,7 +7537,6 @@ var settings = {
     var _props$attributes = props.attributes,
         content = _props$attributes.content,
         bgColor = _props$attributes.bgColor,
-        textAlign = _props$attributes.textAlign,
         clientId = props.clientId,
         setAttributes = props.setAttributes,
         className = props.className;
@@ -7552,18 +7547,12 @@ var settings = {
     }
 
     var MY_TEMPLATE = [['lettera/preheader', {
-      placeholder: 'Preheader',
-      textAlign: 'text-center'
+      placeholder: 'Preheader'
     }], ['lettera/header', {
       placeholder: 'Header',
-      level: 1,
-      addClass: ['text-center']
-    }], ['lettera/block-text', {
-      textAlign: textAlign
-    }], ['lettera/block-btn', {
-      buttonAltText: true,
-      defaultButtonType: 'button-main',
-      textAlign: 'text-center'
+      level: 1
+    }], ['lettera/block-text'], ['lettera/block-btn', {
+      buttonAltText: true
     }]];
     var ALLOWED_BLOCKS = ['lettera/preheader', 'lettera/header', 'lettera/heading', 'lettera/paragraph', 'lettera/list', 'lettera/btn', 'lettera/text-small', 'lettera/block-text', 'lettera/block-btn'];
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"])(clientId, props.attributes);
@@ -7737,10 +7726,10 @@ panels.textAlign = function (clientId, value) {
     value: value,
     options: [{
       label: 'Text left',
-      value: 'text-left'
+      value: 'left'
     }, {
       label: 'Text center',
-      value: 'text-center'
+      value: 'center'
     }],
     onChange: function onChange(newValue) {
       onChangeSettings(clientId, 'textAlign', newValue);
@@ -8184,6 +8173,15 @@ var settings = {
         linkHref = attributes.linkHref,
         linkTarget = attributes.linkTarget,
         textAlign = attributes.textAlign;
+    wp.element.useEffect(function () {
+      if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.btnAlign) {
+        if (parentBlockAttributes.blockAttributes.btnAlign === 'center') {
+          setAttributes({
+            textAlign: 'center'
+          });
+        }
+      }
+    });
     var curClientId = clientId;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
     var btnColors = [{
@@ -8417,6 +8415,15 @@ var settings = {
         linkHref = attributes.linkHref,
         textAlign = attributes.textAlign;
     var curClientId = clientId;
+    wp.element.useEffect(function () {
+      if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.btnAlign) {
+        if (parentBlockAttributes.blockAttributes.btnAlign === 'center') {
+          setAttributes({
+            textAlign: 'center'
+          });
+        }
+      }
+    });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
     var btnColors = [{
       name: 'None',
@@ -8453,8 +8460,7 @@ var settings = {
       isActive: false,
       onClick: function onClick() {
         var block = wp.blocks.createBlock('lettera/button-main', {
-          content: content,
-          textAlign: textAlign
+          content: content
         });
         wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
       }
@@ -8594,6 +8600,10 @@ var settings = {
       type: 'array',
       default: [1, 2, 3]
     },
+    textAlign: {
+      type: 'string',
+      default: 'left'
+    },
     placeholder: {
       type: 'string',
       default: 'Write heading…'
@@ -8622,10 +8632,25 @@ var settings = {
         level = attributes.level,
         allowedLevels = attributes.allowedLevels,
         placeholder = attributes.placeholder,
+        textAlign = attributes.textAlign,
         addClass = attributes.addClass;
+    wp.element.useEffect(function () {
+      if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.headerAlign) {
+        if (parentBlockAttributes.blockAttributes.headerAlign === 'center') {
+          setAttributes({
+            textAlign: 'center'
+          });
+        }
+      }
+    });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"])(parentClientId, parentBlockAttributes);
     var classHeader = level > 1 ? 'h' + level : '';
     var classElement = [classHeader, addClass];
+
+    if (textAlign === 'center') {
+      classElement.push('text-center');
+    }
+
     var buttons = allowedLevels.map(function (targetLevel) {
       var isActive = targetLevel === level;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
@@ -8660,9 +8685,15 @@ var settings = {
         className = props.className;
     var content = attributes.content,
         level = attributes.level,
+        textAlign = attributes.textAlign,
         addClass = attributes.addClass;
     var classHeader = level > 1 ? 'h' + level : '';
     var classElement = [classHeader, addClass];
+
+    if (textAlign === 'center') {
+      classElement.push('text-center');
+    }
+
     return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
       tagName: "h".concat(level),
       value: content,
@@ -8744,10 +8775,6 @@ var settings = {
       type: 'string',
       default: null
     },
-    isGlobalTextAlign: {
-      type: 'boolean',
-      default: true
-    },
     canDelete: {
       type: 'boolean',
       default: false
@@ -8770,17 +8797,22 @@ var settings = {
         start = _props$attributes.start,
         placeholder = _props$attributes.placeholder,
         textAlign = _props$attributes.textAlign,
-        isGlobalTextAlign = _props$attributes.isGlobalTextAlign,
         setAttributes = props.setAttributes,
         clientId = props.clientId,
         parentClientId = props.parentClientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className;
     wp.element.useEffect(function () {
-      if (isGlobalTextAlign) {
-        setAttributes({
-          textAlign: parentBlockAttributes.textAlign
-        });
+      if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.textAlign) {
+        if (parentBlockAttributes.blockAttributes.textAlign === 'component') {
+          setAttributes({
+            textAlign: parentBlockAttributes.textAlign
+          });
+        } else {
+          setAttributes({
+            textAlign: parentBlockAttributes.blockSettings.textAlign
+          });
+        }
       }
     });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"])(parentClientId, parentBlockAttributes);
@@ -8789,7 +8821,7 @@ var settings = {
     var isUnordered = false;
     var addClass = [];
 
-    if (textAlign === 'text-center') {
+    if (textAlign === 'center') {
       addClass.push('text-center');
     }
 
@@ -8849,7 +8881,7 @@ var settings = {
     var tagName = ordered ? 'ol' : 'ul';
     var addClass = [];
 
-    if (textAlign === 'text-center') {
+    if (textAlign === 'center') {
       addClass.push('text-center');
     }
 
@@ -8931,10 +8963,6 @@ var settings = {
       type: 'string',
       default: null
     },
-    isGlobalTextAlign: {
-      type: 'boolean',
-      default: false
-    },
     canDelete: {
       type: 'boolean',
       default: false
@@ -8979,19 +9007,24 @@ var settings = {
         className = props.className;
     var content = attributes.content,
         placeholder = attributes.placeholder,
-        textAlign = attributes.textAlign,
-        isGlobalTextAlign = attributes.isGlobalTextAlign;
-    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"])(parentClientId, parentBlockAttributes);
+        textAlign = attributes.textAlign;
     wp.element.useEffect(function () {
-      if (isGlobalTextAlign) {
-        setAttributes({
-          textAlign: parentBlockAttributes.textAlign
-        });
+      if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.textAlign) {
+        if (parentBlockAttributes.blockAttributes.textAlign === 'component') {
+          setAttributes({
+            textAlign: parentBlockAttributes.textAlign
+          });
+        } else {
+          setAttributes({
+            textAlign: parentBlockAttributes.blockSettings.textAlign
+          });
+        }
       }
     });
+    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"])(parentClientId, parentBlockAttributes);
     var addClass = [];
 
-    if (textAlign === 'text-center') {
+    if (textAlign === 'center') {
       addClass.push('text-center');
     }
 
@@ -9034,7 +9067,7 @@ var settings = {
         textAlign = _props$attributes.textAlign;
     var addClass = [];
 
-    if (textAlign === 'text-center') {
+    if (textAlign === 'center') {
       addClass.push('text-center');
     }
 
@@ -9095,7 +9128,7 @@ var settings = {
     },
     textAlign: {
       type: 'string',
-      default: 'text-left'
+      default: 'left'
     },
     addClass: {
       type: 'array',
@@ -9121,9 +9154,18 @@ var settings = {
         placeholder = attributes.placeholder,
         addClass = attributes.addClass,
         textAlign = attributes.textAlign;
+    wp.element.useEffect(function () {
+      if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.headerAlign) {
+        if (parentBlockAttributes.blockAttributes.headerAlign === 'center') {
+          setAttributes({
+            textAlign: 'center'
+          });
+        }
+      }
+    });
     var classElement = ['text-normal', 'text-gray', addClass];
 
-    if (textAlign === 'text-center') {
+    if (textAlign === 'center') {
       classElement.push('text-center');
     }
 
@@ -9150,7 +9192,7 @@ var settings = {
         addClass = attributes.addClass;
     var classElement = ['text-normal', 'text-gray', addClass];
 
-    if (textAlign === 'text-center') {
+    if (textAlign === 'center') {
       classElement.push('text-center');
     }
 
@@ -9235,6 +9277,15 @@ var settings = {
         placeholder = attributes.placeholder,
         addClass = attributes.addClass,
         textAlign = attributes.textAlign;
+    wp.element.useEffect(function () {
+      if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.btnAlign) {
+        if (parentBlockAttributes.blockAttributes.btnAlign === 'center') {
+          setAttributes({
+            textAlign: 'center'
+          });
+        }
+      }
+    });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_4__["default"])(parentClientId, parentBlockAttributes);
     var elementClass = [];
 

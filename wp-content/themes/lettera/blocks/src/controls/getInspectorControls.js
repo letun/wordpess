@@ -30,11 +30,11 @@ panels.textAlign = ( clientId, value ) => {
 				options={ [
 					{
 						label: 'Text left',
-						value: 'text-left',
+						value: 'left',
 					},
 					{
 						label: 'Text center',
-						value: 'text-center',
+						value: 'center',
 					},
 				] }
 				onChange={ ( newValue ) => {

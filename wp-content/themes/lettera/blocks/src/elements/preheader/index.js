@@ -26,7 +26,7 @@ export const settings = {
 		},
 		textAlign: {
 			type: 'string',
-			default: 'text-left',
+			default: 'left',
 		},
 		addClass: {
 			type: 'array',
@@ -59,8 +59,22 @@ export const settings = {
 
 		const { content, placeholder, addClass, textAlign } = attributes;
 
+		wp.element.useEffect( () => {
+			if (
+				parentBlockAttributes.blockAttributes &&
+				parentBlockAttributes.blockAttributes.headerAlign
+			) {
+				if (
+					parentBlockAttributes.blockAttributes.headerAlign ===
+					'center'
+				) {
+					setAttributes( { textAlign: 'center' } );
+				}
+			}
+		} );
+
 		const classElement = [ 'text-normal', 'text-gray', addClass ];
-		if ( textAlign === 'text-center' ) {
+		if ( textAlign === 'center' ) {
 			classElement.push( 'text-center' );
 		}
 
@@ -92,7 +106,7 @@ export const settings = {
 		const { content, textAlign, addClass } = attributes;
 
 		const classElement = [ 'text-normal', 'text-gray', addClass ];
-		if ( textAlign === 'text-center' ) {
+		if ( textAlign === 'center' ) {
 			classElement.push( 'text-center' );
 		}
 

@@ -46,10 +46,6 @@ export const settings = {
 			type: 'string',
 			default: null,
 		},
-		isGlobalTextAlign: {
-			type: 'boolean',
-			default: true,
-		},
 		canDelete: {
 			type: 'boolean',
 			default: false,
@@ -79,7 +75,6 @@ export const settings = {
 				start,
 				placeholder,
 				textAlign,
-				isGlobalTextAlign,
 			},
 			setAttributes,
 			clientId,
@@ -89,8 +84,23 @@ export const settings = {
 		} = props;
 
 		wp.element.useEffect( () => {
-			if ( isGlobalTextAlign ) {
-				setAttributes( { textAlign: parentBlockAttributes.textAlign } );
+			if (
+				parentBlockAttributes.blockAttributes &&
+				parentBlockAttributes.blockAttributes.textAlign
+			) {
+				if (
+					parentBlockAttributes.blockAttributes.textAlign ===
+					'component'
+				) {
+					setAttributes( {
+						textAlign: parentBlockAttributes.textAlign,
+					} );
+				} else {
+					setAttributes( {
+						textAlign:
+							parentBlockAttributes.blockSettings.textAlign,
+					} );
+				}
 			}
 		} );
 
@@ -104,7 +114,7 @@ export const settings = {
 		const isUnordered = false;
 
 		const addClass = [];
-		if ( textAlign === 'text-center' ) {
+		if ( textAlign === 'center' ) {
 			addClass.push( 'text-center' );
 		}
 
@@ -176,7 +186,7 @@ export const settings = {
 		const tagName = ordered ? 'ol' : 'ul';
 
 		const addClass = [];
-		if ( textAlign === 'text-center' ) {
+		if ( textAlign === 'center' ) {
 			addClass.push( 'text-center' );
 		}
 

@@ -28,15 +28,23 @@ export const settings = {
 		blockSettings: {
 			type: 'object',
 			default: {
-				textAlign: 'right',
+				textAlign: 'left',
 				bgColor: 'none',
+			},
+		},
+		blockAttributes: {
+			type: 'object',
+			default: {
+				headerAlign: 'center',
+				textAlign: 'component',
+				btnAlign: 'center',
 			},
 		},
 	},
 	example: {
 		attributes: {
 			blockSettings: {
-				textAlign: 'right',
+				textAlign: 'left',
 				bgColor: 'none',
 			},
 		},
@@ -50,7 +58,7 @@ export const settings = {
 		};
 	} )( ( props ) => {
 		const {
-			attributes: { content, bgColor, textAlign },
+			attributes: { content, bgColor },
 			clientId,
 			setAttributes,
 			className,
@@ -63,25 +71,19 @@ export const settings = {
 		}
 
 		const MY_TEMPLATE = [
-			[
-				'lettera/preheader',
-				{ placeholder: 'Preheader', textAlign: 'text-center' },
-			],
+			[ 'lettera/preheader', { placeholder: 'Preheader' } ],
 			[
 				'lettera/header',
 				{
 					placeholder: 'Header',
 					level: 1,
-					addClass: [ 'text-center' ],
 				},
 			],
-			[ 'lettera/block-text', { textAlign } ],
+			[ 'lettera/block-text' ],
 			[
 				'lettera/block-btn',
 				{
 					buttonAltText: true,
-					defaultButtonType: 'button-main',
-					textAlign: 'text-center',
 				},
 			],
 		];

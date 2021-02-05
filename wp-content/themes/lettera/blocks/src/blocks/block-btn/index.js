@@ -37,10 +37,6 @@ export const settings = {
 			type: 'string',
 			default: '',
 		},
-		textAlign: {
-			type: 'string',
-			default: 'left',
-		},
 	},
 	edit: withSelect( ( select, blockData ) => {
 		const parentClientId = select(
@@ -68,7 +64,6 @@ export const settings = {
 			defaultButtonType,
 			buttonType,
 			buttonAltText,
-			textAlign,
 			hasContent,
 		} = attributes;
 
@@ -93,7 +88,7 @@ export const settings = {
 		const MY_TEMPLATE = [
 			[
 				`lettera/${ buttonType ? buttonType : defaultButtonType }`,
-				{ placeholder: 'Button text', textAlign },
+				{ placeholder: 'Button text' },
 			],
 		];
 
@@ -103,7 +98,6 @@ export const settings = {
 				{
 					placeholder: 'Text bellow button',
 					addClass: [ 'text-gray' ],
-					textAlign,
 				},
 			] );
 		}

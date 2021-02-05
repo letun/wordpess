@@ -88,7 +88,6 @@ export const settings = {
 				{
 					buttonAltText: true,
 					defaultButtonType: 'button-main',
-					textAlign: 'left',
 				},
 			],
 		];

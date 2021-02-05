@@ -27,19 +27,27 @@ export const settings = {
 			selector: 'img',
 			attribute: 'src',
 		},
-		textAlign: {
-			type: 'string',
-			default: 'text-left',
-		},
 		bgColor: {
 			type: 'string',
 			default: 'none',
+		},
+		textAlign: {
+			type: 'string',
+			default: 'text-left',
 		},
 		blockSettings: {
 			type: 'object',
 			default: {
 				textAlign: 'right',
 				bgColor: 'none',
+			},
+		},
+		blockAttributes: {
+			type: 'object',
+			default: {
+				headerAlign: 'center',
+				textAlign: 'component',
+				btnAlign: 'center',
 			},
 		},
 	},

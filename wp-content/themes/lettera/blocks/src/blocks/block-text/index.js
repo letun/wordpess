@@ -21,14 +21,6 @@ export const settings = {
 			type: 'boolean',
 			default: false,
 		},
-		defaultTextAlign: {
-			type: 'string',
-			default: 'text-left',
-		},
-		textAlign: {
-			type: 'string',
-			default: null,
-		},
 	},
 	edit: compose( [
 		withSelect( ( select, blockData ) => {
@@ -87,7 +79,6 @@ export const settings = {
 				'lettera/paragraph',
 				{
 					placeholder: 'Write text here',
-					isGlobalTextAlign: true,
 					canDelete: true,
 				},
 			],
@@ -105,7 +96,6 @@ export const settings = {
 				/>
 				<AddBlockButton
 					allowedBlocks={ ALLOWED_BLOCKS }
-					attributes={ [ { isGlobalTextAlign: true } ] }
 					clientId={ clientId }
 				/>
 			</>

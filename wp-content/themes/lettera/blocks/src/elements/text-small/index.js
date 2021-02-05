@@ -56,6 +56,19 @@ export const settings = {
 
 		const { content, placeholder, addClass, textAlign } = attributes;
 
+		wp.element.useEffect( () => {
+			if (
+				parentBlockAttributes.blockAttributes &&
+				parentBlockAttributes.blockAttributes.btnAlign
+			) {
+				if (
+					parentBlockAttributes.blockAttributes.btnAlign === 'center'
+				) {
+					setAttributes( { textAlign: 'center' } );
+				}
+			}
+		} );
+
 		const inspectorControls = getInspectorControls(
 			parentClientId,
 			parentBlockAttributes

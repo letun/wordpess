@@ -42,6 +42,10 @@ export const settings = {
 			type: 'array',
 			default: [ 1, 2, 3 ],
 		},
+		textAlign: {
+			type: 'string',
+			default: 'left',
+		},
 		placeholder: {
 			type: 'string',
 			default: 'Write heading…',
@@ -80,8 +84,23 @@ export const settings = {
 			level,
 			allowedLevels,
 			placeholder,
+			textAlign,
 			addClass,
 		} = attributes;
+
+		wp.element.useEffect( () => {
+			if (
+				parentBlockAttributes.blockAttributes &&
+				parentBlockAttributes.blockAttributes.headerAlign
+			) {
+				if (
+					parentBlockAttributes.blockAttributes.headerAlign ===
+					'center'
+				) {
+					setAttributes( { textAlign: 'center' } );
+				}
+			}
+		} );
 
 		const inspectorControls = getInspectorControls(
 			parentClientId,
@@ -90,6 +109,9 @@ export const settings = {
 
 		const classHeader = level > 1 ? 'h' + level : '';
 		const classElement = [ classHeader, addClass ];
+		if ( textAlign === 'center' ) {
+			classElement.push( 'text-center' );
+		}
 
 		const buttons = allowedLevels.map( ( targetLevel ) => {
 			const isActive = targetLevel === level;
@@ -129,10 +151,13 @@ export const settings = {
 	save: ( props ) => {
 		const { attributes, className } = props;
 
-		const { content, level, addClass } = attributes;
+		const { content, level, textAlign, addClass } = attributes;
 
 		const classHeader = level > 1 ? 'h' + level : '';
 		const classElement = [ classHeader, addClass ];
+		if ( textAlign === 'center' ) {
+			classElement.push( 'text-center' );
+		}
 
 		return (
 			content && (

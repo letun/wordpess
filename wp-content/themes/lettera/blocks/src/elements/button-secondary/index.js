@@ -105,6 +105,20 @@ export const settings = {
 			textAlign,
 		} = attributes;
 		const curClientId = clientId;
+
+		wp.element.useEffect( () => {
+			if (
+				parentBlockAttributes.blockAttributes &&
+				parentBlockAttributes.blockAttributes.btnAlign
+			) {
+				if (
+					parentBlockAttributes.blockAttributes.btnAlign === 'center'
+				) {
+					setAttributes( { textAlign: 'center' } );
+				}
+			}
+		} );
+
 		const inspectorControls = getInspectorControls(
 			parentClientId,
 			parentBlockAttributes
@@ -134,7 +148,7 @@ export const settings = {
 						onClick={ () => {
 							const block = wp.blocks.createBlock(
 								'lettera/button-main',
-								{ content, textAlign }
+								{ content }
 							);
 							wp.data
 								.dispatch( 'core/block-editor' )
