@@ -42,11 +42,13 @@ function lettera_blocks() {
 	register_block_type( 'lettera/list');
 	register_block_type( 'lettera/button');
 	register_block_type( 'lettera/text-small');
+	register_block_type( 'lettera/card');
 
 	register_block_type( 'lettera/block-text');
 	register_block_type( 'lettera/block-text-extra');
 	register_block_type( 'lettera/block-btn');
 	register_block_type( 'lettera/block-heading');
+	register_block_type( 'lettera/block-cards');
 
 	//Components
 	register_block_type( 'lettera/text-image');

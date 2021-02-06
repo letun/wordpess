@@ -7,7 +7,8 @@ import {
 import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
 import classnames from 'classnames';
 
-import ButtonMain from '../../layout/button-main';
+import Columns from '../../layout/columns';
+import Column from '../../layout/column';
 
 import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
 import ToolbarButtonColor from '../../controls/toolbarButtonColor';
@@ -15,7 +16,7 @@ import getInspectorControls from '../../controls/getInspectorControls';
 
 import LetteraConfig from '../../global/config';
 
-import { ReactComponent as elementIcon } from '../../../../svg/elements/features.svg';
+import { ReactComponent as elementIcon } from '../../../../svg/components/features.svg';
 
 export const name = 'lettera/card';
 
@@ -58,7 +59,7 @@ export const settings = {
 		},
 		placeholder: {
 			type: 'string',
-			default: 'Button text…',
+			default: 'Card text…',
 		},
 		buttonSize: {
 			type: 'string',
@@ -159,7 +160,7 @@ export const settings = {
 			<>
 				<BlockControls>{ toolbar }</BlockControls>
 				{ inspectorControls }
-				<ButtonMain
+				<Column
 					className={ classnames( classBtn, className ) }
 					textAlign={ textAlign }
 				>
@@ -173,7 +174,8 @@ export const settings = {
 						allowedFormats={ [] }
 						unstableOnSplit={ () => false }
 					/>
-				</ButtonMain>
+					<input type="text" placeholder={'Learn more'} value={'Learn more'} onChange={()=> console.log(111)} />&nbsp;→
+				</Column>
 			</>
 		);
 	} ),
@@ -193,7 +195,7 @@ export const settings = {
 
 		return (
 			content && (
-				<ButtonMain
+				<Column
 					buttonColor={ buttonColor }
 					buttonSize={ buttonSize }
 					textAlign={ textAlign }
@@ -203,7 +205,7 @@ export const settings = {
 					linkTitle={ linkTitle }
 				>
 					<RichText.Content value={ content } />
-				</ButtonMain>
+				</Column>
 			)
 		);
 	},

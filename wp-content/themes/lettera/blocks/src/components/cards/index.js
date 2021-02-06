@@ -79,25 +79,13 @@ export const settings = {
 					level: 1,
 				},
 			],
-			[ 'lettera/block-text' ],
-			[
-				'lettera/block-btn',
-				{
-					buttonAltText: true,
-				},
-			],
+			[ 'lettera/card' ],
 		];
 
 		const ALLOWED_BLOCKS = [
 			'lettera/preheader',
 			'lettera/header',
-			'lettera/heading',
-			'lettera/paragraph',
-			'lettera/list',
-			'lettera/btn',
-			'lettera/text-small',
-			'lettera/block-text',
-			'lettera/block-btn',
+			'lettera/block-card',
 		];
 
 		const inspectorControls = getInspectorControls(

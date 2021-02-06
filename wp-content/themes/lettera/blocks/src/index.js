@@ -8,12 +8,16 @@ import * as elList from './elements/list';
 import * as elButtonMain from './elements/button-main';
 import * as elButtonSecondary from './elements/button-secondary';
 import * as elSmallText from './elements/text-small';
+import * as elCard from './elements/card';
 
 // Block Template: text/list
 import * as blockText from './blocks/block-text';
 
 // Block Button (templateLock): btn + small text
 import * as blockBtn from './blocks/block-btn';
+
+// Block Cards (templateLock): card
+import * as blockCard from './blocks/block-cards';
 
 // Components
 import * as cmText from './components/text';
@@ -29,14 +33,16 @@ const blocks = [
 	elButtonMain,
 	elButtonSecondary,
 	elSmallText,
+	elCard,
 
 	blockBtn,
 	blockText,
+	blockCard,
 
 	cmText,
 	cmTextImage,
 	cmPromo,
-	cmCards
+	cmCards,
 ];
 
 blocks.forEach( ( block ) => {
