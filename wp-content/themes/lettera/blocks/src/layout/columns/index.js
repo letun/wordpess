@@ -1,6 +1,7 @@
 import { Children } from 'react';
+import classnames from 'classnames';
 
-const Columns = ( { count, children } ) => {
+const Columns = ( { count, className, children } ) => {
 	const cnt = Children.count( children ),
 		cntCols = count ? count : cnt;
 
@@ -47,7 +48,22 @@ const Columns = ( { count, children } ) => {
 		);
 	}
 
-	return cols;
+	return (
+		<table
+			align={ 'center' }
+			className={ 'columns' }
+			cellpadding={ '0' }
+			cellspacing={ '0' }
+		>
+			<tbody>
+			<tr>
+				<td className={ classnames( 'columns-inner', className ) }>
+					{ children }
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	);
 };
 
 export default Columns;

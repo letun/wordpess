@@ -1,17 +1,15 @@
 import { withSelect } from '@wordpress/data';
+import { MediaUpload } from '@wordpress/block-editor';
 import {
 	RichText,
 	BlockControls,
 	getColorObjectByColorValue,
 } from '@wordpress/block-editor';
-import { ToolbarButton, ToolbarGroup } from '@wordpress/components';
 import classnames from 'classnames';
 
-import Columns from '../../layout/columns';
 import Column from '../../layout/column';
 
 import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
-import ToolbarButtonColor from '../../controls/toolbarButtonColor';
 import getInspectorControls from '../../controls/getInspectorControls';
 
 import LetteraConfig from '../../global/config';
@@ -21,15 +19,29 @@ import { ReactComponent as elementIcon } from '../../../../svg/components/featur
 export const name = 'lettera/card';
 
 export const settings = {
-	title: 'Button',
+	title: 'Card',
 	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
+		mediaID: {
+			type: 'number',
+		},
+		mediaURL: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'src',
+		},
 		content: {
 			type: 'string',
 			source: 'text',
-			selector: 'a',
+			selector: 'p.card__text',
+		},
+		linkContent: {
+			type: 'string',
+			source: 'text',
+			selector: 'p.card__link span',
 		},
 		linkHref: {
 			type: 'string',
@@ -61,18 +73,6 @@ export const settings = {
 			type: 'string',
 			default: 'Card text…',
 		},
-		buttonSize: {
-			type: 'string',
-			default: 'normal' /* small, medium, large */,
-		},
-		buttonColor: {
-			type: 'string',
-			default: 'black',
-		},
-		textAlign: {
-			type: 'string',
-			default: 'left',
-		},
 	},
 	edit: withSelect( ( select, blockData ) => {
 		const parentClientId = select(
@@ -99,13 +99,14 @@ export const settings = {
 		} = props;
 
 		const {
-			buttonColor,
-			buttonSize,
+			mediaID,
+			mediaURL,
 			content,
 			placeholder,
 			linkHref,
 			linkTarget,
 			textAlign,
+			linkContent,
 		} = attributes;
 
 		wp.element.useEffect( () => {
@@ -127,23 +128,6 @@ export const settings = {
 			parentBlockAttributes
 		);
 
-		const btnColors = [
-			{ name: 'Black', slug: 'black', color: '#000000' },
-			{ name: 'Yellow', slug: 'yellow', color: '#FFBF06' },
-			{ name: 'Silver', slug: 'silver', color: '#DDE1E6' },
-			{ name: 'White', slug: 'white', color: '#FFFFFF' },
-		];
-
-		const classBtn = [ 'button-main' ];
-
-		if ( buttonSize === 'large' ) {
-			classBtn.push( 'button-main--large' );
-		}
-
-		if ( buttonColor && buttonColor !== 'black' ) {
-			classBtn.push( 'button-main--' + buttonColor );
-		}
-
 		const toolbar = (
 			<>
 				<ToolbarButtonLinkHref
@@ -161,10 +145,34 @@ export const settings = {
 				<BlockControls>{ toolbar }</BlockControls>
 				{ inspectorControls }
 				<Column
-					className={ classnames( classBtn, className ) }
+					className={ classnames( className ) }
 					textAlign={ textAlign }
 				>
+					<MediaUpload
+						onSelect={ ( media ) => {
+							setAttributes( {
+								mediaURL: media.url,
+								mediaID: media.id,
+							} );
+						} }
+						allowedTypes={ [ 'image' ] }
+						value={ mediaID }
+						render={ ( { open } ) => (
+							<img
+								alt={ '' }
+								src={
+									! mediaID
+										? '/wp-content/themes/lettera/images/components/hero.png'
+										: mediaURL
+								}
+								className={ 'calypso-promo__image' }
+								onClick={ open }
+							/>
+						) }
+					/>
 					<RichText
+						tagName={'p'}
+						className={'card__text'}
 						identifier={ 'content' }
 						onChange={ ( value ) =>
 							setAttributes( { content: value } )
@@ -174,7 +182,15 @@ export const settings = {
 						allowedFormats={ [] }
 						unstableOnSplit={ () => false }
 					/>
-					<input type="text" placeholder={'Learn more'} value={'Learn more'} onChange={()=> console.log(111)} />&nbsp;→
+					<p className={'card__link'}><span>{linkContent}</span>&nbsp;→</p>
+					<div className={'card__link--admin'}>
+						<input
+							type="text"
+							placeholder={'Learn more'}
+							value={linkContent}
+							onChange={(e)=> setAttributes({linkContent: e.target.value})}
+						/>&nbsp;→
+					</div>
 				</Column>
 			</>
 		);
@@ -184,27 +200,43 @@ export const settings = {
 
 		const {
 			content,
-			buttonColor,
-			buttonSize,
 			linkTarget,
 			linkRel,
 			linkTitle,
 			linkHref,
-			textAlign,
+			linkContent,
+			mediaURL,
 		} = attributes;
 
 		return (
 			content && (
-				<Column
-					buttonColor={ buttonColor }
-					buttonSize={ buttonSize }
-					textAlign={ textAlign }
-					linkHref={ linkHref }
-					linkTarget={ linkTarget }
-					linkRel={ linkRel }
-					linkTitle={ linkTitle }
-				>
-					<RichText.Content value={ content } />
+				<Column>
+					<a
+						href={ linkHref }
+						target={ linkTarget }
+						rel={ linkRel }
+						title={ linkTitle }
+					>
+						{ mediaURL ? (
+							<img
+								className="card__image"
+								src={ mediaURL }
+								alt="Promo"
+							/>
+						) : (
+							<img
+								src="/wp-content/themes/lettera/images/components/hero.png"
+								alt={ 'Promo' }
+								className={ 'card__image' }
+							/>
+						) }
+						<RichText.Content
+							tagName={ 'p' }
+							value={ content }
+							className={'card__text'}
+						/>
+						<p className={'card__link'}><span>{linkContent}</span>&nbsp;→</p>
+					</a>
 				</Column>
 			)
 		);

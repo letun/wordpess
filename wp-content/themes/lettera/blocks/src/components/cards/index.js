@@ -37,7 +37,6 @@ export const settings = {
 			default: {
 				headerAlign: 'center',
 				textAlign: 'component',
-				btnAlign: 'center',
 			},
 		},
 	},
@@ -71,21 +70,8 @@ export const settings = {
 		}
 
 		const MY_TEMPLATE = [
-			[ 'lettera/preheader', { placeholder: 'Preheader' } ],
-			[
-				'lettera/header',
-				{
-					placeholder: 'Header',
-					level: 1,
-				},
-			],
-			[ 'lettera/card' ],
-		];
-
-		const ALLOWED_BLOCKS = [
-			'lettera/preheader',
-			'lettera/header',
-			'lettera/block-card',
+			[ 'lettera/block-heading'],
+			[ 'lettera/block-cards' ],
 		];
 
 		const inspectorControls = getInspectorControls(
@@ -101,19 +87,14 @@ export const settings = {
 					className={ classnames( classContainer, className ) }
 				>
 					{ removeComponent }
-					<Row>
-						<Column className={ classnames( 'text-center' ) }>
-							<InnerBlocks
-								allowedBlocks={ ALLOWED_BLOCKS }
-								template={ MY_TEMPLATE }
-								templateLock="all"
-								value={ content }
-								onChange={ ( value ) =>
-									setAttributes( { content: value } )
-								}
-							/>
-						</Column>
-					</Row>
+					<InnerBlocks
+						template={ MY_TEMPLATE }
+						templateLock="all"
+						value={ content }
+						onChange={ ( value ) =>
+							setAttributes( { content: value } )
+						}
+					/>
 				</Container>
 			</>
 		);
@@ -135,11 +116,7 @@ export const settings = {
 				<Container
 					className={ classnames( classContainer, className ) }
 				>
-					<Row>
-						<Column className={ classnames( 'text-center' ) }>
-							<InnerBlocks.Content />
-						</Column>
-					</Row>
+					<InnerBlocks.Content />
 				</Container>
 			</>
 		);

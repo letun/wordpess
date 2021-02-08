@@ -45,7 +45,6 @@ function lettera_blocks() {
 	register_block_type( 'lettera/card');
 
 	register_block_type( 'lettera/block-text');
-	register_block_type( 'lettera/block-text-extra');
 	register_block_type( 'lettera/block-btn');
 	register_block_type( 'lettera/block-heading');
 	register_block_type( 'lettera/block-cards');
@@ -57,12 +56,29 @@ function lettera_blocks() {
 
 	//Add HTML comment to columns
 	add_filter('the_content', 'addHTMLComment', 10001);
+	add_filter('the_content', 'addHTMLComment2', 10001);
 }
 add_action('init', 'lettera_blocks');
 
 function addHTMLComment($content) {
 	if ( is_single() && is_main_query() ) {
 		return preg_replace("/<[\/]?pre>/i", "", $content);
+	}
+	return $content;
+}
+
+function addHTMLComment2($content) {
+	if ( is_single() && is_main_query() ) {
+		$doc = new DOMDocument();
+		$doc->loadHTML($content);
+		$finder = new DomXPath($doc);
+		$classname="columns-inner";
+		$nodes = $finder->query("//*[contains(@class, '$classname')]");
+
+		if (!is_null($nodes)) {
+			//$nodes->insertBefore(111);
+		}
+
 	}
 	return $content;
 }

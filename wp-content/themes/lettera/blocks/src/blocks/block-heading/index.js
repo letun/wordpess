@@ -4,6 +4,9 @@ import classnames from 'classnames';
 
 import LetteraConfig from '../../global/config';
 import getInspectorControls from '../../controls/getInspectorControls';
+import Row from "../../layout/row";
+import Column from "../../layout/column";
+
 
 export const name = 'lettera/block-heading';
 
@@ -49,13 +52,13 @@ export const settings = {
 
 		const MY_TEMPLATE = [
 			[ 'lettera/preheader', { placeholder: 'Preheader text' } ],
-			[ 'lettera/heading', { placeholder: 'Heading text' } ],
+			[ 'lettera/header', { placeholder: 'Header text' } ],
 			[ 'lettera/block-text' ],
 		];
 
 		const ALLOWED_BLOCKS = [
 			'lettera/preheader',
-			'lettera/heading',
+			'lettera/header',
 			'lettera/block-text',
 		];
 
@@ -78,9 +81,13 @@ export const settings = {
 		} = props;
 
 		return (
-			<InnerBlocks.Content
-				classname={ classnames( className, addClass ) }
-			/>
+			<Row>
+				<Column>
+					<InnerBlocks.Content
+						classname={ classnames( className, addClass ) }
+					/>
+				</Column>
+			</Row>
 		);
 	},
 };

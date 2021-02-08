@@ -8,6 +8,8 @@ import getInspectorControls from '../../controls/getInspectorControls';
 import AddBlockButton from '../../controls/addBlockButton';
 
 import { ReactComponent as elementIcon } from '../../../../svg/components/cards.svg';
+import Row from "../../layout/row";
+import Columns from "../../layout/columns";
 
 export const name = 'lettera/block-cards';
 
@@ -83,12 +85,16 @@ export const settings = {
 		return (
 			<>
 				{ inspectorControls }
-				<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-					template={ ! hasContent ? MY_TEMPLATE : null }
-					templateLock={ false }
-					renderAppender={ false }
-				/>
+				<Row>
+					<Columns>
+						<InnerBlocks
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ ! hasContent ? MY_TEMPLATE : null }
+							templateLock={ false }
+							renderAppender={ false }
+						/>
+					</Columns>
+				</Row>
 				<AddBlockButton
 					allowedBlocks={ ALLOWED_BLOCKS }
 					clientId={ clientId }
@@ -105,9 +111,13 @@ export const settings = {
 
 		return (
 			hasContent && (
-				<InnerBlocks.Content
-					className={ classnames( classElement, className ) }
-				/>
+				<Row>
+					<Columns>
+						<InnerBlocks.Content
+							className={ classnames( classElement, className ) }
+						/>
+					</Columns>
+				</Row>
 			)
 		);
 	},

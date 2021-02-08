@@ -95,7 +95,6 @@ export const settings = {
 		const ALLOWED_BLOCKS = [
 			'lettera/preheader',
 			'lettera/header',
-			'lettera/heading',
 			'lettera/paragraph',
 			'lettera/list',
 			'lettera/btn',

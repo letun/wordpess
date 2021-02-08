@@ -16,8 +16,11 @@ import * as blockText from './blocks/block-text';
 // Block Button (templateLock): btn + small text
 import * as blockBtn from './blocks/block-btn';
 
+// Block Button (templateLock): preheader + header + blockText
+import * as blockHeading from './blocks/block-heading';
+
 // Block Cards (templateLock): card
-import * as blockCard from './blocks/block-cards';
+import * as blockCards from './blocks/block-cards';
 
 // Components
 import * as cmText from './components/text';
@@ -37,7 +40,8 @@ const blocks = [
 
 	blockBtn,
 	blockText,
-	blockCard,
+	blockHeading,
+	blockCards,
 
 	cmText,
 	cmTextImage,
