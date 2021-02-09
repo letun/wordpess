@@ -55,8 +55,8 @@ function lettera_blocks() {
 	register_block_type( 'lettera/cards');
 
 	//Add HTML comment to columns
-	add_filter('the_content', 'addHTMLComment', 10001);
-	add_filter('the_content', 'addHTMLComment2', 10001);
+	//add_filter('the_content', 'addHTMLComment', 10001);
+	add_filter('the_content', 'addHTMLComment2', 10, 2);
 }
 add_action('init', 'lettera_blocks');
 
@@ -70,13 +70,15 @@ function addHTMLComment($content) {
 function addHTMLComment2($content) {
 	if ( is_single() && is_main_query() ) {
 		$doc = new DOMDocument();
-		$doc->loadHTML($content);
+		$doc->encoding = 'utf-8';
+		$doc->loadHTML(htmlentities(utf8_decode($content)));
 		$finder = new DomXPath($doc);
 		$classname="columns-inner";
 		$nodes = $finder->query("//*[contains(@class, '$classname')]");
 
-		if (!is_null($nodes)) {
-			//$nodes->insertBefore(111);
+		if (!is_null($nodes) && $nodes->length > 0) {
+			//$nodes[0]->removeChild($nodes);
+			return $nodes->length . '-' . $doc->saveHTML();
 		}
 
 	}

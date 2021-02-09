@@ -44,7 +44,7 @@ const ButtonSecondary = ( {
 											title={ linkTitle }
 											rel={ linkRel }
 										>
-											<span>{ children }</span>&nbsp;→
+											<span>{ children }</span>&nbsp;&rarr;
 										</a>
 									</td>
 								</tr>

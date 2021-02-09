@@ -36,11 +36,13 @@ export const settings = {
 		content: {
 			type: 'string',
 			source: 'text',
+			default: 'Card N',
 			selector: 'p.card__text',
 		},
 		linkContent: {
 			type: 'string',
 			source: 'text',
+			default: 'Learn more',
 			selector: 'p.card__link span',
 		},
 		linkHref: {
@@ -182,14 +184,14 @@ export const settings = {
 						allowedFormats={ [] }
 						unstableOnSplit={ () => false }
 					/>
-					<p className={'card__link'}><span>{linkContent}</span>&nbsp;→</p>
+					<p className={'card__link'}><span>{linkContent}</span>&nbsp;&rarr;</p>
 					<div className={'card__link--admin'}>
 						<input
 							type="text"
 							placeholder={'Learn more'}
 							value={linkContent}
 							onChange={(e)=> setAttributes({linkContent: e.target.value})}
-						/>&nbsp;→
+						/>&nbsp;&rarr;
 					</div>
 				</Column>
 			</>
@@ -235,7 +237,7 @@ export const settings = {
 							value={ content }
 							className={'card__text'}
 						/>
-						<p className={'card__link'}><span>{linkContent}</span>&nbsp;→</p>
+						<p className={'card__link'}><span>{linkContent}</span>&nbsp;&rarr;</p>
 					</a>
 				</Column>
 			)

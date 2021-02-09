@@ -8978,11 +8978,13 @@ var settings = {
     content: {
       type: 'string',
       source: 'text',
+      default: 'Card N',
       selector: 'p.card__text'
     },
     linkContent: {
       type: 'string',
       source: 'text',
+      default: 'Learn more',
       selector: 'p.card__link span'
     },
     linkHref: {
