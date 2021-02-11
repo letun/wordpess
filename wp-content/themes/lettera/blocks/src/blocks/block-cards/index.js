@@ -8,8 +8,8 @@ import getInspectorControls from '../../controls/getInspectorControls';
 import AddBlockButton from '../../controls/addBlockButton';
 
 import { ReactComponent as elementIcon } from '../../../../svg/components/cards.svg';
-import Row from "../../layout/row";
-import Columns from "../../layout/columns";
+import Row from '../../layout/row';
+import Columns from '../../layout/columns';
 
 export const name = 'lettera/block-cards';
 
@@ -76,10 +76,7 @@ export const settings = {
 			parentBlockAttributes
 		);
 
-		const MY_TEMPLATE = [
-			['lettera/card'],
-			['lettera/card'],
-		];
+		const MY_TEMPLATE = [ [ 'lettera/card' ], [ 'lettera/card' ] ];
 
 		const ALLOWED_BLOCKS = [ 'lettera/card' ];
 		return (

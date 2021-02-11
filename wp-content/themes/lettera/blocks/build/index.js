@@ -7385,13 +7385,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _layout_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../layout/container */ "./src/layout/container/index.js");
-/* harmony import */ var _layout_row__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../layout/row */ "./src/layout/row/index.js");
-/* harmony import */ var _layout_column__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../layout/column */ "./src/layout/column/index.js");
-/* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
-/* harmony import */ var _controls_removeComponentButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../controls/removeComponentButton */ "./src/controls/removeComponentButton.js");
-/* harmony import */ var _svg_components_features_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../svg/components/features.svg */ "../svg/components/features.svg");
-
-
+/* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
+/* harmony import */ var _controls_removeComponentButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../controls/removeComponentButton */ "./src/controls/removeComponentButton.js");
+/* harmony import */ var _svg_components_features_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../svg/components/features.svg */ "../svg/components/features.svg");
 
 
 
@@ -7403,7 +7399,7 @@ __webpack_require__.r(__webpack_exports__);
 var name = 'lettera/cards';
 var settings = {
   title: 'Cards',
-  icon: _svg_components_features_svg__WEBPACK_IMPORTED_MODULE_9__["ReactComponent"],
+  icon: _svg_components_features_svg__WEBPACK_IMPORTED_MODULE_7__["ReactComponent"],
   category: 'common',
   attributes: {
     textAlign: {
@@ -7456,8 +7452,8 @@ var settings = {
     }
 
     var MY_TEMPLATE = [['lettera/block-heading'], ['lettera/block-cards']];
-    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"])(clientId, props.attributes);
-    var removeComponent = Object(_controls_removeComponentButton__WEBPACK_IMPORTED_MODULE_8__["default"])(clientId);
+    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_5__["default"])(clientId, props.attributes);
+    var removeComponent = Object(_controls_removeComponentButton__WEBPACK_IMPORTED_MODULE_6__["default"])(clientId);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(classContainer, className)
     }, removeComponent, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
@@ -8958,7 +8954,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var name = 'lettera/card';
 var settings = {
   title: 'Card',
@@ -9030,7 +9025,6 @@ var settings = {
     var attributes = props.attributes,
         setAttributes = props.setAttributes,
         parentClientId = props.parentClientId,
-        clientId = props.clientId,
         parentBlockAttributes = props.parentBlockAttributes,
         className = props.className;
     var mediaID = attributes.mediaID,
@@ -9050,7 +9044,6 @@ var settings = {
         }
       }
     });
-    var curClientId = clientId;
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"])(parentClientId, parentBlockAttributes);
     var toolbar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_toolbarButtonLinkHref__WEBPACK_IMPORTED_MODULE_5__["default"], {
       linkHref: linkHref,
@@ -10200,47 +10193,16 @@ var Column = function Column(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 
 
 
 var Columns = function Columns(_ref) {
-  var count = _ref.count,
-      className = _ref.className,
+  var className = _ref.className,
       children = _ref.children;
-  var cnt = react__WEBPACK_IMPORTED_MODULE_1__["Children"].count(children),
-      cntCols = count ? count : cnt;
-  var cols = children;
-
-  if (cntCols > 1 && 0) {
-    // Try to add var: const width = Math.floor(100 / cntCols).toString();
-    var getCols = react__WEBPACK_IMPORTED_MODULE_1__["Children"].map(children, function (child, num) {
-      var space = num ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", {
-        dangerouslySetInnerHTML: {
-          __html: '<!--[if (gte mso 9)|(IE)]></td><td width="50%" valign="top" ><![endif]-->'
-        }
-      }) : '';
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, space, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-        className: 'column'
-      }, child));
-    });
-    cols = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", {
-      dangerouslySetInnerHTML: {
-        __html: '<!--[if (gte mso 9)|(IE)]><table width="100%"><tr><td width="50%" valign="top"><![endif]-->'
-      }
-    }), getCols, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", {
-      dangerouslySetInnerHTML: {
-        __html: '<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->'
-      }
-    }));
-  }
-
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('columns', className)
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('columns', className)
   }, children);
 };
 

@@ -56,7 +56,7 @@ function lettera_blocks() {
 
 	//Add HTML comment to columns
 	//add_filter('the_content', 'addHTMLComment', 10001);
-	add_filter('the_content', 'addHTMLComment2', 10, 2);
+	add_filter('the_content', 'addHTMLComment2', 10001);
 }
 add_action('init', 'lettera_blocks');
 
@@ -68,14 +68,15 @@ function addHTMLComment($content) {
 }
 
 function addHTMLComment2($content) {
-	if ( is_single() && is_main_query() ) {
+
+	if ( is_single() && is_main_query() && !empty($content)) {
 
 		$dom = new DOMDocument();
 		$dom->encoding = 'utf-8';
-		$dom->loadHTML(htmlentities(utf8_decode($content)));
+		$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
 		
 		$domx = new DomXPath($dom);
-		$nodes = $domx->query("//div[contains(@class, 'columns')]");
+		$nodes = $domx->query("//*[contains(@class, 'columns')]");
 
 		if (!is_null($nodes) && $nodes->length > 0) {
 			foreach ($nodes as $node) {
@@ -106,7 +107,7 @@ function addHTMLComment2($content) {
 
 				$node->parentNode->replaceChild($columnsDiv, $node);
 			}
-			return $dom->saveHTML($dom->documentElement);
+			return str_replace(array('<html>', '<body>', '</body>', '</html>'), '', ($dom->saveHTML($dom->documentElement)));
 		}
 	}
 	return $content;

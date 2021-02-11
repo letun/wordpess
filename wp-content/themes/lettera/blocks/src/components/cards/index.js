@@ -3,8 +3,6 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import classnames from 'classnames';
 
 import Container from '../../layout/container';
-import Row from '../../layout/row';
-import Column from '../../layout/column';
 import getInspectorControls from '../../controls/getInspectorControls';
 import removeComponentButton from '../../controls/removeComponentButton';
 
@@ -70,7 +68,7 @@ export const settings = {
 		}
 
 		const MY_TEMPLATE = [
-			[ 'lettera/block-heading'],
+			[ 'lettera/block-heading' ],
 			[ 'lettera/block-cards' ],
 		];
 

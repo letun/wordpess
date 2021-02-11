@@ -1,10 +1,5 @@
 import { withSelect } from '@wordpress/data';
-import { MediaUpload } from '@wordpress/block-editor';
-import {
-	RichText,
-	BlockControls,
-	getColorObjectByColorValue,
-} from '@wordpress/block-editor';
+import { MediaUpload, RichText, BlockControls } from '@wordpress/block-editor';
 import classnames from 'classnames';
 
 import Column from '../../layout/column';
@@ -95,7 +90,6 @@ export const settings = {
 			attributes,
 			setAttributes,
 			parentClientId,
-			clientId,
 			parentBlockAttributes,
 			className,
 		} = props;
@@ -124,7 +118,6 @@ export const settings = {
 			}
 		} );
 
-		const curClientId = clientId;
 		const inspectorControls = getInspectorControls(
 			parentClientId,
 			parentBlockAttributes
@@ -173,8 +166,8 @@ export const settings = {
 						) }
 					/>
 					<RichText
-						tagName={'p'}
-						className={'card__text'}
+						tagName={ 'p' }
+						className={ 'card__text' }
 						identifier={ 'content' }
 						onChange={ ( value ) =>
 							setAttributes( { content: value } )
@@ -184,14 +177,19 @@ export const settings = {
 						allowedFormats={ [] }
 						unstableOnSplit={ () => false }
 					/>
-					<p className={'card__link'}><span>{linkContent}</span>&nbsp;&rarr;</p>
-					<div className={'card__link--admin'}>
+					<p className={ 'card__link' }>
+						<span>{ linkContent }</span>&nbsp;&rarr;
+					</p>
+					<div className={ 'card__link--admin' }>
 						<input
 							type="text"
-							placeholder={'Learn more'}
-							value={linkContent}
-							onChange={(e)=> setAttributes({linkContent: e.target.value})}
-						/>&nbsp;&rarr;
+							placeholder={ 'Learn more' }
+							value={ linkContent }
+							onChange={ ( e ) =>
+								setAttributes( { linkContent: e.target.value } )
+							}
+						/>
+						&nbsp;&rarr;
 					</div>
 				</Column>
 			</>
@@ -235,9 +233,11 @@ export const settings = {
 						<RichText.Content
 							tagName={ 'p' }
 							value={ content }
-							className={'card__text'}
+							className={ 'card__text' }
 						/>
-						<p className={'card__link'}><span>{linkContent}</span>&nbsp;&rarr;</p>
+						<p className={ 'card__link' }>
+							<span>{ linkContent }</span>&nbsp;&rarr;
+						</p>
 					</a>
 				</Column>
 			)

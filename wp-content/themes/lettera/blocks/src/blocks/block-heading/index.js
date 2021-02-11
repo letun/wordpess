@@ -4,9 +4,8 @@ import classnames from 'classnames';
 
 import LetteraConfig from '../../global/config';
 import getInspectorControls from '../../controls/getInspectorControls';
-import Row from "../../layout/row";
-import Column from "../../layout/column";
-
+import Row from '../../layout/row';
+import Column from '../../layout/column';
 
 export const name = 'lettera/block-heading';
 
