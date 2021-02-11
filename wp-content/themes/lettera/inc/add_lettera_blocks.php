@@ -69,18 +69,45 @@ function addHTMLComment($content) {
 
 function addHTMLComment2($content) {
 	if ( is_single() && is_main_query() ) {
-		$doc = new DOMDocument();
-		$doc->encoding = 'utf-8';
-		$doc->loadHTML(htmlentities(utf8_decode($content)));
-		$finder = new DomXPath($doc);
-		$classname="columns-inner";
-		$nodes = $finder->query("//*[contains(@class, '$classname')]");
+
+		$dom = new DOMDocument();
+		$dom->encoding = 'utf-8';
+		$dom->loadHTML(htmlentities(utf8_decode($content)));
+		
+		$domx = new DomXPath($dom);
+		$nodes = $domx->query("//div[contains(@class, 'columns')]");
 
 		if (!is_null($nodes) && $nodes->length > 0) {
-			//$nodes[0]->removeChild($nodes);
-			return $nodes->length . '-' . $doc->saveHTML();
-		}
+			foreach ($nodes as $node) {
+				$k = 0;
+				$columnsDiv = $dom->createElement('div');
+				$columnsDiv->setAttribute("class","columns");
 
+				//Add IE-table comment START
+				$columnComment = $dom->createComment('[if (gte mso 9)|(IE)]><table width="100%"><tr><td width="50%" valign="top" ><![endif]');
+				$columnsDiv->appendChild($columnComment);
+
+				foreach ($oldColumns = $domx->query(".//table[contains(@class, 'column')]", $node) as $column) {
+					$k++;
+					$columnDiv = $dom->createElement('div');
+					$columnDiv->setAttribute("class","column");
+					$columnDiv->appendChild($column->cloneNode(true));
+					$columnsDiv->appendChild($columnDiv);
+
+					if ($k < $oldColumns->length) {
+						//Add IE-table comment BETWEEN
+						$columnComment = $dom->createComment('[if (gte mso 9)|(IE)]></td><td width="50%" valign="top" ><![endif]');
+						$columnsDiv->appendChild($columnComment);
+					}
+				}
+				//Add IE-table comment END
+				$columnComment = $dom->createComment('[if (gte mso 9)|(IE)]></td></tr></table><![endif]');
+				$columnsDiv->appendChild($columnComment);
+
+				$node->parentNode->replaceChild($columnsDiv, $node);
+			}
+			return $dom->saveHTML($dom->documentElement);
+		}
 	}
 	return $content;
 }

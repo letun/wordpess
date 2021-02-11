@@ -10216,7 +10216,7 @@ var Columns = function Columns(_ref) {
       cntCols = count ? count : cnt;
   var cols = children;
 
-  if (cntCols > 1) {
+  if (cntCols > 1 && 0) {
     // Try to add var: const width = Math.floor(100 / cntCols).toString();
     var getCols = react__WEBPACK_IMPORTED_MODULE_1__["Children"].map(children, function (child, num) {
       var space = num ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", {
@@ -10239,14 +10239,9 @@ var Columns = function Columns(_ref) {
     }));
   }
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("table", {
-    align: 'center',
-    className: 'columns',
-    cellpadding: '0',
-    cellspacing: '0'
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("tbody", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("tr", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("td", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('columns-inner', className)
-  }, children))));
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('columns', className)
+  }, children);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Columns);

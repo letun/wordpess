@@ -7,7 +7,7 @@ const Columns = ( { count, className, children } ) => {
 
 	let cols = children;
 
-	if ( cntCols > 1 ) {
+	if ( cntCols > 1  && 0) {
 		// Try to add var: const width = Math.floor(100 / cntCols).toString();
 		const getCols = Children.map( children, ( child, num ) => {
 			const space = num ? (
@@ -49,20 +49,9 @@ const Columns = ( { count, className, children } ) => {
 	}
 
 	return (
-		<table
-			align={ 'center' }
-			className={ 'columns' }
-			cellpadding={ '0' }
-			cellspacing={ '0' }
-		>
-			<tbody>
-			<tr>
-				<td className={ classnames( 'columns-inner', className ) }>
-					{ children }
-				</td>
-			</tr>
-			</tbody>
-		</table>
+		<div className={ classnames('columns', className) }>
+			{ children }
+		</div>
 	);
 };
 
