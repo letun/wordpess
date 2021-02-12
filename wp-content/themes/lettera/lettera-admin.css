@@ -526,3 +526,34 @@
 
 .row-inner pre {
   display: none; }
+
+div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout {
+  display: flex;
+  flex-wrap: wrap; }
+  div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] {
+    width: 50%; }
+    div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card {
+      border: 0 none;
+      box-shadow: none; }
+      div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__text {
+        margin-top: 16px; }
+      div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link {
+        display: none; }
+      div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link--admin {
+        display: block; }
+        div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link--admin input {
+          color: #2199E8;
+          border: 0 none;
+          padding: 0;
+          width: auto;
+          outline: none;
+          font-size: 16px;
+          box-shadow: none; }
+          div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link--admin input:focus {
+            box-shadow: none; }
+
+div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout {
+  display: flex;
+  flex-wrap: wrap; }
+  div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] {
+    width: 50%; }

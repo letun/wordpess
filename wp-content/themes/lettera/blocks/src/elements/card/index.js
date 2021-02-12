@@ -1,5 +1,6 @@
 import { withSelect } from '@wordpress/data';
 import { MediaUpload, RichText, BlockControls } from '@wordpress/block-editor';
+import { Toolbar, ToolbarButton } from '@wordpress/components';
 import classnames from 'classnames';
 
 import Column from '../../layout/column';
@@ -31,13 +32,12 @@ export const settings = {
 		content: {
 			type: 'string',
 			source: 'text',
-			default: 'Card N',
 			selector: 'p.card__text',
 		},
 		linkContent: {
 			type: 'string',
 			source: 'text',
-			default: 'Learn more',
+			default: 'Learn more…',
 			selector: 'p.card__link span',
 		},
 		linkHref: {
@@ -89,6 +89,7 @@ export const settings = {
 		const {
 			attributes,
 			setAttributes,
+			clientId,
 			parentClientId,
 			parentBlockAttributes,
 			className,
@@ -137,10 +138,27 @@ export const settings = {
 
 		return (
 			<>
-				<BlockControls>{ toolbar }</BlockControls>
+				<BlockControls>
+					<Toolbar
+						className={
+							'components-toolbar-group--no-right-border'
+						}
+					>
+						<ToolbarButton
+							icon={ 'trash' }
+							title={ 'Remove block' }
+							onClick={ () =>
+								wp.data
+									.dispatch( 'core/block-editor' )
+									.removeBlock( clientId )
+							}
+						/>
+					</Toolbar>
+					{ toolbar }
+				</BlockControls>
 				{ inspectorControls }
 				<Column
-					className={ classnames( className ) }
+					className={ classnames( className, 'card' ) }
 					textAlign={ textAlign }
 				>
 					<MediaUpload
@@ -160,7 +178,7 @@ export const settings = {
 										? '/wp-content/themes/lettera/images/components/hero.png'
 										: mediaURL
 								}
-								className={ 'calypso-promo__image' }
+								className={ 'card__image' }
 								onClick={ open }
 							/>
 						) }
@@ -180,7 +198,7 @@ export const settings = {
 					<p className={ 'card__link' }>
 						<span>{ linkContent }</span>&nbsp;&rarr;
 					</p>
-					<div className={ 'card__link--admin' }>
+					<div className={ classnames('card__link--admin', 'link') }>
 						<input
 							type="text"
 							placeholder={ 'Learn more' }
@@ -216,26 +234,24 @@ export const settings = {
 						target={ linkTarget }
 						rel={ linkRel }
 						title={ linkTitle }
+						className={ 'card' }
 					>
-						{ mediaURL ? (
-							<img
-								className="card__image"
-								src={ mediaURL }
-								alt="Promo"
-							/>
-						) : (
-							<img
-								src="/wp-content/themes/lettera/images/components/hero.png"
-								alt={ 'Promo' }
-								className={ 'card__image' }
-							/>
-						) }
+						<img
+							alt={ 'Image' }
+							src={
+								! mediaURL
+									? '/wp-content/themes/lettera/images/components/hero.png'
+									: mediaURL
+							}
+							className={ 'card__image' }
+							onClick={ open }
+						/>
 						<RichText.Content
 							tagName={ 'p' }
 							value={ content }
 							className={ 'card__text' }
 						/>
-						<p className={ 'card__link' }>
+						<p className={ classnames('card__link', 'link') }>
 							<span>{ linkContent }</span>&nbsp;&rarr;
 						</p>
 					</a>
