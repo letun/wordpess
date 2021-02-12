@@ -552,8 +552,8 @@ div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout {
           div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link--admin input:focus {
             box-shadow: none; }
 
-div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout {
+.block-editor-block-list__block .columns {
   display: flex;
   flex-wrap: wrap; }
-  div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] {
+  .block-editor-block-list__block .columns table.column {
     width: 50%; }
