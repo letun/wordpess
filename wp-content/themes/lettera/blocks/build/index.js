@@ -9132,10 +9132,9 @@ var settings = {
       title: linkTitle,
       className: 'card'
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      alt: 'Image',
       src: !mediaURL ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
-      className: 'card__image',
-      onClick: open
+      alt: 'Hero',
+      className: 'card__image'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
       tagName: 'p',
       value: content,

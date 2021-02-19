@@ -198,7 +198,9 @@ export const settings = {
 					<p className={ 'card__link' }>
 						<span>{ linkContent }</span>&nbsp;&rarr;
 					</p>
-					<div className={ classnames('card__link--admin', 'link') }>
+					<div
+						className={ classnames( 'card__link--admin', 'link' ) }
+					>
 						<input
 							type="text"
 							placeholder={ 'Learn more' }
@@ -237,21 +239,20 @@ export const settings = {
 						className={ 'card' }
 					>
 						<img
-							alt={ 'Image' }
 							src={
 								! mediaURL
 									? '/wp-content/themes/lettera/images/components/hero.png'
 									: mediaURL
 							}
+							alt={ 'Hero' }
 							className={ 'card__image' }
-							onClick={ open }
 						/>
 						<RichText.Content
 							tagName={ 'p' }
 							value={ content }
 							className={ 'card__text' }
 						/>
-						<p className={ classnames('card__link', 'link') }>
+						<p className={ classnames( 'card__link', 'link' ) }>
 							<span>{ linkContent }</span>&nbsp;&rarr;
 						</p>
 					</a>

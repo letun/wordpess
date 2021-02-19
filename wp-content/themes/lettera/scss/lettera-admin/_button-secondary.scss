@@ -1,0 +1,15 @@
+.wp-core-ui table.button-secondary {
+	border: none;
+	outline: none;
+	background: none;
+	box-shadow: none;
+
+	&:hover,
+	&:active {
+		background: none;
+	}
+
+	.block-editor-rich-text__editable {
+		display: inline-block;
+	}
+}

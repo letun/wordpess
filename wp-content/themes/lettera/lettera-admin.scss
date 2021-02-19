@@ -11,7 +11,12 @@
 	@import 'scss/lettera/background';
 }
 
+//Overwrite WP styles for button-secondary
+@import 'scss/lettera-admin/button-secondary';
+
+//Styles for removeComponent button
 @import 'scss/lettera-admin/remove-button';
+
 @import 'scss/lettera-admin/inspector-control-panel';
 @import 'scss/lettera-admin/add-block-toolbar';
 @import 'scss/lettera-admin/fix-columns';

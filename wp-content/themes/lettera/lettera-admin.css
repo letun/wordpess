@@ -478,6 +478,16 @@
   .post-type-lettera .block-editor-writing-flow table.background-gray {
     background: #F8F8F8; }
 
+.wp-core-ui table.button-secondary {
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: none; }
+  .wp-core-ui table.button-secondary:hover, .wp-core-ui table.button-secondary:active {
+    background: none; }
+  .wp-core-ui table.button-secondary .block-editor-rich-text__editable {
+    display: inline-block; }
+
 .la-remove-button {
   position: absolute !important;
   top: 10px;
