@@ -27,6 +27,7 @@ import * as cmText from './components/text';
 import * as cmTextImage from './components/text-image';
 import * as cmPromo from './components/promo';
 import * as cmCards from './components/cards';
+import * as cmSuperHead from './components/superhead';
 
 const blocks = [
 	elPreheader,
@@ -47,6 +48,7 @@ const blocks = [
 	cmTextImage,
 	cmPromo,
 	cmCards,
+	cmSuperHead,
 ];
 
 blocks.forEach( ( block ) => {

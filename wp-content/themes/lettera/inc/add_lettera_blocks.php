@@ -53,21 +53,14 @@ function lettera_blocks() {
 	register_block_type( 'lettera/text-image');
 	register_block_type( 'lettera/promo');
 	register_block_type( 'lettera/cards');
+	register_block_type( 'lettera/superhead');
 
 	//Add HTML comment to columns
-	//add_filter('the_content', 'addHTMLComment', 10001);
-	add_filter('the_content', 'addHTMLComment2', 10001);
+	add_filter('the_content', 'addHTMLComment', 10001);
 }
 add_action('init', 'lettera_blocks');
 
 function addHTMLComment($content) {
-	if ( is_single() && is_main_query() ) {
-		return preg_replace("/<[\/]?pre>/i", "", $content);
-	}
-	return $content;
-}
-
-function addHTMLComment2($content) {
 
 	if ( is_single() && is_main_query() && !empty($content)) {
 
