@@ -87,13 +87,14 @@ export const settings = {
 					placeholder: 'Preheader',
 					allowedLevels: [ 2 ],
 					level: 2,
-					textAlign: 'text-center'
+					textAlign: 'text-center',
 				},
 			],
 			[
 				'lettera/header',
 				{
 					placeholder: 'Header',
+					allowedLevels: [ 1, 2 ],
 					level: 1,
 					addClass: [ 'text-center', 'superhead__title' ],
 				},
@@ -152,7 +153,7 @@ export const settings = {
 												? '/wp-content/themes/lettera/images/components/hero.png'
 												: mediaURL
 										}
-										className={ 'calypso-promo__image' }
+										className={ 'superhead__image' }
 										onClick={ open }
 									/>
 								) }
@@ -191,19 +192,15 @@ export const settings = {
 				>
 					<Row>
 						<Column className={ classnames( 'text-center' ) }>
-							{ mediaURL ? (
-								<img
-									className="calypso-promo__image"
-									src={ mediaURL }
-									alt="Promo"
-								/>
-							) : (
-								<img
-									src="/wp-content/themes/lettera/images/components/hero.png"
-									alt={ 'Promo' }
-									className={ 'calypso-promo__image' }
-								/>
-							) }
+							<img
+								className="superhead__image"
+								src={
+									! mediaURL
+										? '/wp-content/themes/lettera/images/components/hero.png'
+										: mediaURL
+								}
+								alt="Promo"
+							/>
 							<Spacer height={ '32' } />
 							<InnerBlocks.Content />
 						</Column>

@@ -136,7 +136,7 @@ export const settings = {
 													? '/wp-content/themes/lettera/images/components/hero.png'
 													: mediaURL
 											}
-											className={ 'calypso-promo__image' }
+											className={ 'promo__image' }
 											onClick={ open }
 										/>
 									) }
@@ -179,19 +179,15 @@ export const settings = {
 					<Row>
 						<Columns>
 							<Column className={ classnames( 'text-center' ) }>
-								{ mediaURL ? (
-									<img
-										className="calypso-promo__image"
-										src={ mediaURL }
-										alt="Promo"
-									/>
-								) : (
-									<img
-										src="/wp-content/themes/lettera/images/components/hero.png"
-										alt={ 'Promo' }
-										className={ 'calypso-promo__image' }
-									/>
-								) }
+								<img
+									className="promo__image"
+									src={
+										! mediaURL
+											? '/wp-content/themes/lettera/images/components/hero.png'
+											: mediaURL
+									}
+									alt="Promo"
+								/>
 								<Spacer height={ '8' } />
 							</Column>
 							<Column>

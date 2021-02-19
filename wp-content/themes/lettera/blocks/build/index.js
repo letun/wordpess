@@ -7612,7 +7612,7 @@ var settings = {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
           alt: '',
           src: !mediaID ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
-          className: 'calypso-promo__image',
+          className: 'promo__image',
           onClick: open
         });
       }
@@ -7643,14 +7643,10 @@ var settings = {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(classContainer, className)
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_row__WEBPACK_IMPORTED_MODULE_5__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_columns__WEBPACK_IMPORTED_MODULE_6__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_column__WEBPACK_IMPORTED_MODULE_7__["default"], {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('text-center')
-    }, mediaURL ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      className: "calypso-promo__image",
-      src: mediaURL,
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      className: "promo__image",
+      src: !mediaURL ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
       alt: "Promo"
-    }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      src: "/wp-content/themes/lettera/images/components/hero.png",
-      alt: 'Promo',
-      className: 'calypso-promo__image'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_spacer__WEBPACK_IMPORTED_MODULE_8__["default"], {
       height: '8'
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_column__WEBPACK_IMPORTED_MODULE_7__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null))))));
@@ -7771,6 +7767,7 @@ var settings = {
       textAlign: 'text-center'
     }], ['lettera/header', {
       placeholder: 'Header',
+      allowedLevels: [1, 2],
       level: 1,
       addClass: ['text-center', 'superhead__title']
     }], ['lettera/block-text', {
@@ -7801,7 +7798,7 @@ var settings = {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
           alt: 'Promo',
           src: !mediaID ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
-          className: 'calypso-promo__image',
+          className: 'superhead__image',
           onClick: open
         });
       }
@@ -7832,14 +7829,10 @@ var settings = {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(classContainer, className)
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_row__WEBPACK_IMPORTED_MODULE_5__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_column__WEBPACK_IMPORTED_MODULE_6__["default"], {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('text-center')
-    }, mediaURL ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      className: "calypso-promo__image",
-      src: mediaURL,
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      className: "superhead__image",
+      src: !mediaURL ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
       alt: "Promo"
-    }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      src: "/wp-content/themes/lettera/images/components/hero.png",
-      alt: 'Promo',
-      className: 'calypso-promo__image'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_spacer__WEBPACK_IMPORTED_MODULE_7__["default"], {
       height: '32'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)))));
@@ -7988,7 +7981,7 @@ var settings = {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
           alt: 'Promo',
           src: !mediaID ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
-          className: 'calypso-promo__image',
+          className: 'promo__image',
           onClick: open
         });
       }
@@ -8019,14 +8012,10 @@ var settings = {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(classContainer, className)
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_row__WEBPACK_IMPORTED_MODULE_5__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_column__WEBPACK_IMPORTED_MODULE_6__["default"], {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('text-center')
-    }, mediaURL ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      className: "calypso-promo__image",
-      src: mediaURL,
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      className: "promo__image",
+      src: !mediaURL ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
       alt: "Promo"
-    }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-      src: "/wp-content/themes/lettera/images/components/hero.png",
-      alt: 'Promo',
-      className: 'calypso-promo__image'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_spacer__WEBPACK_IMPORTED_MODULE_7__["default"], {
       height: '32'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)))));
@@ -9777,19 +9766,19 @@ var settings = {
   transforms: {
     from: [{
       type: 'block',
-      blocks: ['calypso/list'],
+      blocks: ['lettera/list'],
       transform: function transform(_ref) {
         var values = _ref.values;
-        return Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__["createBlock"])('calypso/text', {
+        return Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__["createBlock"])('lettera/text', {
           values: values
         });
       }
     }],
     to: [{
       type: 'block',
-      blocks: ['calypso/list'],
+      blocks: ['lettera/list'],
       transform: function transform(content) {
-        return Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__["createBlock"])('calypso/list', content.content);
+        return Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__["createBlock"])('lettera/list', content.content);
       }
     }]
   },

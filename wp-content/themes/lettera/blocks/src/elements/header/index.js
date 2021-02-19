@@ -109,6 +109,7 @@ export const settings = {
 
 		const classHeader = level > 1 ? 'h' + level : '';
 		const classElement = [ classHeader, addClass ];
+
 		if ( textAlign === 'center' ) {
 			classElement.push( 'text-center' );
 		}

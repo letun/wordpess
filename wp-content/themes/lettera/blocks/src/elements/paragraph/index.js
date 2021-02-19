@@ -40,9 +40,9 @@ export const settings = {
 		from: [
 			{
 				type: 'block',
-				blocks: [ 'calypso/list' ],
+				blocks: [ 'lettera/list' ],
 				transform: ( { values } ) => {
-					return createBlock( 'calypso/text', {
+					return createBlock( 'lettera/text', {
 						values,
 					} );
 				},
@@ -51,9 +51,9 @@ export const settings = {
 		to: [
 			{
 				type: 'block',
-				blocks: [ 'calypso/list' ],
+				blocks: [ 'lettera/list' ],
 				transform: ( content ) => {
-					return createBlock( 'calypso/list', content.content );
+					return createBlock( 'lettera/list', content.content );
 				},
 			},
 		],
