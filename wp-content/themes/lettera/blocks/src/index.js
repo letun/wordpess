@@ -9,6 +9,7 @@ import * as elButtonMain from './elements/button-main';
 import * as elButtonSecondary from './elements/button-secondary';
 import * as elSmallText from './elements/text-small';
 import * as elCard from './elements/card';
+import * as elFeature from './elements/feature';
 
 // Block Template: text/list
 import * as blockText from './blocks/block-text';
@@ -39,11 +40,13 @@ const blocks = [
 	elButtonSecondary,
 	elSmallText,
 	elCard,
+	elFeature,
 
 	blockBtn,
 	blockText,
 	blockHeading,
 	blockCards,
+	blockFeatures,
 
 	cmText,
 	cmTextImage,

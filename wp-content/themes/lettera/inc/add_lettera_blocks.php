@@ -43,6 +43,7 @@ function lettera_blocks() {
 	register_block_type( 'lettera/button');
 	register_block_type( 'lettera/text-small');
 	register_block_type( 'lettera/card');
+	register_block_type( 'lettera/feature');
 
 	register_block_type( 'lettera/block-text');
 	register_block_type( 'lettera/block-btn');
@@ -55,6 +56,8 @@ function lettera_blocks() {
 	register_block_type( 'lettera/cards');
 	register_block_type( 'lettera/superhead');
 	register_block_type( 'lettera/cta');
+
+	register_block_type( 'lettera/table');
 
 	//Add HTML comment to columns
 	add_filter('the_content', 'addHTMLComment', 10001);
