@@ -14,6 +14,8 @@ import { ReactComponent as elementIcon } from '../../../../svg/components/featur
 
 export const name = 'lettera/feature';
 
+const defaultIcon = '/wp-content/themes/lettera/images/components/features/icon_star.png';
+
 export const settings = {
 	title: 'Feature',
 	icon: elementIcon,
@@ -45,13 +47,44 @@ export const settings = {
 		content: {
 			type: 'array',
 			source: 'query',
-			default: [{item: ''}],
-			selector: 'td.feature__content',
+			default: [{value: 'List 1', imageUrl: ''}],
+			selector: 'tr.feature',
 			query: {
-				item: {
+				/*
+				value: {
 					type: 'string',
 					source: 'html',
-				}
+				},
+				*/
+				itemId: {
+					type: 'string',
+					source: 'attribute',
+					selector: 'td.feature__image',
+					attribute: 'data-itemID',
+				},
+				value: {
+					type: 'string',
+					source: 'html',
+					selector: 'td.feature__content',
+				},
+				imageUrl: {
+					type: 'string',
+					source: 'attribute',
+					selector: 'td.feature__image img',
+					attribute: 'src',
+				},
+				imageAlt: {
+					type: 'string',
+					source: 'attribute',
+					selector: 'td.feature__image img',
+					attribute: 'alt',
+				},
+				imageId: {
+					type: 'string',
+					source: 'attribute',
+					selector: 'td.feature__image img',
+					attribute: 'data-imageID',
+				},
 			},
 		},
 		placeholder: {
@@ -88,11 +121,9 @@ export const settings = {
 			mediaURL,
 			content,
 			placeholder,
-			linkHref,
-			linkTarget,
-			textAlign,
-			linkContent,
 		} = attributes;
+
+		console.log(111,content);
 
 		wp.element.useEffect( () => {
 			if (
@@ -120,16 +151,7 @@ export const settings = {
 						title={ 'Add element' }
 						onClick={ () => {
 							const newContent = [...content];
-							newContent.push({item: ''});
-							setAttributes({ content: newContent });
-						}}
-					/>
-					<ToolbarButton
-						icon={ 'minus' }
-						title={ 'Remove element' }
-						onClick={ () => {
-							const newContent = [...content];
-							newContent.push({item: ''});
+							newContent.push({value: '', imageUrl: ''});
 							setAttributes({ content: newContent });
 						}}
 					/>
@@ -155,9 +177,10 @@ export const settings = {
 									alt={ '' }
 									width={"24"}
 									height={"24"}
+									id={`image-${index}`}
 									src={
 										! mediaID
-											? '/wp-content/themes/lettera/images/components/features/icon_star.png'
+											? defaultIcon
 											: mediaURL
 									}
 									onClick={ open }
@@ -168,21 +191,27 @@ export const settings = {
 					<td width={"16"}>&nbsp;&nbsp;&nbsp;</td>
 					<td className={"feature__content"}>
 						<RichText
-							value={ item.item }
+							value={ item.value }
 							placeholder={ placeholder }
 							keepPlaceholderOnFocus={ true }
-							multiline={false}
+							multiline
 							allowedFormats={[
 								'core/bold',
 								'core/italic',
 								'core/link',
 							]}
 							onChange={ ( value ) => {
-								const newContent = [...content];
-								newContent[index].item = value;
-								setAttributes({ content: newContent });
+								if (value.indexOf('<p></p>') > 0) {
+
+									const newLine = [...content];
+									newLine.splice(index + 1, 0, {value: '', imageUrl: ''});
+									setAttributes({content: newLine});
+								} else {
+									const newContent = [...content];
+									newContent[index].value = value;
+									setAttributes({content: newContent});
+								}
 							} }
-							unstableOnSplit = { () => {console.log('add');}}
 							onRemove={ () => {
 								const newContent = [...content];
 								newContent.splice(index, 1);
@@ -193,6 +222,45 @@ export const settings = {
 				</tr>
 			);
 		});
+
+		const imgContent = content.map((v, i)=>{
+			return (
+				<MediaUpload
+					onSelect={ ( media ) => {
+						const newContent = [...content];
+						newContent[i].imageId = media.id;
+						newContent[i].imageUrl = media.url;
+						newContent[i].imageAlt = media.alt ? media.alt : media.title;
+
+						setAttributes({content: newContent});
+					} }
+					allowedTypes={ [ 'image' ] }
+					value={ v.imageId }
+					render={ ( { open } ) => (
+						<img
+							alt={ '' }
+							width={"24"}
+							height={"24"}
+							id={`image-${clientId}-${i}`}
+							src={
+								! v.imageId
+									? defaultIcon
+									: v.imageUrl
+							}
+							onClick={ open }
+						/>
+					) }
+				/>
+			)
+		});
+		const liContent = content.map((v, i)=>{
+			const img = '<img src="' + (v.imageId ? v.imageUrl : defaultIcon) + '" width="16" onclick="jQuery(\'#image-' + clientId + '-' + i +'\').click();" />';
+			return v.value.replace(
+				'<p>',
+				'<p>' + img
+			);
+		}).join('');
+
 
 		return (
 			<>
@@ -217,9 +285,42 @@ export const settings = {
 				{ inspectorControls }
 				<table className={"feature"}>
 					<tbody>
-					{features}
 					</tbody>
 				</table>
+				<div className={'features__admin-images'}>
+					{imgContent}
+				</div>
+				<RichText
+					multiline="p"
+					value={ liContent }
+					onChange={ ( value ) => {
+						const template = document.createElement('template');
+						template.innerHTML = value;
+						const newListItems = [];
+						let k = 0;
+						Array.from(template.content.childNodes).forEach(function(el) {
+							const oldImg = el.getElementsByTagName('img')[0];
+							console.log(oldImg);
+							const newEl = {itemId: k++};
+							if (oldImg) {
+								newEl.imageId = oldImg.getAttribute('data-imageId');
+								newEl.imageUrl = oldImg.getAttribute('src');
+								newEl.imageAlt = oldImg.getAttribute('alt');
+								el.removeChild(oldImg);
+							}
+
+							newEl.value = el.innerHTML;
+							newListItems.push(newEl);
+						});
+						console.log(1, newListItems);
+						//setAttributes( { content: value, listItems: newListItems } );
+					}}
+					allowedFormats={ [
+						'core/bold',
+						'core/italic',
+						'core/link',
+					] }
+				/>
 			</>
 		);
 	} ),
@@ -233,23 +334,24 @@ export const settings = {
 
 		const features = content.map((item, index) => {
 			return (
-				<tr>
+				<tr className={"feature"} data-itemId={ item.itemId }>
 					<td width={"24"} className={"feature__image"}>
 						<img
 							width={"24"}
 							height={"24"}
+							data-imageId={item.imageId ? item.imageId : 0}
 							src={
-								! mediaURL
+								! item.imageId
 									? '/wp-content/themes/lettera/images/components/features/icon_star.png'
-									: mediaURL
+									: item.imageUrl
 							}
-							alt={ 'Hero' }
+							alt={ item.imageAlt }
 						/>
 					</td>
 					<td width={"16"}>&nbsp;&nbsp;&nbsp;</td>
 					<td className={"feature__content"}>
 						<RichText.Content
-							value={item.item}
+							value={item.value}
 						/>
 					</td>
 				</tr>

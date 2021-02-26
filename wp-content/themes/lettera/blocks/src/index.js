@@ -46,7 +46,6 @@ const blocks = [
 	blockText,
 	blockHeading,
 	blockCards,
-	blockFeatures,
 
 	cmText,
 	cmTextImage,
