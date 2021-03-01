@@ -9922,7 +9922,10 @@ var settings = {
         });
         console.log(1, newListItems); //setAttributes( { content: value, listItems: newListItems } );
       },
-      allowedFormats: ['core/bold', 'core/italic', 'core/link']
+      allowedFormats: ['core/bold', 'core/italic', 'core/link'],
+      onSplit: function onSplit() {
+        console.log('onSplit');
+      }
     }));
   }),
   save: function save(props) {

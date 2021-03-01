@@ -320,6 +320,9 @@ export const settings = {
 						'core/italic',
 						'core/link',
 					] }
+					onSplit={()=>{
+						console.log('onSplit');
+					}}
 				/>
 			</>
 		);
