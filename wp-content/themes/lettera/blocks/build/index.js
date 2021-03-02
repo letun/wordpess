@@ -9855,8 +9855,9 @@ var settings = {
         setAttributes({
           content: newListItems
         });
-        Array.from(document.getElementById("block-" + clientId).getElementsByClassName("block-editor-rich-text__editable").childNodes).forEach(function (el) {
-          console.log(el);
+        k = 0;
+        Array.from(document.getElementById("block-" + clientId).getElementsByClassName("block-editor-rich-text__editable")[0].childNodes).forEach(function (el) {
+          el.setAttribute('data-item-id', k++);
         });
       },
       allowedFormats: ['core/bold', 'core/italic', 'core/link']
