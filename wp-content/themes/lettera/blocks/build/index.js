@@ -9711,7 +9711,7 @@ var settings = {
           type: 'string',
           source: 'attribute',
           selector: 'td.feature__image',
-          attribute: 'data-itemID'
+          attribute: 'data-item-id'
         },
         value: {
           type: 'string',
@@ -9734,7 +9734,7 @@ var settings = {
           type: 'string',
           source: 'attribute',
           selector: 'td.feature__image img',
-          attribute: 'data-imageID'
+          attribute: 'data-image-id'
         }
       }
     },
@@ -9762,7 +9762,6 @@ var settings = {
         mediaURL = attributes.mediaURL,
         content = attributes.content,
         placeholder = attributes.placeholder;
-    console.log(111, content);
     wp.element.useEffect(function () {
       if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.btnAlign) {
         if (parentBlockAttributes.blockAttributes.btnAlign === 'center') {
@@ -9788,72 +9787,10 @@ var settings = {
         });
       }
     })));
-    var features = content.map(function (item, index) {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("tr", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("td", {
-        width: "24",
-        className: "feature__image"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["MediaUpload"], {
-        onSelect: function onSelect(media) {
-          setAttributes({
-            mediaURL: media.url,
-            mediaID: media.id
-          });
-        },
-        allowedTypes: ['image'],
-        value: mediaID,
-        render: function render(_ref) {
-          var open = _ref.open;
-          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
-            alt: '',
-            width: "24",
-            height: "24",
-            id: "image-".concat(index),
-            src: !mediaID ? defaultIcon : mediaURL,
-            onClick: open
-          });
-        }
-      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("td", {
-        width: "16"
-      }, "\xA0\xA0\xA0"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("td", {
-        className: "feature__content"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
-        value: item.value,
-        placeholder: placeholder,
-        keepPlaceholderOnFocus: true,
-        multiline: true,
-        allowedFormats: ['core/bold', 'core/italic', 'core/link'],
-        onChange: function onChange(value) {
-          if (value.indexOf('<p></p>') > 0) {
-            var newLine = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(content);
-
-            newLine.splice(index + 1, 0, {
-              value: '',
-              imageUrl: ''
-            });
-            setAttributes({
-              content: newLine
-            });
-          } else {
-            var newContent = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(content);
-
-            newContent[index].value = value;
-            setAttributes({
-              content: newContent
-            });
-          }
-        },
-        onRemove: function onRemove() {
-          var newContent = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(content);
-
-          newContent.splice(index, 1);
-          setAttributes({
-            content: newContent
-          });
-        }
-      })));
-    });
     var imgContent = content.map(function (v, i) {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["MediaUpload"], {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+        className: "features-admin__item"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["MediaUpload"], {
         onSelect: function onSelect(media) {
           var newContent = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(content);
 
@@ -9866,22 +9803,27 @@ var settings = {
         },
         allowedTypes: ['image'],
         value: v.imageId,
-        render: function render(_ref2) {
-          var open = _ref2.open;
+        render: function render(_ref) {
+          var open = _ref.open;
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
             alt: '',
             width: "24",
             height: "24",
             id: "image-".concat(clientId, "-").concat(i),
+            className: "features-admin__image",
             src: !v.imageId ? defaultIcon : v.imageUrl,
             onClick: open
           });
         }
-      });
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+        className: "features-admin__text",
+        dangerouslySetInnerHTML: {
+          __html: v.value
+        }
+      }));
     });
     var liContent = content.map(function (v, i) {
-      var img = '<img src="' + (v.imageId ? v.imageUrl : defaultIcon) + '" width="16" onclick="jQuery(\'#image-' + clientId + '-' + i + '\').click();" />';
-      return v.value.replace('<p>', '<p>' + img);
+      return "".concat(v.value);
     }).join('');
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Toolbar"], {
       className: 'components-toolbar-group--no-right-border'
@@ -9891,10 +9833,10 @@ var settings = {
       onClick: function onClick() {
         return wp.data.dispatch('core/block-editor').removeBlock(clientId);
       }
-    })), toolbar), inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("table", {
-      className: "feature"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("tbody", null)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-      className: 'features__admin-images'
+    })), toolbar), inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: 'features-admin'
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: 'features-admin__content'
     }, imgContent), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
       multiline: "p",
       value: liContent,
@@ -9904,45 +9846,36 @@ var settings = {
         var newListItems = [];
         var k = 0;
         Array.from(template.content.childNodes).forEach(function (el) {
-          var oldImg = el.getElementsByTagName('img')[0];
-          console.log(oldImg);
           var newEl = {
             itemId: k++
           };
-
-          if (oldImg) {
-            newEl.imageId = oldImg.getAttribute('data-imageId');
-            newEl.imageUrl = oldImg.getAttribute('src');
-            newEl.imageAlt = oldImg.getAttribute('alt');
-            el.removeChild(oldImg);
-          }
-
-          newEl.value = el.innerHTML;
+          newEl.value = el.outerHTML;
           newListItems.push(newEl);
         });
-        console.log(1, newListItems); //setAttributes( { content: value, listItems: newListItems } );
+        setAttributes({
+          content: newListItems
+        });
+        Array.from(document.getElementById("block-" + clientId).getElementsByClassName("block-editor-rich-text__editable").childNodes).forEach(function (el) {
+          console.log(el);
+        });
       },
-      allowedFormats: ['core/bold', 'core/italic', 'core/link'],
-      onSplit: function onSplit() {
-        console.log('onSplit');
-      }
-    }));
+      allowedFormats: ['core/bold', 'core/italic', 'core/link']
+    })));
   }),
   save: function save(props) {
     var attributes = props.attributes;
-    var content = attributes.content,
-        mediaURL = attributes.mediaURL;
+    var content = attributes.content;
     var features = content.map(function (item, index) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("tr", {
-        className: "feature",
-        "data-itemId": item.itemId
+        className: "feature"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("td", {
         width: "24",
-        className: "feature__image"
+        className: "feature__image",
+        "data-item-id": item.itemId
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
         width: "24",
         height: "24",
-        "data-imageId": item.imageId ? item.imageId : 0,
+        "data-image-id": item.imageId ? item.imageId : 0,
         src: !item.imageId ? '/wp-content/themes/lettera/images/components/features/icon_star.png' : item.imageUrl,
         alt: item.imageAlt
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("td", {

@@ -1,0 +1,38 @@
+.features-admin {
+	position: relative;
+	padding-left: 40px;
+
+	.block-editor-rich-text__editable {
+		position: relative;
+	}
+}
+
+.features-admin__content {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	flex-direction: column;
+}
+
+.features-admin__item {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.features-admin__image {
+	width: 24px;
+	height: auto;
+	max-width: 24px;
+	max-height: 24px;
+}
+
+.features-admin__text {
+	visibility: hidden;
+	margin-left: 16px;
+
+	p {
+		min-height: 24px;
+	}
+}

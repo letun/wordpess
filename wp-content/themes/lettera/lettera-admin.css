@@ -567,3 +567,33 @@ div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout {
   flex-wrap: wrap; }
   .block-editor-block-list__block .columns table.column {
     width: 50%; }
+
+.features-admin {
+  position: relative;
+  padding-left: 40px; }
+  .features-admin .block-editor-rich-text__editable {
+    position: relative; }
+
+.features-admin__content {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-direction: column; }
+
+.features-admin__item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; }
+
+.features-admin__image {
+  width: 24px;
+  height: auto;
+  max-width: 24px;
+  max-height: 24px; }
+
+.features-admin__text {
+  visibility: hidden;
+  margin-left: 16px; }
+  .features-admin__text p {
+    min-height: 24px; }

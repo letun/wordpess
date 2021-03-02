@@ -60,7 +60,7 @@ export const settings = {
 					type: 'string',
 					source: 'attribute',
 					selector: 'td.feature__image',
-					attribute: 'data-itemID',
+					attribute: 'data-item-id',
 				},
 				value: {
 					type: 'string',
@@ -83,7 +83,7 @@ export const settings = {
 					type: 'string',
 					source: 'attribute',
 					selector: 'td.feature__image img',
-					attribute: 'data-imageID',
+					attribute: 'data-image-id',
 				},
 			},
 		},
@@ -96,15 +96,14 @@ export const settings = {
 		const parentClientId = select(
 			'core/block-editor'
 		).getBlockHierarchyRootClientId( blockData.clientId );
+
 		return {
 			innerBlocks: select( 'core/block-editor' ).getBlocks(
 				blockData.clientId
 			),
 			parentClientId,
 			clientId: blockData.clientId,
-			parentBlockAttributes: select(
-				'core/block-editor'
-			).getBlockAttributes( parentClientId ),
+			parentBlockAttributes: select('core/block-editor').getBlockAttributes( parentClientId ),
 		};
 	} )( ( props ) => {
 		const {
@@ -122,8 +121,6 @@ export const settings = {
 			content,
 			placeholder,
 		} = attributes;
-
-		console.log(111,content);
 
 		wp.element.useEffect( () => {
 			if (
@@ -159,108 +156,43 @@ export const settings = {
 			</>
 		);
 
-		const features = content.map((item, index) => {
-			return (
-				<tr>
-					<td width={"24"} className={"feature__image"}>
-						<MediaUpload
-							onSelect={ ( media ) => {
-								setAttributes( {
-									mediaURL: media.url,
-									mediaID: media.id,
-								} );
-							} }
-							allowedTypes={ [ 'image' ] }
-							value={ mediaID }
-							render={ ( { open } ) => (
-								<img
-									alt={ '' }
-									width={"24"}
-									height={"24"}
-									id={`image-${index}`}
-									src={
-										! mediaID
-											? defaultIcon
-											: mediaURL
-									}
-									onClick={ open }
-								/>
-							) }
-						/>
-					</td>
-					<td width={"16"}>&nbsp;&nbsp;&nbsp;</td>
-					<td className={"feature__content"}>
-						<RichText
-							value={ item.value }
-							placeholder={ placeholder }
-							keepPlaceholderOnFocus={ true }
-							multiline
-							allowedFormats={[
-								'core/bold',
-								'core/italic',
-								'core/link',
-							]}
-							onChange={ ( value ) => {
-								if (value.indexOf('<p></p>') > 0) {
-
-									const newLine = [...content];
-									newLine.splice(index + 1, 0, {value: '', imageUrl: ''});
-									setAttributes({content: newLine});
-								} else {
-									const newContent = [...content];
-									newContent[index].value = value;
-									setAttributes({content: newContent});
-								}
-							} }
-							onRemove={ () => {
-								const newContent = [...content];
-								newContent.splice(index, 1);
-								setAttributes({ content: newContent });
-							} }
-						/>
-					</td>
-				</tr>
-			);
-		});
-
 		const imgContent = content.map((v, i)=>{
 			return (
-				<MediaUpload
-					onSelect={ ( media ) => {
-						const newContent = [...content];
-						newContent[i].imageId = media.id;
-						newContent[i].imageUrl = media.url;
-						newContent[i].imageAlt = media.alt ? media.alt : media.title;
+				<div className={"features-admin__item"}>
+					<MediaUpload
+						onSelect={ ( media ) => {
+							const newContent = [...content];
+							newContent[i].imageId = media.id;
+							newContent[i].imageUrl = media.url;
+							newContent[i].imageAlt = media.alt ? media.alt : media.title;
 
-						setAttributes({content: newContent});
-					} }
-					allowedTypes={ [ 'image' ] }
-					value={ v.imageId }
-					render={ ( { open } ) => (
-						<img
-							alt={ '' }
-							width={"24"}
-							height={"24"}
-							id={`image-${clientId}-${i}`}
-							src={
-								! v.imageId
-									? defaultIcon
-									: v.imageUrl
-							}
-							onClick={ open }
-						/>
-					) }
-				/>
+							setAttributes({content: newContent});
+						} }
+						allowedTypes={ [ 'image' ] }
+						value={ v.imageId }
+						render={ ( { open } ) => (
+							<img
+								alt={ '' }
+								width={"24"}
+								height={"24"}
+								id={`image-${clientId}-${i}`}
+								className={"features-admin__image"}
+								src={
+									! v.imageId
+										? defaultIcon
+										: v.imageUrl
+								}
+								onClick={ open }
+							/>
+						) }
+					/>
+					<div className={"features-admin__text"} dangerouslySetInnerHTML={{ __html: v.value }} />
+				</div>
 			)
 		});
 		const liContent = content.map((v, i)=>{
-			const img = '<img src="' + (v.imageId ? v.imageUrl : defaultIcon) + '" width="16" onclick="jQuery(\'#image-' + clientId + '-' + i +'\').click();" />';
-			return v.value.replace(
-				'<p>',
-				'<p>' + img
-			);
+			return `${v.value}`;
 		}).join('');
-
 
 		return (
 			<>
@@ -283,47 +215,35 @@ export const settings = {
 					{ toolbar }
 				</BlockControls>
 				{ inspectorControls }
-				<table className={"feature"}>
-					<tbody>
-					</tbody>
-				</table>
-				<div className={'features__admin-images'}>
-					{imgContent}
+				<div className={'features-admin'}>
+					<div className={'features-admin__content'}>
+						{imgContent}
+					</div>
+					<RichText
+						multiline="p"
+						value={ liContent }
+						onChange={ ( value ) => {
+							const template = document.createElement('template');
+							template.innerHTML = value;
+							const newListItems = [];
+							let k = 0;
+							Array.from(template.content.childNodes).forEach(function(el) {
+								const newEl = {itemId: k++};
+								newEl.value = el.outerHTML;
+								newListItems.push(newEl);
+							});
+							setAttributes( { content: newListItems } );
+							Array.from(document.getElementById("block-" + clientId).getElementsByClassName("block-editor-rich-text__editable").childNodes).forEach(function (el) {
+								console.log(el);
+							});
+						}}
+						allowedFormats={ [
+							'core/bold',
+							'core/italic',
+							'core/link',
+						] }
+					/>
 				</div>
-				<RichText
-					multiline="p"
-					value={ liContent }
-					onChange={ ( value ) => {
-						const template = document.createElement('template');
-						template.innerHTML = value;
-						const newListItems = [];
-						let k = 0;
-						Array.from(template.content.childNodes).forEach(function(el) {
-							const oldImg = el.getElementsByTagName('img')[0];
-							console.log(oldImg);
-							const newEl = {itemId: k++};
-							if (oldImg) {
-								newEl.imageId = oldImg.getAttribute('data-imageId');
-								newEl.imageUrl = oldImg.getAttribute('src');
-								newEl.imageAlt = oldImg.getAttribute('alt');
-								el.removeChild(oldImg);
-							}
-
-							newEl.value = el.innerHTML;
-							newListItems.push(newEl);
-						});
-						console.log(1, newListItems);
-						//setAttributes( { content: value, listItems: newListItems } );
-					}}
-					allowedFormats={ [
-						'core/bold',
-						'core/italic',
-						'core/link',
-					] }
-					onSplit={()=>{
-						console.log('onSplit');
-					}}
-				/>
 			</>
 		);
 	} ),
@@ -332,17 +252,16 @@ export const settings = {
 
 		const {
 			content,
-			mediaURL,
 		} = attributes;
 
 		const features = content.map((item, index) => {
 			return (
-				<tr className={"feature"} data-itemId={ item.itemId }>
-					<td width={"24"} className={"feature__image"}>
+				<tr className={"feature"}>
+					<td width={"24"} className={"feature__image"} data-item-id={ item.itemId }>
 						<img
 							width={"24"}
 							height={"24"}
-							data-imageId={item.imageId ? item.imageId : 0}
+							data-image-id={item.imageId ? item.imageId : 0}
 							src={
 								! item.imageId
 									? '/wp-content/themes/lettera/images/components/features/icon_star.png'
