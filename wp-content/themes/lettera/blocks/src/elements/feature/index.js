@@ -1,136 +1,136 @@
 import { withSelect } from '@wordpress/data';
 import { MediaUpload, RichText, BlockControls } from '@wordpress/block-editor';
-import { Toolbar, ToolbarGroup, ToolbarButton } from '@wordpress/components';
+import { Toolbar, ToolbarButton } from '@wordpress/components';
+import { createBlock } from '@wordpress/blocks';
 import classnames from 'classnames';
 
-import Column from '../../layout/column';
-
-import ToolbarButtonLinkHref from '../../controls/toolbarButtonLinkHref';
 import getInspectorControls from '../../controls/getInspectorControls';
-
 import LetteraConfig from '../../global/config';
 
 import { ReactComponent as elementIcon } from '../../../../svg/components/features.svg';
 
 export const name = 'lettera/feature';
 
-const defaultIcon = '/wp-content/themes/lettera/images/components/features/icon_star.png';
+const defaultFeatureIcon = '/wp-content/themes/lettera/images/components/features/icon_star.png';
 
 export const settings = {
 	title: 'Feature',
 	icon: elementIcon,
 	category: LetteraConfig.category,
-	parent: 'lettera/features',
+	parent: LetteraConfig.childElemets.mainBlocks,
 	attributes: {
-		mediaID: {
+		mediaId: {
 			type: 'number',
 		},
-		mediaURL: {
+		mediaUrl: {
 			type: 'string',
-			default: '/wp-content/themes/lettera/images/components/features/icon_star.png',
+			source: 'attribute',
+			selector: 'td.feature__image img',
+			attribute: 'src',
+			default: defaultFeatureIcon,
 		},
-		/*
-		mediaURL: {
-			type: 'array',
-			source: 'query',
-			default: [],
-			selector: 'td.feature__image',
-			query: {
-				content: {
-					source: 'attribute',
-					selector: 'img',
-					attribute: 'src',
-				}
-			},
+		mediaAlt: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'td.feature__image img',
+			attribute: 'alt',
 		},
-		*/
 		content: {
-			type: 'array',
-			source: 'query',
-			default: [{value: 'List 1', imageUrl: ''}],
-			selector: 'tr.feature',
-			query: {
-				/*
-				value: {
-					type: 'string',
-					source: 'html',
-				},
-				*/
-				itemId: {
-					type: 'string',
-					source: 'attribute',
-					selector: 'td.feature__image',
-					attribute: 'data-item-id',
-				},
-				value: {
-					type: 'string',
-					source: 'html',
-					selector: 'td.feature__content',
-				},
-				imageUrl: {
-					type: 'string',
-					source: 'attribute',
-					selector: 'td.feature__image img',
-					attribute: 'src',
-				},
-				imageAlt: {
-					type: 'string',
-					source: 'attribute',
-					selector: 'td.feature__image img',
-					attribute: 'alt',
-				},
-				imageId: {
-					type: 'string',
-					source: 'attribute',
-					selector: 'td.feature__image img',
-					attribute: 'data-image-id',
-				},
-			},
+			type: 'string',
+			source: 'html',
+			selector: 'td.feature__content p',
+			default: '',
 		},
 		placeholder: {
 			type: 'string',
-			default: 'Features list here…',
+			default: 'Text here…',
 		},
+		textAlign: {
+			type: 'string',
+			default: null,
+		},
+		canDelete: {
+			type: 'boolean',
+			default: false,
+		},
+	},
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'lettera/list' ],
+				transform: ( { values } ) => {
+					return createBlock( 'lettera/text', {
+						values,
+					} );
+				},
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'lettera/list' ],
+				transform: ( content ) => {
+					return createBlock( 'lettera/list', content.content );
+				},
+			},
+		],
 	},
 	edit: withSelect( ( select, blockData ) => {
 		const parentClientId = select(
 			'core/block-editor'
 		).getBlockHierarchyRootClientId( blockData.clientId );
-
 		return {
 			innerBlocks: select( 'core/block-editor' ).getBlocks(
 				blockData.clientId
 			),
 			parentClientId,
 			clientId: blockData.clientId,
-			parentBlockAttributes: select('core/block-editor').getBlockAttributes( parentClientId ),
+			parentBlockAttributes: select(
+				'core/block-editor'
+			).getBlockAttributes( parentClientId ),
 		};
 	} )( ( props ) => {
 		const {
 			attributes,
+			onReplace,
+			onRemove,
+			mergeBlocks,
 			setAttributes,
-			clientId,
 			parentClientId,
 			parentBlockAttributes,
+			clientId,
 			className,
 		} = props;
 
 		const {
-			mediaID,
-			mediaURL,
+			mediaId,
+			mediaUrl,
+			mediaAlt,
 			content,
 			placeholder,
+			textAlign,
 		} = attributes;
+
+		console.log(content);
 
 		wp.element.useEffect( () => {
 			if (
 				parentBlockAttributes.blockAttributes &&
-				parentBlockAttributes.blockAttributes.btnAlign
+				parentBlockAttributes.blockAttributes.textAlign
 			) {
 				if (
-					parentBlockAttributes.blockAttributes.btnAlign === 'center'
+					parentBlockAttributes.blockAttributes.textAlign ===
+					'component'
 				) {
-					setAttributes( { textAlign: 'center' } );
+					setAttributes( {
+						textAlign: parentBlockAttributes.textAlign,
+					} );
+				} else {
+					setAttributes( {
+						textAlign:
+						parentBlockAttributes.blockSettings.textAlign,
+					} );
 				}
 			}
 		} );
@@ -140,59 +140,11 @@ export const settings = {
 			parentBlockAttributes
 		);
 
-		const toolbar = (
-			<>
-				<ToolbarGroup>
-					<ToolbarButton
-						icon={ 'plus' }
-						title={ 'Add element' }
-						onClick={ () => {
-							const newContent = [...content];
-							newContent.push({value: '', imageUrl: ''});
-							setAttributes({ content: newContent });
-						}}
-					/>
-				</ToolbarGroup>
-			</>
-		);
-
-		const imgContent = content.map((v, i)=>{
-			return (
-				<div className={"features-admin__item"}>
-					<MediaUpload
-						onSelect={ ( media ) => {
-							const newContent = [...content];
-							newContent[i].imageId = media.id;
-							newContent[i].imageUrl = media.url;
-							newContent[i].imageAlt = media.alt ? media.alt : media.title;
-
-							setAttributes({content: newContent});
-						} }
-						allowedTypes={ [ 'image' ] }
-						value={ v.imageId }
-						render={ ( { open } ) => (
-							<img
-								alt={ '' }
-								width={"24"}
-								height={"24"}
-								id={`image-${clientId}-${i}`}
-								className={"features-admin__image"}
-								src={
-									! v.imageId
-										? defaultIcon
-										: v.imageUrl
-								}
-								onClick={ open }
-							/>
-						) }
-					/>
-					<div className={"features-admin__text"} dangerouslySetInnerHTML={{ __html: v.value }} />
-				</div>
-			)
-		});
-		const liContent = content.map((v, i)=>{
-			return `${v.value}`;
-		}).join('');
+		const addClass = [];
+		if ( textAlign === 'center' ) {
+			addClass.push( 'text-center' );
+		}
+		console.log(content);
 
 		return (
 			<>
@@ -212,81 +164,131 @@ export const settings = {
 							}
 						/>
 					</Toolbar>
-					{ toolbar }
 				</BlockControls>
 				{ inspectorControls }
-				<div className={'features-admin'}>
-					<div className={'features-admin__content'}>
-						{imgContent}
-					</div>
-					<RichText
-						multiline="p"
-						value={ liContent }
-						onChange={ ( value ) => {
-							const template = document.createElement('template');
-							template.innerHTML = value;
-							const newListItems = [];
-							let k = 0;
-							Array.from(template.content.childNodes).forEach(function(el) {
-								const newEl = {itemId: k++};
-								newEl.value = el.outerHTML;
-								newListItems.push(newEl);
-							});
-							setAttributes( { content: newListItems } );
-							k = 0;
-							Array.from(document.getElementById("block-" + clientId).getElementsByClassName("block-editor-rich-text__editable")[0].childNodes).forEach(function (el) {
-								el.setAttribute('data-item-id', k++);
-							});
-						}}
-						allowedFormats={ [
-							'core/bold',
-							'core/italic',
-							'core/link',
-						] }
-					/>
-				</div>
+				<table className={"feature"}>
+					<tbody>
+					<tr>
+						<td width={"24"} className={"feature__image"}>
+							<MediaUpload
+								onSelect={ ( media ) => {
+									setAttributes( {
+										mediaUrl: media.url,
+										mediaId: media.id,
+										mediaAlt: (media.alt ? media.alt : media.title),
+									} );
+								} }
+								allowedTypes={ [ 'image' ] }
+								value={ mediaId }
+								render={ ( { open } ) => (
+									<img
+										alt={ mediaAlt }
+										src={
+											! mediaId
+												? defaultFeatureIcon
+												: mediaUrl
+										}
+										className={ 'feature__image' }
+										onClick={ open }
+										width={'24'}
+										height={'24'}
+									/>
+								) }
+							/>
+						</td>
+						<td width={"16"}>&nbsp;&nbsp;&nbsp;</td>
+						<td className={"feature__content"}>
+							<RichText
+								multiline={false}
+								value={ content }
+								placeholder={placeholder}
+								onChange={ ( value ) => {
+									setAttributes( { content: value } );
+								}}
+								allowedFormats={ [
+									'core/bold',
+									'core/italic',
+									'core/link',
+								] }
+								onSplit={(value)=>{
+									return createBlock( 'lettera/feature', {
+										content: value,
+									} );
+								}}
+								onReplace={ onReplace }
+								onReplace={ onRemove }
+							/>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			<label>Multiline richtext:</label>
+			<RichText
+				multiline={'p'}
+				value={ content }
+				placeholder={placeholder}
+				onChange={ ( value ) => {
+					setAttributes( { content: value } );
+				}}
+				allowedFormats={ [
+					'core/bold',
+					'core/italic',
+					'core/link',
+				] }
+				onSplit={(value)=>{
+					console.log(111);
+					return createBlock( 'lettera/feature', {
+						content: value,
+					} );
+				}}
+				onReplace={ onReplace }
+				onReplace={ onRemove }
+			/>
 			</>
 		);
 	} ),
 	save: ( props ) => {
-		const { attributes } = props;
+		const {
+			attributes,
+			className
+		} = props;
 
 		const {
+			mediaId,
+			mediaUrl,
+			mediaAlt,
 			content,
 		} = attributes;
 
-		const features = content.map((item, index) => {
-			return (
-				<tr className={"feature"}>
-					<td width={"24"} className={"feature__image"} data-item-id={ item.itemId }>
-						<img
-							width={"24"}
-							height={"24"}
-							data-image-id={item.imageId ? item.imageId : 0}
-							src={
-								! item.imageId
-									? '/wp-content/themes/lettera/images/components/features/icon_star.png'
-									: item.imageUrl
-							}
-							alt={ item.imageAlt }
-						/>
-					</td>
-					<td width={"16"}>&nbsp;&nbsp;&nbsp;</td>
-					<td className={"feature__content"}>
-						<RichText.Content
-							value={item.value}
-						/>
-					</td>
-				</tr>
-			);
-		});
-
 		return (
-			<table className={"features"}>
-				<tbody>
-				{features}
-				</tbody>
-			</table>
+			content && (
+				<table className={ classnames("features", className) }>
+					<tbody>
+					<tr className={"feature"}>
+						<td width={"24"} className={"feature__image"}>
+							<img
+								width={"24"}
+								height={"24"}
+								src={
+									! mediaId
+										? defaultFeatureIcon
+										: mediaUrl
+								}
+								alt={ mediaAlt }
+							/>
+						</td>
+						<td width={"16"}>&nbsp;&nbsp;&nbsp;</td>
+						<td className={"feature__content"}>
+							<p>
+								<RichText.Content
+									value={content}
+								/>
+							</p>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			)
 		);
 	},
 };

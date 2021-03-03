@@ -13,7 +13,7 @@ import { ReactComponent as listTypeOrderedIcon } from '../../../../svg/buttons/l
 export const name = 'lettera/list';
 
 export const settings = {
-	title: 'Calypso: List',
+	title: 'List',
 	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
