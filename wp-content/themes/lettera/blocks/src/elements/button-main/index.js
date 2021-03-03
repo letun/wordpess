@@ -1,4 +1,6 @@
 import { withSelect } from '@wordpress/data';
+import { compose, withState } from '@wordpress/compose';
+
 import {
 	RichText,
 	BlockControls,
@@ -58,6 +60,11 @@ export const settings = {
 			attribute: 'rel',
 			defauld: 'noopener',
 		},
+		textBellowButton: {
+			type: 'string',
+			source: 'html',
+			selector: 'p.text-small',
+		},
 		placeholder: {
 			type: 'string',
 			default: 'Button text…',
@@ -75,21 +82,24 @@ export const settings = {
 			default: 'left',
 		},
 	},
-	edit: withSelect( ( select, blockData ) => {
-		const parentClientId = select(
-			'core/block-editor'
-		).getBlockHierarchyRootClientId( blockData.clientId );
-		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks(
-				blockData.clientId
-			),
-			parentClientId,
-			clientId: blockData.clientId,
-			parentBlockAttributes: select(
+	edit: compose([
+		withState({ isBtnActive: false }),
+		withSelect( ( select, blockData ) => {
+			const parentClientId = select(
 				'core/block-editor'
-			).getBlockAttributes( parentClientId ),
-		};
-	} )( ( props ) => {
+			).getBlockHierarchyRootClientId( blockData.clientId );
+			return {
+				innerBlocks: select( 'core/block-editor' ).getBlocks(
+					blockData.clientId
+				),
+				parentClientId,
+				clientId: blockData.clientId,
+				parentBlockAttributes: select(
+					'core/block-editor'
+				).getBlockAttributes( parentClientId ),
+			};
+		} )
+	])( ( props ) => {
 		const {
 			attributes,
 			setAttributes,
@@ -97,6 +107,8 @@ export const settings = {
 			clientId,
 			parentBlockAttributes,
 			className,
+			isBtnActive,
+			setState,
 		} = props;
 
 		const {
@@ -107,6 +119,7 @@ export const settings = {
 			linkHref,
 			linkTarget,
 			textAlign,
+			textBellowButton,
 		} = attributes;
 
 		wp.element.useEffect( () => {
@@ -145,57 +158,61 @@ export const settings = {
 			classBtn.push( 'button-main--' + buttonColor );
 		}
 
-		const toolbar = (
-			<>
-				<ToolbarGroup label="Button style">
-					<ToolbarButton
-						icon={ primaryButtonIcon }
-						title={ 'Primary button' }
-						isActive={ true }
-						onClick={ () =>
-							setAttributes( { buttonColor: 'black' } )
+		const btnToolBar = (
+			isBtnActive && (
+				<>
+					<ToolbarGroup label="Button style">
+						<ToolbarButton
+							icon={ primaryButtonIcon }
+							title={ 'Primary button' }
+							isActive={ true }
+							onClick={ () =>
+								setAttributes( { buttonColor: 'black' } )
+							}
+						/>
+						<ToolbarButton
+							icon={ secondaryButtonIcon }
+							title={ 'Secondary button' }
+							isActive={ false }
+							onClick={ () => {
+								const block = wp.blocks.createBlock(
+									'lettera/button-secondary',
+									{ content, textAlign }
+								);
+								wp.data
+									.dispatch( 'core/block-editor' )
+									.updateBlock( curClientId, block );
+							} }
+						/>
+					</ToolbarGroup>
+					<ToolbarButtonLinkHref
+						linkHref={ linkHref }
+						linkTarget={ linkTarget }
+						onChange={ ( value ) =>
+							setAttributes( { linkHref: value.url } )
 						}
 					/>
-					<ToolbarButton
-						icon={ secondaryButtonIcon }
-						title={ 'Secondary button' }
-						isActive={ false }
-						onClick={ () => {
-							const block = wp.blocks.createBlock(
-								'lettera/button-secondary',
-								{ content, textAlign }
-							);
-							wp.data
-								.dispatch( 'core/block-editor' )
-								.updateBlock( curClientId, block );
+					<ToolbarButtonColor
+						buttonColor={ buttonColor }
+						btnColors={ btnColors }
+						onChange={ ( value ) => {
+							setAttributes( {
+								buttonColor: value
+									? getColorObjectByColorValue( btnColors, value )
+										?.slug
+									: 'black',
+							} );
 						} }
 					/>
-				</ToolbarGroup>
-				<ToolbarButtonLinkHref
-					linkHref={ linkHref }
-					linkTarget={ linkTarget }
-					onChange={ ( value ) =>
-						setAttributes( { linkHref: value.url } )
-					}
-				/>
-				<ToolbarButtonColor
-					buttonColor={ buttonColor }
-					btnColors={ btnColors }
-					onChange={ ( value ) => {
-						setAttributes( {
-							buttonColor: value
-								? getColorObjectByColorValue( btnColors, value )
-										?.slug
-								: 'black',
-						} );
-					} }
-				/>
-			</>
+				</>
+			)
 		);
 
 		return (
 			<>
-				<BlockControls>{ toolbar }</BlockControls>
+				<BlockControls>
+					{btnToolBar}
+				</BlockControls>
 				{ inspectorControls }
 				<ButtonMain
 					className={ classnames( classBtn, className ) }
@@ -209,9 +226,27 @@ export const settings = {
 						value={ content }
 						placeholder={ placeholder }
 						allowedFormats={ [] }
-						unstableOnSplit={ () => false }
+						unstableOnSplit={ false }
+						unstableOnFocus={() => { setState({isBtnActive: true}); }}
 					/>
 				</ButtonMain>
+				<RichText
+					identifier={ 'text-bellow-button' }
+					onChange={ ( value ) => {
+						console.log(value);
+						setAttributes({textBellowButton: value});
+					} }
+					value={ textBellowButton }
+					placeholder={ placeholder }
+					className={"text-small"}
+					allowedFormats={ [
+						'core/bold',
+						'core/italic',
+						'core/link',
+					] }
+					unstableOnSplit={ () => false }
+					unstableOnFocus={() => { setState({isBtnActive: false}); }}
+				/>
 			</>
 		);
 	} ),
@@ -227,22 +262,36 @@ export const settings = {
 			linkTitle,
 			linkHref,
 			textAlign,
+			textBellowButton,
 		} = attributes;
 
 		return (
-			content && (
-				<ButtonMain
-					buttonColor={ buttonColor }
-					buttonSize={ buttonSize }
-					textAlign={ textAlign }
-					linkHref={ linkHref }
-					linkTarget={ linkTarget }
-					linkRel={ linkRel }
-					linkTitle={ linkTitle }
-				>
-					<RichText.Content value={ content } />
-				</ButtonMain>
-			)
-		);
+			<>
+				{
+					content && (
+						<ButtonMain
+							buttonColor={buttonColor}
+							buttonSize={buttonSize}
+							textAlign={textAlign}
+							linkHref={linkHref}
+							linkTarget={linkTarget}
+							linkRel={linkRel}
+							linkTitle={linkTitle}
+						>
+							<RichText.Content value={content}/>
+						</ButtonMain>
+					)
+				}
+				{
+					textBellowButton && (
+						<RichText.Content
+							tagName={"p"}
+							className={"text-small"}
+							value={textBellowButton}
+						/>
+					)
+				}
+			</>
+		)
 	},
 };
