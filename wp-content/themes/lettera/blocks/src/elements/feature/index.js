@@ -11,7 +11,8 @@ import { ReactComponent as elementIcon } from '../../../../svg/components/featur
 
 export const name = 'lettera/feature';
 
-const defaultFeatureIcon = '/wp-content/themes/lettera/images/components/features/icon_star.png';
+const defaultFeatureIcon =
+	'/wp-content/themes/lettera/images/components/features/icon_star.png';
 
 export const settings = {
 	title: 'Feature',
@@ -95,7 +96,6 @@ export const settings = {
 			attributes,
 			onReplace,
 			onRemove,
-			mergeBlocks,
 			setAttributes,
 			parentClientId,
 			parentBlockAttributes,
@@ -112,8 +112,6 @@ export const settings = {
 			textAlign,
 		} = attributes;
 
-		console.log(content);
-
 		wp.element.useEffect( () => {
 			if (
 				parentBlockAttributes.blockAttributes &&
@@ -129,7 +127,7 @@ export const settings = {
 				} else {
 					setAttributes( {
 						textAlign:
-						parentBlockAttributes.blockSettings.textAlign,
+							parentBlockAttributes.blockSettings.textAlign,
 					} );
 				}
 			}
@@ -144,7 +142,6 @@ export const settings = {
 		if ( textAlign === 'center' ) {
 			addClass.push( 'text-center' );
 		}
-		console.log(content);
 
 		return (
 			<>
@@ -166,126 +163,96 @@ export const settings = {
 					</Toolbar>
 				</BlockControls>
 				{ inspectorControls }
-				<table className={"feature"}>
+				<table className={ classnames( 'feature', className ) }>
 					<tbody>
-					<tr>
-						<td width={"24"} className={"feature__image"}>
-							<MediaUpload
-								onSelect={ ( media ) => {
-									setAttributes( {
-										mediaUrl: media.url,
-										mediaId: media.id,
-										mediaAlt: (media.alt ? media.alt : media.title),
-									} );
-								} }
-								allowedTypes={ [ 'image' ] }
-								value={ mediaId }
-								render={ ( { open } ) => (
-									<img
-										alt={ mediaAlt }
-										src={
-											! mediaId
-												? defaultFeatureIcon
-												: mediaUrl
-										}
-										className={ 'feature__image' }
-										onClick={ open }
-										width={'24'}
-										height={'24'}
-									/>
-								) }
-							/>
-						</td>
-						<td width={"16"}>&nbsp;&nbsp;&nbsp;</td>
-						<td className={"feature__content"}>
-							<RichText
-								multiline={false}
-								value={ content }
-								placeholder={placeholder}
-								onChange={ ( value ) => {
-									setAttributes( { content: value } );
-								}}
-								allowedFormats={ [
-									'core/bold',
-									'core/italic',
-									'core/link',
-								] }
-								onSplit={(value)=>{
-									return createBlock( 'lettera/feature', {
-										content: value,
-									} );
-								}}
-								onReplace={ onReplace }
-								onReplace={ onRemove }
-							/>
-						</td>
-					</tr>
+						<tr>
+							<td width={ '24' } className={ 'feature__image' }>
+								<MediaUpload
+									onSelect={ ( media ) => {
+										setAttributes( {
+											mediaUrl: media.url,
+											mediaId: media.id,
+											mediaAlt: media.alt
+												? media.alt
+												: media.title,
+										} );
+									} }
+									allowedTypes={ [ 'image' ] }
+									value={ mediaId }
+									render={ ( { open } ) => (
+										<img
+											alt={ mediaAlt }
+											src={
+												! mediaId
+													? defaultFeatureIcon
+													: mediaUrl
+											}
+											className={ 'feature__image' }
+											onClick={ open }
+											width={ '24' }
+											height={ '24' }
+										/>
+									) }
+								/>
+							</td>
+							<td width={ '16' }>&nbsp;&nbsp;&nbsp;</td>
+							<td className={ 'feature__content' }>
+								<RichText
+									multiline={ false }
+									value={ content }
+									placeholder={ placeholder }
+									onChange={ ( value ) => {
+										setAttributes( { content: value } );
+									} }
+									allowedFormats={ [
+										'core/bold',
+										'core/italic',
+										'core/link',
+									] }
+									onSplit={ ( value ) => {
+										return createBlock( 'lettera/feature', {
+											content: value,
+										} );
+									} }
+									onReplace={ onReplace }
+									onRemove={ onRemove }
+								/>
+							</td>
+						</tr>
 					</tbody>
 				</table>
-			<label>Multiline richtext:</label>
-			<RichText
-				multiline={'p'}
-				value={ content }
-				placeholder={placeholder}
-				onChange={ ( value ) => {
-					setAttributes( { content: value } );
-				}}
-				allowedFormats={ [
-					'core/bold',
-					'core/italic',
-					'core/link',
-				] }
-				onSplit={(value)=>{
-					console.log(111);
-					return createBlock( 'lettera/feature', {
-						content: value,
-					} );
-				}}
-				onReplace={ onReplace }
-				onReplace={ onRemove }
-			/>
 			</>
 		);
 	} ),
 	save: ( props ) => {
-		const {
-			attributes,
-			className
-		} = props;
+		const { attributes, className } = props;
 
-		const {
-			mediaId,
-			mediaUrl,
-			mediaAlt,
-			content,
-		} = attributes;
+		const { mediaId, mediaUrl, mediaAlt, content } = attributes;
 
 		return (
 			content && (
-				<table className={ classnames("features", className) }>
+				<table className={ classnames( 'features', className ) }>
 					<tbody>
-					<tr className={"feature"}>
-						<td width={"24"} className={"feature__image"}>
-							<img
-								width={"24"}
-								height={"24"}
-								src={
-									! mediaId
-										? defaultFeatureIcon
-										: mediaUrl
-								}
-								alt={ mediaAlt }
-							/>
-						</td>
-						<td width={"16"}>&nbsp;&nbsp;&nbsp;</td>
-						<td className={"feature__content"}>
-							<p>
-								<RichText.Content
-									value={content}
+						<tr className={ 'feature' }>
+							<td width={ '24' } className={ 'feature__image' }>
+								<img
+									width={ '24' }
+									height={ '24' }
+									src={
+										! mediaId
+											? defaultFeatureIcon
+											: mediaUrl
+									}
+									alt={ mediaAlt }
 								/>
-							</p>
-						</td>
-					</tr>
+							</td>
+							<td width={ '16' }>&nbsp;&nbsp;&nbsp;</td>
+							<td className={ 'feature__content' }>
+								<p>
+									<RichText.Content value={ content } />
+								</p>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			)

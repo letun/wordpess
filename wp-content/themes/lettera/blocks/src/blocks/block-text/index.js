@@ -84,7 +84,11 @@ export const settings = {
 			],
 		];
 
-		const ALLOWED_BLOCKS = [ 'lettera/paragraph', 'lettera/list', 'lettera/feature' ];
+		const ALLOWED_BLOCKS = [
+			'lettera/paragraph',
+			'lettera/list',
+			'lettera/feature',
+		];
 		return (
 			<>
 				{ inspectorControls }

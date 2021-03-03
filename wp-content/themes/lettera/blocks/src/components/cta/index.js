@@ -77,7 +77,7 @@ export const settings = {
 				{
 					placeholder: 'Header',
 					level: 2,
-					allowedLevels: [2, 3]
+					allowedLevels: [ 2, 3 ],
 				},
 			],
 			[ 'lettera/block-text' ],
@@ -85,7 +85,7 @@ export const settings = {
 				'lettera/block-btn',
 				{
 					buttonAltText: true,
-					defaultButtonType: 'button-secondary'
+					defaultButtonType: 'button-secondary',
 				},
 			],
 		];
