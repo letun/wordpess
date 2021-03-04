@@ -1,51 +1,39 @@
 .ruler {
-	display: flex;
-	padding-top: 51px;
-	border-top: 1px solid #e4e6e7;
-	border-bottom: 1px solid #e4e6e7;
-	background-color: #eceff1;
-	transition: margin-left .2s linear;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	z-index: 100;
-	@media (min-width: 600px) {
-		padding-top: 0;
-		transition: none;
-	}
+	position: relative;
 }
 
 .ruler__button {
-	font-size: 11px;
+	font-size: 14px;
 	line-height: 18px;
+	min-height: 18px;
 	padding: 4px;
-	color: #333;
-	border-right: 1px solid #e4e6e7;
-	width: auto;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-sizing: border-box;
-	margin-top: -1px;
-	margin-bottom: -1px;
-	transition: color .1s linear,
-				background-color .1s linear,
-				border-color .1s linear;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+	top: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
 
-	&:first-child {
-		width: 160px;
+	&::before {
+		content: "";
+		text-align: center;
 	}
 
-	&:hover {
-		color: #333;
-		background-color: #e4e6e7;
-	}
-
-	&--active,
+	&:hover,
 	&--active:hover {
 		color: #333;
-		background-color: #189dee;;
-		border-color: #189dee;;
+		background: #939393;
+	}
+
+	&--active {
+		color: #333;
+		background: #b3b3b3;
+
+		&::before {
+			content: attr(data-title);
+		}
 	}
 }

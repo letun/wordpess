@@ -14,6 +14,6 @@ else:
 	<div class="content">
 	<iframe src="<?= add_query_arg(array("preview" => "true"), get_permalink());?>" class="content__frame" width="100%" height="100%"></iframe>
 	</div>
-	<script src="<?= get_template_directory_uri();?>/js/func.js" async></script>
+	<script src="<?= get_template_directory_uri();?>/js/ruler.js" async></script>
 	<?php get_footer();
 endif;

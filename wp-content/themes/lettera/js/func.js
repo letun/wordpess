@@ -1,47 +1,69 @@
 'use strict';
 
 (function() {
-  var frame = document.querySelector('.content__frame');
-  var ruler = document.querySelector('.ruler');
-  var blacklist_rulers = ['chevron', 'selectboxes', 'radiobuttons', 'checkboxes', 'inputs', 'buttons', 'headers'];
-  var breakpoints = {
-    auto: '160', //auto
-    xxs: '320',
-    xs: '414',
-    s: '480',
-    m: '768',
-    l: '1024',
-    xl: '1100',
-    xxl: '1200',
-    xxxl: '1380',
-    xxxxl: '1440'
-  };
+	var frame = document.querySelector('.content__frame');
+	var ruler = document.querySelector('.ruler');
+	var ruler2 = document.querySelector('.ruler2');
+	var breakpoints = {
+		auto: '160', //auto
+		xxs: '320',
+		xs: '414',
+		s: '480',
+		m: '768',
+		l: '1024',
+		xl: '1100',
+		xxl: '1200',
+		xxxl: '1380',
+		xxxxl: '1440'
+	};
 
-  function setFrameWidth(w) {
-    frame.style.width = w >= 320 ? w + 'px' : null;
-  }
+	var breakpoints = {
+		auto: '160', //auto
+		xxs: '320',
+		xs: '414',
+		s: '480',
+		m: '768',
+		l: '1024',
+		xl: '1100',
+		xxl: '1200',
+		xxxl: '1380',
+		xxxxl: '1440'
+	};
 
-  function initRuler() {
-    var div;
-    var i;
-    var lastWidth = -20;
+	function setFrameWidth(w) {
+		frame.style.width = w >= 320 ? w + 'px' : null;
+	}
 
-    for (i in breakpoints) {
-      div = document.createElement('div');
-      div.innerHTML = (breakpoints[i] >= 320 ? breakpoints[i] : 'Auto');
-      div.className = 'ruler__button';
-      div.style.width = parseInt(breakpoints[i]) - lastWidth + 'px';
-      div.addEventListener('click', (function(w) {return function() {
-        setFrameWidth(w);
-        this.parentNode.querySelector('.ruler__button--active').classList.remove('ruler__button--active');
-        this.classList.add('ruler__button--active');
-      }})(breakpoints[i]));
-      ruler.appendChild(div);
+	function initRuler() {
+		var div;
+		var i;
+		var lastWidth = -20;
 
-      lastWidth = parseInt(breakpoints[i]);
-    }
-    ruler.firstChild.classList.add('ruler__button--active');
-  }
+		for (i in breakpoints) {
+			div = document.createElement('div');
+			div.innerHTML = (breakpoints[i] >= 320 ? breakpoints[i] : 'Auto');
+			div.className = 'ruler__button';
+			div.style.width = parseInt(breakpoints[i]) - lastWidth + 'px';
+			div.addEventListener('click', (function(w) {return function() {
+				setFrameWidth(w);
+				this.parentNode.querySelector('.ruler__button--active').classList.remove('ruler__button--active');
+				this.classList.add('ruler__button--active');
+			}})(breakpoints[i]));
+			ruler.appendChild(div);
+
+			lastWidth = parseInt(breakpoints[i]);
+
+			/* -- */
+			if (breakpoints[i] >= 320) {
+				div = document.createElement('div');
+				div.innerHTML = breakpoints[i];
+				div.className = 'ruler__button';
+				div.style.width = breakpoints[i] + 'px';
+				ruler2.appendChild(div);
+			}
+		}
+		ruler.firstChild.classList.add('ruler__button--active');
+	}
 
   function init() {
     initRuler();
