@@ -16,3 +16,6 @@ if (is_front_page()) {
 	<link href="<?= get_template_directory_uri();?>/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body id="<?=$pid?>">
+	<header>
+		<div class="logo"><a href="//www.letun.dev/" id="logo"><img src="/wp-content/themes/lettera/images/assets/logo.svg"></a></div>
+	</header>

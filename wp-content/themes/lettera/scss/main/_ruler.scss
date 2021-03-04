@@ -1,17 +1,16 @@
 .ruler {
 	display: flex;
 	padding-top: 51px;
-	border-top: 1px solid $menu-border;
-	border-bottom: 1px solid $menu-border;
-	background-color: $menu-background;
+	border-top: 1px solid #e4e6e7;
+	border-bottom: 1px solid #e4e6e7;
+	background-color: #eceff1;
 	transition: margin-left .2s linear;
 	position: fixed;
-	width: calc(100% - 270px);
+	width: 100%;
 	top: 0;
 	z-index: 100;
-	@media (min-width: $menu-breakpoint) {
+	@media (min-width: 600px) {
 		padding-top: 0;
-		margin-left: $menu-width;
 		transition: none;
 	}
 }
@@ -20,8 +19,8 @@
 	font-size: 11px;
 	line-height: 18px;
 	padding: 4px;
-	color: $menu-item-color;
-	border-right: 1px solid $menu-border;
+	color: #333;
+	border-right: 1px solid #e4e6e7;
 	width: auto;
 	cursor: pointer;
 	display: flex;
@@ -39,14 +38,14 @@
 	}
 
 	&:hover {
-		color: $menu-item-color-hover;
-		background-color: $menu-item-background-hover;
+		color: #333;
+		background-color: #e4e6e7;
 	}
 
 	&--active,
 	&--active:hover {
-		color: $menu-item-color-active;
-		background-color: $menu-item-background-active;
-		border-color: $menu-item-background-active;
+		color: #333;
+		background-color: #189dee;;
+		border-color: #189dee;;
 	}
 }
