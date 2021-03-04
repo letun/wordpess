@@ -24,7 +24,7 @@ import { ReactComponent as secondaryButtonIcon } from '../../../../svg/buttons/s
 export const name = 'lettera/button-main';
 
 export const settings = {
-	title: 'Button',
+	title: 'Main Button',
 	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
@@ -60,11 +60,6 @@ export const settings = {
 			attribute: 'rel',
 			defauld: 'noopener',
 		},
-		textBellowButton: {
-			type: 'string',
-			source: 'html',
-			selector: 'p.text-small',
-		},
 		placeholder: {
 			type: 'string',
 			default: 'Button text…',
@@ -81,9 +76,18 @@ export const settings = {
 			type: 'string',
 			default: 'left',
 		},
+		isTextBellowButton: {
+			type: 'boolean',
+			default: false,
+		},
+		textBellowButton: {
+			type: 'string',
+			source: 'html',
+			selector: 'p.text-small',
+		},
 	},
-	edit: compose([
-		withState({ isBtnActive: false }),
+	edit: compose( [
+		withState( { isBtnActive: false } ),
 		withSelect( ( select, blockData ) => {
 			const parentClientId = select(
 				'core/block-editor'
@@ -98,8 +102,8 @@ export const settings = {
 					'core/block-editor'
 				).getBlockAttributes( parentClientId ),
 			};
-		} )
-	])( ( props ) => {
+		} ),
+	] )( ( props ) => {
 		const {
 			attributes,
 			setAttributes,
@@ -119,6 +123,7 @@ export const settings = {
 			linkHref,
 			linkTarget,
 			textAlign,
+			isTextBellowButton,
 			textBellowButton,
 		} = attributes;
 
@@ -158,61 +163,62 @@ export const settings = {
 			classBtn.push( 'button-main--' + buttonColor );
 		}
 
-		const btnToolBar = (
-			isBtnActive && (
-				<>
-					<ToolbarGroup label="Button style">
-						<ToolbarButton
-							icon={ primaryButtonIcon }
-							title={ 'Primary button' }
-							isActive={ true }
-							onClick={ () =>
-								setAttributes( { buttonColor: 'black' } )
-							}
-						/>
-						<ToolbarButton
-							icon={ secondaryButtonIcon }
-							title={ 'Secondary button' }
-							isActive={ false }
-							onClick={ () => {
-								const block = wp.blocks.createBlock(
-									'lettera/button-secondary',
-									{ content, textAlign }
-								);
-								wp.data
-									.dispatch( 'core/block-editor' )
-									.updateBlock( curClientId, block );
-							} }
-						/>
-					</ToolbarGroup>
-					<ToolbarButtonLinkHref
-						linkHref={ linkHref }
-						linkTarget={ linkTarget }
-						onChange={ ( value ) =>
-							setAttributes( { linkHref: value.url } )
+		const btnToolBar = isBtnActive && (
+			<>
+				<ToolbarGroup label="Button style">
+					<ToolbarButton
+						icon={ primaryButtonIcon }
+						title={ 'Primary button' }
+						isActive={ true }
+						onClick={ () =>
+							setAttributes( { buttonColor: 'black' } )
 						}
 					/>
-					<ToolbarButtonColor
-						buttonColor={ buttonColor }
-						btnColors={ btnColors }
-						onChange={ ( value ) => {
-							setAttributes( {
-								buttonColor: value
-									? getColorObjectByColorValue( btnColors, value )
-										?.slug
-									: 'black',
-							} );
+					<ToolbarButton
+						icon={ secondaryButtonIcon }
+						title={ 'Secondary button' }
+						isActive={ false }
+						onClick={ () => {
+							const block = wp.blocks.createBlock(
+								'lettera/button-secondary',
+								{
+									content,
+									textAlign,
+									isTextBellowButton,
+									textBellowButton,
+								}
+							);
+							wp.data
+								.dispatch( 'core/block-editor' )
+								.updateBlock( curClientId, block );
 						} }
 					/>
-				</>
-			)
+				</ToolbarGroup>
+				<ToolbarButtonLinkHref
+					linkHref={ linkHref }
+					linkTarget={ linkTarget }
+					onChange={ ( value ) =>
+						setAttributes( { linkHref: value.url } )
+					}
+				/>
+				<ToolbarButtonColor
+					buttonColor={ buttonColor }
+					btnColors={ btnColors }
+					onChange={ ( value ) => {
+						setAttributes( {
+							buttonColor: value
+								? getColorObjectByColorValue( btnColors, value )
+										?.slug
+								: 'black',
+						} );
+					} }
+				/>
+			</>
 		);
 
 		return (
 			<>
-				<BlockControls>
-					{btnToolBar}
-				</BlockControls>
+				<BlockControls>{ btnToolBar }</BlockControls>
 				{ inspectorControls }
 				<ButtonMain
 					className={ classnames( classBtn, className ) }
@@ -227,26 +233,31 @@ export const settings = {
 						placeholder={ placeholder }
 						allowedFormats={ [] }
 						unstableOnSplit={ false }
-						unstableOnFocus={() => { setState({isBtnActive: true}); }}
+						unstableOnFocus={ () => {
+							setState( { isBtnActive: true } );
+						} }
 					/>
 				</ButtonMain>
-				<RichText
-					identifier={ 'text-bellow-button' }
-					onChange={ ( value ) => {
-						console.log(value);
-						setAttributes({textBellowButton: value});
-					} }
-					value={ textBellowButton }
-					placeholder={ placeholder }
-					className={"text-small"}
-					allowedFormats={ [
-						'core/bold',
-						'core/italic',
-						'core/link',
-					] }
-					unstableOnSplit={ () => false }
-					unstableOnFocus={() => { setState({isBtnActive: false}); }}
-				/>
+				{ isTextBellowButton && (
+					<RichText
+						identifier={ 'text-bellow-button' }
+						onChange={ ( value ) => {
+							setAttributes( { textBellowButton: value } );
+						} }
+						value={ textBellowButton }
+						placeholder={ placeholder }
+						className={ 'text-small' }
+						allowedFormats={ [
+							'core/bold',
+							'core/italic',
+							'core/link',
+						] }
+						unstableOnSplit={ () => false }
+						unstableOnFocus={ () => {
+							setState( { isBtnActive: false } );
+						} }
+					/>
+				) }
 			</>
 		);
 	} ),
@@ -263,35 +274,34 @@ export const settings = {
 			linkHref,
 			textAlign,
 			textBellowButton,
+			isTextBellowButton,
 		} = attributes;
+
+		const elmClasses = textAlign === 'center' ? [ 'text-center' ] : [];
 
 		return (
 			<>
-				{
-					content && (
-						<ButtonMain
-							buttonColor={buttonColor}
-							buttonSize={buttonSize}
-							textAlign={textAlign}
-							linkHref={linkHref}
-							linkTarget={linkTarget}
-							linkRel={linkRel}
-							linkTitle={linkTitle}
-						>
-							<RichText.Content value={content}/>
-						</ButtonMain>
-					)
-				}
-				{
-					textBellowButton && (
-						<RichText.Content
-							tagName={"p"}
-							className={"text-small"}
-							value={textBellowButton}
-						/>
-					)
-				}
+				{ content && (
+					<ButtonMain
+						buttonColor={ buttonColor }
+						buttonSize={ buttonSize }
+						textAlign={ textAlign }
+						linkHref={ linkHref }
+						linkTarget={ linkTarget }
+						linkRel={ linkRel }
+						linkTitle={ linkTitle }
+					>
+						<RichText.Content value={ content } />
+					</ButtonMain>
+				) }
+				{ isTextBellowButton && textBellowButton && (
+					<RichText.Content
+						tagName={ 'p' }
+						className={ classnames( 'text-small', elmClasses ) }
+						value={ textBellowButton }
+					/>
+				) }
 			</>
-		)
+		);
 	},
 };

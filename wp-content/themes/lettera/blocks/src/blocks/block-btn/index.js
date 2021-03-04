@@ -29,7 +29,7 @@ export const settings = {
 			type: 'string',
 			default: null,
 		},
-		buttonAltText: {
+		isTextBellowButton: {
 			type: 'boolean',
 			default: true,
 		},
@@ -63,7 +63,7 @@ export const settings = {
 		const {
 			defaultButtonType,
 			buttonType,
-			buttonAltText,
+			isTextBellowButton,
 			hasContent,
 		} = attributes;
 
@@ -71,7 +71,10 @@ export const settings = {
 			let isEmpty = true;
 			if ( innerBlocks ) {
 				for ( let i = 0; i < innerBlocks.length; i++ ) {
-					if ( innerBlocks[ i ].attributes.content ) {
+					if (
+						innerBlocks[ i ].attributes.content ||
+						innerBlocks[ i ].attributes.textBellowButton
+					) {
 						isEmpty = false;
 						break;
 					}
@@ -88,24 +91,13 @@ export const settings = {
 		const MY_TEMPLATE = [
 			[
 				`lettera/${ buttonType ? buttonType : defaultButtonType }`,
-				{ placeholder: 'Button text' },
+				{ placeholder: 'Button text', isTextBellowButton },
 			],
 		];
-
-		if ( buttonAltText ) {
-			MY_TEMPLATE.push( [
-				'lettera/text-small',
-				{
-					placeholder: 'Text bellow button',
-					addClass: [ 'text-gray' ],
-				},
-			] );
-		}
 
 		const ALLOWED_BLOCKS = [
 			'lettera/button-main',
 			'lettera/button-secondary',
-			'lettera/text-small',
 		];
 
 		if ( hasContent ) {

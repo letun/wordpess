@@ -1,4 +1,5 @@
 import { withSelect } from '@wordpress/data';
+import { compose, withState } from '@wordpress/compose';
 import {
 	RichText,
 	BlockControls,
@@ -20,7 +21,7 @@ import { ReactComponent as secondaryButtonIcon } from '../../../../svg/buttons/s
 export const name = 'lettera/button-secondary';
 
 export const settings = {
-	title: 'Button',
+	title: 'Secondary Button',
 	icon: elementIcon,
 	category: LetteraConfig.category,
 	parent: LetteraConfig.childElemets.mainBlocks,
@@ -72,22 +73,34 @@ export const settings = {
 			type: 'string',
 			default: 'left',
 		},
+		isTextBellowButton: {
+			type: 'boolean',
+			default: false,
+		},
+		textBellowButton: {
+			type: 'string',
+			source: 'html',
+			selector: 'p.text-small',
+		},
 	},
-	edit: withSelect( ( select, blockData ) => {
-		const parentClientId = select(
-			'core/block-editor'
-		).getBlockHierarchyRootClientId( blockData.clientId );
-		return {
-			innerBlocks: select( 'core/block-editor' ).getBlocks(
-				blockData.clientId
-			),
-			parentClientId,
-			clientId: blockData.clientId,
-			parentBlockAttributes: select(
+	edit: compose( [
+		withState( { isBtnActive: false } ),
+		withSelect( ( select, blockData ) => {
+			const parentClientId = select(
 				'core/block-editor'
-			).getBlockAttributes( parentClientId ),
-		};
-	} )( ( props ) => {
+			).getBlockHierarchyRootClientId( blockData.clientId );
+			return {
+				innerBlocks: select( 'core/block-editor' ).getBlocks(
+					blockData.clientId
+				),
+				parentClientId,
+				clientId: blockData.clientId,
+				parentBlockAttributes: select(
+					'core/block-editor'
+				).getBlockAttributes( parentClientId ),
+			};
+		} ),
+	] )( ( props ) => {
 		const {
 			attributes,
 			setAttributes,
@@ -95,6 +108,8 @@ export const settings = {
 			clientId,
 			parentBlockAttributes,
 			className,
+			isBtnActive,
+			setState,
 		} = props;
 
 		const {
@@ -103,6 +118,8 @@ export const settings = {
 			placeholder,
 			linkHref,
 			textAlign,
+			textBellowButton,
+			isTextBellowButton,
 		} = attributes;
 		const curClientId = clientId;
 
@@ -138,7 +155,7 @@ export const settings = {
 			classBtn.push( 'button-secondary--' + buttonColor );
 		}
 
-		const toolbar = (
+		const btnToolBar = isBtnActive && (
 			<>
 				<ToolbarGroup label="Button style">
 					<ToolbarButton
@@ -148,7 +165,12 @@ export const settings = {
 						onClick={ () => {
 							const block = wp.blocks.createBlock(
 								'lettera/button-main',
-								{ content }
+								{
+									content,
+									textAlign,
+									isTextBellowButton,
+									textBellowButton,
+								}
 							);
 							wp.data
 								.dispatch( 'core/block-editor' )
@@ -190,7 +212,7 @@ export const settings = {
 
 		return (
 			<>
-				<BlockControls>{ toolbar }</BlockControls>
+				<BlockControls>{ btnToolBar }</BlockControls>
 				{ inspectorControls }
 				<ButtonSecondary
 					className={ classnames( classBtn, className ) }
@@ -204,8 +226,32 @@ export const settings = {
 						value={ content }
 						placeholder={ placeholder }
 						allowedFormats={ [] }
+						unstableOnSplit={ false }
+						unstableOnFocus={ () => {
+							setState( { isBtnActive: true } );
+						} }
 					/>
 				</ButtonSecondary>
+				{ isTextBellowButton && (
+					<RichText
+						identifier={ 'text-bellow-button' }
+						onChange={ ( value ) => {
+							setAttributes( { textBellowButton: value } );
+						} }
+						value={ textBellowButton }
+						placeholder={ placeholder }
+						className={ 'text-small' }
+						allowedFormats={ [
+							'core/bold',
+							'core/italic',
+							'core/link',
+						] }
+						unstableOnSplit={ () => false }
+						unstableOnFocus={ () => {
+							setState( { isBtnActive: false } );
+						} }
+					/>
+				) }
 			</>
 		);
 	} ),
@@ -220,21 +266,34 @@ export const settings = {
 			linkTitle,
 			linkHref,
 			textAlign,
+			textBellowButton,
+			isTextBellowButton,
 		} = attributes;
 
+		const elmClasses = textAlign === 'center' ? [ 'text-center' ] : [];
+
 		return (
-			content && (
-				<ButtonSecondary
-					buttonColor={ buttonColor }
-					linkHref={ linkHref }
-					linkTarget={ linkTarget }
-					linkRel={ linkRel }
-					linkTitle={ linkTitle }
-					textAlign={ textAlign }
-				>
-					<RichText.Content value={ content } />
-				</ButtonSecondary>
-			)
+			<>
+				{ content && (
+					<ButtonSecondary
+						buttonColor={ buttonColor }
+						linkHref={ linkHref }
+						linkTarget={ linkTarget }
+						linkRel={ linkRel }
+						linkTitle={ linkTitle }
+						textAlign={ textAlign }
+					>
+						<RichText.Content value={ content } />
+					</ButtonSecondary>
+				) }
+				{ isTextBellowButton && textBellowButton && (
+					<RichText.Content
+						tagName={ 'p' }
+						className={ classnames( 'text-small', elmClasses ) }
+						value={ textBellowButton }
+					/>
+				) }
+			</>
 		);
 	},
 };

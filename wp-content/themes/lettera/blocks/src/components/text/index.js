@@ -25,6 +25,10 @@ export const settings = {
 			type: 'string',
 			default: 'none',
 		},
+		buttonType: {
+			type: 'string',
+			default: null,
+		},
 		blockSettings: {
 			type: 'object',
 			default: {
@@ -80,12 +84,7 @@ export const settings = {
 				},
 			],
 			[ 'lettera/block-text' ],
-			[
-				'lettera/block-btn',
-				{
-					buttonAltText: true,
-				},
-			],
+			[ 'lettera/block-btn' ],
 		];
 
 		const ALLOWED_BLOCKS = [
@@ -93,7 +92,8 @@ export const settings = {
 			'lettera/header',
 			'lettera/paragraph',
 			'lettera/list',
-			'lettera/btn',
+			'lettera/button-main',
+			'lettera/button-secondary',
 			'lettera/text-small',
 			'lettera/block-text',
 			'lettera/block-btn',

@@ -7012,7 +7012,7 @@ var settings = {
       type: 'string',
       default: null
     },
-    buttonAltText: {
+    isTextBellowButton: {
       type: 'boolean',
       default: true
     },
@@ -7037,14 +7037,14 @@ var settings = {
         innerBlocks = props.innerBlocks;
     var defaultButtonType = attributes.defaultButtonType,
         buttonType = attributes.buttonType,
-        buttonAltText = attributes.buttonAltText,
+        isTextBellowButton = attributes.isTextBellowButton,
         hasContent = attributes.hasContent;
     wp.element.useEffect(function () {
       var isEmpty = true;
 
       if (innerBlocks) {
         for (var i = 0; i < innerBlocks.length; i++) {
-          if (innerBlocks[i].attributes.content) {
+          if (innerBlocks[i].attributes.content || innerBlocks[i].attributes.textBellowButton) {
             isEmpty = false;
             break;
           }
@@ -7057,17 +7057,10 @@ var settings = {
     });
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_6__["default"])(parentClientId, parentBlockAttributes);
     var MY_TEMPLATE = [["lettera/".concat(buttonType ? buttonType : defaultButtonType), {
-      placeholder: 'Button text'
+      placeholder: 'Button text',
+      isTextBellowButton: isTextBellowButton
     }]];
-
-    if (buttonAltText) {
-      MY_TEMPLATE.push(['lettera/text-small', {
-        placeholder: 'Text bellow button',
-        addClass: ['text-gray']
-      }]);
-    }
-
-    var ALLOWED_BLOCKS = ['lettera/button-main', 'lettera/button-secondary', 'lettera/text-small'];
+    var ALLOWED_BLOCKS = ['lettera/button-main', 'lettera/button-secondary'];
 
     if (hasContent) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
@@ -8257,6 +8250,10 @@ var settings = {
       type: 'string',
       default: 'none'
     },
+    buttonType: {
+      type: 'string',
+      default: null
+    },
     blockSettings: {
       type: 'object',
       default: {
@@ -8304,10 +8301,8 @@ var settings = {
     }], ['lettera/header', {
       placeholder: 'Header',
       level: 1
-    }], ['lettera/block-text'], ['lettera/block-btn', {
-      buttonAltText: true
-    }]];
-    var ALLOWED_BLOCKS = ['lettera/preheader', 'lettera/header', 'lettera/paragraph', 'lettera/list', 'lettera/btn', 'lettera/text-small', 'lettera/block-text', 'lettera/block-btn'];
+    }], ['lettera/block-text'], ['lettera/block-btn']];
+    var ALLOWED_BLOCKS = ['lettera/preheader', 'lettera/header', 'lettera/paragraph', 'lettera/list', 'lettera/button-main', 'lettera/button-secondary', 'lettera/text-small', 'lettera/block-text', 'lettera/block-btn'];
     var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_7__["default"])(clientId, props.attributes);
     var removeComponent = Object(_controls_removeComponentButton__WEBPACK_IMPORTED_MODULE_8__["default"])(clientId);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -8852,7 +8847,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var name = 'lettera/button-main';
 var settings = {
-  title: 'Button',
+  title: 'Main Button',
   icon: _svg_elements_button_svg__WEBPACK_IMPORTED_MODULE_11__["ReactComponent"],
   category: _global_config__WEBPACK_IMPORTED_MODULE_10__["default"].category,
   parent: _global_config__WEBPACK_IMPORTED_MODULE_10__["default"].childElemets.mainBlocks,
@@ -8888,11 +8883,6 @@ var settings = {
       attribute: 'rel',
       defauld: 'noopener'
     },
-    textBellowButton: {
-      type: 'string',
-      source: 'html',
-      selector: 'p.text-small'
-    },
     placeholder: {
       type: 'string',
       default: 'Button text…'
@@ -8910,6 +8900,15 @@ var settings = {
     textAlign: {
       type: 'string',
       default: 'left'
+    },
+    isTextBellowButton: {
+      type: 'boolean',
+      default: false
+    },
+    textBellowButton: {
+      type: 'string',
+      source: 'html',
+      selector: 'p.text-small'
     }
   },
   edit: Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"])([Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["withState"])({
@@ -8938,6 +8937,7 @@ var settings = {
         linkHref = attributes.linkHref,
         linkTarget = attributes.linkTarget,
         textAlign = attributes.textAlign,
+        isTextBellowButton = attributes.isTextBellowButton,
         textBellowButton = attributes.textBellowButton;
     wp.element.useEffect(function () {
       if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.btnAlign) {
@@ -8995,7 +8995,9 @@ var settings = {
       onClick: function onClick() {
         var block = wp.blocks.createBlock('lettera/button-secondary', {
           content: content,
-          textAlign: textAlign
+          textAlign: textAlign,
+          isTextBellowButton: isTextBellowButton,
+          textBellowButton: textBellowButton
         });
         wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
       }
@@ -9037,17 +9039,16 @@ var settings = {
           isBtnActive: true
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
+    })), isTextBellowButton && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
       identifier: 'text-bellow-button',
       onChange: function onChange(value) {
-        console.log(value);
         setAttributes({
           textBellowButton: value
         });
       },
       value: textBellowButton,
       placeholder: placeholder,
-      className: "text-small",
+      className: 'text-small',
       allowedFormats: ['core/bold', 'core/italic', 'core/link'],
       unstableOnSplit: function unstableOnSplit() {
         return false;
@@ -9069,7 +9070,9 @@ var settings = {
         linkTitle = attributes.linkTitle,
         linkHref = attributes.linkHref,
         textAlign = attributes.textAlign,
-        textBellowButton = attributes.textBellowButton;
+        textBellowButton = attributes.textBellowButton,
+        isTextBellowButton = attributes.isTextBellowButton;
+    var elmClasses = textAlign === 'center' ? ['text-center'] : [];
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_main__WEBPACK_IMPORTED_MODULE_6__["default"], {
       buttonColor: buttonColor,
       buttonSize: buttonSize,
@@ -9080,9 +9083,9 @@ var settings = {
       linkTitle: linkTitle
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
       value: content
-    })), textBellowButton && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
-      tagName: "p",
-      className: "text-small",
+    })), isTextBellowButton && textBellowButton && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
+      tagName: 'p',
+      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()('text-small', elmClasses),
       value: textBellowButton
     }));
   }
@@ -9105,20 +9108,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _layout_button_secondary__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../layout/button-secondary */ "./src/layout/button-secondary/index.js");
-/* harmony import */ var _controls_toolbarButtonLinkHref__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../controls/toolbarButtonLinkHref */ "./src/controls/toolbarButtonLinkHref.js");
-/* harmony import */ var _controls_toolbarButtonColor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../controls/toolbarButtonColor */ "./src/controls/toolbarButtonColor.js");
-/* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
-/* harmony import */ var _global_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../global/config */ "./src/global/config.js");
-/* harmony import */ var _svg_elements_button_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../svg/elements/button.svg */ "../svg/elements/button.svg");
-/* harmony import */ var _svg_buttons_primaryButton_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../svg/buttons/primaryButton.svg */ "../svg/buttons/primaryButton.svg");
-/* harmony import */ var _svg_buttons_secondaryButton_svg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../svg/buttons/secondaryButton.svg */ "../svg/buttons/secondaryButton.svg");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _layout_button_secondary__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../layout/button-secondary */ "./src/layout/button-secondary/index.js");
+/* harmony import */ var _controls_toolbarButtonLinkHref__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../controls/toolbarButtonLinkHref */ "./src/controls/toolbarButtonLinkHref.js");
+/* harmony import */ var _controls_toolbarButtonColor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../controls/toolbarButtonColor */ "./src/controls/toolbarButtonColor.js");
+/* harmony import */ var _controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../controls/getInspectorControls */ "./src/controls/getInspectorControls.js");
+/* harmony import */ var _global_config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../global/config */ "./src/global/config.js");
+/* harmony import */ var _svg_elements_button_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../svg/elements/button.svg */ "../svg/elements/button.svg");
+/* harmony import */ var _svg_buttons_primaryButton_svg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../svg/buttons/primaryButton.svg */ "../svg/buttons/primaryButton.svg");
+/* harmony import */ var _svg_buttons_secondaryButton_svg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../svg/buttons/secondaryButton.svg */ "../svg/buttons/secondaryButton.svg");
+
 
 
 
@@ -9134,10 +9140,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var name = 'lettera/button-secondary';
 var settings = {
-  title: 'Button',
-  icon: _svg_elements_button_svg__WEBPACK_IMPORTED_MODULE_10__["ReactComponent"],
-  category: _global_config__WEBPACK_IMPORTED_MODULE_9__["default"].category,
-  parent: _global_config__WEBPACK_IMPORTED_MODULE_9__["default"].childElemets.mainBlocks,
+  title: 'Secondary Button',
+  icon: _svg_elements_button_svg__WEBPACK_IMPORTED_MODULE_11__["ReactComponent"],
+  category: _global_config__WEBPACK_IMPORTED_MODULE_10__["default"].category,
+  parent: _global_config__WEBPACK_IMPORTED_MODULE_10__["default"].childElemets.mainBlocks,
   attributes: {
     content: {
       type: 'string',
@@ -9186,9 +9192,20 @@ var settings = {
     textAlign: {
       type: 'string',
       default: 'left'
+    },
+    isTextBellowButton: {
+      type: 'boolean',
+      default: false
+    },
+    textBellowButton: {
+      type: 'string',
+      source: 'html',
+      selector: 'p.text-small'
     }
   },
-  edit: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
+  edit: Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"])([Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["withState"])({
+    isBtnActive: false
+  }), Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["withSelect"])(function (select, blockData) {
     var parentClientId = select('core/block-editor').getBlockHierarchyRootClientId(blockData.clientId);
     return {
       innerBlocks: select('core/block-editor').getBlocks(blockData.clientId),
@@ -9196,18 +9213,22 @@ var settings = {
       clientId: blockData.clientId,
       parentBlockAttributes: select('core/block-editor').getBlockAttributes(parentClientId)
     };
-  })(function (props) {
+  })])(function (props) {
     var attributes = props.attributes,
         setAttributes = props.setAttributes,
         parentClientId = props.parentClientId,
         clientId = props.clientId,
         parentBlockAttributes = props.parentBlockAttributes,
-        className = props.className;
+        className = props.className,
+        isBtnActive = props.isBtnActive,
+        setState = props.setState;
     var buttonColor = attributes.buttonColor,
         content = attributes.content,
         placeholder = attributes.placeholder,
         linkHref = attributes.linkHref,
-        textAlign = attributes.textAlign;
+        textAlign = attributes.textAlign,
+        textBellowButton = attributes.textBellowButton,
+        isTextBellowButton = attributes.isTextBellowButton;
     var curClientId = clientId;
     wp.element.useEffect(function () {
       if (parentBlockAttributes.blockAttributes && parentBlockAttributes.blockAttributes.btnAlign) {
@@ -9218,7 +9239,7 @@ var settings = {
         }
       }
     });
-    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_8__["default"])(parentClientId, parentBlockAttributes);
+    var inspectorControls = Object(_controls_getInspectorControls__WEBPACK_IMPORTED_MODULE_9__["default"])(parentClientId, parentBlockAttributes);
     var btnColors = [{
       name: 'None',
       slug: 'none',
@@ -9246,20 +9267,23 @@ var settings = {
       classBtn.push('button-secondary--' + buttonColor);
     }
 
-    var toolbar = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarGroup"], {
+    var btnToolBar = isBtnActive && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToolbarGroup"], {
       label: "Button style"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      icon: _svg_buttons_primaryButton_svg__WEBPACK_IMPORTED_MODULE_11__["ReactComponent"],
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToolbarButton"], {
+      icon: _svg_buttons_primaryButton_svg__WEBPACK_IMPORTED_MODULE_12__["ReactComponent"],
       title: 'Primary button',
       isActive: false,
       onClick: function onClick() {
         var block = wp.blocks.createBlock('lettera/button-main', {
-          content: content
+          content: content,
+          textAlign: textAlign,
+          isTextBellowButton: isTextBellowButton,
+          textBellowButton: textBellowButton
         });
         wp.data.dispatch('core/block-editor').updateBlock(curClientId, block);
       }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToolbarButton"], {
-      icon: _svg_buttons_secondaryButton_svg__WEBPACK_IMPORTED_MODULE_12__["ReactComponent"],
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToolbarButton"], {
+      icon: _svg_buttons_secondaryButton_svg__WEBPACK_IMPORTED_MODULE_13__["ReactComponent"],
       title: 'Secondary button',
       isActive: true,
       onClick: function onClick() {
@@ -9267,28 +9291,28 @@ var settings = {
           buttonColor: 'yellow'
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_toolbarButtonLinkHref__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_toolbarButtonLinkHref__WEBPACK_IMPORTED_MODULE_7__["default"], {
       linkHref: linkHref,
       onChange: function onChange(value) {
         return setAttributes({
           linkHref: value.url
         });
       }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_toolbarButtonColor__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_controls_toolbarButtonColor__WEBPACK_IMPORTED_MODULE_8__["default"], {
       buttonColor: buttonColor,
       btnColors: btnColors,
       onChange: function onChange(value) {
         var _getColorObjectByColo;
 
         setAttributes({
-          buttonColor: value && value !== 'none' ? (_getColorObjectByColo = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["getColorObjectByColorValue"])(btnColors, value)) === null || _getColorObjectByColo === void 0 ? void 0 : _getColorObjectByColo.slug : null
+          buttonColor: value && value !== 'none' ? (_getColorObjectByColo = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["getColorObjectByColorValue"])(btnColors, value)) === null || _getColorObjectByColo === void 0 ? void 0 : _getColorObjectByColo.slug : null
         });
       }
     }));
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"], null, toolbar), inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_secondary__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(classBtn, className),
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["BlockControls"], null, btnToolBar), inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_secondary__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()(classBtn, className),
       textAlign: textAlign
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
       identifier: "content",
       onChange: function onChange(value) {
         return setAttributes({
@@ -9297,8 +9321,33 @@ var settings = {
       },
       value: content,
       placeholder: placeholder,
-      allowedFormats: []
-    })));
+      allowedFormats: [],
+      unstableOnSplit: false,
+      unstableOnFocus: function unstableOnFocus() {
+        setState({
+          isBtnActive: true
+        });
+      }
+    })), isTextBellowButton && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
+      identifier: 'text-bellow-button',
+      onChange: function onChange(value) {
+        setAttributes({
+          textBellowButton: value
+        });
+      },
+      value: textBellowButton,
+      placeholder: placeholder,
+      className: 'text-small',
+      allowedFormats: ['core/bold', 'core/italic', 'core/link'],
+      unstableOnSplit: function unstableOnSplit() {
+        return false;
+      },
+      unstableOnFocus: function unstableOnFocus() {
+        setState({
+          isBtnActive: false
+        });
+      }
+    }));
   }),
   save: function save(props) {
     var attributes = props.attributes;
@@ -9308,16 +9357,23 @@ var settings = {
         linkRel = attributes.linkRel,
         linkTitle = attributes.linkTitle,
         linkHref = attributes.linkHref,
-        textAlign = attributes.textAlign;
-    return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_secondary__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        textAlign = attributes.textAlign,
+        textBellowButton = attributes.textBellowButton,
+        isTextBellowButton = attributes.isTextBellowButton;
+    var elmClasses = textAlign === 'center' ? ['text-center'] : [];
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_button_secondary__WEBPACK_IMPORTED_MODULE_6__["default"], {
       buttonColor: buttonColor,
       linkHref: linkHref,
       linkTarget: linkTarget,
       linkRel: linkRel,
       linkTitle: linkTitle,
       textAlign: textAlign
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
       value: content
+    })), isTextBellowButton && textBellowButton && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
+      tagName: 'p',
+      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()('text-small', elmClasses),
+      value: textBellowButton
     }));
   }
 };
