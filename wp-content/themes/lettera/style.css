@@ -14,10 +14,13 @@ Author URI: https://www.letun.dev
 
 .ruler {
   position: relative; }
-  .ruler:hover .ruler__button::before {
-    content: ""; }
   .ruler:hover .ruler__button:hover::before {
-    content: attr(data-title); }
+    color: #333;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    line-height: 18px; }
 
 .ruler__button {
   font-size: 14px;
@@ -42,5 +45,3 @@ Author URI: https://www.letun.dev
   .ruler__button--active {
     color: #333;
     background: #b3b3b3; }
-    .ruler__button--active::before {
-      content: attr(data-title); }

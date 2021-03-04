@@ -76,7 +76,7 @@ gulp.task('jslint', function () {
 
 gulp.task('scsslint', function lintCssTask() {
 	return gulp
-		.src('./wp-content/themes/lettera/scss/lettera/**/*.scss')
+		.src('./wp-content/themes/lettera/scss/**/*.scss')
 		.pipe(eslint({
 			reporters: [
 				{formatter: 'string', console: true}

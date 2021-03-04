@@ -1,5 +1,22 @@
 .ruler {
 	position: relative;
+
+	&:hover {
+		.ruler__button::before {
+			//content: "";
+		}
+
+		.ruler__button:hover::before {
+			//content: attr(data-title);
+			color: #333;
+			position: absolute;
+			top: 4px;
+			//z-index: 10;
+			left: 0;
+			right: 0;
+			line-height: 18px;
+		}
+	}
 }
 
 .ruler__button {
@@ -33,7 +50,7 @@
 		background: #b3b3b3;
 
 		&::before {
-			content: attr(data-title);
+			//content: attr(data-title);
 		}
 	}
 }

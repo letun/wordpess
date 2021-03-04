@@ -37,12 +37,19 @@
 				this.classList.add('ruler__button--active');
 			}})(breakpoints[i].size));
 
+			div.addEventListener('mouseenter', (function(w) {return function() {
+				this.parentNode.lastChild.innerHTML = this.getAttribute('data-title');
+			}})(breakpoints[i].size));
+			div.addEventListener('mouseleave', (function(w) {return function() {
+				this.parentNode.lastChild.innerHTML = this.parentNode.querySelector('.ruler__button--active').getAttribute('data-title');
+			}})(breakpoints[i].size));
+
 			ruler.appendChild(div);
 		}
 
 		if (ruler.firstChild) {
 			ruler.firstChild.classList.add('ruler__button--active');
-
+			ruler.lastChild.innerHTML = ruler.firstChild.getAttribute('data-title');
 		}
 	}
 
