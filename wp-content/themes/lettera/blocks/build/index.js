@@ -9561,18 +9561,21 @@ var settings = {
         return false;
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-      className: 'card__link'
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, linkContent), "\xA0\u2192"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('card__link--admin', 'link')
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
-      type: "text",
-      placeholder: 'Learn more',
-      value: linkContent,
-      onChange: function onChange(e) {
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('card__link', 'card__link--admin')
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
+      tagName: 'span',
+      onChange: function onChange(value) {
         return setAttributes({
-          linkContent: e.target.value
+          linkContent: value
         });
-      }
+      },
+      value: linkContent,
+      placeholder: 'Learn more',
+      allowedFormats: [],
+      unstableOnSplit: function unstableOnSplit() {
+        return false;
+      },
+      multiline: false
     }), "\xA0\u2192")));
   }),
   save: function save(props) {

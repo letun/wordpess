@@ -195,22 +195,25 @@ export const settings = {
 						allowedFormats={ [] }
 						unstableOnSplit={ () => false }
 					/>
-					<p className={ 'card__link' }>
-						<span>{ linkContent }</span>&nbsp;&rarr;
-					</p>
-					<div
-						className={ classnames( 'card__link--admin', 'link' ) }
+					<p
+						className={ classnames(
+							'card__link',
+							'card__link--admin'
+						) }
 					>
-						<input
-							type="text"
-							placeholder={ 'Learn more' }
-							value={ linkContent }
-							onChange={ ( e ) =>
-								setAttributes( { linkContent: e.target.value } )
+						<RichText
+							tagName={ 'span' }
+							onChange={ ( value ) =>
+								setAttributes( { linkContent: value } )
 							}
+							value={ linkContent }
+							placeholder={ 'Learn more' }
+							allowedFormats={ [] }
+							unstableOnSplit={ () => false }
+							multiline={ false }
 						/>
 						&nbsp;&rarr;
-					</div>
+					</p>
 				</Column>
 			</>
 		);

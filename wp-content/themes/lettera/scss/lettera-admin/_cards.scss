@@ -15,26 +15,8 @@ div[data-type="lettera/block-cards"] {
 						margin-top: 16px;
 					}
 
-					.card__link {
-						display: none;
-					}
-
 					.card__link--admin {
-						display: block;
-
-						input {
-							color: #2199E8;
-							border: 0 none;
-							padding: 0;
-							width: auto;
-							outline: none;
-							font-size: 16px;
-							box-shadow: none;
-
-							&:focus {
-								box-shadow: none;
-							}
-						}
+						color: #2199E8;
 					}
 				}
 			}

@@ -547,20 +547,8 @@ div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout {
       box-shadow: none; }
       div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__text {
         margin-top: 16px; }
-      div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link {
-        display: none; }
       div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link--admin {
-        display: block; }
-        div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link--admin input {
-          color: #2199E8;
-          border: 0 none;
-          padding: 0;
-          width: auto;
-          outline: none;
-          font-size: 16px;
-          box-shadow: none; }
-          div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout div[data-type="lettera/card"] .card .card__link--admin input:focus {
-            box-shadow: none; }
+        color: #2199E8; }
 
 .block-editor-block-list__block .columns {
   display: flex;
