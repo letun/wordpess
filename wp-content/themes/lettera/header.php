@@ -17,5 +17,5 @@ if (is_front_page()) {
 </head>
 <body id="<?=$pid?>">
 	<header>
-		<div class="logo"><a href="//www.letun.dev/" id="logo"><img src="/wp-content/themes/lettera/images/assets/logo.svg"></a></div>
+		<div class="logo"><a href="//www.letun.dev/" id="logo"><img src="/wp-content/themes/lettera/images/assets/logo/logo.svg"></a></div>
 	</header>
