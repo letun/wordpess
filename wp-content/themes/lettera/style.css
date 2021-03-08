@@ -5,6 +5,9 @@ Version: 0.9
 Author: Serge Andreev
 Author URI: https://www.letun.dev
 */
+body {
+  margin: 0; }
+
 #logo {
   width: 48px;
   height: auto;
@@ -13,35 +16,41 @@ Author URI: https://www.letun.dev
     width: 100%; }
 
 .ruler {
+  display: none;
   position: relative; }
-  .ruler:hover .ruler__button:hover::before {
-    color: #333;
-    position: absolute;
-    top: 4px;
-    left: 0;
-    right: 0;
-    line-height: 18px; }
+  @media only screen and (min-width: 1200px) {
+    .ruler {
+      display: block; } }
 
 .ruler__button {
-  font-size: 14px;
-  line-height: 18px;
-  min-height: 18px;
-  padding: 4px;
   display: block;
-  margin: 0 auto;
-  text-align: center;
-  border-right: 1px solid #000;
-  border-left: 1px solid #000;
-  top: 0;
   position: absolute;
+  top: 0;
+  right: 0;
   left: 0;
-  right: 0; }
-  .ruler__button::before {
-    content: "";
-    text-align: center; }
+  min-height: 24px;
+  margin: 0 auto;
+  padding: 4px 0;
+  border-right: 1px solid #000000;
+  border-left: 1px solid #000000;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center; }
   .ruler__button:hover, .ruler__button--active:hover {
-    color: #333;
-    background: #939393; }
+    background: #939393;
+    color: #333333; }
   .ruler__button--active {
-    color: #333;
-    background: #b3b3b3; }
+    background: #B3B3B3;
+    color: #333333; }
+
+.content {
+  margin: 0 auto;
+  width: 100%; }
+
+.content__frame {
+  opacity: 1;
+  width: 100%;
+  height: calc(100vh - 64px);
+  margin: 0;
+  border: 0;
+  transition: opacity .3s ease .1s; }

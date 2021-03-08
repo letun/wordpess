@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-	var frame = document.querySelector('.content__frame');
+	var frame = document.querySelector('.content');
 	var ruler = document.querySelector('.ruler');
 	var breakpoints = [
 		{ size: '320px', title: 'Mobile S' },
@@ -17,7 +17,7 @@
 	];
 
 	function setFrameWidth(w) {
-		frame.style.width = w >= 320 ? w + 'px' : null;
+		frame.style.width = w;
 	}
 
 	function initRuler() {
