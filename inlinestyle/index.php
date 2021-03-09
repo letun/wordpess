@@ -10,6 +10,7 @@ $visualHtml = CssInliner::fromHtml($html)->inlineCss()->render();
 echo $visualHtml;
 */
 
+/*
 use \InlineStyle\InlineStyle;
 
 $htmldoc = new InlineStyle(file_get_contents("http://wordpress.local/lettera/my-first-email/?preview=true"));
@@ -17,3 +18,17 @@ $htmldoc = new InlineStyle(file_get_contents("http://wordpress.local/lettera/my-
 $htmldoc->applyStylesheet(file_get_contents("http://wordpress.local/wp-content/themes/lettera/lettera.css"));
 
 echo $htmldoc->getHTML();
+*/
+
+use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
+
+$cssToInlineStyles = new CssToInlineStyles();
+
+$html = file_get_contents('http://wordpress.local/lettera/my-first-email/?preview=true');
+$css = file_get_contents('http://wordpress.local/wp-content/themes/lettera/lettera.css');
+
+// output
+echo $cssToInlineStyles->convert(
+	$html,
+	$css
+);
