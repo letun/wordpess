@@ -3,13 +3,68 @@ $headerHeight: 64px;
 .ruler {
 	display: none;
 	position: relative;
+	background: #f0f0f0;
 
 	@media only screen and (min-width: 1200px) {
 		display: block;
 	}
 }
 
+.ruler__buttons {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 8px 0;
+}
+
+.ruler__buttons-group {
+	display: flex;
+	margin: 0 16px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
 .ruler__button {
+	width: 24px;
+	height: 24px;
+	padding: 8px;
+	cursor: pointer;
+	background: #ffffff;
+
+	&:hover,
+	&:active {
+		svg {
+			fill: #000000;
+		}
+	}
+
+	svg {
+		fill: #939393;
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.ruler__button--rotate {
+	svg {
+		transform: rotate(270deg);
+	}
+}
+
+.ruler__button--active {
+	svg {
+		fill: #000000;
+	}
+}
+
+.ruler__screens-line {
+	height: 28px;
+	bottom: 0;
+	position: relative;
+	background: #cecece;
+}
+
+.ruler__screen-button {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -24,6 +79,10 @@ $headerHeight: 64px;
 	font-size: 14px;
 	line-height: 20px;
 	text-align: center;
+
+	&:first-of-type {
+		border: 0 none;
+	}
 
 	&:hover,
 	&--active:hover {
