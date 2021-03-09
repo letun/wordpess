@@ -235,9 +235,9 @@
       .post-type-lettera .block-editor-writing-flow table.container {
         width: 95% !important; } }
     .post-type-lettera .block-editor-writing-flow table.container td.container-inner {
-      padding-top: 24px !important;
-      padding-right: 8px !important;
-      padding-left: 8px !important; }
+      padding-top: 24px;
+      padding-right: 8px;
+      padding-left: 8px; }
       @media only screen and (min-width: 541px) {
         .post-type-lettera .block-editor-writing-flow table.container td.container-inner {
           padding-top: 32px !important;
