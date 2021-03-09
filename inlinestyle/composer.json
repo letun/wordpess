@@ -1,0 +1,14 @@
+{
+    "name": "letun/inlinestyle",
+    "require": {
+        "tijsverkoyen/css-to-inline-styles": "^2.2",
+        "inlinestyle/inlinestyle": "^1.2",
+        "pelago/emogrifier": "^5.0"
+    },
+    "authors": [
+        {
+            "name": "letun",
+            "email": "letun1984@gmail.com"
+        }
+    ]
+}

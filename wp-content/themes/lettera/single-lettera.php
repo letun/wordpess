@@ -3,7 +3,9 @@
  * The main template file
  */
 
-if ($_GET["preview"]):
+if ($_GET["inline"]):
+	get_inline_content();
+elseif ($_GET["preview"]):
 	get_header('lettera');
 	the_content();
 	get_footer('lettera');

@@ -9,7 +9,7 @@
         <meta name="supported-color-schemes" content="light dark">
         <title><?php wp_title(); ?></title>
         <link rel="stylesheet" type="text/css" href="<?= get_template_directory_uri();?>/lettera.css">
-        <!-- <style> -->
+        <style><?= file_get_contents(get_template_directory_uri() . '/lettera.css');?></style>
     </head>
     <body>
         <span class="preheader"><?php the_excerpt(); ?></span>
