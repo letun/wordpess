@@ -4,6 +4,12 @@
 	var frame = document.querySelector('.content');
 	var screenLines = document.querySelector('.ruler__screens-line');
 	var devices = document.querySelector('.ruler__buttons-group--devices');
+
+	var darkSchemeButton = document.querySelector('.ruler__button[data-name=theme-d]');
+	var lightSchemeButton = document.querySelector('.ruler__button[data-name=theme-l]');
+
+	var copyToClipboardButton = document.querySelector('.ruler__button[data-name=copy-html]');
+
 	var breakpoints = [
 		{ name: 'mobile-s', size: '320px', title: 'Mobile S' },
 		{ name: 'mobile-m', size: '375px', title: 'Mobile M' },
@@ -80,6 +86,45 @@
 			screenLines.firstChild.classList.add('ruler__screen-button--active');
 			screenLines.lastChild.innerHTML = screenLines.firstChild.getAttribute('data-title');
 		}
+
+		//color-schema
+		if (darkSchemeButton) {
+			darkSchemeButton.addEventListener('click', (function() {
+				lightSchemeButton.classList.remove('ruler__button--active');
+				this.classList.add('ruler__button--active');
+				var newURL = new URL(document.getElementById("lettera-content").src);
+				newURL.searchParams.set('color-schema', 'dark');
+				document.getElementById("lettera-content").src = newURL;
+			}));
+		}
+
+		if (lightSchemeButton) {
+			lightSchemeButton.addEventListener('click', (function() {
+				darkSchemeButton.classList.remove('ruler__button--active');
+				this.classList.add('ruler__button--active');
+				var newURL = new URL(document.getElementById("lettera-content").src);
+				newURL.searchParams.delete('color-schema', 'dark');
+				document.getElementById("lettera-content").src = newURL;
+			}));
+		}
+
+		//Copy to clipboard
+		copyToClipboardButton.addEventListener('click', function(event) {
+			var copyTextarea = document.getElementById("copyToClipboard");
+			copyTextarea.focus();
+			copyTextarea.select();
+
+			try {
+				var successful = document.execCommand('copy');
+				var msg = successful ? 'successful' : 'unsuccessful';
+				console.log('Copying text command was ' + msg);
+			} catch (err) {
+				console.log('Oops, unable to copy');
+			}
+
+			this.focus();
+		});
+
 	}
 
 	function init() {

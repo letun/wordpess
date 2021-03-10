@@ -14,7 +14,7 @@ else:
 	?>
 	<?php include_once get_template_directory() . '/inc/blocks/ruler.php'; ?>
 	<div class="content">
-	<iframe src="<?= add_query_arg(array("preview" => "true"), get_permalink());?>" class="content__frame" id="lettera-content" width="100%" height="100%"></iframe>
+		<iframe src="<?= add_query_arg(array("preview" => "true"), get_permalink());?>" class="content__frame" id="lettera-content" width="100%" height="100%"></iframe>
 	</div>
 	<script src="<?= get_template_directory_uri();?>/js/ruler.js" async></script>
 	<?php get_footer();
