@@ -27,6 +27,27 @@ export const settings = {
 			selector: 'img',
 			attribute: 'src',
 		},
+		mediaAlt: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'alt',
+			default: 'Lettera: Superheader block',
+		},
+		mediaWidth: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'width',
+			default: 584,
+		},
+		mediaHeight: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'height',
+			default: 285,
+		},
 		bgColor: {
 			type: 'string',
 			default: 'none',
@@ -138,9 +159,18 @@ export const settings = {
 						<Column className={ classnames( 'text-center' ) }>
 							<MediaUpload
 								onSelect={ ( media ) => {
+									const width = 584;
+									const height = Math.ceil(
+										( width / media.width ) * media.height
+									);
 									setAttributes( {
 										mediaURL: media.url,
 										mediaID: media.id,
+										mediaAlt: media.alt
+											? media.alt
+											: media.title,
+										mediaWidth: width,
+										mediaHeight: height,
 									} );
 								} }
 								allowedTypes={ [ 'image' ] }
@@ -176,7 +206,13 @@ export const settings = {
 	save: ( props ) => {
 		const {
 			className,
-			attributes: { mediaURL, bgColor },
+			attributes: {
+				mediaURL,
+				bgColor,
+				mediaWidth,
+				mediaHeight,
+				mediaAlt,
+			},
 		} = props;
 
 		const classContainer = [ 'superhead' ];
@@ -199,7 +235,9 @@ export const settings = {
 										? '/wp-content/themes/lettera/images/components/hero.png'
 										: mediaURL
 								}
-								alt="Promo"
+								alt={ mediaAlt }
+								width={ mediaWidth }
+								height={ mediaHeight }
 							/>
 							<Spacer height={ '32' } />
 							<InnerBlocks.Content />

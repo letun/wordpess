@@ -35,6 +35,7 @@ export const settings = {
 			source: 'attribute',
 			selector: 'td.feature__image img',
 			attribute: 'alt',
+			default: 'Lettera: Feature element',
 		},
 		content: {
 			type: 'string',

@@ -29,6 +29,27 @@ export const settings = {
 			selector: 'img',
 			attribute: 'src',
 		},
+		mediaAlt: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'alt',
+			default: 'Lettera: Card element',
+		},
+		mediaWidth: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'width',
+			default: 223,
+		},
+		mediaHeight: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'height',
+			default: 142,
+		},
 		content: {
 			type: 'string',
 			source: 'text',
@@ -163,9 +184,16 @@ export const settings = {
 				>
 					<MediaUpload
 						onSelect={ ( media ) => {
+							const width = 223;
+							const height = Math.ceil(
+								( width / media.width ) * media.height
+							);
 							setAttributes( {
 								mediaURL: media.url,
 								mediaID: media.id,
+								mediaAlt: media.alt ? media.alt : media.title,
+								mediaWidth: width,
+								mediaHeight: height,
 							} );
 						} }
 						allowedTypes={ [ 'image' ] }
@@ -229,6 +257,9 @@ export const settings = {
 			linkHref,
 			linkContent,
 			mediaURL,
+			mediaWidth,
+			mediaHeight,
+			mediaAlt,
 		} = attributes;
 
 		return (
@@ -247,8 +278,10 @@ export const settings = {
 									? '/wp-content/themes/lettera/images/components/hero.png'
 									: mediaURL
 							}
-							alt={ 'Hero' }
 							className={ 'card__image' }
+							alt={ mediaAlt }
+							width={ mediaWidth }
+							height={ mediaHeight }
 						/>
 						<RichText.Content
 							tagName={ 'p' }

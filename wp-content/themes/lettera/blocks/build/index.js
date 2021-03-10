@@ -7715,6 +7715,27 @@ var settings = {
       selector: 'img',
       attribute: 'src'
     },
+    mediaAlt: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'alt',
+      default: 'Lettera: Promo block'
+    },
+    mediaWidth: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'width',
+      default: 276
+    },
+    mediaHeight: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'height',
+      default: 276
+    },
     imagePosition: {
       type: 'string',
       default: 'left'
@@ -7777,9 +7798,14 @@ var settings = {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('text-center')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
       onSelect: function onSelect(media) {
+        var width = 276;
+        var height = Math.ceil(width / media.width * media.height);
         setAttributes({
           mediaURL: media.url,
-          mediaID: media.id
+          mediaID: media.id,
+          mediaAlt: media.alt ? media.alt : media.title,
+          mediaWidth: width,
+          mediaHeight: height
         });
       },
       allowedTypes: ['image'],
@@ -7809,7 +7835,10 @@ var settings = {
     var className = props.className,
         _props$attributes2 = props.attributes,
         mediaURL = _props$attributes2.mediaURL,
-        bgColor = _props$attributes2.bgColor;
+        bgColor = _props$attributes2.bgColor,
+        mediaWidth = _props$attributes2.mediaWidth,
+        mediaHeight = _props$attributes2.mediaHeight,
+        mediaAlt = _props$attributes2.mediaAlt;
     var classContainer = [];
 
     if (bgColor !== undefined && bgColor !== 'none') {
@@ -7823,7 +7852,9 @@ var settings = {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       className: "promo__image",
       src: !mediaURL ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
-      alt: "Promo"
+      alt: mediaAlt,
+      width: mediaWidth,
+      height: mediaHeight
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_spacer__WEBPACK_IMPORTED_MODULE_8__["default"], {
       height: '8'
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_column__WEBPACK_IMPORTED_MODULE_7__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null))))));
@@ -7883,6 +7914,27 @@ var settings = {
       source: 'attribute',
       selector: 'img',
       attribute: 'src'
+    },
+    mediaAlt: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'alt',
+      default: 'Lettera: Superheader block'
+    },
+    mediaWidth: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'width',
+      default: 584
+    },
+    mediaHeight: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'height',
+      default: 285
     },
     bgColor: {
       type: 'string',
@@ -7963,9 +8015,14 @@ var settings = {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('text-center')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
       onSelect: function onSelect(media) {
+        var width = 584;
+        var height = Math.ceil(width / media.width * media.height);
         setAttributes({
           mediaURL: media.url,
-          mediaID: media.id
+          mediaID: media.id,
+          mediaAlt: media.alt ? media.alt : media.title,
+          mediaWidth: width,
+          mediaHeight: height
         });
       },
       allowedTypes: ['image'],
@@ -7995,7 +8052,10 @@ var settings = {
     var className = props.className,
         _props$attributes2 = props.attributes,
         mediaURL = _props$attributes2.mediaURL,
-        bgColor = _props$attributes2.bgColor;
+        bgColor = _props$attributes2.bgColor,
+        mediaWidth = _props$attributes2.mediaWidth,
+        mediaHeight = _props$attributes2.mediaHeight,
+        mediaAlt = _props$attributes2.mediaAlt;
     var classContainer = ['superhead'];
 
     if (bgColor !== undefined && bgColor !== 'none') {
@@ -8009,7 +8069,9 @@ var settings = {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       className: "superhead__image",
       src: !mediaURL ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
-      alt: "Promo"
+      alt: mediaAlt,
+      width: mediaWidth,
+      height: mediaHeight
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_spacer__WEBPACK_IMPORTED_MODULE_7__["default"], {
       height: '32'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)))));
@@ -8069,6 +8131,27 @@ var settings = {
       source: 'attribute',
       selector: 'img',
       attribute: 'src'
+    },
+    mediaAlt: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'alt',
+      default: 'Lettera: Text block'
+    },
+    mediaWidth: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'width',
+      default: 584
+    },
+    mediaHeight: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'height',
+      default: 285
     },
     bgColor: {
       type: 'string',
@@ -8146,9 +8229,14 @@ var settings = {
       className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('text-center')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
       onSelect: function onSelect(media) {
+        var width = 584;
+        var height = Math.ceil(width / media.width * media.height);
         setAttributes({
           mediaURL: media.url,
-          mediaID: media.id
+          mediaID: media.id,
+          mediaAlt: media.alt ? media.alt : media.title,
+          mediaWidth: width,
+          mediaHeight: height
         });
       },
       allowedTypes: ['image'],
@@ -8178,7 +8266,10 @@ var settings = {
     var className = props.className,
         _props$attributes2 = props.attributes,
         mediaURL = _props$attributes2.mediaURL,
-        bgColor = _props$attributes2.bgColor;
+        bgColor = _props$attributes2.bgColor,
+        mediaWidth = _props$attributes2.mediaWidth,
+        mediaHeight = _props$attributes2.mediaHeight,
+        mediaAlt = _props$attributes2.mediaAlt;
     var classContainer = [];
 
     if (bgColor !== undefined && bgColor !== 'none') {
@@ -8192,7 +8283,9 @@ var settings = {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       className: "promo__image",
       src: !mediaURL ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
-      alt: "Promo"
+      alt: mediaAlt,
+      width: mediaWidth,
+      height: mediaHeight
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_spacer__WEBPACK_IMPORTED_MODULE_7__["default"], {
       height: '32'
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)))));
@@ -9432,6 +9525,27 @@ var settings = {
       selector: 'img',
       attribute: 'src'
     },
+    mediaAlt: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'alt',
+      default: 'Lettera: Card element'
+    },
+    mediaWidth: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'width',
+      default: 223
+    },
+    mediaHeight: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'height',
+      default: 142
+    },
     content: {
       type: 'string',
       source: 'text',
@@ -9529,9 +9643,14 @@ var settings = {
       textAlign: textAlign
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
       onSelect: function onSelect(media) {
+        var width = 223;
+        var height = Math.ceil(width / media.width * media.height);
         setAttributes({
           mediaURL: media.url,
-          mediaID: media.id
+          mediaID: media.id,
+          mediaAlt: media.alt ? media.alt : media.title,
+          mediaWidth: width,
+          mediaHeight: height
         });
       },
       allowedTypes: ['image'],
@@ -9586,7 +9705,10 @@ var settings = {
         linkTitle = attributes.linkTitle,
         linkHref = attributes.linkHref,
         linkContent = attributes.linkContent,
-        mediaURL = attributes.mediaURL;
+        mediaURL = attributes.mediaURL,
+        mediaWidth = attributes.mediaWidth,
+        mediaHeight = attributes.mediaHeight,
+        mediaAlt = attributes.mediaAlt;
     return content && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_layout_column__WEBPACK_IMPORTED_MODULE_5__["default"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       href: linkHref,
       target: linkTarget,
@@ -9595,8 +9717,10 @@ var settings = {
       className: 'card'
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       src: !mediaURL ? '/wp-content/themes/lettera/images/components/hero.png' : mediaURL,
-      alt: 'Hero',
-      className: 'card__image'
+      className: 'card__image',
+      alt: mediaAlt,
+      width: mediaWidth,
+      height: mediaHeight
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
       tagName: 'p',
       value: content,
@@ -9666,7 +9790,8 @@ var settings = {
       type: 'string',
       source: 'attribute',
       selector: 'td.feature__image img',
-      attribute: 'alt'
+      attribute: 'alt',
+      default: 'Lettera: Feature element'
     },
     content: {
       type: 'string',
@@ -11003,13 +11128,13 @@ var Spacer = function Spacer(_ref) {
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? '' : _ref$className;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("table", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className),
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('spacer'),
     cellpadding: '0',
     cellspacing: '0'
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("tbody", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("tr", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("td", {
     height: height,
     style: "font-size: ".concat(height, "px; line-height: ").concat(height, "px"),
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className)
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'spacer-inner')
   }, children))));
 };
 
