@@ -1,0 +1,13 @@
+{
+    "name": "letun/inline_styles",
+    "description": "Add style attributes for all tags in Lettera emails",
+    "authors": [
+        {
+            "name": "letun",
+            "email": "letun1984@gmail.com"
+        }
+    ],
+    "require": {
+        "tijsverkoyen/css-to-inline-styles": "^2.2"
+    }
+}

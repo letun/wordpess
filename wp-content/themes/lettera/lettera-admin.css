@@ -230,7 +230,7 @@
     text-align: inherit; }
     @media only screen and (min-width: 541px) {
       .post-type-lettera .block-editor-writing-flow table.container {
-        margin-bottom: 32px; } }
+        margin-bottom: 32px !important; } }
     @media only screen and (max-width: 648px) {
       .post-type-lettera .block-editor-writing-flow table.container {
         width: 95% !important; } }

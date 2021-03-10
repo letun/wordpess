@@ -4,7 +4,9 @@
  */
 
 if ($_GET["inline"]):
-	get_inline_content();
+	$pageUrl = add_query_arg(array("preview" => "true"), get_permalink());
+	$cssUrl = get_template_directory_uri() . '/lettera.css';
+	echo getInlineHTML($pageUrl, $cssUrl);
 elseif ($_GET["preview"]):
 	get_header('lettera');
 	the_content();

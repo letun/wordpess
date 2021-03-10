@@ -27,7 +27,7 @@ table {
 		text-align: inherit;
 
 		@media only screen and (min-width: #{$global-breakpoint}) {
-			margin-bottom: 32px;
+			margin-bottom: 32px !important;
 		}
 
 		@media only screen and (max-width: #{$global-width}) {
