@@ -44,6 +44,7 @@ function lettera_blocks() {
 	register_block_type( 'lettera/text-small');
 	register_block_type( 'lettera/card');
 	register_block_type( 'lettera/feature');
+	register_block_type( 'lettera/image');
 
 	register_block_type( 'lettera/block-text');
 	register_block_type( 'lettera/block-btn');

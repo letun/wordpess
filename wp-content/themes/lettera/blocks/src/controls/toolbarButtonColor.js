@@ -18,13 +18,13 @@ class toolbarButtonColor extends wp.element.Component {
 		} = this.props;
 
 		return (
-			<Toolbar className={ 'la-button-color-panel' }>
+			<Toolbar className={ 'la-color-panel' }>
 				<ToolbarButton
 					icon={ colorIcon }
 					isPressed={ isActive }
 					className={ [
-						'la-button-color-panel__button',
-						`la-button-color-panel__button--${ buttonColor }`,
+						'la-color-panel__button',
+						`la-color-panel__button--${ buttonColor }`,
 					] }
 					onClick={ () => {
 						setState( () => ( { isActive: ! isActive } ) );
@@ -50,7 +50,7 @@ class toolbarButtonColor extends wp.element.Component {
 							colors={ btnColors }
 							disableCustomColors={ true }
 							clearable={ false }
-							className={ 'la-button-color-panel__palette' }
+							className={ 'la-color-panel__palette' }
 						/>
 					</Popover>
 				) }
