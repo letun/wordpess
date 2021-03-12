@@ -315,8 +315,8 @@
   .post-type-lettera .block-editor-writing-flow ul.text-center,
   .post-type-lettera .block-editor-writing-flow ol.text-center {
     display: inline-block;
-    text-align: left;
-    min-width: 160px; }
+    min-width: 160px;
+    text-align: left; }
   .post-type-lettera .block-editor-writing-flow span.text-center {
     display: block;
     width: 100%;
@@ -576,8 +576,8 @@ div[data-type="lettera/block-cards"] .columns .block-editor-block-list__layout {
 
 .features-admin__image {
   width: 24px;
-  height: auto;
   max-width: 24px;
+  height: auto;
   max-height: 24px; }
 
 .features-admin__text {

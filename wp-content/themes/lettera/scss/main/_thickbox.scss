@@ -1,0 +1,26 @@
+#TB_window {
+	max-height: 100%;
+	max-width: 90%;
+
+	#TB_closeWindowButton {
+		.screen-reader-text {
+			display: none;
+		}
+
+		.tb-close-icon {
+			color: #000000;
+		}
+
+		&:focus .tb-close-icon {
+			box-shadow: none;
+		}
+	}
+
+	#TB_ajaxContent {
+		width: 100% !important;
+		height: auto !important;
+		max-width: 100%;
+		box-sizing: border-box;
+		padding: 8px 32px 32px;
+	}
+}

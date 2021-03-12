@@ -1,0 +1,27 @@
+.button {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 24px;
+	letter-spacing: 0;
+	color: $color2;
+	background: $color1;
+	border: 2px solid $color1;
+	border-radius: 4px;
+	outline: 0 none;
+	display: inline-block;
+	min-width: 144px;
+	max-width: 560px;
+	vertical-align: top;
+	margin: 0;
+	padding: 6px 28px;
+	text-align: center;
+	white-space: pre-wrap;
+	transition: transform .1s linear,box-shadow .1s linear,background-color .1s linear;
+	hyphens: auto;
+	cursor: pointer;
+
+	&:hover,
+	&:active {
+		background: desaturate(darken($color1, 5), 20);
+	}
+}

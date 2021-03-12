@@ -1,0 +1,49 @@
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-grid-classes:       true !default;
+
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1360px,
+	xxxl: 1600px
+) !default;
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+	xxxl: 1600px
+) !default;
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 48px !default;
+
+$color1: #353535;
+$color2: #FFFFFF;
+$color3: #D2D7DF;
+$color4: #BDBBB0;
+$color5: #8A897C;

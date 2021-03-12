@@ -1,13 +1,11 @@
 .header {
+	#logo {
+		display: block;
+		width: 48px;
+		height: auto;
 
-}
-
-#logo {
-	width: 48px;
-	height: auto;
-	display: block;
-
-	img {
-		width: 100%;
+		img {
+			width: 100%;
+		}
 	}
 }

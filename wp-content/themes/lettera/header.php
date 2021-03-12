@@ -14,6 +14,10 @@ if (is_front_page()) {
 	<title><?php wp_title(); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="<?= get_template_directory_uri();?>/style.css" rel="stylesheet" type="text/css" />
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+	</style>
+	<?php wp_head(); ?>
 </head>
 <body id="<?=$pid?>">
 	<header>

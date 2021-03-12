@@ -3,7 +3,7 @@ $headerHeight: 64px;
 .ruler {
 	display: none;
 	position: relative;
-	background: #f0f0f0;
+	background: $color3;
 
 	@media only screen and (min-width: 1200px) {
 		display: block;
@@ -19,29 +19,29 @@ $headerHeight: 64px;
 
 .ruler__buttons-group {
 	display: flex;
+	overflow: hidden;
 	margin: 0 16px;
 	border-radius: 6px;
-	overflow: hidden;
 }
 
 .ruler__button {
 	width: 24px;
 	height: 24px;
 	padding: 8px;
+	background: $color2;
 	cursor: pointer;
-	background: #ffffff;
 
 	&:hover,
 	&:active {
 		svg {
-			fill: #000000;
+			fill: $color1;
 		}
 	}
 
 	svg {
-		fill: #939393;
 		width: 24px;
 		height: 24px;
+		fill: $color5;
 	}
 }
 
@@ -53,15 +53,15 @@ $headerHeight: 64px;
 
 .ruler__button--active {
 	svg {
-		fill: #000000;
+		fill: $color1;
 	}
 }
 
 .ruler__screens-line {
-	height: 28px;
-	bottom: 0;
 	position: relative;
-	background: #cecece;
+	bottom: 0;
+	height: 28px;
+	background: $color4;
 }
 
 .ruler__screen-button {
@@ -74,8 +74,8 @@ $headerHeight: 64px;
 	min-height: 28px;
 	margin: 0 auto;
 	padding: 4px 0;
-	border-right: 1px solid #000000;
-	border-left: 1px solid #000000;
+	border-right: 1px solid $color1;
+	border-left: 1px solid $color1;
 	font-size: 14px;
 	line-height: 20px;
 	text-align: center;
@@ -84,21 +84,21 @@ $headerHeight: 64px;
 		border: 0 none;
 	}
 
-	&:hover,
-	&--active:hover {
-		background: #939393;
+	&--active {
+		background: darken($color4, 10);
 		color: #333333;
 	}
 
-	&--active {
-		background: #B3B3B3;
-		color: #333333;
+	&:hover,
+	&--active:hover {
+		background: darken($color4, 20);
+		color: $color1;
 	}
 }
 
 .content {
-	margin: 0 auto;
 	width: 100%;
+	margin: 0 auto;
 }
 
 .content__frame {
@@ -113,8 +113,8 @@ $headerHeight: 64px;
 .ruler__copy-html-container {
 	textarea {
 		position: absolute;
+		left: -100vh;
 		width: 0;
 		height: 0;
-		left: -100vh;
 	}
 }

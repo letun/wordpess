@@ -13,7 +13,7 @@
 		</div>
 		<div class="ruler__buttons-group">
 			<div class="ruler__button" data-name="copy-html"><?= file_get_contents(get_template_directory() . '/images/assets/ruler/copy.svg'); ?></div>
-			<div class="ruler__button" data-name="send-to"><?= file_get_contents(get_template_directory() . '/images/assets/ruler/mail.svg'); ?></div>
+			<a href="#TB_inline?inlineId=send-to" class="ruler__button thickbox" data-name="send-to"><?= file_get_contents(get_template_directory() . '/images/assets/ruler/mail.svg'); ?></a>
 			<a href="<?= get_edit_post_link(); ?>" class="ruler__button" data-name="edit" target="_blank"><?= file_get_contents(get_template_directory() . '/images/assets/ruler/edit.svg'); ?></a>
 		</div>
 	</div>
@@ -22,3 +22,4 @@
 		<textarea id="copyToClipboard"><?= file_get_contents(add_query_arg(array("preview" => "true"), get_permalink())); ?></textarea>
 	</div>
 </div>
+<?php include_once get_template_directory() . '/inc/blocks/send-to-email-form.php'; ?>
