@@ -1,8 +1,8 @@
 .form {
 	fieldset {
-		border: 0 none;
 		margin: 0;
 		padding: 0;
+		border: 0 none;
 
 		label {
 			order: 1;
@@ -24,19 +24,19 @@
 
 	input {
 		display: block;
+		box-sizing: border-box;
 		width: 100%;
 		padding: 4px 8px;
+		border: 1px solid $color1;
+		border-radius: .25rem;
+		background-clip: padding-box;
+		background-color: $color2;
 		font-size: 16px;
 		line-height: 24px;
-		background-color: $color2;
-		background-clip: padding-box;
-		border: 1px solid $color1;
+		transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
-		border-radius: .25rem;
-		transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-		box-sizing: border-box;
 	}
 }
 

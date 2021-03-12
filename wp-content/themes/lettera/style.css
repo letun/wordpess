@@ -14,20 +14,20 @@ html {
 
 .container {
   width: 100%;
-  padding-right: 24px;
-  padding-left: 24px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+  padding-right: 24px;
+  padding-left: 24px; }
   @media (min-width: 1600px) {
     .container {
       max-width: 1600px; } }
 
 .container-fluid {
   width: 100%;
-  padding-right: 24px;
-  padding-left: 24px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+  padding-right: 24px;
+  padding-left: 24px; }
 
 .row {
   display: flex;
@@ -52,11 +52,11 @@ html {
 .col-xxl-auto, .col-xxxl-1, .col-xxxl-2, .col-xxxl-3, .col-xxxl-4, .col-xxxl-5, .col-xxxl-6, .col-xxxl-7, .col-xxxl-8, .col-xxxl-9, .col-xxxl-10, .col-xxxl-11, .col-xxxl-12, .col-xxxl,
 .col-xxxl-auto {
   position: relative;
+  box-sizing: border-box;
   width: 100%;
   min-height: 1px;
   padding-right: 24px;
-  padding-left: 24px;
-  box-sizing: border-box; }
+  padding-left: 24px; }
 
 .col {
   flex-basis: 0;
@@ -1467,7 +1467,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #FFFFFF;
-  font-family: system-ui,	-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
   font-size: 16px;
   line-height: 24px; }
   body *,
@@ -1564,33 +1564,33 @@ li {
   margin-bottom: 8px; }
 
 .button {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: 0;
-  color: #FFFFFF;
-  background: #353535;
-  border: 2px solid #353535;
-  border-radius: 4px;
-  outline: 0 none;
   display: inline-block;
   min-width: 144px;
   max-width: 560px;
-  vertical-align: top;
   margin: 0;
   padding: 6px 28px;
+  border: 2px solid #353535;
+  border-radius: 4px;
+  outline: 0 none;
+  background: #353535;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 24px;
   text-align: center;
+  vertical-align: top;
   white-space: pre-wrap;
-  transition: transform .1s linear,box-shadow .1s linear,background-color .1s linear;
   hyphens: auto;
+  transition: transform .1s linear, box-shadow .1s linear, background-color .1s linear;
   cursor: pointer; }
   .button:hover, .button:active {
     background: #282828; }
 
 .form fieldset {
-  border: 0 none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  border: 0 none; }
   .form fieldset label {
     order: 1; }
   .form fieldset input {
@@ -1605,19 +1605,19 @@ li {
 
 .form input {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   padding: 4px 8px;
+  border: 1px solid #353535;
+  border-radius: .25rem;
+  background-clip: padding-box;
+  background-color: #FFFFFF;
   font-size: 16px;
   line-height: 24px;
-  background-color: #FFFFFF;
-  background-clip: padding-box;
-  border: 1px solid #353535;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  box-sizing: border-box; }
+  appearance: none; }
 
 .form__control {
   max-width: 400px; }
@@ -1628,8 +1628,8 @@ li {
   margin-bottom: 16px; }
 
 #TB_window {
-  max-height: 100%;
-  max-width: 90%; }
+  max-width: 90%;
+  max-height: 100%; }
   #TB_window #TB_closeWindowButton .screen-reader-text {
     display: none; }
   #TB_window #TB_closeWindowButton .tb-close-icon {
@@ -1637,10 +1637,10 @@ li {
   #TB_window #TB_closeWindowButton:focus .tb-close-icon {
     box-shadow: none; }
   #TB_window #TB_ajaxContent {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100%;
     box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
     padding: 8px 32px 32px; }
 
 .header #logo {

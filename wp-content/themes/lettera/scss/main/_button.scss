@@ -1,23 +1,26 @@
 .button {
-	font-weight: 500;
-	font-size: 18px;
-	line-height: 24px;
-	letter-spacing: 0;
-	color: $color2;
-	background: $color1;
-	border: 2px solid $color1;
-	border-radius: 4px;
-	outline: 0 none;
 	display: inline-block;
 	min-width: 144px;
 	max-width: 560px;
-	vertical-align: top;
 	margin: 0;
 	padding: 6px 28px;
+	border: 2px solid $color1;
+	border-radius: 4px;
+	outline: 0 none;
+	background: $color1;
+	color: $color2;
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: 0;
+	line-height: 24px;
 	text-align: center;
+	vertical-align: top;
 	white-space: pre-wrap;
-	transition: transform .1s linear,box-shadow .1s linear,background-color .1s linear;
 	hyphens: auto;
+	transition:
+		transform .1s linear,
+		box-shadow .1s linear,
+		background-color .1s linear;
 	cursor: pointer;
 
 	&:hover,

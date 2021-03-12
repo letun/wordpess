@@ -1,6 +1,6 @@
 #TB_window {
-	max-height: 100%;
 	max-width: 90%;
+	max-height: 100%;
 
 	#TB_closeWindowButton {
 		.screen-reader-text {
@@ -17,10 +17,10 @@
 	}
 
 	#TB_ajaxContent {
-		width: 100% !important;
-		height: auto !important;
-		max-width: 100%;
 		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+		height: auto !important;
 		padding: 8px 32px 32px;
 	}
 }
