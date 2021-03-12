@@ -88,6 +88,7 @@ export const settings = {
 			'lettera/paragraph',
 			'lettera/list',
 			'lettera/feature',
+			'lettera/image',
 		];
 		return (
 			<>
