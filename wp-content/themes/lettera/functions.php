@@ -11,6 +11,8 @@ require_once get_template_directory() . '/inc/inline_styles.php';
 
 require_once get_template_directory() . '/inc/send_to_form.php';
 
+require_once get_template_directory() . '/inc/ga_login.php';
+
 
 add_action('init', 'init_theme_method');
 function init_theme_method() {
