@@ -1,7 +1,6 @@
 *.htm
 *.html
 .idea
-wp-config.php
 nbproject
 node_modules
 wp-content/uploads
