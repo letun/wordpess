@@ -1,11 +1,10 @@
 === User Role Editor ===
 Contributors: shinephp
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
-Requires at least: 4.0
-Tested up to: 5.8.1
-Stable tag: 4.60.2
-Requires PHP: 5.6
+Requires at least: 4.4
+Tested up to: 6.1.1
+Stable tag: 4.63.2
+Requires PHP: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +20,8 @@ Role assigned every new created user by default may be changed too.
 Capabilities could be assigned on per user basis. Multiple roles could be assigned to user simultaneously.
 You can add new capabilities and remove unnecessary capabilities which could be left from uninstalled plugins.
 Multi-site support is provided.
+
+Try it out on your free TasteWP [test site](https://demo.tastewp.com/user-role-editor).
 
 To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/user-role-editor-wordpress-plugin/) at [shinephp.com](http://shinephp.com)
 
@@ -81,19 +82,20 @@ https://translate.wordpress.org/projects/wp-plugins/user-role-editor/
 
 == Changelog =
 
-= [4.60.2] 20.09.2021 =
-* Update: Marked as compatible with WordPress 5.8.1
-* Fix: Multisite: URE_Editor::is_full_network_sync() returned FALSE, instead TRUE for the AJAX call, while call was made from the Network Admin (wp-admin/network/).
+= [4.63.2] 16.12.2022 =
+* Update: symbols '{}$' are removed from capability name before use it for internal purpose, to exclude cases like when one of plugins broke URE work adding capability like 'edit_{$type}s'.
+* Update: array_merge() function is replaced with wrapper ure_array_merge(), to exclude fatal error: Argument #2 must be of type array.
 
-= [4.60.1] 21.07.2021 =
-* Update: Marked as compatible with WordPress 5.8.
-* Fix: PHP Notice: Undefined property: URE_User_View::$multisite in /wp-content/plugins/user-role-editor/includes/classes/user-view.php on line 145
+= [4.63.1] 20.09.2022 =
+* Marked as compatible with WordPress version 6.0.2
+* Fix: PHP Warning: Attempt to read property “ID” on null in /wp-content/plugins/user-role-editor/includes/classes/user-role-editor.php on line 369
+* Fix: Deprecated: Automatic conversion of false to array is deprecated in ./includes/classes/base-lib.php on line 212
 
-= [4.60] 24.06.2021 =
-* New: Notification box was replaced with one based on the [jpillora/nofifyjs](https://notifyjs.jpillora.com/) jQuery plugin. It does not move down page content. It disappears automatically after 5 seconds. Click on it to remove it manually.
-* Fix: "Add capability" shows warning styled notification when needed (invalid characters, etc.) instead of a successful one.
-* Fix: Capabilities group uncheck and revert selection is blocked for the administrator role to exclude accident deletion of permissions from it.
-
+= [4.63] 11.07.2022 =
+* Update: Marked as compatible with WordPress 6.0.1
+* Update: Few notices (e.g. "Constant FILTER_SANITIZE_STRING is deprecated") was fixed for better compatibility with PHP 8.1.
+* Update: URE does not try to deactivate itself in case another instance is active, just shows notice and stops execution. 
+ 
 File changelog.txt contains the full list of changes.
 
 == Additional Documentation ==
@@ -104,7 +106,10 @@ I am ready to answer on your questions about plugin usage. Use [plugin page comm
 
 == Upgrade Notice ==
 
-= [4.60.2] 20.09.2021 =
-* Update: Marked as compatible with WordPress 5.8.1
-* Fix: Multisite: URE_Editor::is_full_network_sync() returned FALSE, instead TRUE for the AJAX call, while call was made from the Network Admin (wp-admin/network/).
+= [4.63.1] 19.09.2022 =
+* Marked as compatible with WordPress version 6.0.2
+* Fix: PHP Warning: Attempt to read property “ID” on null in /wp-content/plugins/user-role-editor/includes/classes/user-role-editor.php on line 369
+* Fix: Deprecated: Automatic conversion of false to array is deprecated in ./includes/classes/base-lib.php on line 212
+
+
 
