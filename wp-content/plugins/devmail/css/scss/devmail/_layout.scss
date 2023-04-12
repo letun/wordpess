@@ -1,0 +1,105 @@
+/* Windows Phone Viewport Fix */
+@-ms-viewport {
+	width: device-width;
+}
+
+#outlook a {
+	padding: 0;
+}
+
+body {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100% !important;
+	min-width: 100%;
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+.ExternalClass {
+	width: 100%;
+
+	&,
+	p,
+	span,
+	font,
+	td,
+	th,
+	div {
+		line-height: 100%;
+	}
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+td,
+th {
+	border-collapse: collapse !important;
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+
+table,
+tr,
+td,
+th {
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+img {
+	display: block;
+	clear: both;
+	width: auto;
+	max-width: 100%;
+	border: 0;
+	outline: none;
+	text-decoration: none;
+	-ms-interpolation-mode: bicubic;
+}
+
+a img {
+	border: none;
+}
+
+table,
+th,
+td,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+	&.text-center {
+		text-align: center;
+	}
+
+	&.text-left {
+		text-align: left;
+	}
+
+	&.text-right {
+		text-align: right;
+	}
+}
+
+span.text-center {
+	display: block;
+	width: 100%;
+	text-align: center;
+}

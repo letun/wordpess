@@ -1,0 +1,25 @@
+div[data-type="devmail/block-cards"] {
+	.columns {
+		.block-editor-block-list__layout {
+			display: flex;
+			flex-wrap: wrap;
+
+			div[data-type="devmail/card"] {
+				width: 50%;
+
+				.card {
+					border: 0 none;
+					box-shadow: none;
+
+					.card__text {
+						margin-top: 16px;
+					}
+
+					.card__link--admin {
+						color: #2199E8;
+					}
+				}
+			}
+		}
+	}
+}

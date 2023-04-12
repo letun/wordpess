@@ -1,0 +1,51 @@
+.form {
+	fieldset {
+		margin: 0;
+		padding: 0;
+		border: 0 none;
+
+		label {
+			order: 1;
+		}
+
+		input {
+			order: 2;
+		}
+	}
+
+	legend {
+		padding: 0;
+	}
+
+	label {
+		margin: 0 0 8px 0;
+		padding: 0;
+	}
+
+	input {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+		padding: 4px 8px;
+		border: 1px solid $color1;
+		border-radius: .25rem;
+		background-clip: padding-box;
+		background-color: $color2;
+		font-size: 16px;
+		line-height: 24px;
+		transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+}
+
+.form__control {
+	max-width: 400px;
+}
+
+.form__group {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}

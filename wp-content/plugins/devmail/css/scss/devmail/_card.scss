@@ -1,0 +1,16 @@
+a.card {
+	padding-bottom: 8px;
+
+	.card__image {
+		width: 100%;
+		max-width: 272px;
+		height: auto;
+		padding-bottom: 8px;
+	}
+
+	p,
+	td,
+	th {
+		margin-bottom: 8px;
+	}
+}

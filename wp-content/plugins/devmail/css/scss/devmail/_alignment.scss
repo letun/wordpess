@@ -1,0 +1,71 @@
+table,
+th,
+td,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+	&.text-center {
+		text-align: center;
+	}
+
+	&.text-left {
+		text-align: left;
+	}
+
+	&.text-right {
+		text-align: right;
+	}
+}
+
+ul.text-center,
+ol.text-center {
+	display: inline-block;
+	min-width: 160px;
+	text-align: left;
+}
+
+span.text-center {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+img.float-left {
+	float: left;
+	text-align: left;
+}
+
+img.float-right {
+	float: right;
+	text-align: right;
+}
+
+img.float-center,
+img.text-center {
+	float: none;
+	margin: 0 auto;
+	text-align: center;
+}
+
+td,
+th {
+	&.float-center {
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
+table {
+	&.float-center {
+		float: none;
+		margin-right: auto;
+		margin-left: auto;
+		text-align: center;
+	}
+}

@@ -1,0 +1,617 @@
+.post-type-devmail .block-editor-writing-flow {
+  background: #F2F4F8;
+  /* Windows Phone Viewport Fix */ }
+  .post-type-devmail .block-editor-writing-flow body,
+  .post-type-devmail .block-editor-writing-flow table.body,
+  .post-type-devmail .block-editor-writing-flow h1,
+  .post-type-devmail .block-editor-writing-flow h2,
+  .post-type-devmail .block-editor-writing-flow h3,
+  .post-type-devmail .block-editor-writing-flow h4,
+  .post-type-devmail .block-editor-writing-flow h5,
+  .post-type-devmail .block-editor-writing-flow h6,
+  .post-type-devmail .block-editor-writing-flow p,
+  .post-type-devmail .block-editor-writing-flow td,
+  .post-type-devmail .block-editor-writing-flow th {
+    margin: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    color: #0A0A0A;
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 24px;
+    text-align: left; }
+  .post-type-devmail .block-editor-writing-flow h1,
+  .post-type-devmail .block-editor-writing-flow h2,
+  .post-type-devmail .block-editor-writing-flow h3,
+  .post-type-devmail .block-editor-writing-flow h4,
+  .post-type-devmail .block-editor-writing-flow h5,
+  .post-type-devmail .block-editor-writing-flow h6 {
+    margin-bottom: 16px;
+    color: #0A0A0A;
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    word-wrap: normal; }
+  .post-type-devmail .block-editor-writing-flow h1 {
+    font-size: 32px;
+    line-height: 40px; }
+  .post-type-devmail .block-editor-writing-flow .h1--superhead {
+    font-size: 64px;
+    line-height: 64px;
+    text-transform: uppercase; }
+  .post-type-devmail .block-editor-writing-flow h2 {
+    font-size: 24px;
+    line-height: 32px; }
+  .post-type-devmail .block-editor-writing-flow h3 {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px; }
+  .post-type-devmail .block-editor-writing-flow h4,
+  .post-type-devmail .block-editor-writing-flow h5,
+  .post-type-devmail .block-editor-writing-flow h6 {
+    font-size: 16px;
+    line-height: 24px; }
+  .post-type-devmail .block-editor-writing-flow body,
+  .post-type-devmail .block-editor-writing-flow table.body,
+  .post-type-devmail .block-editor-writing-flow p,
+  .post-type-devmail .block-editor-writing-flow td,
+  .post-type-devmail .block-editor-writing-flow th {
+    font-size: 16px;
+    line-height: 24px; }
+  .post-type-devmail .block-editor-writing-flow p {
+    margin-bottom: 16px; }
+  .post-type-devmail .block-editor-writing-flow ul,
+  .post-type-devmail .block-editor-writing-flow ol {
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-left: 20px;
+    text-align: left; }
+    .post-type-devmail .block-editor-writing-flow ul li,
+    .post-type-devmail .block-editor-writing-flow ol li {
+      margin-bottom: 8px; }
+  .post-type-devmail .block-editor-writing-flow small,
+  .post-type-devmail .block-editor-writing-flow .text-small {
+    font-size: 14px;
+    line-height: 24px; }
+  .post-type-devmail .block-editor-writing-flow a,
+  .post-type-devmail .block-editor-writing-flow .link {
+    padding: 0;
+    color: #2199E8;
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 24px;
+    text-align: left;
+    text-decoration: none; }
+    .post-type-devmail .block-editor-writing-flow a:hover,
+    .post-type-devmail .block-editor-writing-flow a:hover .link,
+    .post-type-devmail .block-editor-writing-flow .link:hover,
+    .post-type-devmail .block-editor-writing-flow .link:hover .link {
+      color: #147DC2; }
+    .post-type-devmail .block-editor-writing-flow a:active,
+    .post-type-devmail .block-editor-writing-flow a:active .link,
+    .post-type-devmail .block-editor-writing-flow .link:active,
+    .post-type-devmail .block-editor-writing-flow .link:active .link {
+      color: #147DC2; }
+    .post-type-devmail .block-editor-writing-flow a:visited,
+    .post-type-devmail .block-editor-writing-flow a:visited .link,
+    .post-type-devmail .block-editor-writing-flow .link:visited,
+    .post-type-devmail .block-editor-writing-flow .link:visited .link {
+      color: #2199E8; }
+  .post-type-devmail .block-editor-writing-flow .text-gray {
+    color: #979797; }
+  .post-type-devmail .block-editor-writing-flow .text-normal {
+    font-weight: normal; }
+  .post-type-devmail .block-editor-writing-flow span.preheader {
+    display: none !important;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    max-width: 0;
+    max-height: 0;
+    color: #F2F4F8;
+    font-size: 1px;
+    line-height: 1px;
+    mso-hide: all !important; }
+
+@-ms-viewport {
+  .post-type-devmail .block-editor-writing-flow {
+    width: device-width; } }
+  .post-type-devmail .block-editor-writing-flow #outlook a {
+    padding: 0; }
+  .post-type-devmail .block-editor-writing-flow body {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100% !important;
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%; }
+  .post-type-devmail .block-editor-writing-flow .ExternalClass {
+    width: 100%; }
+    .post-type-devmail .block-editor-writing-flow .ExternalClass,
+    .post-type-devmail .block-editor-writing-flow .ExternalClass p,
+    .post-type-devmail .block-editor-writing-flow .ExternalClass span,
+    .post-type-devmail .block-editor-writing-flow .ExternalClass font,
+    .post-type-devmail .block-editor-writing-flow .ExternalClass td,
+    .post-type-devmail .block-editor-writing-flow .ExternalClass th,
+    .post-type-devmail .block-editor-writing-flow .ExternalClass div {
+      line-height: 100%; }
+  .post-type-devmail .block-editor-writing-flow table {
+    border-spacing: 0;
+    border-collapse: collapse; }
+  .post-type-devmail .block-editor-writing-flow td,
+  .post-type-devmail .block-editor-writing-flow th {
+    border-collapse: collapse !important;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto; }
+  .post-type-devmail .block-editor-writing-flow table,
+  .post-type-devmail .block-editor-writing-flow tr,
+  .post-type-devmail .block-editor-writing-flow td,
+  .post-type-devmail .block-editor-writing-flow th {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    text-align: left;
+    vertical-align: top; }
+  .post-type-devmail .block-editor-writing-flow img {
+    display: block;
+    clear: both;
+    width: auto;
+    max-width: 100%;
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    -ms-interpolation-mode: bicubic; }
+  .post-type-devmail .block-editor-writing-flow a img {
+    border: none; }
+  .post-type-devmail .block-editor-writing-flow table.text-center,
+  .post-type-devmail .block-editor-writing-flow th.text-center,
+  .post-type-devmail .block-editor-writing-flow td.text-center,
+  .post-type-devmail .block-editor-writing-flow h1.text-center,
+  .post-type-devmail .block-editor-writing-flow h2.text-center,
+  .post-type-devmail .block-editor-writing-flow h3.text-center,
+  .post-type-devmail .block-editor-writing-flow h4.text-center,
+  .post-type-devmail .block-editor-writing-flow h5.text-center,
+  .post-type-devmail .block-editor-writing-flow h6.text-center,
+  .post-type-devmail .block-editor-writing-flow p.text-center,
+  .post-type-devmail .block-editor-writing-flow span.text-center {
+    text-align: center; }
+  .post-type-devmail .block-editor-writing-flow table.text-left,
+  .post-type-devmail .block-editor-writing-flow th.text-left,
+  .post-type-devmail .block-editor-writing-flow td.text-left,
+  .post-type-devmail .block-editor-writing-flow h1.text-left,
+  .post-type-devmail .block-editor-writing-flow h2.text-left,
+  .post-type-devmail .block-editor-writing-flow h3.text-left,
+  .post-type-devmail .block-editor-writing-flow h4.text-left,
+  .post-type-devmail .block-editor-writing-flow h5.text-left,
+  .post-type-devmail .block-editor-writing-flow h6.text-left,
+  .post-type-devmail .block-editor-writing-flow p.text-left,
+  .post-type-devmail .block-editor-writing-flow span.text-left {
+    text-align: left; }
+  .post-type-devmail .block-editor-writing-flow table.text-right,
+  .post-type-devmail .block-editor-writing-flow th.text-right,
+  .post-type-devmail .block-editor-writing-flow td.text-right,
+  .post-type-devmail .block-editor-writing-flow h1.text-right,
+  .post-type-devmail .block-editor-writing-flow h2.text-right,
+  .post-type-devmail .block-editor-writing-flow h3.text-right,
+  .post-type-devmail .block-editor-writing-flow h4.text-right,
+  .post-type-devmail .block-editor-writing-flow h5.text-right,
+  .post-type-devmail .block-editor-writing-flow h6.text-right,
+  .post-type-devmail .block-editor-writing-flow p.text-right,
+  .post-type-devmail .block-editor-writing-flow span.text-right {
+    text-align: right; }
+  .post-type-devmail .block-editor-writing-flow span.text-center {
+    display: block;
+    width: 100%;
+    text-align: center; }
+  @media only screen {
+    .post-type-devmail .block-editor-writing-flow html {
+      min-height: 100%;
+      background: #F2F4F8; } }
+  .post-type-devmail .block-editor-writing-flow table.body {
+    width: 100%;
+    height: 100%;
+    background: #F2F4F8; }
+    .post-type-devmail .block-editor-writing-flow table.body td.body-inner {
+      padding-right: 8px !important;
+      padding-left: 8px !important; }
+  .post-type-devmail .block-editor-writing-flow table.container {
+    width: 100%;
+    max-width: 648px;
+    margin: 0 auto 24px;
+    border-radius: 16px;
+    background: #FFFFFF;
+    text-align: inherit; }
+    @media only screen and (min-width: 541px) {
+      .post-type-devmail .block-editor-writing-flow table.container {
+        margin-bottom: 32px !important; } }
+    @media only screen and (max-width: 648px) {
+      .post-type-devmail .block-editor-writing-flow table.container {
+        width: 95% !important; } }
+    .post-type-devmail .block-editor-writing-flow table.container td.container-inner {
+      padding-top: 24px;
+      padding-right: 8px;
+      padding-left: 8px; }
+      @media only screen and (min-width: 541px) {
+        .post-type-devmail .block-editor-writing-flow table.container td.container-inner {
+          padding-top: 32px !important;
+          padding-right: 16px !important;
+          padding-left: 16px !important; } }
+  .post-type-devmail .block-editor-writing-flow table.row {
+    position: relative;
+    width: 100%;
+    padding: 0 !important; }
+    .post-type-devmail .block-editor-writing-flow table.row td.row-inner {
+      padding: 0 !important; }
+  .post-type-devmail .block-editor-writing-flow table.column {
+    position: relative;
+    width: 100%;
+    padding: 0 !important; }
+    .post-type-devmail .block-editor-writing-flow table.column td.column-inner {
+      margin: 0 auto;
+      padding-right: 16px !important;
+      padding-bottom: 16px !important;
+      padding-left: 16px !important; }
+  .post-type-devmail .block-editor-writing-flow table.spacer {
+    width: 100%; }
+    .post-type-devmail .block-editor-writing-flow table.spacer td {
+      mso-line-height-rule: exactly; }
+  .post-type-devmail .block-editor-writing-flow div.columns {
+    width: 100%;
+    font-size: 0; }
+  .post-type-devmail .block-editor-writing-flow div.column {
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    vertical-align: top; }
+    @media screen and (max-width: 541px) {
+      .post-type-devmail .block-editor-writing-flow div.column {
+        max-width: 100% !important; } }
+    @media screen and (min-width: 542px) {
+      .post-type-devmail .block-editor-writing-flow div.column {
+        max-width: 50% !important; } }
+  .post-type-devmail .block-editor-writing-flow table.text-center,
+  .post-type-devmail .block-editor-writing-flow th.text-center,
+  .post-type-devmail .block-editor-writing-flow td.text-center,
+  .post-type-devmail .block-editor-writing-flow h1.text-center,
+  .post-type-devmail .block-editor-writing-flow h2.text-center,
+  .post-type-devmail .block-editor-writing-flow h3.text-center,
+  .post-type-devmail .block-editor-writing-flow h4.text-center,
+  .post-type-devmail .block-editor-writing-flow h5.text-center,
+  .post-type-devmail .block-editor-writing-flow h6.text-center,
+  .post-type-devmail .block-editor-writing-flow p.text-center,
+  .post-type-devmail .block-editor-writing-flow span.text-center {
+    text-align: center; }
+  .post-type-devmail .block-editor-writing-flow table.text-left,
+  .post-type-devmail .block-editor-writing-flow th.text-left,
+  .post-type-devmail .block-editor-writing-flow td.text-left,
+  .post-type-devmail .block-editor-writing-flow h1.text-left,
+  .post-type-devmail .block-editor-writing-flow h2.text-left,
+  .post-type-devmail .block-editor-writing-flow h3.text-left,
+  .post-type-devmail .block-editor-writing-flow h4.text-left,
+  .post-type-devmail .block-editor-writing-flow h5.text-left,
+  .post-type-devmail .block-editor-writing-flow h6.text-left,
+  .post-type-devmail .block-editor-writing-flow p.text-left,
+  .post-type-devmail .block-editor-writing-flow span.text-left {
+    text-align: left; }
+  .post-type-devmail .block-editor-writing-flow table.text-right,
+  .post-type-devmail .block-editor-writing-flow th.text-right,
+  .post-type-devmail .block-editor-writing-flow td.text-right,
+  .post-type-devmail .block-editor-writing-flow h1.text-right,
+  .post-type-devmail .block-editor-writing-flow h2.text-right,
+  .post-type-devmail .block-editor-writing-flow h3.text-right,
+  .post-type-devmail .block-editor-writing-flow h4.text-right,
+  .post-type-devmail .block-editor-writing-flow h5.text-right,
+  .post-type-devmail .block-editor-writing-flow h6.text-right,
+  .post-type-devmail .block-editor-writing-flow p.text-right,
+  .post-type-devmail .block-editor-writing-flow span.text-right {
+    text-align: right; }
+  .post-type-devmail .block-editor-writing-flow ul.text-center,
+  .post-type-devmail .block-editor-writing-flow ol.text-center {
+    display: inline-block;
+    min-width: 160px;
+    text-align: left; }
+  .post-type-devmail .block-editor-writing-flow span.text-center {
+    display: block;
+    width: 100%;
+    text-align: center; }
+  .post-type-devmail .block-editor-writing-flow img.float-left {
+    float: left;
+    text-align: left; }
+  .post-type-devmail .block-editor-writing-flow img.float-right {
+    float: right;
+    text-align: right; }
+  .post-type-devmail .block-editor-writing-flow img.float-center,
+  .post-type-devmail .block-editor-writing-flow img.text-center {
+    float: none;
+    margin: 0 auto;
+    text-align: center; }
+  .post-type-devmail .block-editor-writing-flow td.float-center,
+  .post-type-devmail .block-editor-writing-flow th.float-center {
+    float: none;
+    margin: 0 auto;
+    text-align: center; }
+  .post-type-devmail .block-editor-writing-flow table.float-center {
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center; }
+  .post-type-devmail .block-editor-writing-flow table.button-main {
+    width: 100%;
+    max-width: 360px !important;
+    margin: 0 0 16px 0; }
+    @media only screen and (min-width: 541px) {
+      .post-type-devmail .block-editor-writing-flow table.button-main {
+        width: auto !important;
+        min-width: 220px; } }
+    .post-type-devmail .block-editor-writing-flow table.button-main table {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08); }
+      .post-type-devmail .block-editor-writing-flow table.button-main table td {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        border: none;
+        border-radius: 4px;
+        background: #000000;
+        color: #FFFFFF;
+        text-align: center; }
+        .post-type-devmail .block-editor-writing-flow table.button-main table td a {
+          display: inline-block;
+          box-sizing: border-box;
+          width: 100%;
+          padding: 16px 24px 16px 24px;
+          border: 0 solid #000000;
+          border-radius: 4px;
+          color: #FFFFFF;
+          font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+          font-size: 18px;
+          font-weight: bold;
+          font-weight: 500;
+          text-align: center;
+          text-decoration: none; }
+        .post-type-devmail .block-editor-writing-flow table.button-main table td a:visited {
+          color: #FFFFFF; }
+  .post-type-devmail .block-editor-writing-flow table.button-main table td {
+    background: #000000;
+    color: #FFFFFF; }
+    .post-type-devmail .block-editor-writing-flow table.button-main table td a {
+      color: #FFFFFF; }
+    .post-type-devmail .block-editor-writing-flow table.button-main table td a:visited {
+      color: #FFFFFF; }
+  .post-type-devmail .block-editor-writing-flow table.button-main:hover table td, .post-type-devmail .block-editor-writing-flow table.button-main:visited table td, .post-type-devmail .block-editor-writing-flow table.button-main:active table td {
+    background: #262626; }
+  .post-type-devmail .block-editor-writing-flow table.button-main:hover table a, .post-type-devmail .block-editor-writing-flow table.button-main:visited table a, .post-type-devmail .block-editor-writing-flow table.button-main:active table a {
+    border: 0 solid #262626;
+    background: #262626;
+    color: #FFFFFF; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow table td {
+    background: #FAE053;
+    color: #0A0A0A; }
+    .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow table td a {
+      color: #0A0A0A; }
+    .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow table td a:visited {
+      color: #0A0A0A; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow:hover table td, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow:visited table td, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow:active table td {
+    background: #fbe985; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow:hover table a, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow:visited table a, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--yellow:active table a {
+    border: 0 solid #fbe985;
+    background: #fbe985;
+    color: #0A0A0A; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver table td {
+    background: #DDE1E6;
+    color: #0A0A0A; }
+    .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver table td a {
+      color: #0A0A0A; }
+    .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver table td a:visited {
+      color: #0A0A0A; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver:hover table td, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver:visited table td, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver:active table td {
+    background: #ced4db; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver:hover table a, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver:visited table a, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--silver:active table a {
+    border: 0 solid #ced4db;
+    background: #ced4db;
+    color: #0A0A0A; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white table td {
+    background: #FFFFFF;
+    color: #0A0A0A; }
+    .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white table td a {
+      color: #0A0A0A; }
+    .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white table td a:visited {
+      color: #0A0A0A; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white:hover table td, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white:visited table td, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white:active table td {
+    background: #e6e6e6; }
+  .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white:hover table a, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white:visited table a, .post-type-devmail .block-editor-writing-flow table.button-main.button-main--white:active table a {
+    border: 0 solid #e6e6e6;
+    background: #e6e6e6;
+    color: #0A0A0A; }
+  .post-type-devmail .block-editor-writing-flow table.button-secondary {
+    width: 100%;
+    margin: 0 0 16px 0; }
+    @media only screen and (min-width: 541px) {
+      .post-type-devmail .block-editor-writing-flow table.button-secondary {
+        width: auto !important; } }
+    .post-type-devmail .block-editor-writing-flow table.button-secondary table td {
+      color: #0A0A0A;
+      text-align: center; }
+      .post-type-devmail .block-editor-writing-flow table.button-secondary table td a {
+        display: inline-block;
+        color: #0A0A0A;
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        font-weight: 500;
+        text-align: center;
+        text-decoration: none; }
+        .post-type-devmail .block-editor-writing-flow table.button-secondary table td a span {
+          border-bottom: 3px solid transparent; }
+  .post-type-devmail .block-editor-writing-flow table.button-secondary.button-secondary--yellow table td a span {
+    border-bottom-color: #FAE053; }
+  .post-type-devmail .block-editor-writing-flow table.button-secondary.button-secondary--black table td a span {
+    border-bottom-color: #000000; }
+  .post-type-devmail .block-editor-writing-flow table.button-secondary.button-secondary--blue table td a span {
+    border-bottom-color: #6A8DD4; }
+  .post-type-devmail .block-editor-writing-flow table.button-secondary.button-secondary--green table td a span {
+    border-bottom-color: #31CC8F; }
+  .post-type-devmail .block-editor-writing-flow table.background-black {
+    background: #000000; }
+    .post-type-devmail .block-editor-writing-flow table.background-black table.body,
+    .post-type-devmail .block-editor-writing-flow table.background-black h1,
+    .post-type-devmail .block-editor-writing-flow table.background-black h2,
+    .post-type-devmail .block-editor-writing-flow table.background-black h3,
+    .post-type-devmail .block-editor-writing-flow table.background-black h4,
+    .post-type-devmail .block-editor-writing-flow table.background-black h5,
+    .post-type-devmail .block-editor-writing-flow table.background-black h6,
+    .post-type-devmail .block-editor-writing-flow table.background-black p,
+    .post-type-devmail .block-editor-writing-flow table.background-black td,
+    .post-type-devmail .block-editor-writing-flow table.background-black th {
+      color: #FFFFFF; }
+  .post-type-devmail .block-editor-writing-flow table.background-yellow {
+    background: #FAE053; }
+  .post-type-devmail .block-editor-writing-flow table.background-blue {
+    background: #D3EEFF; }
+  .post-type-devmail .block-editor-writing-flow table.background-gray {
+    background: #F8F8F8; }
+
+.wp-core-ui table.button-secondary {
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: none; }
+  .wp-core-ui table.button-secondary:hover, .wp-core-ui table.button-secondary:active {
+    background: none; }
+  .wp-core-ui table.button-secondary .block-editor-rich-text__editable {
+    display: inline-block; }
+
+.la-remove-button {
+  position: absolute !important;
+  top: 10px;
+  right: 10px; }
+
+.background-black .la-remove-button {
+  color: #FFFFFF; }
+
+.la-inspector-control {
+  display: block; }
+
+.la-inspector-control__color-panel {
+  margin-top: 10px; }
+
+.la-add-block-toolbar {
+  display: block;
+  text-align: left; }
+
+.la-add-block-toolbar__panel {
+  height: 32px !important;
+  min-height: 32px !important;
+  border-radius: 4px; }
+
+.la-add-block-toolbar__button-group {
+  height: 32px !important;
+  min-height: 32px !important;
+  background: transparent; }
+
+.la-add-block-toolbar__button {
+  height: 24px !important;
+  padding: 5px 0 0 0 !important; }
+
+.la-add-block-toolbar__button-plus {
+  min-width: 32px !important;
+  height: 24px !important;
+  padding: 4px 0 0 0 !important; }
+  .la-add-block-toolbar__button-plus::before {
+    top: 0 !important;
+    left: 0 !important;
+    width: 32px;
+    height: 30px !important;
+    border-radius: 4px 0 0 4px !important;
+    background: #999999 !important; }
+  .la-add-block-toolbar__button-plus svg {
+    margin: 0 !important; }
+
+.row-inner pre {
+  display: none; }
+
+.block-editor-block-list__block .columns {
+  display: flex;
+  flex-wrap: wrap; }
+  .block-editor-block-list__block .columns table.column {
+    width: 50%; }
+
+.la-button-color-panel__palette {
+  overflow: hidden;
+  padding: 12px 0 0 12px; }
+
+.la-button-color-panel__button::before {
+  border: 1px solid #000000;
+  border-radius: 50%;
+  background: #FFFFFF; }
+
+.la-button-color-panel__button--black svg {
+  fill: #FFFFFF; }
+
+.la-button-color-panel__button--black::before {
+  background: #000000; }
+
+.la-button-color-panel__button--yellow::before {
+  background: #FFBF06; }
+
+.la-button-color-panel__button--silver::before {
+  background: #DDE1E6; }
+
+.la-button-color-panel__button--white::before {
+  background: #FFFFFF; }
+
+.la-button-color-panel__button--blue::before {
+  background: #6A8DD4; }
+
+.la-button-color-panel__button--green::before {
+  background: #31CC8F; }
+
+div[data-type="devmail/block-cards"] .columns .block-editor-block-list__layout {
+  display: flex;
+  flex-wrap: wrap; }
+  div[data-type="devmail/block-cards"] .columns .block-editor-block-list__layout div[data-type="devmail/card"] {
+    width: 50%; }
+    div[data-type="devmail/block-cards"] .columns .block-editor-block-list__layout div[data-type="devmail/card"] .card {
+      border: 0 none;
+      box-shadow: none; }
+      div[data-type="devmail/block-cards"] .columns .block-editor-block-list__layout div[data-type="devmail/card"] .card .card__text {
+        margin-top: 16px; }
+      div[data-type="devmail/block-cards"] .columns .block-editor-block-list__layout div[data-type="devmail/card"] .card .card__link--admin {
+        color: #2199E8; }
+
+.features-admin {
+  position: relative;
+  padding-left: 40px; }
+  .features-admin .block-editor-rich-text__editable {
+    position: relative; }
+
+.features-admin__content {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-direction: column; }
+
+.features-admin__item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; }
+
+.features-admin__image {
+  width: 24px;
+  max-width: 24px;
+  height: auto;
+  max-height: 24px; }
+
+.features-admin__text {
+  visibility: hidden;
+  margin-left: 16px; }
+  .features-admin__text p {
+    min-height: 24px; }

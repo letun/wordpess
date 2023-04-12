@@ -1,0 +1,29 @@
+{
+  "name": "lettera",
+  "version": "0.9.0",
+  "private": true,
+  "description": "Lettera: Email builder",
+  "author": "Serge Andreev",
+  "homepage": "https://www.letun.dev/",
+  "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
+    "@wordpress/components": "^9.5.0",
+    "@wordpress/scripts": "12.6.1",
+    "lerna": "^3.20.2",
+    "url-loader": "^4.1.1"
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "format:js": "wp-scripts format-js",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "start": "wp-scripts start"
+  },
+  "externals": {
+    "lodash": "lodash"
+  },
+  "dependencies": {
+    "@wordpress/media-utils": "^1.15.0",
+    "react-html-comment": "^2.0.4"
+  }
+}

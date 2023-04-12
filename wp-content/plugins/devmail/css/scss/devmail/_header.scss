@@ -1,0 +1,36 @@
+.header .wrapper-inner {
+	padding-top: 48px;
+	padding-bottom: 24px;
+}
+
+.header a {
+	display: inline-block;
+}
+
+.header .logo {
+	width: 112px;
+	height: 24px;
+}
+
+.header .logo-text {
+	margin-bottom: 0;
+}
+
+.dark-img {
+	display: none;
+	visibility: hidden;
+	overflow: hidden;
+}
+
+@mixin dark-header {
+	.dark-img {
+		display: block !important;
+		visibility: inherit !important;
+		overflow: visible !important;
+	}
+
+	.light-img {
+		display: none;
+		display: none !important;
+	}
+}

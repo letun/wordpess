@@ -1,0 +1,120 @@
+$headerHeight: 64px;
+
+.ruler {
+	display: none;
+	position: relative;
+	background: $color3;
+
+	@media only screen and (min-width: 1200px) {
+		display: block;
+	}
+}
+
+.ruler__buttons {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 8px 0;
+}
+
+.ruler__buttons-group {
+	display: flex;
+	overflow: hidden;
+	margin: 0 16px;
+	border-radius: 6px;
+}
+
+.ruler__button {
+	width: 24px;
+	height: 24px;
+	padding: 8px;
+	background: $color2;
+	cursor: pointer;
+
+	&:hover,
+	&:active {
+		svg {
+			fill: $color1;
+		}
+	}
+
+	svg {
+		width: 24px;
+		height: 24px;
+		fill: $color5;
+	}
+}
+
+.ruler__button--rotate {
+	svg {
+		transform: rotate(270deg);
+	}
+}
+
+.ruler__button--active {
+	svg {
+		fill: $color1;
+	}
+}
+
+.ruler__screens-line {
+	position: relative;
+	bottom: 0;
+	height: 28px;
+	background: $color4;
+}
+
+.ruler__screen-button {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	box-sizing: border-box;
+	min-height: 28px;
+	margin: 0 auto;
+	padding: 4px 0;
+	border-right: 1px solid $color1;
+	border-left: 1px solid $color1;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: center;
+
+	&:first-of-type {
+		border: 0 none;
+	}
+
+	&--active {
+		background: darken($color4, 10);
+		color: #333333;
+	}
+
+	&:hover,
+	&--active:hover {
+		background: darken($color4, 20);
+		color: $color1;
+	}
+}
+
+.content {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.content__frame {
+	opacity: 1;
+	width: 100%;
+	height: calc(100vh - #{$headerHeight});
+	margin: 0;
+	border: 0;
+	transition: opacity .3s ease .1s;
+}
+
+.ruler__copy-html-container {
+	textarea {
+		position: absolute;
+		left: -100vh;
+		width: 0;
+		height: 0;
+	}
+}

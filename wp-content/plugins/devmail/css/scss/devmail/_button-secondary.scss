@@ -1,0 +1,143 @@
+@import "./variables";
+
+$bs-font-size: $global-font-size-md;
+$bs-line-height: $global-line-height;
+$bs-font-weight: bold;
+$bs-color: $global-color;
+$bs-margin: 0 0 $global-size 0;
+$bs-background: #000000;
+
+//btn name, color, border-color
+$bs-list: (
+	(null, $bs-color, null),
+	("yellow", $bs-color, #FAE053),
+	("black", $bs-color, #000000),
+	("blue", $bs-color, #6A8DD4),
+	("green", $bs-color, #31CC8F),
+);
+
+@mixin button-secondary {
+	width: 100%;
+	margin: $bs-margin;
+
+	@media only screen and (min-width: #{$global-breakpoint}) {
+		width: auto !important;
+	}
+
+	table {
+		td {
+			color: $bs-color;
+			text-align: center;
+
+			a {
+				display: inline-block;
+				color: $bs-color;
+				font-family: $global-font-family;
+				font-size: $bs-font-size;
+				font-weight: $bs-font-weight;
+				font-weight: 500;
+				text-align: center;
+				text-decoration: none;
+
+				span {
+					border-bottom: 3px solid transparent;
+				}
+			}
+		}
+	}
+}
+
+@mixin make-button-secondary($name, $color, $border) {
+	$_suffix: "";
+
+	@if $name {
+		$_suffix: ".button-secondary--#{unquote($name)}";
+	}
+
+	table.button-secondary#{$_suffix} {
+		table {
+			td {
+				a {
+					span {
+						@if $border {
+							border-bottom-color: $border;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+table.button-secondary {
+	@include button-secondary;
+}
+
+@each $btn in $bs-list {
+	@include make-button-secondary(nth($btn, 1), nth($btn, 2), nth($btn, 3));
+}
+
+@mixin dark-button {
+	table.button table td {
+		color: $dark-button-color !important;
+
+		a {
+			color: $dark-button-color !important;
+		}
+
+		a:visited {
+			color: $dark-button-color !important;
+		}
+	}
+
+	//Black and Yellow buttons are the same
+	table.button--primary,
+	table.button--yellow {
+		table {
+			td {
+				background: $secondary-button-background !important;
+				color: $secondary-button-color !important;
+
+				a {
+					background: $secondary-button-background !important;
+					color: $secondary-button-color !important;
+				}
+
+				a:visited {
+					color: $secondary-button-color !important;
+				}
+			}
+		}
+	}
+
+	table.button--primary:hover,
+	table.button--primary:visited,
+	table.button--primary:active,
+	table.button--yellow:hover,
+	table.button--yellow:visited,
+	table.button--yellow:active {
+		table {
+			td {
+				background: lighten($secondary-button-background, 10%) !important;
+				color: $secondary-button-color !important;
+
+				a {
+					background: lighten($secondary-button-background, 10%) !important;
+					color: $secondary-button-color !important;
+				}
+			}
+		}
+	}
+
+	table.button--white {
+		table {
+			td {
+				color: #FFFFFF !important;
+
+				a {
+					color: #FFFFFF !important;
+				}
+			}
+		}
+	}
+}

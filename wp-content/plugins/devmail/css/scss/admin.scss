@@ -1,0 +1,28 @@
+.post-type-devmail .block-editor-writing-flow {
+	background: #F2F4F8;
+
+	@import 'devmail/variables';
+	@import 'devmail/typography';
+	@import 'devmail/layout';
+	@import 'devmail/grid';
+	@import 'devmail/alignment';
+	@import 'devmail/button-main';
+	@import 'devmail/button-secondary';
+	@import 'devmail/background';
+}
+
+//Overwrite WP styles for button-secondary
+@import 'admin/button-secondary';
+
+//Styles for removeComponent button
+@import 'admin/remove-button';
+
+@import 'admin/inspector-control-panel';
+@import 'admin/add-block-toolbar';
+@import 'admin/fix-columns';
+@import 'admin/columns';
+@import 'admin/color-panel';
+
+// Components, Blocks, Elements
+@import 'admin/cards';
+@import 'admin/features';

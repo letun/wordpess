@@ -1,0 +1,42 @@
+.la-button-color-panel__palette {
+	overflow: hidden;
+	padding: 12px 0 0 12px;
+}
+
+.la-button-color-panel__button {
+	&::before {
+		border: 1px solid #000000;
+		border-radius: 50%;
+		background: #FFFFFF;
+	}
+}
+
+.la-button-color-panel__button--black {
+	svg {
+		fill: #FFFFFF;
+	}
+
+	&::before {
+		background: #000000;
+	}
+}
+
+.la-button-color-panel__button--yellow::before {
+	background: #FFBF06;
+}
+
+.la-button-color-panel__button--silver::before {
+	background: #DDE1E6;
+}
+
+.la-button-color-panel__button--white::before {
+	background: #FFFFFF;
+}
+
+.la-button-color-panel__button--blue::before {
+	background: #6A8DD4;
+}
+
+.la-button-color-panel__button--green::before {
+	background: #31CC8F;
+}

@@ -1,0 +1,10 @@
+.block-editor-block-list__block {
+	.columns {
+		display: flex;
+		flex-wrap: wrap;
+
+		table.column {
+			width: 50%;
+		}
+	}
+}
